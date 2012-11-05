@@ -28,8 +28,17 @@ input {
 	float: right;
 }
 
+select {
+	float: right;
+}
+
 label {
 	float: left;
+}
+
+.spacer {
+	clear: both;
+	height: 40px;
 }
 
 #container {
@@ -60,15 +69,11 @@ label {
 }
 
 #nav {
-	padding: 20px;	
 	float: left;
-	width: 190px;
+	width: 250px;
 }
 
-#content {
-	padding: 20px;
-	float: right;
-	width: 630px;
+#contents {
 }
 
 #footer {

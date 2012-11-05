@@ -19,29 +19,24 @@
 <body>
 	<div id="header-background">
 		<div id="header-copy">
-			<div id="user_indentifier">
-				<?if($user):?>
+			<?if($user):?>
+				<div id="user_indentifier">
 					Welcome, <?=$user->first_name?>. &nbsp &nbsp &nbsp <a style="color: white;" href="/users/logout">Log Out</a>
-				<?endif;?>
-			</div>
+				</div>
+			<?else:?>
+				<div id="signup">
+					<a href="/users/login">Log In</a> or <a href="/users/signup">Sign up!</a>
+				</div>
+			<?endif;?>
 		</div>
 	</div>
 	<div id="container">
-		<div id="nav">
-			<?if($user):?>
-					<li><a href="/">Home</a></li>
-					<li><a href="/users/profile">View Profile</a></li>
-					<li><a href="/posts/index">View Posts</a></li>
-					<li><a href="/posts/users">View Users to Follow</a></li>		
-					<li><a href="/posts/add">Add a Post</a></li>
-			<?else:?>
-					<li><a href="/">Home</a></li>
-					<li><a href="/users/signup">Sign Up</a></li>
-					<li><a href="/users/login">Log In</a></li>
-			<?endif;?>
+		<div class="spacer">
 		</div>
-		<div id="content">
+		<div id="contents">
 			<?=$content;?> 
+		</div>
+		<div class="spacer">
 		</div>
 		<div id="footer">
 		</div>

@@ -16,11 +16,11 @@ class index_controller extends base_controller {
 			$this->template->content = View::instance('v_index_index');
 			
 		# Now set the <title> tag
-			$this->template->title = "Welcome to Dave's project for E-75";
+			$this->template->title = "Virska";
 	
 		# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
 			$client_files = Array(
-						""
+						"/css/homepage.css"
 	                    );
 	    
 	    	$this->template->client_files = Utils::load_client_files($client_files);   
