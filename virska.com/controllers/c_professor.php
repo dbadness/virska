@@ -60,6 +60,13 @@
 			# Pass data to view			
 			$this->template->content->classes = $classes;
 			$this->template->content->sections = $sections;
+			
+			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
+				$client_files = Array(
+							"/css/professor.css"
+		                    );
+
+		    	$this->template->client_files = Utils::load_client_files($client_files);
 
 			# Render template
 			echo $this->template;

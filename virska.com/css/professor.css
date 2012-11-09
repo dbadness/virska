@@ -1,0 +1,21 @@
+/* professor-related CSS file */
+
+#wrapper {
+	width:650px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#add-class {
+	width:280px;
+	float:left;
+	padding:20px;
+}
+
+#add-section {
+	width:280px;
+	float:right;
+	border-left:1px solid gray;
+	padding:20px;
+}
+

@@ -6,11 +6,11 @@ My Classes:
 <br>
 	<?if(isset($classes)):?>
 		<?foreach($classes as $class):?>
-			<?=$class['class_code']?> - <?=$class['class_name']?><br>
+			<strong><?=$class['class_code']?> - <?=$class['class_name']?></strong><br>
 				<?if(isset($sections)):?>
 					<?foreach($sections as $section):?>
 						<?if($section['class_id'] == $class['class_id']):?>
-							<li>Section <?=$section['section_name']?> runs from <?=$section['time_start_hour']?>:<?=$section['time_start_min']?> <?=$section['am_pm_start']?> to <?=$section['time_end_hour']?>:<?=$section['time_end_min']?> <?=$section['am_pm_end']?>.</li>
+							<ul><li>Section <?=$section['section_name']?> runs from <?=$section['time_start_hour']?>:<?=$section['time_start_min']?> <?=$section['am_pm_start']?> to <?=$section['time_end_hour']?>:<?=$section['time_end_min']?> <?=$section['am_pm_end']?>.</li></ul>
 						<?endif;?>
 					<?endforeach;?>
 				<?endif;?>
@@ -19,9 +19,9 @@ My Classes:
 <br>
 <br>
 <hr>
-<div id="form-wrapper" style="width:620px; margin-left:auto; margin-right:auto;">
-	<div style="width:300px; float:left; border-right:1px solid gray; padding:5px;">
-		<br>
+<div id="wrapper">
+	<br>
+	<div id="add-class">
 		<form class="form" id="class" method="post" action="/professor/p_add_class" >
 			<label for="class_code">Class Code</label>
 			<input type="text" name="class_code" id="class_code">
@@ -34,8 +34,7 @@ My Classes:
 			<input type="submit" value="Add Class">
 		</form>
 	</div>
-	<div style="width:300px; float:right;">
-		<br>
+	<div id="add-section">
 		<form class="form" id="section" method="post" action="/professor/p_add_section" >
 			<label for="section_name">Section Name</label>
 			<input type="text" name="section_name" id="section_name">
@@ -122,5 +121,5 @@ My Classes:
 			<input type="submit" value="Add Section">
 		</form>
 	</div>
-	<div style="clear:both;">
+	<div style="clear:both;"></div>
 </div>
