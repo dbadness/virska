@@ -6,11 +6,13 @@ My Classes:
 <br>
 	<?if(isset($classes)):?>
 		<?foreach($classes as $class):?>
-			<strong><?=$class['class_code']?> - <?=$class['class_name']?></strong><br>
+			<strong><?=$class['class_code']?> - <?=$class['class_name']?></strong><br><br>
 				<?if(isset($sections)):?>
 					<?foreach($sections as $section):?>
 						<?if($section['class_id'] == $class['class_id']):?>
-							<ul><li>Section <?=$section['section_name']?> runs from <?=$section['time_start_hour']?>:<?=$section['time_start_min']?> <?=$section['am_pm_start']?> to <?=$section['time_end_hour']?>:<?=$section['time_end_min']?> <?=$section['am_pm_end']?>.</li></ul>
+							<div id="section-wrapper">
+								Section <?=$section['section_name']?> runs from <?=$section['time_start_hour']?>:<?=$section['time_start_min']?> <?=$section['am_pm_start']?> to <?=$section['time_end_hour']?>:<?=$section['time_end_min']?> <?=$section['am_pm_end']?>.&nbsp&nbsp&nbsp&nbsp<a href="/professor/section/<?=$section['section_id']?>">View/Edit</a>
+							</div>
 						<?endif;?>
 					<?endforeach;?>
 				<?endif;?>

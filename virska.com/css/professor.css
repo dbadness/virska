@@ -1,5 +1,11 @@
 /* professor-related CSS file */
 
+#header-nav {
+	color:white;
+	padding:14px;
+	float:left;
+}
+
 #wrapper {
 	width:650px;
 	margin-left:auto;
@@ -19,3 +25,17 @@
 	padding:20px;
 }
 
+#datepicker {
+	
+}
+
+#new-assignment {
+	margin-right:auto;
+	margin-left:auto;
+	width:420px;
+}
+
+#section-wrapper {
+	width:400px;
+	padding-left:20px;
+}

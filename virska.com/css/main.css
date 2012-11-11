@@ -65,14 +65,11 @@ label {
 #user_indentifier {
 	color: white;
 	padding: 14px;
-	text-align: right;
+	float: right;
 }
 
 #nav {
 	height: 150px;
-}
-
-#contents {
 }
 
 #footer {

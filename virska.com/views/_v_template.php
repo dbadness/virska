@@ -20,13 +20,17 @@
 	<div id="header-background">
 		<div id="header-copy">
 			<?if($user):?>
+				<?if($user->role == 'professor'):?>
+				<div id="header-nav">
+					<a style="color:white;" href="/professor/classes">My Classes</a>
+				</div>
+				<?elseif($user->role == 'student'):?>
+					<!-- student nav goes here -->
+				<?endif;?>
 				<div id="user_indentifier">
 					Welcome, <?=$user->first_name?>. &nbsp &nbsp &nbsp <a style="color: white;" href="/users/logout">Log Out</a>
 				</div>
-			<?else:?>
-				<div id="signup">
-					<a href="/users/login">Log In</a> or <a href="/users/signup">Sign up!</a>
-				</div>
+				<div style="clear:both;"></div>
 			<?endif;?>
 		</div>
 	</div>
