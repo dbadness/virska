@@ -1,0 +1,40 @@
+/* Login and Signup CSS */
+
+#loginForm {
+	height:200px;
+	width:300px;
+}
+
+#loginFormEmailLabel {
+	margin-left:70px;
+	margin-top:2px;
+}
+
+#loginFormPasswordLabel {
+	margin-left:42px;
+	margin-top:2px;
+}
+
+#loginFormEmailInput {
+	margin-right:40px;
+}
+
+#loginFormPasswordInput {
+	margin-right:40px;
+}
+
+#loginButton {
+	margin-left:132px;
+}
+
+#noValuesError {
+	display:none;
+	font-size:80%;
+	width:220px;
+	color:red;
+	margin-top:20px;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	border:solid 1px red;
+}

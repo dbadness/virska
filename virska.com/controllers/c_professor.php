@@ -5,6 +5,17 @@
 		public function __construct() {
 			parent::__construct();
 			
+			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
+			$client_files = Array(
+						"/css/professor.css",
+						"/js/professor.js",
+						"http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css",
+					    "http://code.jquery.com/jquery-1.8.2.js",
+					    "http://code.jquery.com/ui/1.9.1/jquery-ui.js"
+	                    );
+	
+		    $this->template->client_files = Utils::load_client_files($client_files);
+			
 			# Make sure the user is a professor
 			if($this->user->role == 'student') {
 				Router::redirect("/");
@@ -126,17 +137,6 @@
 						
 			# Setup the view
 			$this->template->content = View::instance('v_professor_section');
-			
-			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
-			$client_files = Array(
-						"/css/professor.css",
-						"/js/professor.js",
-						"http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css",
-					    "http://code.jquery.com/jquery-1.8.2.js",
-					    "http://code.jquery.com/ui/1.9.1/jquery-ui.js"
-	                    );
-	
-	    	$this->template->client_files = Utils::load_client_files($client_files);
 	
 			# Pass data back to the view
 			$this->template->content->section = $section;

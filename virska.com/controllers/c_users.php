@@ -4,6 +4,14 @@
 		
 		public function __construct() {
 			parent::__construct();
+			
+			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
+			$client_files = Array(
+						"/css/login.css",
+						"/js/login.js"
+	                    );
+	
+		    $this->template->client_files = Utils::load_client_files($client_files);
 		}
 		
 		public function index() {
@@ -56,13 +64,8 @@
 		}
 		
 		public function login() {
+						
 			$this->template->content = View::instance("v_users_login");
-			$this->template->title   = "Users Login";
-			echo $this->template;
-		}
-		
-		public function login_error() {
-			$this->template->content = View::instance("v_users_login_error");
 			$this->template->title   = "Users Login";
 			echo $this->template;
 		}

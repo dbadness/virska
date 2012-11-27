@@ -1,38 +1,24 @@
-main CSS file
+/* main CSS file  */
 
 html {
 }
 
 body {
 	margin:0px;
-	/* background-image: url('/images/background_texture.png'); */
+	background-image: url('/images/background_texture.png');
 	font-family: Tahoma, Geneva, sans-serif;
-
-a:link {
-	color:blue;
-	text-decoration:none;
 }
 
-a:visited {
-	color:blue;
-	text-decoration:none;
+.form {
+	
 }
 
-a:hover {
-	color:red;
-	text-decoration:none;
-}
-
-input {
-	float:right;
-}
-
-select {
-	float:right;
-}
-
-label {
+.formLabels {
 	float:left;
+}
+
+.formInputs {
+	float:right;
 }
 
 .spacer {

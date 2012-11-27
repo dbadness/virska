@@ -30,11 +30,15 @@
 				<?elseif($user->role == 'student'):?>
 					<!-- student nav goes here -->
 				<?endif;?>
-					<div id="userIndentifier">
-						Welcome, <?=$user->first_name?>.<a style="color: white;" href="/users/logout">Log Out</a>
+					<a href="/users/logout">
+						<div class="navButton" id="logout">
+							Log Out
+						</div>
+					</a>
+					<div id="userIdentifier">
+						Welcome, <?=$user->first_name?>.
 					</div>
-					<div class="navButton" id="logout">
-						Log Out
+					<div style="clear:both;">
 					</div>
 			<?else:?>
 				<a href="/users/login">
@@ -47,6 +51,8 @@
 						Sign Up
 					</div>
 				</a>
+				<div style="clear:both;">
+				</div>
 			<?endif;?>
 		</div>
 	</div>
