@@ -7,7 +7,7 @@
 			
 			# Make sure the user is a professor
 			if($this->user->role == 'student') {
-				Router::redirect("/users/login");
+				Router::redirect("/");
 			}
 		}
 		
@@ -87,7 +87,7 @@
 			#insert data into the database
 			DB::instance(DB_NAME)->insert('classes', $_POST);
 			
-			Router::redirect("/professor/add_class");
+			Router::redirect("/professor/classes");
 		}
 		
 		public function p_add_section() {
@@ -101,7 +101,7 @@
 			#insert data into the database
 			DB::instance(DB_NAME)->insert('sections', $_POST);
 			
-			Router::redirect("/professor/add_class");
+			Router::redirect("/professor/classes");
 		}
 		
 		public function section($section_id) {
@@ -129,7 +129,11 @@
 			
 			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
 			$client_files = Array(
-						"/css/professor.css"
+						"/css/professor.css",
+						"/js/professor.js",
+						"http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css",
+					    "http://code.jquery.com/jquery-1.8.2.js",
+					    "http://code.jquery.com/ui/1.9.1/jquery-ui.js"
 	                    );
 	
 	    	$this->template->client_files = Utils::load_client_files($client_files);
@@ -142,42 +146,7 @@
 			# Render the view
 			echo $this->template;
 		}
-		
-		public function add_assignment() {
-			
-			# Add a assignment or schedule event to the section
-			# Find the section they want to view and edit so we can start messing with it
-			
-			$q = "SELECT *
-				FROM sections
-				JOIN classes 
-				WHERE sections.user_id = ".$this->user->user_id."
-				AND section_id = ".$_POST['section_id'];
-
-			$section = DB::instance(DB_NAME)->select_row($q);
-						
-			# Setup the view
-			$this->template->content = View::instance('v_professor_add_assignment');
-			
-			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
-			$client_files = Array(
-						"/css/professor.css",
-						"/js/professor.js",
-						"http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css",
-					    "http://code.jquery.com/jquery-1.8.2.js",
-					    "http://code.jquery.com/ui/1.9.1/jquery-ui.js"
-	                    );
-	
-	    	$this->template->client_files = Utils::load_client_files($client_files);
-	
-			# Pass data back to the view
-			$this->template->content->section = $section;
-			$this->template->title = "New Assignment for ".$section['class_name'].", Section ".$section['section_name'];
-	
-			# Render the view
-			echo $this->template;
-			
-		}		
+				
 		public function p_add_assignment() {
 			
 			# Allow the user to create an assignment

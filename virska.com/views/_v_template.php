@@ -8,8 +8,11 @@
 	<!-- JS -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-	
+	<script src="/js/nav.js"></script>
+		
 	<link rel="stylesheet" type="text/css" href="/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/css/nav.css" />
+	
 				
 	<!-- Controller Specific JS/CSS -->
 	<?php echo @$client_files; ?>
@@ -17,27 +20,40 @@
 </head>
 
 <body>
-	<div id="header-background">
-		<div id="header-copy">
+	<div id="navBar">
+		<div id="headerContainer">
 			<?if($user):?>
 				<?if($user->role == 'professor'):?>
-				<div id="header-nav">
-					<a style="color:white;" href="/professor/classes">My Classes</a>
-				</div>
+					<div class="navButton" id="classes">
+						My Classes
+					</div>
 				<?elseif($user->role == 'student'):?>
 					<!-- student nav goes here -->
 				<?endif;?>
-				<div id="user_indentifier">
-					Welcome, <?=$user->first_name?>. &nbsp &nbsp &nbsp <a style="color: white;" href="/users/logout">Log Out</a>
-				</div>
-				<div style="clear:both;"></div>
+					<div id="userIndentifier">
+						Welcome, <?=$user->first_name?>.<a style="color: white;" href="/users/logout">Log Out</a>
+					</div>
+					<div class="navButton" id="logout">
+						Log Out
+					</div>
+			<?else:?>
+				<a href="/users/login">
+					<div class="navButton" id="login">
+						Login
+					</div>
+				</a>
+				<a href="/users/signup">
+					<div class="navButton" id="signup">
+						Sign Up
+					</div>
+				</a>
 			<?endif;?>
 		</div>
 	</div>
 	<div id="container">
 		<div class="spacer">
 		</div>
-		<div id="contents">
+		<div id="content">
 			<?=$content;?> 
 		</div>
 		<div class="spacer">

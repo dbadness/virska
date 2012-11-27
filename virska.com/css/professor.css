@@ -1,11 +1,5 @@
 /* professor-related CSS file */
 
-#header-nav {
-	color:white;
-	padding:14px;
-	float:left;
-}
-
 #wrapper {
 	width:650px;
 	margin-left:auto;
@@ -26,13 +20,39 @@
 }
 
 #datepicker {
-	
 }
 
 #new-assignment {
 	margin-right:auto;
 	margin-left:auto;
 	width:420px;
+}
+
+.assignment-name {
+	margin:5px;
+	float:left;
+	width:250px;
+}
+
+.assignment-atr {
+	margin:5px;
+	float:left;
+	width:150px;
+}
+
+.assignment-attach {
+	margin:5px;
+	float:right;
+	width:100px;
+	text-align:right;
+}
+
+.assignment {
+	margin-right:auto;
+	margin-left:auto;
+	width:600px;
+	height:30px;
+	border:1px gray solid;
 }
 
 #section-wrapper {

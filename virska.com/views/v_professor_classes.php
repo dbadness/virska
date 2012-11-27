@@ -1,10 +1,4 @@
-This is the professor profile for <?=$user->first_name?> <?=$user->last_name?>.
-<br>
-<br>
-My Classes:
-<br>
-<br>
-	<?if(isset($classes)):?>
+<?if(isset($classes)):?>
 		<?foreach($classes as $class):?>
 			<strong><?=$class['class_code']?> - <?=$class['class_name']?></strong><br><br>
 				<?if(isset($sections)):?>

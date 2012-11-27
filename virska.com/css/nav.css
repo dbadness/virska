@@ -1,0 +1,53 @@
+/* The Navigation CSS */
+
+#headerContainer {
+	width:900px;
+	margin-right:auto;
+	margin-left:auto;	
+}
+
+#navBar {
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background-image: -webkit-linear-gradient(top, #0000CC, #0066FF); 
+
+   	/* Firefox 3.6+ */
+   	background-image: -moz-linear-gradient(top, #0000CC, #0066FF);
+	
+	/* Anything else for right now (Like IE 8 & 9 and Opera) */
+	background-color:blue;
+	
+	height:100px;
+	overflow:auto;
+}
+
+.navButton {
+	margin-top:30px;
+	background-color:gray;
+	height:30px;
+	width:70px;
+	float:left;
+	border-radius:10px;
+	text-align:center;
+	padding-top:7px;
+	border:solid 3px black;
+}
+
+#classes {
+	
+}
+
+#userIdentifier {
+	
+}
+
+#login {
+
+}
+
+#logout {
+	
+}
+
+#signup {
+	margin-left:20px;
+}
