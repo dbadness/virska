@@ -49,8 +49,8 @@
 			# If we didn't get a token back, login failed
 			if(!$token) {
 
-				# Send them back to the login page
-				Router::redirect("/users/login/");
+				# Send them back to the login page with an error message
+				Router::redirect("/users/login_error");
 
 			# But if we did, login succeeded! 
 			} else {
@@ -69,6 +69,7 @@
 			$this->template->title   = "Users Login";
 			echo $this->template;
 		}
+		
 		
 		public function p_login() {
 			
@@ -90,8 +91,11 @@
 			# If we didn't get a token back, login failed
 			if(!$token) {
 
-				# Send them back to the login page
-				Router::redirect("/users/login_error");
+				# Send them back to the login page with an error
+				$error = TRUE;
+				$this->template->content = View::instance("v_users_login");
+				$this->template->content->error = $error;
+				Router::redirect("/users/login");
 
 			# But if we did, login succeeded! 
 			} else {

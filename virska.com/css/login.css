@@ -1,18 +1,22 @@
 /* Login and Signup CSS */
 
 #loginForm {
-	height:200px;
-	width:300px;
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:30px;
+	padding-bottom:30px;
+	width:400px;
+	border:solid 1px gray;
 }
 
 #loginFormEmailLabel {
 	margin-left:70px;
-	margin-top:2px;
+	margin-top:8px;
 }
 
 #loginFormPasswordLabel {
 	margin-left:42px;
-	margin-top:2px;
+	margin-top:8px;
 }
 
 #loginFormEmailInput {
@@ -24,17 +28,20 @@
 }
 
 #loginButton {
-	margin-left:132px;
+	margin-left:158px;
 }
 
 #noValuesError {
-	display:none;
-	font-size:80%;
-	width:220px;
-	color:red;
+	padding-top:10px;
+	padding-bottom:10px;
+	width:213px;
 	margin-top:20px;
-	margin-left:auto;
-	margin-right:auto;
-	text-align:center;
-	border:solid 1px red;
 }
+
+#noMatchError {
+	padding-top:10px;
+	padding-bottom:10px;
+	width:213px;
+	margin-top:20px;
+}
+

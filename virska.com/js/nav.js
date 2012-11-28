@@ -2,17 +2,9 @@
 
 $('document').ready(function(){ // begin doc ready
 	
-	$('.navButton').hover(function(){
+	$('.navButton').mousedown(function() {
 		
-		$(this).css("background-color", "blue");
-		$(this).css("color", "white");
-		$(this).css("border", "solid 3px white");
-		
-	}, function(){
-			
-		$(this).css("background-color", "gray");
-		$(this).css("color", "black");
-		$(this).css("border", "solid 3px black");	
+		$(this).css("background-image", "-webkit-linear-gradient(top, #33CC00, #99FF33)");
 		
 	});
 		

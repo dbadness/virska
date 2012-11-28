@@ -25,4 +25,9 @@
 	<div class="errorBox" id="noValuesError">
 		Please enter a valid email address and password.
 	</div>
+	<?if(isset($error)):?>
+		<div class="errorBox" id="noMatchError" style="display:block;">
+			Couldn't find that email and password combination. Please try again.
+		</div>
+	<?endif;?>
 </div>

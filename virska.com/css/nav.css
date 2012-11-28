@@ -8,29 +8,26 @@
 
 #navBar {
 	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
-   	background-image: -webkit-linear-gradient(top, #0000CC, #0066FF); 
-
-   	/* Firefox 3.6+ */
-   	background-image: -moz-linear-gradient(top, #0000CC, #0066FF);
-	
-	/* Anything else for right now (Like IE 8 & 9 and Opera) */
-	background-color:blue;
+   	background-image: -webkit-linear-gradient(top, #0066FF, #0000CC);
 	
 	height:100px;
 	overflow:auto;
 }
 
 .navButton {
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background-image: -webkit-linear-gradient(top, #FFFFCC, #99FF33); 	
+	
 	color:black;
-	margin-top:30px;
+	margin-top:27px;
 	background-color:gray;
 	height:30px;
-	width:70px;
+	width:100px;
 	float:left;
-	border-radius:10px;
+	border-radius:6px;
 	text-align:center;
 	padding-top:7px;
-	border:solid 3px black;
+	border:solid 2px gray;
 }
 
 #classes {
