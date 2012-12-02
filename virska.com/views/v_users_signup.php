@@ -7,6 +7,14 @@
 		</select>		
 
 		</br></br>
+		<label for="role">Which school do you attend?</label>		
+	    <select name="school" id="school">
+			<option value="Suffolk University">Suffolk University</option>
+			<option value="Boston University">Boston University</option>
+			<option value="University of Massachusetts">University of Massachusetts</option>
+		</select>		
+
+		</br></br>
 		
 		<label for="first_name">First Name</label>
 	    <input type='text' name='first_name' id='first_name' />
