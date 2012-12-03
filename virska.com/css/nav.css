@@ -28,6 +28,7 @@
 	text-align:center;
 	padding-top:7px;
 	border:solid 2px gray;
+	margin-right:20px;
 }
 
 #classes {
@@ -39,12 +40,16 @@
 	float:right;
 	margin-top:40px;
 	margin-right:20px;
-	
 }
 
 #login {
 
 }
+
+#signup {
+
+}
+
 
 #logout {
 	float:right;
@@ -52,22 +57,17 @@
 	margin-top:40px;
 }
 
-#signup {
-	margin-right:20px;
-}
-
 #courses {
-	margin-right:20px;
+
 }
 
 #notes {
-	margin-right:20px;
+
 }
 
 #documents {
-	margin-right:20px;
+
 }
 
 #settings {
-	margin-right:20px;
 }

@@ -33,9 +33,10 @@
 		
 		public function dashboard() {
 			
-			# Dashboard for viewing notes
-		
+			# The user's main dashboard in Virska
 			$this->template->content = View::instance('v_student_dashboard');
+			$this->template->title = "Dashboard for ".$this->user->first_name." ".$this->user->last_name;
+			
 		
 			echo $this->template;
 		}
@@ -53,8 +54,7 @@
 		public function assignments() {
 			
 			# Lists the assignments that student is following
-			
-			
+				
 		}
 		
 		public function syllabus() {
@@ -123,6 +123,7 @@
 			echo $this->template; 
 		}
 		
+		# note that "search_results" and "professor_list" are very similar. If changing code in one, please review the other
 		public function search_results() {
 			
 			# Allows the student to search for professors to follow
@@ -134,11 +135,32 @@
 			
 			$professors = DB::instance(DB_NAME)->select_rows($q);
 			
+			$q = "SELECT *
+			FROM sections";
+			
+			# We'll also need classes and sections for our loops in the view
+			$sections = DB::instance(DB_NAME)->select_rows($q);
+			
+			$q = "SELECT *
+			FROM classes";
+			
+			$classes = DB::instance(DB_NAME)->select_rows($q);
+			
+			# We'll also grab the sections they're followeing so they can unfollow if they need to
+			$q = "SELECT *
+			FROM sections_followed
+			WHERE user_id = ".$this->user->user_id;
+
+			$follows = DB::instance(DB_NAME)->select_rows($q);
+			
 			$this->template->content = View::instance("v_student_search_results");		
+			$this->template->title = "Professors at ".$this->user->school;
 			$this->template->content->professors = $professors;
+			$this->template->content->sections = $sections;
+			$this->template->content->classes = $classes;
+			$this->template->content->follows = $follows;
 			
 			echo $this->template;
-						
 		}	
 		
 		public function professor_list () {
@@ -152,11 +174,62 @@
 			
 			$professors = DB::instance(DB_NAME)->select_rows($q);
 			
-			$this->template->content = View::instance("v_student_professor_list");
+			# We'll also need classes and sections for our loops in the view
+			$q = "SELECT *
+			FROM sections";
+			
+			$sections = DB::instance(DB_NAME)->select_rows($q);
+			
+			$q = "SELECT *
+			FROM classes";
+			
+			$classes = DB::instance(DB_NAME)->select_rows($q);
+			
+			# We'll also grab the sections they're followeing so they can unfollow if they need to
+			$q = "SELECT *
+			FROM sections_followed
+			WHERE user_id = ".$this->user->user_id;
+
+			$follows = DB::instance(DB_NAME)->select_rows($q);
+			
+			$this->template->content = View::instance("v_student_search_results");		
 			$this->template->title = "Professors at ".$this->user->school;
 			$this->template->content->professors = $professors;
+			$this->template->content->sections = $sections;
+			$this->template->content->classes = $classes;
+			$this->template->content->follows = $follows;
 			
 			echo $this->template;			
+		}
+		
+		public function p_follow($section_id) {
+			
+			# This function takes the section_id from search results and links that section to the user
+			# Get information and put it into an array "$section_followed"
+			$section_followed = Array (
+								"user_id" => $this->user->user_id,
+								"section_id_followed" => $section_id,
+								"created" => Time::now(),
+								"modified" => Time::now()
+							);
+
+			#insert data into the database
+			DB::instance(DB_NAME)->insert('sections_followed', $section_followed);
+			
+			# Send them back to their dashboard
+			Router::redirect("/student/dashboard");
+			
+		}
+		
+		public function p_unfollow($section_id) {
+
+			# Delete this connection
+			$where_condition = 'WHERE user_id = '.$this->user->user_id.' AND section_id_followed = '.$section_id;
+			DB::instance(DB_NAME)->delete('sections_followed', $where_condition);
+
+			# Send them back to the dashboard
+			Router::redirect("/student/dashboard");
+
 		}
 	
 		public function schedule() {

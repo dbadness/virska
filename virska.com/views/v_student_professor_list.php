@@ -8,12 +8,22 @@
 </div>
 <br>
 <br>
+<!-- the following code is also on the "search results page" please update on both if changes are to be made -->
 <?foreach($professors as $professor):?>
 	<div class="searchResult">
 		<div id="picture">
 		</div>	
 		<div id="nameBlock">
 			<?=$professor['first_name']?> <?=$professor['last_name']?>
+		</div>
+		<div id="sectionList">
+			<?foreach($sections as $section):?>
+				<?foreach($classes as $class):?>				
+					<?if($section['user_id'] == $professor['user_id'] && $class['class_id'] == $section['class_id']):?>
+						<?=$class['class_code']?> <?=$section['section_name']?> - <a href="/student/p_follow/<?=$section['section_id']?>">Follow this Section</a><br>
+					<?endif;?>
+				<?endforeach;?>
+			<?endforeach;?>
 		</div>
 	</div>
 <?endforeach;?>

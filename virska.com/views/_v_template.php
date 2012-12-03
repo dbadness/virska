@@ -29,6 +29,11 @@
 						My Classes
 					</div>
 				<?elseif($user->role == 'student'):?>
+				<a href="/student/dashboard">
+					<div class="navButton" id="dashboard">
+						Dashboard
+					</div>
+				</a>
 				<div class="navButton" id="courses">
 					Courses
 				</div>
