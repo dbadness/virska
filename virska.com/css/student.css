@@ -1,2 +1,64 @@
 /* CSS page for the student controller */
 
+#searchHeader {
+	margin-left:auto;
+	margin-right:auto;
+	width:300px;
+	text-align:center;
+	margin-bottom:20px;
+}
+
+.searchBox {
+	margin-left:auto;
+	margin-right:auto;
+	border:solid gray 1px;
+	width:300px;
+}
+
+.searchResult {
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:10px;
+	width:500px;
+	height:120px;
+   	background-image: -webkit-linear-gradient(top, #eeeef6, #d3d4d6);
+	border:solid 2px gray;
+	border-radius:5px;
+}
+
+#picture {
+	height:100px;
+	width:100px;
+	border:solid 1px gray;
+	background-color:white;
+	margin-left:10px;
+	margin-top:10px;
+	float:left;
+}
+
+#nameBlock {
+	margin-left:150px;
+	margin-top:10px;
+	font-size:150%;
+}
+
+#searchResultError {
+	padding-top:10px;
+	padding-bottom:10px;
+	width:200px;
+	display:block;
+}
+
+#professorSearchBox {
+	
+}
+
+#professorSearch {
+	
+}
+
+#searchButton {
+	float:right;
+	margin-top:5px;
+	margin-right:20px;
+}

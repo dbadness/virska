@@ -25,6 +25,13 @@
 		public function index() {
 			Router::redirect("/");
 		}
+		
+		public function dashboard() {
+			
+			$this->template->content = View::instance("v_professor_dashboard");
+			
+			echo $this->template;
+		}
 
 		public function profile() {
 				

@@ -8,8 +8,7 @@
 </div>
 <br>
 <br>
-<?if($professors):?>
-	<?foreach($professors as $professor):?>
+<?foreach($professors as $professor):?>
 	<div class="searchResult">
 		<div id="picture">
 		</div>	
@@ -17,9 +16,4 @@
 			<?=$professor['first_name']?> <?=$professor['last_name']?>
 		</div>
 	</div>
-	<?endforeach;?>
-<?else:?>
-	<div class="errorBox" id="searchResultError">
-		Hmmm... Couldn't find anyone with that name. Are you sure you spelled it right? If you'd like to see a full list of the professors in your school on Virska, click <a href="/student/professor_list">here</a>.
-	</div>
-<?endif;?>
+<?endforeach;?>

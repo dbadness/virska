@@ -3,7 +3,7 @@
 $(document).ready(function() {
 	
 		$('#loginForm').submit(function() {
-			if ($("#loginFormEmailInput").val() == "" && $("#loginFormPasswordInput").val() == "") {
+			if ($("#loginFormEmailInput").length == 0 && $("#loginFormPasswordInput").length == 0) {
 				$("#noValuesError").show();	
 				$('#loginForm').effect("shake", { times:2 }, 50);
 				return false;		

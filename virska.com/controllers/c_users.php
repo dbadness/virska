@@ -92,7 +92,7 @@
 			if(!$token) {
 
 				# Send them back to the login page with an error
-				$error = TRUE;
+				$error = "<div class=\"errorBox\" id=\"noMatchError\">Hmmm... I couldn't find that email or password. Please try again.</div>";
 				$this->template->content = View::instance("v_users_login");
 				$this->template->content->error = $error;
 				Router::redirect("/users/login");

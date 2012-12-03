@@ -17,6 +17,13 @@
 			if($this->user->role == 'professor') {
 				Router::redirect("/");
 			}
+			
+			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
+			$client_files = Array(
+								"/css/student.css"
+		                    );
+
+		    $this->template->client_files = Utils::load_client_files($client_files);
 				
 		}
 		
@@ -127,10 +134,30 @@
 			
 			$professors = DB::instance(DB_NAME)->select_rows($q);
 			
-			$this->template->content = View::instance("v_student_search_results");
+			$this->template->content = View::instance("v_student_search_results");		
 			$this->template->content->professors = $professors;
-			echo $this->template; 
+			
+			echo $this->template;
+						
 		}	
+		
+		public function professor_list () {
+			
+			# Find all of the professors in the user's school and return them as a list in alphebetical order by last name
+			$q = "SELECT *
+			FROM users
+			WHERE role = 'professor'
+			AND school = '".$this->user->school."'
+			ORDER BY last_name";
+			
+			$professors = DB::instance(DB_NAME)->select_rows($q);
+			
+			$this->template->content = View::instance("v_student_professor_list");
+			$this->template->title = "Professors at ".$this->user->school;
+			$this->template->content->professors = $professors;
+			
+			echo $this->template;			
+		}
 	
 		public function schedule() {
 			
