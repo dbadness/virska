@@ -28,10 +28,21 @@
 						My Classes
 					</div>
 				<?elseif($user->role == 'student'):?>
-					<!-- student nav goes here -->
+				<div class="navButton" id="courses">
+					Courses
+				</div>
+				<div class="navButton" id="notes">
+					Notes
+				</div>
+				<div class="navButton" id="documents">
+					Documents
+				</div>
+				<div class="navButton" id="settings">
+					Settings
+				</div>
 				<?endif;?>
 					<a href="/users/logout">
-						<div class="navButton" id="logout">
+						<div id="logout">
 							Log Out
 						</div>
 					</a>

@@ -23,14 +23,13 @@
 		public function index() {
 			Router::redirect("/");
 		}
-
-		public function profile() {
-				
-			# Setup view
-			$this->template->content = View::instance('v_student_profile');
-			$this->template->title   = "Profile of ".$this->user->first_name;
-
-			# Render template
+		
+		public function dashboard() {
+			
+			# Dashboard for viewing notes
+		
+			$this->template->content = View::instance('v_student_dashboard');
+		
 			echo $this->template;
 		}
 		
@@ -136,6 +135,16 @@
 		public function schedule() {
 			
 			# Displays what sections the student is following and when and where the classes are
+		}
+		
+		public function settings() {
+				
+			# Setup view
+			$this->template->content = View::instance('v_student_settings');
+			$this->template->title   = "Profile of ".$this->user->first_name;
+
+			# Render template
+			echo $this->template;
 		}
 		
 	}

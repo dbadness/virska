@@ -48,8 +48,26 @@
 
 #logout {
 	float:right;
+	color:white;
+	margin-top:40px;
 }
 
 #signup {
-	margin-left:20px;
+	margin-right:20px;
+}
+
+#courses {
+	margin-right:20px;
+}
+
+#notes {
+	margin-right:20px;
+}
+
+#documents {
+	margin-right:20px;
+}
+
+#settings {
+	margin-right:20px;
 }

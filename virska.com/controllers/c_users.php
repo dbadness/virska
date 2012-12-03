@@ -81,7 +81,7 @@
 
 			# Search the db for this email and password
 			# Retrieve the token if it's available
-			$q = "SELECT token 
+			$q = "SELECT token
 				FROM users 
 				WHERE email = '".$_POST['email']."' 
 				AND password = '".$_POST['password']."'";
@@ -102,10 +102,18 @@
 
 				# Store this token in a cookie
 				setcookie("token", $token, strtotime('+2 weeks'), '/');
-
-				# Send them to the main page - or whever you want them to go
-				Router::redirect("/");
-			}	
+				
+				# Send them to function that takes them to their dashboard
+				Router::redirect("/users/p_dashboard");
+			
+			}
+		}
+			
+		public function p_dashboard()	{
+			
+			# Send them to their dashboard
+			Router::redirect("/".$this->user->role."/dashboard");
+							
 		}
 		
 		public function logout() {
