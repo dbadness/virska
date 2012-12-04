@@ -1,5 +1,5 @@
 <div id="searchHeader">
-	Using their last name, search for a professor to follow. Then you'll be able to see their sections to view their assignments, their syllabus, and more.
+	Using their last name, search for a professor. Then you'll be able to see their sections and you and follow them to view their assignments, their syllabus, and more.
 </div>
 <div class="searchBox" id="professorSearchBox">
 	<form id="professorSearch" action="search_results" method="post">
@@ -18,12 +18,10 @@
 				<?=$professor['first_name']?> <?=$professor['last_name']?>
 			</div>
 			<div id="sectionList">
-				<?foreach($sections as $section):?>
-					<?foreach($classes as $class):?>				
-						<?if($section['user_id'] == $professor['user_id'] && $class['class_id'] == $section['class_id']):?>
-							<?=$class['class_code']?> <?=$section['section_name']?> - <a href="/student/p_follow/<?=$section['section_id']?>">Follow this Section</a><br>
+				<?foreach($sections as $section):?>		
+						<?if($section['user_id'] == $professor['user_id']):?>
+							<?=$section['class_code']?> <?=$section['section_name']?> - <a href="/student/p_follow/<?=$section['section_id']?>">Follow this Section</a><br>
 						<?endif;?>
-					<?endforeach;?>
 				<?endforeach;?>
 			</div>
 		</div>

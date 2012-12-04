@@ -1,11 +1,16 @@
 /* CSS page for the student controller */
 
+#sectionsView {
+	border:solid 2px gray;
+}
+
 #searchHeader {
 	margin-left:auto;
 	margin-right:auto;
 	width:300px;
 	text-align:center;
 	margin-bottom:20px;
+	font-size:90%;
 }
 
 .searchBox {

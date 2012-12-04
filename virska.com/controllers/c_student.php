@@ -33,11 +33,53 @@
 		
 		public function dashboard() {
 			
+			# We'll need classes and sections for our loops in the view for the "sectionView" div
+			$q = "SELECT sections.*, classes.class_name, classes.class_code
+			FROM sections
+			JOIN classes
+			USING (class_id)";
+			
+			$sections = DB::instance(DB_NAME)->select_rows($q);		
+			
+			# We'll also grab the sections they're following so they can unfollow if they need to
+			$q = "SELECT *
+			FROM sections_followed
+			WHERE user_id = ".$this->user->user_id;
+
+			$follows = DB::instance(DB_NAME)->select_rows($q);
+			
+			# Build a query of the professors this user is following - we're only interested in their sections
+			$q = "SELECT * 
+				FROM sections_followed
+				WHERE user_id = ".$this->user->user_id;
+
+			# Execute our query, storing the results in a variable $connections
+			$connections = DB::instance(DB_NAME)->select_rows($q);
+
+			# In order to query for the sections we need, we're going to need a string of section id's, separated by commas
+			# To create this, loop through our connections array
+			$connections_string = "";
+			foreach($connections as $connection) {
+				$connections_string .= $connection['section_id_followed'].",";
+			}
+
+			# Remove the final comma 
+			$connections_string = substr($connections_string, 0, -1);
+
+			# Run our query, store the results in the variable $sections
+			$q =
+			"SELECT sections.*, classes.class_name, classes.class_code
+			FROM sections 
+			JOIN classes USING (class_id) 
+			WHERE sections.section_id IN (".$connections_string.")";
+			
+			$sections = DB::instance(DB_NAME)->select_rows($q);
+			
 			# The user's main dashboard in Virska
 			$this->template->content = View::instance('v_student_dashboard');
 			$this->template->title = "Dashboard for ".$this->user->first_name." ".$this->user->last_name;
+			$this->template->content->sections = $sections;
 			
-		
 			echo $this->template;
 		}
 		
@@ -135,16 +177,13 @@
 			
 			$professors = DB::instance(DB_NAME)->select_rows($q);
 			
-			$q = "SELECT *
-			FROM sections";
-			
 			# We'll also need classes and sections for our loops in the view
+			$q = "SELECT sections.*, classes.class_name, classes.class_code
+			FROM sections
+			JOIN classes
+			USING (class_id)";
+			
 			$sections = DB::instance(DB_NAME)->select_rows($q);
-			
-			$q = "SELECT *
-			FROM classes";
-			
-			$classes = DB::instance(DB_NAME)->select_rows($q);
 			
 			# We'll also grab the sections they're followeing so they can unfollow if they need to
 			$q = "SELECT *
@@ -157,7 +196,6 @@
 			$this->template->title = "Professors at ".$this->user->school;
 			$this->template->content->professors = $professors;
 			$this->template->content->sections = $sections;
-			$this->template->content->classes = $classes;
 			$this->template->content->follows = $follows;
 			
 			echo $this->template;
@@ -175,15 +213,12 @@
 			$professors = DB::instance(DB_NAME)->select_rows($q);
 			
 			# We'll also need classes and sections for our loops in the view
-			$q = "SELECT *
-			FROM sections";
+			$q = "SELECT sections.*, classes.class_name, classes.class_code
+			FROM sections
+			JOIN classes
+			USING (class_id)";
 			
 			$sections = DB::instance(DB_NAME)->select_rows($q);
-			
-			$q = "SELECT *
-			FROM classes";
-			
-			$classes = DB::instance(DB_NAME)->select_rows($q);
 			
 			# We'll also grab the sections they're followeing so they can unfollow if they need to
 			$q = "SELECT *
@@ -196,7 +231,6 @@
 			$this->template->title = "Professors at ".$this->user->school;
 			$this->template->content->professors = $professors;
 			$this->template->content->sections = $sections;
-			$this->template->content->classes = $classes;
 			$this->template->content->follows = $follows;
 			
 			echo $this->template;			

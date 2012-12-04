@@ -1,5 +1,5 @@
 <div id="searchHeader">
-	Using their last name, search for a professor to follow. Then you'll be able to see their sections to view their assignments, their syllabus, and more.
+	Using their last name, search for a professor. Then you'll be able to see their sections and you and follow them to view their assignments, their syllabus, and more.
 </div>
 <div class="searchBox" id="professorSearchBox">
 	<form id="professorSearch" action="search_results" method="post">
