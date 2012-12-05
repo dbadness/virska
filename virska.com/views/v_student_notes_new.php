@@ -4,9 +4,9 @@ This is the page where the user can add a new note to their notes.
 <form id="newNote" action="p_add_note" method="post" >
 	Section:
 	<select name="section_id">
-		<?foreach($followed_sections as $followed_section):?>
-			<option value="<?=$followed_section['section_id']?>">
-				<?=$followed_section['class_name']?> <?=$followed_section['section_name']?>
+		<?foreach($sections as $section):?>
+			<option value="<?=$section['section_id']?>">
+				<?=$section['class_name']?> <?=$section['section_name']?>
 			</option>
 		<?endforeach;?>
 	</select>
@@ -23,6 +23,6 @@ This is the page where the user can add a new note to their notes.
 	</textarea>
 	<br>
 	<br>
-	<input type="submit" value="Add Note">
+	<a href="/student/notes"><button>Cancel</button></a><input type="submit" value="Add Note">
 </form>
 	

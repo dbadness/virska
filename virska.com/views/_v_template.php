@@ -33,12 +33,11 @@
 						Dashboard
 					</div>
 				</a>
-				<div class="navButton" id="courses">
-					Courses
-				</div>
-				<div class="navButton" id="notes">
-					Notes
-				</div>
+				<a href="/student/notes">
+					<div class="navButton" id="notes">
+						Notes
+					</div>
+				</a>
 				<div class="navButton" id="documents">
 					Documents
 				</div>

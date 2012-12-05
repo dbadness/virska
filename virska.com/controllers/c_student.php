@@ -112,10 +112,40 @@
 			WHERE user_id = ".$this->user->user_id;
 			
 			$notes = DB::instance(DB_NAME)->select_rows($q);
-		
+			
+			# Build a query of the professors this user is following - we're only interested in their sections
+			$q = "SELECT * 
+				FROM sections_followed
+				WHERE user_id = ".$this->user->user_id;
+
+			# Execute our query, storing the results in a variable $connections
+			$connections = DB::instance(DB_NAME)->select_rows($q);
+
+			# In order to query for the sections we need, we're going to need a string of section id's, separated by commas
+			# To create this, loop through our connections array
+			$connections_string = "";
+			foreach($connections as $connection) {
+				$connections_string .= $connection['section_id_followed'].",";
+			}
+
+			# Remove the final comma 
+			$connections_string = substr($connections_string, 0, -1);
+
+			# Run our query, store the results in the variable $sections
+			$q =
+			"SELECT sections.*, classes.class_name, classes.class_code
+			FROM sections 
+			JOIN classes USING (class_id) 
+			WHERE sections.section_id IN (".$connections_string.")";
+			
+			$sections = DB::instance(DB_NAME)->select_rows($q);
+			
+			# Set up our view
 			$this->template->content = View::instance('v_student_notes');
-		
+			
+			# Pass our queried data to the view
 			$this->template->content->notes = $notes;
+			$this->template->content->sections = $sections;
 		
 			echo $this->template;
 		}
@@ -123,24 +153,67 @@
 		public function notes_new() {
 			
 			# Sets up array of followed sections so we can pull data from it for the assignments, syllabi, and schedule views
-			$q = "SELECT *
-			FROM sections_followed
-			WHERE user_id = ".$this->user->user_id;
+			# Build a query of the professors this user is following - we're only interested in their sections
+			$q = "SELECT * 
+				FROM sections_followed
+				WHERE user_id = ".$this->user->user_id;
+
+			# Execute our query, storing the results in a variable $connections
+			$connections = DB::instance(DB_NAME)->select_rows($q);
+
+			# In order to query for the sections we need, we're going to need a string of section id's, separated by commas
+			# To create this, loop through our connections array
+			$connections_string = "";
+			foreach($connections as $connection) {
+				$connections_string .= $connection['section_id_followed'].",";
+			}
+
+			# Remove the final comma 
+			$connections_string = substr($connections_string, 0, -1);
+
+			# Run our query, store the results in the variable $sections
+			$q =
+			"SELECT sections.*, classes.class_name, classes.class_code
+			FROM sections 
+			JOIN classes USING (class_id) 
+			WHERE sections.section_id IN (".$connections_string.")";
+
+			$sections = DB::instance(DB_NAME)->select_rows($q);
 			
-			$sections_followed = DB::instance(DB_NAME)->select_array($q, 'section_id_followed');
-			
-			# Pass the data to the view
-			$this->template->content = View::instance('v_student_notes_new');	
-			$this->template->content->sections_followed = $sections_followed;
+			$this->template->content = View::instance("v_student_notes_new");
+			$this->template->content->sections = $sections;
 		
 			echo $this->template;
 		}
 		
-		public function notes_edit() {
+		public function notes_edit($note_id) {
 			
-			# Dashboard for taking notes
-			$this->template->content = View::instance('v_student_notes/edit');	
-			$this->template->content->sections_followed = $sections_followed;
+			# Find the note they're editing
+			$q = "SELECT *
+			FROM notes
+			WHERE note_id = ".$note_id;
+			
+			$note = DB::instance(DB_NAME)->select_row($q);
+			
+			$q = "SELECT sections.section_name, classes.class_name, classes.class_code
+			FROM sections
+			JOIN classes
+			USING (class_id)
+			WHERE section_id = ".$note['section_id'];
+			
+			$section = DB::instance(DB_NAME)->select_row($q);
+			
+			# Make sure they can't edit other people's notes
+			if($this->user->user_id != $note['user_id']) {
+				Router::redirect("/student/notes");
+			}	
+			
+			# Dashboard for editing existing notes
+			$this->template->content = View::instance('v_student_notes_edit');
+			
+			# Pass the note to the view
+			$this->template->content->note = $note;
+			$this->template->content->section = $section;
 		
 			echo $this->template;
 		}
@@ -154,6 +227,19 @@
 			$_POST['modified'] = Time::now();
 			
 			DB::instance(DB_NAME)->insert('notes', $_POST);
+			
+			Router::redirect("/student/notes");
+			
+		}
+		
+		public function p_edit_note() {
+			
+			# Function to update an edited note
+			$_POST['user_id'] = $this->user->user_id;
+			$_POST['modified'] = Time::now();
+			
+			$data = Array('title' => $_POST['title'], 'content' => $_POST['content'], 'modified' => $_POST['modified'], 'user_id' => $_POST['user_id']);
+			DB::instance(DB_NAME)->update("notes", $data, "WHERE note_id = '".$_POST['note_id']."'");
 			
 			Router::redirect("/student/notes");
 			
