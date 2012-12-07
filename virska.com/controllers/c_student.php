@@ -20,8 +20,9 @@
 			
 			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
 			$client_files = Array(
-								"/css/student.css"
-		                    );
+								"http://js.nicedit.com/nicEdit-latest.js",
+								"/js/student.js"
+								 );
 
 		    $this->template->client_files = Utils::load_client_files($client_files);
 				
@@ -232,16 +233,43 @@
 			
 		}
 		
-		public function p_edit_note() {
-			
-			# Function to update an edited note
-			$_POST['user_id'] = $this->user->user_id;
+		public function p_save_note() {
+
+			# Put the current title and content into the database
 			$_POST['modified'] = Time::now();
+
+			# Do the update
+			DB::instance(DB_NAME)->update("notes", $_POST, "WHERE note_id = '".$_POST['note_id']."'");			
+				
+			# Find out when this note was last updated
+			$q = "SELECT modified 
+			FROM notes 
+			WHERE note_id = ".$_POST['note_id']."
+			ORDER BY modified DESC LIMIT 1"; // you'll need to find a way to get the note_id from the page so we're positive we're updating the right note
+			$update = Time::display(DB::instance(DB_NAME)->select_field($q));
 			
-			$data = Array('title' => $_POST['title'], 'content' => $_POST['content'], 'modified' => $_POST['modified'], 'user_id' => $_POST['user_id']);
-			DB::instance(DB_NAME)->update("notes", $data, "WHERE note_id = '".$_POST['note_id']."'");
+			echo "Note saved on	".$update;
 			
-			Router::redirect("/student/notes");
+		}
+		
+		public function p_auto_save_note () {
+			
+			sleep(2);
+
+			# Put the current title and content into the database
+			$_POST['modified'] = Time::now();
+
+			# Do the update
+			DB::instance(DB_NAME)->update("notes", $_POST, "WHERE note_id = '".$_POST['note_id']."'");			
+				
+			# Find out when this note was last updated
+			$q = "SELECT modified 
+			FROM notes 
+			WHERE note_id = ".$_POST['note_id']."
+			ORDER BY modified DESC LIMIT 1"; // you'll need to find a way to get the note_id from the page so we're positive we're updating the right note
+			$update = Time::display(DB::instance(DB_NAME)->select_field($q));
+			
+			echo $update;
 			
 		}
 		

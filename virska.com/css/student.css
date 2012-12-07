@@ -84,7 +84,6 @@ div.note {
 }
 
 form.note {
-	
 }
 
 #newNote {
@@ -95,3 +94,26 @@ form.note {
 	
 }
 
+#myInstance1 {
+
+}
+
+#lastUpdated {
+	
+}
+
+#status {
+	height:30px;
+}
+
+.nicEdit-selected {
+        border: 2px solid #0000ff !important;
+}
+ 
+.nicEdit-panel {
+        background-color: white !important;
+}
+ 
+.nicEdit-button {
+        background-color: #fff !important;
+}
