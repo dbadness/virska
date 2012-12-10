@@ -5,7 +5,6 @@ $(document).ready(function() {
     var myNicEditor = new nicEditor();
     myNicEditor.setPanel('myNicPanel');
     myNicEditor.addInstance('notePad');
-    myNicEditor.addInstance('newNotePad');
 
 	// Save a new note on click
     $('#addNote').click(function() {
@@ -19,7 +18,7 @@ $(document).ready(function() {
 			},
 			complete: function() {
 				$('#statusImage').html("");
-				$('#statusText').html("Note Saved!"); // .fadeOut(5000)
+				$('#statusText').html("Note Saved!");
 			},
             success: function(response) { 
             	// Load the results we get back into the lastUpdated div
@@ -28,9 +27,17 @@ $(document).ready(function() {
             data: {
 				section_id: $('#section').val(),
 				title: $('#title').val(),
-				content: $('#newNotePad').html(),
+				content: $('#notePad').html(),
            	},
         }); // end ajax setup
+	});
+	
+	// Make sure the user definately wants to go back and delete their note
+	$('#cancel').click(function() {
+		var msg = "Are you sure you want to delete the note?"
+		
+		if(!confirm(msg))
+			return false;
 	});
 
 	// Manually save the note on click
@@ -45,7 +52,7 @@ $(document).ready(function() {
 			},
 			complete: function() {
 				$('#statusImage').html("");
-				$('#statusText').html("Note Saved!"); // .fadeOut(5000)
+				$('#statusText').html("");
 			},
             success: function(response) { 
             	// Load the results we get back into the lastUpdated div
