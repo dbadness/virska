@@ -1,9 +1,13 @@
-This is the page where the user can add a new note to their notes.
-<br>
-<br>
-<form id="newNote" action="p_add_note" method="post" >
+<div id="newNote">
+	<a href="/student/notes"><button id="cancel">Cancel</button></a><button id="addNote">Add Note</button>
+	<div id="savingInfo">
+		<div id="lastUpdated"></div>
+		<div id="statusImage"></div>
+		<div id="statusText"></div>
+		<div style="clear:both;"></div>
+	</div>
 	Section:
-	<select name="section_id">
+	<select name="section_id" id="section">
 		<?foreach($sections as $section):?>
 			<option value="<?=$section['section_id']?>">
 				<?=$section['class_name']?> <?=$section['section_name']?>
@@ -14,15 +18,12 @@ This is the page where the user can add a new note to their notes.
 	<br>
 	Title:
 	<br>
-	<input type="text" name="title" id="title">
+	<input size="40" id="title">
 	<br>
 	<br>
 	Note:
 	<br>
-	<textarea name="content" id="content" rows="10" cols="40">
-	</textarea>
-	<br>
-	<br>
-	<a href="/student/notes"><button>Cancel</button></a><input type="submit" value="Add Note">
-</form>
+	<div id="myNicPanel"></div>
+	<div id="newNotePad" style="background-color:white;min-height:700px;"></div>
+</div>
 	

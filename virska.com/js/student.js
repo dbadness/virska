@@ -4,61 +4,84 @@ $(document).ready(function() {
 	
     var myNicEditor = new nicEditor();
     myNicEditor.setPanel('myNicPanel');
-    myNicEditor.addInstance('myInstance1');
-	
-	// auto save the note every minute
-	setInterval(function(){
-		
-		var content = $('#myInstance1').html();
-			
-        $.ajax({
-                type: 'POST',
-                url: '/student/p_auto_save_note',
-				beforeSend: function() {
-					$('#status').html("<img src=\"/images/ajax-loader.gif\"> Saving...");
-				},
-				complete: function() {
-					$('#status').html("");
-				},
-                success: function(response) { 
-                     // Load the results we get back from p_auto_save_note.php into the lastUpdated div
-                        $('#lastUpdated').html(response);
-                },
-                data: {
-                        note_id: $('#noteID').val(),
-                        title: $('#noteTitle').val(),
-                        content: content,
-                },
-        }); // end Ajax setup
+    myNicEditor.addInstance('notePad');
+    myNicEditor.addInstance('newNotePad');
 
-	// The number below represents the interval (in milliseconds) between auto-saves	
-	}, 5000);
+	// Save a new note on click
+    $('#addNote').click(function() {
 	
-	// when the user clicks on 'save note,' have the note be saved via ajax
-	// This has to be fixed
-	$('#saveNote').click(function() {
-		
-		var content = $('#myInstance1').html();
-		
-	    $.ajax({
-	            type: 'POST',
-	            url: '/student/p_save_note',
-				beforeSend: function() {
-					$('#status').html("<img src=\"/images/ajax-loader.gif\"> Saving...");
-				},
-				complete: function() {
-					$('#status').html("");
-				},
-	            success: function(response) { 
-	               	// Load the results we get back from p_auto_save_note.php into the lastUpdated div
-	                $('#lastUpdated').html(response);
-	            },
-	            data: {
-	                    note_id: 4,
-	                    title: $('#noteTitle').val(),
-	                    content: content,
-	            },
-	    }); // end Ajax setup
-	}); // end button click event
-		
+		$.ajax({
+        	type: 'POST',
+        	url: '/student/p_add_note',
+			beforeSend: function() {
+				$('#statusImage').html("<img src=\"/images/ajax-loader.gif\">");
+				$('#statusText').html("Saving...");
+			},
+			complete: function() {
+				$('#statusImage').html("");
+				$('#statusText').html("Note Saved!"); // .fadeOut(5000)
+			},
+            success: function(response) { 
+            	// Load the results we get back into the lastUpdated div
+                $('#lastUpdated').html(response);
+            },
+            data: {
+				section_id: $('#section').val(),
+				title: $('#title').val(),
+				content: $('#newNotePad').html(),
+           	},
+        }); // end ajax setup
+	});
+
+	// Manually save the note on click
+    $('#saveNote').click(function() {
+	
+		$.ajax({
+        	type: 'POST',
+        	url: '/student/p_save_note',
+			beforeSend: function() {
+				$('#statusImage').html("<img src=\"/images/ajax-loader.gif\">");
+				$('#statusText').html("Saving...");
+			},
+			complete: function() {
+				$('#statusImage').html("");
+				$('#statusText').html("Note Saved!"); // .fadeOut(5000)
+			},
+            success: function(response) { 
+            	// Load the results we get back into the lastUpdated div
+                $('#lastUpdated').html(response);
+            },
+            data: {
+				note_id: $('#noteID').val(),
+				title: $('#noteTitle').val(),
+				content: $('#notePad').html(),
+           	},
+        }); // end ajax setup
+	});
+	
+	setInterval(function() {
+		$.ajax({
+        	type: 'POST',
+        	url: '/student/p_save_note',
+			beforeSend: function() {
+				$('#statusImage').html("<img src=\"/images/ajax-loader.gif\">");
+				$('#statusText').html("Saving...");
+			},
+			complete: function() {
+				$('#statusImage').html("");
+				$('#statusText').html("");
+			},
+            success: function(response) { 
+            	// Load the results we get back into the lastUpdated div
+                $('#lastUpdated').html(response);
+            },
+            data: {
+				note_id: $('#noteID').val(),
+				title: $('#noteTitle').val(),
+				content: $('#notePad').html(),
+           	},
+        }); // end ajax setup
+	// The number below represents the interval, in milliseconds, on auto-save
+	}, 60000);
+
 });

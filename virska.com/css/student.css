@@ -98,22 +98,36 @@ form.note {
 
 }
 
-#lastUpdated {
-	
+#savingInfo {
 }
 
-#status {
-	height:30px;
+#lastUpdated {
+	margin-top:6px;
+	float:left;
+	height:25px;
+}
+
+#statusImage {
+	float:left;
+	margin-left:20px;
+	height:25px;
+}
+
+#statusText {
+	height:25px;
+	margin-top:6px;
+	float:left;
+	margin-left:5px;
 }
 
 .nicEdit-selected {
-        border: 2px solid #0000ff !important;
+	border:2px solid #0000ff !important;
 }
  
 .nicEdit-panel {
-        background-color: white !important;
+    background-color:white !important;
 }
  
 .nicEdit-button {
-        background-color: #fff !important;
+   	background-color:#fff !important;
 }

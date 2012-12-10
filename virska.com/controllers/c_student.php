@@ -21,7 +21,8 @@
 			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
 			$client_files = Array(
 								"http://js.nicedit.com/nicEdit-latest.js",
-								"/js/student.js"
+								"/js/student.js",
+								"/css/student.css"
 								 );
 
 		    $this->template->client_files = Utils::load_client_files($client_files);
@@ -222,37 +223,24 @@
 		public function p_add_note() {
 			
 			# Dashboard for taking notes
-			
 			$_POST['user_id'] = $this->user->user_id;
 			$_POST['created'] = Time::now();
 			$_POST['modified'] = Time::now();
 			
 			DB::instance(DB_NAME)->insert('notes', $_POST);
 			
-			Router::redirect("/student/notes");
-			
-		}
-		
-		public function p_save_note() {
-
-			# Put the current title and content into the database
-			$_POST['modified'] = Time::now();
-
-			# Do the update
-			DB::instance(DB_NAME)->update("notes", $_POST, "WHERE note_id = '".$_POST['note_id']."'");			
-				
-			# Find out when this note was last updated
-			$q = "SELECT modified 
+			# Find the last note created (this note) and echo its timestamp
+			$q = "SELECT created 
 			FROM notes 
-			WHERE note_id = ".$_POST['note_id']."
-			ORDER BY modified DESC LIMIT 1"; // you'll need to find a way to get the note_id from the page so we're positive we're updating the right note
+			WHERE user_id = ".$this->user->user_id."
+			ORDER BY modified DESC LIMIT 1";
 			$update = Time::display(DB::instance(DB_NAME)->select_field($q));
 			
-			echo "Note saved on	".$update;
+			echo $update;
 			
 		}
 		
-		public function p_auto_save_note () {
+		public function p_save_note () {
 			
 			sleep(2);
 
