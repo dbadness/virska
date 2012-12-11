@@ -8,8 +8,8 @@ form.note {
 }
 
 #notePad {
-	background-color:white;
-	height:700px;
+	border:solid 1px gray;
+	min-height:700px;
 }
 
 #newNote {
@@ -29,20 +29,21 @@ form.note {
 }
 
 #lastUpdated {
-	margin-top:6px;
+	margin-top:8px;
 	float:left;
-	height:25px;
+	height:35px;
 }
 
 #statusImage {
 	float:left;
 	margin-left:20px;
-	height:25px;
+	margin-top:3px;
+	height:35px;
 }
 
 #statusText {
-	height:25px;
-	margin-top:6px;
+	height:35px;
+	margin-top:8px;
 	float:left;
 	margin-left:5px;
 }

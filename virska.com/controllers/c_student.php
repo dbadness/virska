@@ -237,38 +237,23 @@
 		
 		public function p_add_note() {
 			
-			if($_POST['note_id'] == NULL) {
+			# Dashboard for taking notes
+			$_POST['user_id'] = $this->user->user_id;
+			$_POST['created'] = Time::now();
+			$_POST['modified'] = Time::now();
+		
+			DB::instance(DB_NAME)->insert('notes', $_POST);
+		
+			# Find the last note created (this note) and echo its ID for redirection
+			$q = "SELECT created, note_id
+			FROM notes 
+			WHERE user_id = ".$this->user->user_id."
+			ORDER BY created DESC LIMIT 1";
+			$note_info = DB::instance(DB_NAME)->select_row($q);
+		
+			$note_id = $note_info['note_id'];
 			
-				# Dashboard for taking notes
-				$_POST['user_id'] = $this->user->user_id;
-				$_POST['created'] = Time::now();
-				$_POST['modified'] = Time::now();
-			
-				DB::instance(DB_NAME)->insert('notes', $_POST);
-			
-				# Find the last note created (this note) and echo its ID
-				$q = "SELECT created, note_id
-				FROM notes 
-				WHERE user_id = ".$this->user->user_id."
-				ORDER BY created DESC LIMIT 1";
-				$note_info = DB::instance(DB_NAME)->select_row($q);
-			
-				$note_id = $note_info['note_id'];
-				
-				echo $note_id; 
-				
-			} else {
-				
-				sleep(2);
-
-				# Put the current title and content into the database
-				$_POST['modified'] = Time::now();
-
-				# Do the update
-				DB::instance(DB_NAME)->update("notes", $_POST, "WHERE note_id = '".$_POST['note_id']."'");			
-
-			}
-			
+			echo $note_id; 
 		}
 		
 		public function p_save_note () {
