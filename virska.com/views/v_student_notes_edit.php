@@ -11,6 +11,6 @@
 		<div style="clear:both;"></div>
 	</div>
 	<div id="myNicPanel"></div>
-	<div id="notePad" style="background-color:white;min-height:700px;"><?=$note['content']?></div>
+	<div id="notePad"><?=$note['content']?></div>
 </div>
 	

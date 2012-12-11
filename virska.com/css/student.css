@@ -90,6 +90,11 @@ form.note {
 	
 }
 
+#noNoteError {
+	float:left;
+	height:25px;
+}
+
 #editNote {
 	
 }

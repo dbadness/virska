@@ -1,10 +1,11 @@
 <div id="newNote">
-	<a href="/student/notes"><button id="cancel">Cancel</button></a><button id="addNote">Save Note</button><a href="/student/notes"><button id="cancel">Back to All Notes</button></a>
+	<a href="/student/notes"><button id="cancel">Cancel and Go Back</button></a><button id="addNote">Save and Go Back</button>
 	<div id="savingInfo">
 		<div id="lastUpdated"></div>
 		<div id="statusImage"></div>
 		<div id="statusText"></div>
-		<div style="clear:both;"></div>
+		<div class="errorBox" id="noNoteError" style="display:none;">You need to enter note content first!</div>
+		<div style="clear:left;"></div>
 	</div>
 	Section:
 	<select name="section_id" id="section">
@@ -24,6 +25,6 @@
 	Note:
 	<br>
 	<div id="myNicPanel"></div>
-	<div id="notePad" style="background-color:white;min-height:700px;"></div>
+	<div id="notePad"></div>
 </div>
 	

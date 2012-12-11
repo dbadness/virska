@@ -1,0 +1,60 @@
+div.note {
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+form.note {
+}
+
+#notePad {
+	background-color:white;
+	height:700px;
+}
+
+#newNote {
+	
+}
+
+#noNoteError {
+	float:left;
+	height:25px;
+}
+
+#editNote {
+	
+}
+
+#savingInfo {
+}
+
+#lastUpdated {
+	margin-top:6px;
+	float:left;
+	height:25px;
+}
+
+#statusImage {
+	float:left;
+	margin-left:20px;
+	height:25px;
+}
+
+#statusText {
+	height:25px;
+	margin-top:6px;
+	float:left;
+	margin-left:5px;
+}
+
+.nicEdit-selected {
+	border:2px solid #0000ff !important;
+}
+ 
+.nicEdit-panel {
+    background-color:white !important;
+}
+ 
+.nicEdit-button {
+   	background-color:#fff !important;
+}

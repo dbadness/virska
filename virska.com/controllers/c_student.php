@@ -20,7 +20,6 @@
 			
 			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
 			$client_files = Array(
-								"http://js.nicedit.com/nicEdit-latest.js",
 								"/js/student.js",
 								"/css/student.css"
 								 );
@@ -183,6 +182,14 @@
 			$sections = DB::instance(DB_NAME)->select_rows($q);
 			
 			$this->template->content = View::instance("v_student_notes_new");
+			
+			$client_files = Array(
+								"http://js.nicedit.com/nicEdit-latest.js",
+								"/js/note-new.js",
+								"/css/note.css"
+								 );
+
+		    $this->template->client_files = Utils::load_client_files($client_files);
 			$this->template->content->sections = $sections;
 		
 			echo $this->template;
@@ -213,6 +220,14 @@
 			# Dashboard for editing existing notes
 			$this->template->content = View::instance('v_student_notes_edit');
 			
+			$client_files = Array(
+								"http://js.nicedit.com/nicEdit-latest.js",
+								"/js/note-edit.js",
+								"/css/note.css"
+								 );
+
+		    $this->template->client_files = Utils::load_client_files($client_files);
+			
 			# Pass the note to the view
 			$this->template->content->note = $note;
 			$this->template->content->section = $section;
@@ -222,21 +237,37 @@
 		
 		public function p_add_note() {
 			
-			# Dashboard for taking notes
-			$_POST['user_id'] = $this->user->user_id;
-			$_POST['created'] = Time::now();
-			$_POST['modified'] = Time::now();
+			if($_POST['note_id'] == NULL) {
 			
-			DB::instance(DB_NAME)->insert('notes', $_POST);
+				# Dashboard for taking notes
+				$_POST['user_id'] = $this->user->user_id;
+				$_POST['created'] = Time::now();
+				$_POST['modified'] = Time::now();
 			
-			# Find the last note created (this note) and echo its timestamp
-			$q = "SELECT created 
-			FROM notes 
-			WHERE user_id = ".$this->user->user_id."
-			ORDER BY modified DESC LIMIT 1";
-			$update = Time::display(DB::instance(DB_NAME)->select_field($q));
+				DB::instance(DB_NAME)->insert('notes', $_POST);
 			
-			echo $update;
+				# Find the last note created (this note) and echo its ID
+				$q = "SELECT created, note_id
+				FROM notes 
+				WHERE user_id = ".$this->user->user_id."
+				ORDER BY created DESC LIMIT 1";
+				$note_info = DB::instance(DB_NAME)->select_row($q);
+			
+				$note_id = $note_info['note_id'];
+				
+				echo $note_id; 
+				
+			} else {
+				
+				sleep(2);
+
+				# Put the current title and content into the database
+				$_POST['modified'] = Time::now();
+
+				# Do the update
+				DB::instance(DB_NAME)->update("notes", $_POST, "WHERE note_id = '".$_POST['note_id']."'");			
+
+			}
 			
 		}
 		
