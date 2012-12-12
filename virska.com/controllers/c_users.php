@@ -102,6 +102,14 @@
 			if($success) {
 				
 				# set up password hash and throw it into the database
+				$password = sha1($_POST['password']);
+				# Create the data array we'll use with the update method
+				# In this case, we're only updating one field, so our array only has one entry
+				$data = Array("password" => $password);
+
+				# Do the update
+				DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = '".$this->user->user_id."'");
+				
 				
 				# you don't need to set up a token for a session because the signup already did that
 				
@@ -110,7 +118,6 @@
 				$error = TRUE;
 				Router::redirect("/users/validate");
 			}
-			
 		}
 		
 		public function login() {
@@ -142,10 +149,7 @@
 			if(!$token) {
 
 				# Send them back to the login page with an error
-				$error = "<div class=\"errorBox\" id=\"noMatchError\">Hmmm... I couldn't find that email or password. Please try again.</div>";
-				$this->template->content = View::instance("v_users_login");
-				$this->template->content->error = $error;
-				Router::redirect("/users/login");
+				Router::redirect("/users/login_error");
 
 			# But if we did, login succeeded! 
 			} else {
@@ -157,6 +161,12 @@
 				Router::redirect("/users/p_dashboard");
 			
 			}
+		}
+		
+		public function login_error() {
+			$this->template->content = View::instance("v_users_login");
+			$this->template->content->error = TRUE;
+			echo $this->template;
 		}
 			
 		public function p_dashboard()	{

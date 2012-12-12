@@ -1,0 +1,28 @@
+2012-12-12 11:42:17 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-12 11:42:17 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-12 11:42:17 - INFO --> To: David (dave.baines@me.com),  
+2012-12-12 11:42:17 - INFO --> CC:  
+2012-12-12 11:42:17 - INFO --> BCC:  
+2012-12-12 11:42:17 - INFO --> Subject: Welcome to Virska! 
+2012-12-12 11:42:17 - INFO --> Body: Welcome to Virska for Suffolk University, David! < 
+2012-12-12 11:43:42 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-12 11:43:42 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-12 11:43:42 - INFO --> To: David (dave.baines@me.com),  
+2012-12-12 11:43:42 - INFO --> CC:  
+2012-12-12 11:43:42 - INFO --> BCC:  
+2012-12-12 11:43:42 - INFO --> Subject: Welcome to Virska! 
+2012-12-12 11:43:42 - INFO --> Body: Welcome to Virska for Suffolk University, David! < 
+2012-12-12 11:57:32 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-12 11:57:32 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-12 11:57:32 - INFO --> To: Chris (skypeck@gmail.com),  
+2012-12-12 11:57:32 - INFO --> CC:  
+2012-12-12 11:57:32 - INFO --> BCC:  
+2012-12-12 11:57:32 - INFO --> Subject: Welcome to Virska! 
+2012-12-12 11:57:32 - INFO --> Body: Welcome to Virska for Suffolk University, Chris! < 
+2012-12-12 14:56:05 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-12 14:56:05 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-12 14:56:05 - INFO --> To: David (sales@thinkedella.com),  
+2012-12-12 14:56:05 - INFO --> CC:  
+2012-12-12 14:56:05 - INFO --> BCC:  
+2012-12-12 14:56:05 - INFO --> Subject: Welcome to Virska! 
+2012-12-12 14:56:05 - INFO --> Body: Welcome to Virska for Suffolk University, David! < 

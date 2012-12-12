@@ -47,15 +47,17 @@
 						Settings
 					</div>
 				<?endif;?>
-					<a href="/users/logout">
-						<div id="logout">
-							Log Out
+					<div id="userInfo">
+						<a href="/users/logout">
+							<div id="logout">
+								Log Out
+							</div>
+						</a>
+						<div id="userIdentifier">
+							Welcome, <?=$user->first_name?>.
 						</div>
-					</a>
-					<div id="userIdentifier">
-						Welcome, <?=$user->first_name?>.
-					</div>
-					<div style="clear:both;">
+						<div style="clear:both;">
+						</div>
 					</div>
 			<?else:?>
 				<a href="/users/login">

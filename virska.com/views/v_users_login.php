@@ -22,10 +22,12 @@
 		</div>
 		
 	</form>
+	<?if(isset($error)):?>
+		<div class="errorBox" id="noMatchError">
+			Hmm... Couldn't find that user. Please try again.
+		</div>
+	<?endif;?>
 	<div class="errorBox" id="noValuesError">
 		Please enter a valid email address and password.
 	</div>
-	<?if(isset($error)):?>
-		<?echo $error;?>
-	<?endif;?>
 </div>

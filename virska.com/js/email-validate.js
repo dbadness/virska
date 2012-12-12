@@ -1,7 +1,8 @@
 $(document).ready(function() {
 
-	// hide the nav buttons so we have a clean looking page
+	// hide the nav buttons and user info so we have a clean looking page
 	$('.navButton').css("display", "none");
+	$('#userInfo').css("display", "none");
 	
     $("form").submit(function() {
 		// if the password is over eight characters and it matches the verified password field, let the form process
