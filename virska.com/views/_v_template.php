@@ -24,26 +24,28 @@
 		<div id="headerContainer">
 			<?if($user):?>
 				<?if($user->role == 'professor'):?>
-					<div class="navButton" id="classes">
-						My Classes
-					</div>
+					<a href="/professor/classes">
+						<div class="navButton" id="myClasses">
+							My Classes
+						</div>
+					</a>
 				<?elseif($user->role == 'student'):?>
-				<a href="/student/dashboard">
-					<div class="navButton" id="dashboard">
-						Dashboard
+					<a href="/student/dashboard">
+						<div class="navButton" id="dashboard">
+							Dashboard
+						</div>
+					</a>
+					<a href="/student/notes">
+						<div class="navButton" id="notes">
+							Notes
+						</div>
+					</a>
+					<div class="navButton" id="documents">
+						Documents
 					</div>
-				</a>
-				<a href="/student/notes">
-					<div class="navButton" id="notes">
-						Notes
+					<div class="navButton" id="settings">
+						Settings
 					</div>
-				</a>
-				<div class="navButton" id="documents">
-					Documents
-				</div>
-				<div class="navButton" id="settings">
-					Settings
-				</div>
 				<?endif;?>
 					<a href="/users/logout">
 						<div id="logout">

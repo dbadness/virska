@@ -277,6 +277,15 @@
 			
 		}
 		
+		public function p_delete_note($note_id) {
+
+			#Delete the note for them
+			DB::instance(DB_NAME)->delete('notes', "WHERE note_id = ".$note_id);
+
+			# Bring them to their notes page
+			Router::redirect("/student/notes");
+		}
+		
 		public function search() {
 			
 			$this->template->content = View::instance('v_student_search');

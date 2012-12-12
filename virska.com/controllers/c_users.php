@@ -8,7 +8,8 @@
 			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
 			$client_files = Array(
 						"/css/login.css",
-						"/js/login.js"
+						"/js/login.js",
+						"/css/users.css"
 	                    );
 	
 		    $this->template->client_files = Utils::load_client_files($client_files);
@@ -59,7 +60,7 @@
 				setcookie("token", $token, strtotime('+2 weeks'), '/');
 
 				# Send them to the main page - or whever you want them to go
-				Router::redirect("/");
+				Router::redirect("/users/validate");
 			}
 		}
 		
@@ -132,6 +133,25 @@
 
 			# Send them back to the main landing page
 			Router::redirect("/");
+		}
+		
+		public function validate() {
+			
+			$this->template->content = View::instance("v_users_validate");
+			
+			$client_files = Array(
+						"/js/email-validate.js",
+						"/css/users.css"
+	                    );
+	
+		    $this->template->client_files = Utils::load_client_files($client_files);
+			
+			echo $this->template;
+			
+		}
+		
+		public function p_validate() {
+			
 		}
 	}
 

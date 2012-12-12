@@ -19,7 +19,7 @@
 	<br>
 	<div id="add-class">
 		<form class="form" id="class" method="post" action="/professor/p_add_class" >
-			<label for="class_code">Class Code</label>
+			<label for="class_code">Class Code (ie. MGT 101)</label>
 			<input type="text" name="class_code" id="class_code">
 			<br>
 			<br>
@@ -45,9 +45,19 @@
 			<br>
 			<br>
 			<label for="time_start">Start Time</label>
-			<select name="am_pm_start" id="am_pm_start">
-				<option>AM</option>
-				<option>PM</option>
+			<select name="time_start_hour" id="time_start_hour">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
+				<option>11</option>
+				<option>12</option>
 			</select>
 			<select name="time_start_min" id="time_start_min">
 				<option>00</option>
@@ -63,7 +73,13 @@
 				<option>50</option>
 				<option>55</option>
 			</select>
-			<select name="time_start_hour" id="time_start_hour">
+			<select name="am_pm_start" id="am_pm_start">
+				<option>AM</option>
+				<option>PM</option>
+			</select>
+			<br>
+			<label for="time_end">End Time</label>
+			<select name="time_end_hour" id="time_end_hour">
 				<option>1</option>
 				<option>2</option>
 				<option>3</option>
@@ -76,13 +92,6 @@
 				<option>10</option>
 				<option>11</option>
 				<option>12</option>
-			</select>
-			<br>
-			<br>
-			<label for="time_end">End Time</label>
-			<select name="am_pm_end" id="am_pm_end">
-				<option>AM</option>
-				<option>PM</option>
 			</select>
 			<select name="time_end_min" id="time_end_min">
 				<option>00</option>
@@ -98,21 +107,14 @@
 				<option>50</option>
 				<option>55</option>
 			</select>
-			<select name="time_end_hour" id="time_end_hour">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>6</option>
-				<option>7</option>
-				<option>8</option>
-				<option>9</option>
-				<option>10</option>
-				<option>11</option>
-				<option>12</option>
+			<select name="am_pm_end" id="am_pm_end">
+				<option>AM</option>
+				<option>PM</option>
 			</select>
 			<br>
+			<br>
+			<label for="roomNumber">Room Number</label>
+			<input id="roomNumber" name="room_number">
 			<br>
 			<input type="submit" value="Add Section">
 		</form>
