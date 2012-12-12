@@ -1,0 +1,72 @@
+2012-12-11 22:37:24 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-11 22:37:24 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY webmaster@thinkedella.com 
+2012-12-11 22:37:24 - INFO --> From: Virska (dave@thinkedella.com) 
+2012-12-11 22:37:24 - INFO --> To: David (dave.baines@me.com),  
+2012-12-11 22:37:24 - INFO --> CC:  
+2012-12-11 22:37:24 - INFO --> BCC:  
+2012-12-11 22:37:24 - INFO --> Subject: Welcome to Virska! 
+2012-12-11 22:37:24 - INFO --> Body: Welcome to Virska for Suffolk University, David! Y 
+2012-12-11 22:38:41 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-11 22:38:41 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY dave@thinkedella.com 
+2012-12-11 22:38:41 - INFO --> From: Virska (dave@thinkedella.com) 
+2012-12-11 22:38:41 - INFO --> To: David (dave.baines@me.com),  
+2012-12-11 22:38:41 - INFO --> CC:  
+2012-12-11 22:38:41 - INFO --> BCC:  
+2012-12-11 22:38:41 - INFO --> Subject: Welcome to Virska! 
+2012-12-11 22:38:41 - INFO --> Body: Welcome to Virska for Suffolk University, David! Y 
+2012-12-11 22:44:02 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-11 22:44:02 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY dave@thinkedella.com 
+2012-12-11 22:44:02 - INFO --> From: Virska (dave@thinkedella.com) 
+2012-12-11 22:44:02 - INFO --> To: Danielle (daniellewalters@mac.com),  
+2012-12-11 22:44:02 - INFO --> CC:  
+2012-12-11 22:44:02 - INFO --> BCC:  
+2012-12-11 22:44:02 - INFO --> Subject: Welcome to Virska! 
+2012-12-11 22:44:02 - INFO --> Body: Welcome to Virska for Suffolk University, Danielle 
+2012-12-11 22:48:29 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-11 22:48:29 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY dave@thinkedella.com 
+2012-12-11 22:48:29 - INFO --> From: Virska (dave@thinkedella.com) 
+2012-12-11 22:48:29 - INFO --> To: Danielle (daniellewalters@mac.com),  
+2012-12-11 22:48:29 - INFO --> CC:  
+2012-12-11 22:48:29 - INFO --> BCC:  
+2012-12-11 22:48:29 - INFO --> Subject: Welcome to Virska! 
+2012-12-11 22:48:29 - INFO --> Body: Welcome to Virska for Suffolk University, Danielle 
+2012-12-11 22:51:16 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-11 22:51:16 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY dave@thinkedella.com 
+2012-12-11 22:51:16 - INFO --> From: Virska (dave@thinkedella.com) 
+2012-12-11 22:51:16 - INFO --> To: Danielle (daniellewalters@mac.com),  
+2012-12-11 22:51:16 - INFO --> CC:  
+2012-12-11 22:51:16 - INFO --> BCC:  
+2012-12-11 22:51:16 - INFO --> Subject: Welcome to Virska! 
+2012-12-11 22:51:16 - INFO --> Body: Welcome to Virska for Suffolk University, Danielle 
+2012-12-11 22:53:39 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-11 22:53:39 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY dave@thinkedella.com 
+2012-12-11 22:53:39 - INFO --> From: Virska (dave@thinkedella.com) 
+2012-12-11 22:53:39 - INFO --> To: D (D), d (d),  
+2012-12-11 22:53:39 - INFO --> CC:  
+2012-12-11 22:53:39 - INFO --> BCC:  
+2012-12-11 22:53:39 - INFO --> Subject: Welcome to Virska! 
+2012-12-11 22:53:39 - INFO --> Body: Welcome to Virska for Suffolk University, Danielle 
+2012-12-11 22:54:31 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-11 22:54:31 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY dave@thinkedella.com 
+2012-12-11 22:54:31 - INFO --> From: Virska (dave@thinkedella.com) 
+2012-12-11 22:54:31 - INFO --> To: Danielle (daniellewalters@mac.com),  
+2012-12-11 22:54:31 - INFO --> CC:  
+2012-12-11 22:54:31 - INFO --> BCC:  
+2012-12-11 22:54:31 - INFO --> Subject: Welcome to Virska! 
+2012-12-11 22:54:31 - INFO --> Body: Welcome to Virska for Suffolk University, Danielle 
+2012-12-11 23:02:16 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-11 23:02:16 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY dave@thinkedella.com 
+2012-12-11 23:02:16 - INFO --> From: Virska (dave@thinkedella.com) 
+2012-12-11 23:02:16 - INFO --> To: Danielle (daniellewalters@mac.com),  
+2012-12-11 23:02:16 - INFO --> CC:  
+2012-12-11 23:02:16 - INFO --> BCC:  
+2012-12-11 23:02:16 - INFO --> Subject: Welcome to Virska! 
+2012-12-11 23:02:16 - INFO --> Body: Welcome to Virska for Suffolk University, Danielle 
+2012-12-11 23:04:52 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-11 23:04:52 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY dave@thinkedella.com 
+2012-12-11 23:04:52 - INFO --> From: Virska (dave@thinkedella.com) 
+2012-12-11 23:04:52 - INFO --> To: Cole (colerissen@gmail.com),  
+2012-12-11 23:04:52 - INFO --> CC:  
+2012-12-11 23:04:52 - INFO --> BCC:  
+2012-12-11 23:04:52 - INFO --> Subject: Welcome to Virska! 
+2012-12-11 23:04:52 - INFO --> Body: Welcome to Virska for Suffolk University, Cole! <b 

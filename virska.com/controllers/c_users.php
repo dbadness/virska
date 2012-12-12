@@ -9,7 +9,6 @@
 			$client_files = Array(
 						"/css/login.css",
 						"/js/login.js",
-						"/css/users.css"
 	                    );
 	
 		    $this->template->client_files = Utils::load_client_files($client_files);
@@ -28,10 +27,12 @@
 		public function p_signup() {
 			
 			#hash the password
-			$_POST['password'] = sha1(PASSWORD_SALT . $_POST['password']);
+			# $_POST['password'] = sha1(PASSWORD_SALT . $_POST['password']);
 			$_POST['created'] = Time::now(); # this returns the current time
 			$_POST['modified'] = Time::now(); # this returns the current time
 			
+			# create the validation code that'll be used to authenticate the user's school affiation
+			$_POST['val_code'] = Utils::generate_random_string();
 			
 			# create token for cookie for sessions
 			$_POST['token'] = sha1(TOKEN_SALT . $_POST['email'] . Utils::generate_random_string());
@@ -42,8 +43,7 @@
 			# Now let's refer to that token to make them a cookie so we can set up their first session
 			$q = "SELECT token 
 				FROM users 
-				WHERE email = '".$_POST['email']."' 
-				AND password = '".$_POST['password']."'";
+				WHERE email = '".$_POST['email']."'";
 
 			$token = DB::instance(DB_NAME)->select_field($q);	
 
@@ -60,8 +60,57 @@
 				setcookie("token", $token, strtotime('+2 weeks'), '/');
 
 				# Send them to the main page - or whever you want them to go
+				Router::redirect("/users/p_validate_email");
+			}
+		}
+		
+		public function p_validate_email() {
+			
+			# send the now-sessioned user an email with their velidation code
+			# Build a multi-dimension array of recipients of this email
+			$to[] = Array("name" => $this->user->first_name, "email" => $this->user->email);
+
+			# Build a single-dimension array of who this email is coming from
+			# note it's using the constants we set in the configuration above)
+			$from = Array("name" => APP_NAME, "email" => APP_EMAIL);
+
+			# Subject
+			$subject = "Welcome to Virska!";
+
+			# You can set the body as just a string of text
+			$body = "Welcome to Virska for ".$this->user->school.", ".$this->user->first_name."! <br><br>Your validation code is: ".$this->user->val_code;
+
+			# OR, if your email is complex and involves HTML/CSS, you can build the body via a View just like we do in our controllers
+			# $body = View::instance('e_users_welcome');
+
+			# With everything set, send the email
+			$email = Email::send($to, $from, $subject, $body, true);
+			
+			Router::redirect("/users/validate");
+			
+		}
+		
+		public function p_validate() {
+			
+			$q = "SELECT val_code
+			FROM users
+			WHERE email = '".$this->user->email."'
+			AND val_code = '".$_POST['val_code']."'";
+			
+			$success = DB::instance(DB_NAME)->select_field($q);
+			
+			if($success) {
+				
+				# set up password hash and throw it into the database
+				
+				# you don't need to set up a token for a session because the signup already did that
+				
+				Router::redirect("/users/p_dashboard");
+			} else {
+				$error = TRUE;
 				Router::redirect("/users/validate");
 			}
+			
 		}
 		
 		public function login() {
@@ -141,17 +190,12 @@
 			
 			$client_files = Array(
 						"/js/email-validate.js",
-						"/css/users.css"
+						"/css/validate.css"
 	                    );
 	
 		    $this->template->client_files = Utils::load_client_files($client_files);
 			
 			echo $this->template;
-			
-		}
-		
-		public function p_validate() {
-			
 		}
 	}
 

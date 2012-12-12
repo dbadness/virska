@@ -67,12 +67,15 @@
 			# Remove the final comma 
 			$connections_string = substr($connections_string, 0, -1);
 
-			# Run our query, store the results in the variable $sections
-			$q =
-			"SELECT sections.*, classes.class_name, classes.class_code
-			FROM sections 
-			JOIN classes USING (class_id) 
-			WHERE sections.section_id IN (".$connections_string.")";
+			# Run our query, store the results in the variable $sections (if they're following sections...)
+			if(isset($connection_string)) {
+				
+				$q =
+				"SELECT sections.*, classes.class_name, classes.class_code
+				FROM sections 
+				JOIN classes USING (class_id) 
+				WHERE sections.section_id IN (".$connections_string.")";
+			}
 			
 			$sections = DB::instance(DB_NAME)->select_rows($q);
 			
