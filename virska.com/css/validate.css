@@ -7,8 +7,16 @@
 	margin-right:auto;
 }
 
+#emailValLabel {
+	margin-left:104px;	
+}
+
+#emailVal {
+	margin-left:53px;	
+}
+
 #valLabel {
-	margin-left:98px;
+	margin-left:54px;
 }
 
 #val_code {
@@ -16,7 +24,7 @@
 }
 
 #passwordLabel {
-	margin-left:102px;
+	margin-left:89px;
 }
 
 #password {
@@ -35,9 +43,31 @@
 	margin-left:118px;
 }
 
-#validateError {
+#valuesError {
 	margin-top:-150px;
 	margin-right:-140px;
 	width:180px;
-	display: none;
+	display:none;
+}
+
+#valError {
+	margin-top:-350px;
+	margin-right:-140px;
+	width:180px;
+}
+
+#wrapper {
+	margin-left:auto;
+	margin-right:auto;
+	width:500px;
+	border:solid 2px gray;
+}
+
+#thank-youHeader {
+	text-align:center;
+}
+
+#thank-youText {
+	text-align:center	;
+	padding:50px;
 }

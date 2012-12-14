@@ -10,7 +10,7 @@ $(document).ready(function() {
 	      return true;
 	    }
 		// if those requirements aren't met, let's let the user know and cancel the form submission
-	    $("#validateError").show();
+	    $("#valuesError").show();
 		$('#emailValidator').effect("shake", { times:2 }, 50);
 		$('.passwords').css("border", "solid 2px red");
 	    return false;

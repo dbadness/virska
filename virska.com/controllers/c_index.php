@@ -27,8 +27,18 @@ class index_controller extends base_controller {
 		# Render the view
 		echo $this->template;
 	}
-	
-	
-	
 		
+	public function thank_you() {
+		
+		$this->template->content = View::instance("v_index_thank_you");
+		$client_files = Array(
+					"/css/validate.css",
+					"/js/validate.js"
+                    );
+ 		$this->template->client_files = Utils::load_client_files($client_files);
+		$this->template->title = "Thank You for Requesting Access";
+		
+		echo $this->template;
+	}
+	
 } // end class

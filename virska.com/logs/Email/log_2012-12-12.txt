@@ -26,3 +26,10 @@
 2012-12-12 14:56:05 - INFO --> BCC:  
 2012-12-12 14:56:05 - INFO --> Subject: Welcome to Virska! 
 2012-12-12 14:56:05 - INFO --> Body: Welcome to Virska for Suffolk University, David! < 
+2012-12-12 16:34:12 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-12 16:34:12 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-12 16:34:12 - INFO --> To: David (dave.baines@me.com),  
+2012-12-12 16:34:12 - INFO --> CC:  
+2012-12-12 16:34:12 - INFO --> BCC:  
+2012-12-12 16:34:12 - INFO --> Subject: Welcome to Virska! 
+2012-12-12 16:34:12 - INFO --> Body: Welcome David. Your validation code is aqajyv 
