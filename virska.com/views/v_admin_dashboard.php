@@ -8,3 +8,5 @@ Admin Dashboard
 			- <i>Validated</i>
 		<?endif;?>
 <?endforeach;?>
+<br><br>
+Users: <?=$count?>

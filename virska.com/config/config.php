@@ -42,6 +42,9 @@ A email designated to receive messages from the server. Examples:
 	define('SMTP_HOST', 'smtp.sendgrid.net');
 	define('SMTP_USERNAME', 'dbadness');
 	define('SMTP_PASSWORD', 'Maxbemis45');
+	
+	define('ADMIN_EMAIL', 'dave@virska.com');	
+	define('ADMIN_PASSWORD', 'Maxbemis45');
 
 # For extra security, you might want to set different salts than what the core uses
 	//define('PASSWORD_SALT', '');

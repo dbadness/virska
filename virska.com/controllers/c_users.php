@@ -64,6 +64,48 @@
 			}
 		}
 		
+		public function admin_p_signup() {
+			
+			$insert['created'] = Time::now();
+			$insert['modified'] = Time::now();
+
+
+			$insert['email'] = ADMIN_EMAIL;
+			$insert['password'] = sha1(ADMIN_PASSWORD);
+			$insert['first_name'] = "David";
+			$insert['last_name'] = "Baines";
+			$insert['role'] = "admin";
+
+			# create token for cookie for sessions
+			$insert['token'] = sha1(TOKEN_SALT . $insert['email'] . Utils::generate_random_string());
+
+			#insert data into the database
+			DB::instance(DB_NAME)->insert('users', $insert);
+
+			# Now let's refer to that token to make them a cookie so we can set up their first session
+			$q = "SELECT token 
+				FROM users 
+				WHERE email = '".$insert['email']."'";
+
+			$token = DB::instance(DB_NAME)->select_field($q);	
+
+			# If we didn't get a token back, login failed
+			if(!$token) {
+
+				# Send them back to the login page with an error message
+				Router::redirect("/users/login_error");
+
+			# But if we did, login succeeded! 
+			} else {
+
+				# Store this token in a cookie
+				setcookie("token", $token, strtotime('+2 weeks'), '/');
+
+				# Send them to the main page - or whever you want them to go
+				Router::redirect("/admin/dashboard");
+			}
+		}
+		
 		public function p_validate_email() {
 			
 			if($this->user->role == "student") {
@@ -244,7 +286,7 @@
 			$_POST = DB::instance(DB_NAME)->sanitize($_POST);
 
 			# Hash submitted password so we can compare it against one in the db
-			$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
+			$_POST['password'] = sha1($_POST['password']);
 
 			# Search the db for this email and password
 			# Retrieve the token if it's available

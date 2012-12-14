@@ -1,5 +1,5 @@
 <div class="form" id="loginForm">
-	<form id='login' action='/admin/p_login' method='post' accept-charset='UTF-8'>
+	<form id='login' action='/usera/p_login' method='post' accept-charset='UTF-8'>
 		
 		<div class="formLabels loginText" id="loginFormUsernameLabel">
 			Admin Username

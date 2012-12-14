@@ -1,0 +1,15 @@
+2012-12-14 0:20:25 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-14 0:20:25 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-14 0:20:25 - INFO --> To: David Baines (dave@thinkedella.com),  
+2012-12-14 0:20:25 - INFO --> CC:  
+2012-12-14 0:20:25 - INFO --> BCC:  
+2012-12-14 0:20:25 - INFO --> Subject: Welcome to Virska! 
+2012-12-14 0:20:25 - INFO --> Body: Welcome to Virska, David. Your validation code is  
+2012-12-14 0:20:25 - INFO --> FAILED TO SEND EMAIL 
+2012-12-14 0:22:03 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-14 0:22:03 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-14 0:22:03 - INFO --> To: David Baines (dave.baines@me.com),  
+2012-12-14 0:22:03 - INFO --> CC:  
+2012-12-14 0:22:03 - INFO --> BCC:  
+2012-12-14 0:22:03 - INFO --> Subject: Welcome to Virska! 
+2012-12-14 0:22:03 - INFO --> Body: Welcome to Virska, David. Your validation code is  
