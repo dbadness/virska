@@ -46,3 +46,12 @@
 	margin-top:20px;
 }
 
+#loginFormUsernameLabel {
+	margin-left:13px;
+	margin-top:6px;
+}
+
+#loginFormAdminPasswordLabel {
+	margin-left:65px;
+	margin-top:6px;
+}
