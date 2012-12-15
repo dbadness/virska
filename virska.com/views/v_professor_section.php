@@ -19,17 +19,16 @@
 </div>
 <div style="clear:both;"></div>
 <hr>
-
-<?if(isset($assignments)):?>
-	<div class="assignment">
+<div id="assignmentWrapper">
+	<div id="assignmentHeader">
 		<div class="assignment-atr">
 			<i><strong>Due Date</i></strong>
 		</div>
 		<div class="assignment-name">
-			<i><strong>Name</i></strong>
+			<i><strong>Description</i></strong>
 		</div>
 		<div class="assignment-attach">
-			<i><strong>Attachment</i></strong>
+			<i><strong>Attachment?</i></strong>
 		</div>
 	</div>
 	<div style="clear;both:"></div>
@@ -47,4 +46,4 @@
 			<div style="clear;both:"></div>
 		</div>
 	<?endforeach;?>
-<?endif;?>
+</div>

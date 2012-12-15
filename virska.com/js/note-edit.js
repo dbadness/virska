@@ -10,7 +10,7 @@ $('document').ready(function() {
 
 		$.ajax({
 	    	type: 'POST',
-	    	url: '/student/p_save_note',
+	    	url: '/notes/p_save_note',
 			beforeSend: function() {
 				$('#statusImage').html("<img src=\"/images/ajax-loader.gif\">");
 				$('#statusText').html("Saving...");
@@ -34,7 +34,7 @@ $('document').ready(function() {
 	setInterval(function() {
 		$.ajax({
 	    	type: 'POST',
-	    	url: '/student/p_save_note',
+	    	url: '/notes/p_save_note',
 			beforeSend: function() {
 				$('#statusImage').html("<img src=\"/images/ajax-loader.gif\">");
 				$('#statusText').html("Saving...");

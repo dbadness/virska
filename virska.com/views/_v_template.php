@@ -35,7 +35,7 @@
 							Dashboard
 						</div>
 					</a>
-					<a href="/student/notes">
+					<a href="/notes">
 						<div class="navButton" id="notes">
 							Notes
 						</div>

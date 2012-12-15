@@ -25,13 +25,13 @@ $(document).ready(function() {
 		// if everything's good to go, let's make an ajax call, store the note, and send them to editing for the auto-save feature
 		$.ajax({
         	type: 'POST',
-        	url: '/student/p_add_note',
+        	url: '/notes/p_add_note',
 			beforeSend: function() {
 				$('#statusImage').html("<img src=\"/images/ajax-loader.gif\">");
 				$('#statusText').html("Saving...");
 			},
             success: function(response) {
-				window.location.replace("/student/notes_edit/" + response);
+				window.location.replace("/notes/edit/" + response);
             },
             data: {
 				section_id: $('#section').val(),

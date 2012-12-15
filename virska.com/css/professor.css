@@ -25,7 +25,7 @@
 #new-assignment {
 	margin-right:auto;
 	margin-left:auto;
-	width:420px;
+	width:600px;
 }
 
 .assignment-name {
@@ -41,7 +41,7 @@
 }
 
 .assignment-attach {
-	margin:5px;
+	padding:4px;
 	float:right;
 	width:100px;
 	text-align:right;
@@ -50,9 +50,16 @@
 .assignment {
 	margin-right:auto;
 	margin-left:auto;
-	width:600px;
+	width:750px;
 	height:30px;
-	border:1px gray solid;
+}
+
+#assignmentHeader {
+	border-bottom:solid 1px gray;
+	margin-right:auto;
+	margin-left:auto;
+	width:750px;
+	height:30px;
 }
 
 #section-wrapper {

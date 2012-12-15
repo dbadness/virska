@@ -1,0 +1,21 @@
+#validationQueue {
+	border:solid 1px gray;
+}
+
+#professorName {
+	float:left;
+}
+
+#validated {
+	float:right;
+}
+
+#validationDate {
+	margin-right:200px;
+	float:left;
+}
+
+#userReport {
+	padding:10px;
+	border:solid 1px gray	;
+}
