@@ -1,5 +1,5 @@
 <div id="newNote">
-	<a href="/student/notes"><button id="cancel">Cancel and Go Back</button></a><button id="addNote">Save Note</button>
+	<a href="/notes"><button id="cancel">Cancel and Go Back</button></a><button id="addNote">Save Note</button>
 	<div id="savingInfo">
 		<div id="lastUpdated"></div>
 		<div id="statusImage"></div>

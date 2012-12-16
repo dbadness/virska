@@ -41,7 +41,7 @@ class admin_controller extends base_controller {
 		$this->template->content->count = $count;
 		$client_files = Array(
 					"/js/admin.js",
-					"/css/admin.css"
+					"/css/admin.css",
                     );
 					
 	    $this->template->client_files = Utils::load_client_files($client_files);

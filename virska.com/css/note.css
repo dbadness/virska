@@ -59,3 +59,84 @@ form.note {
 .nicEdit-button {
    	background-color:#fff !important;
 }
+
+#noteTitleDiv {
+	float:left;
+}
+
+#buttons {
+	margin-top:3px;
+	float:right;
+}
+
+#notesSearchBox {
+	width:450px;
+	float:right;
+	background-color:gray;
+}
+
+#notesSearchBoxInput {
+	float:left;
+}
+
+#notesSearchBoxButton {
+	margin-top:3px;
+	margin-left:3px;
+	float:left;	
+}
+
+#searchResultsHeader {
+	width:400px;
+	margin-top:-13px;
+	float:left;
+}
+
+#titleLabel {
+	float:left;
+}
+
+#titleLabelIndex {
+	margin-left:20px;
+	float:left;
+}
+
+#modifiedLabel {
+	float:right;
+}
+
+#modifiedLabelIndex {
+	float:right;
+	margin-right:147px;
+}
+
+#searchResultsWrapper {
+}
+
+#resultTitle {
+	float:left;
+}
+
+#resultDelete {
+	float:right;
+	margin-left:100px;
+}
+
+#resultModified {
+	float:right;
+}
+
+#myNotesHeader {
+	width:400px;
+	margin-top:3px;
+	float:left;
+}
+
+
+
+
+
+
+
+
+
+

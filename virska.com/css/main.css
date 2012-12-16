@@ -45,6 +45,11 @@ input {
 	padding:10px;
 }
 
+.listHeader {
+	padding:10px;
+	border-bottom:solid 1px gray;
+}
+
 #container {
 	margin-left:auto;
 	margin-right:auto;
