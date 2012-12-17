@@ -22,47 +22,34 @@
 #datepicker {
 }
 
-#new-assignment {
-	margin-right:auto;
-	margin-left:auto;
-	width:600px;
+#newAssignment {
+
 }
 
-.assignment-name {
-	margin:5px;
+#newAssignmentWrapper {
+
+}
+
+#dueDateLabel {
 	float:left;
-	width:250px;
 }
 
-.assignment-atr {
-	margin:5px;
+#descriptionLabel {
 	float:left;
-	width:150px;
 }
 
-.assignment-attach {
-	padding:4px;
-	float:right;
-	width:100px;
-	text-align:right;
+#attachmentLabel {
+	float:left;	
 }
 
-.assignment {
-	margin-right:auto;
-	margin-left:auto;
-	width:750px;
-	height:30px;
+#dueDate {
+	float:left;	
 }
 
-#assignmentHeader {
-	border-bottom:solid 1px gray;
-	margin-right:auto;
-	margin-left:auto;
-	width:750px;
-	height:30px;
+#description {
+	float:left;	
 }
 
-#section-wrapper {
-	width:400px;
-	padding-left:20px;
+#attachment {
+	float:left;	
 }

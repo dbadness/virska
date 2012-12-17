@@ -268,6 +268,12 @@
 			
 			$this->template->content = View::instance("v_users_validate");
 			$this->template->content->error = TRUE;
+			$client_files = Array(
+						"/js/validate.js",
+						"/css/validate.css"
+	                    );
+	
+		    $this->template->client_files = Utils::load_client_files($client_files);
 			echo $this->template;
 			
 		}

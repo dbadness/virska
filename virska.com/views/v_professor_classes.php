@@ -116,6 +116,19 @@
 			<label for="roomNumber">Room Number</label>
 			<input id="roomNumber" name="room_number">
 			<br>
+			<label for="building">Building Name</label>
+			<input id="building" name="building">
+			<br>
+			<label for="days">Days the section meets</label>
+			<br>
+			<input type="checkbox" name="mo" value="Monday">Monday</br>
+			<input type="checkbox" name="tu" value="Tuesday">Tuesday</br>
+			<input type="checkbox" name="we" value="Wednesday">Wednesday</br>
+			<input type="checkbox" name="th" value="Thursday">Thursday</br>
+			<input type="checkbox" name="fr" value="Friday">Friday</br>
+			<input type="checkbox" name="sa" value="Saturday">Saturday</br>
+			<input type="checkbox" name="su" value="Sunday">Sunday</br>
+			<br>
 			<input type="submit" value="Add Section">
 		</form>
 	</div>

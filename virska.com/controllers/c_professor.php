@@ -154,12 +154,15 @@
 			echo $this->template;
 		}
 				
-		public function p_add_assignment() {
+		public function p_upload_assignment() {
 			
 			# Allow the user to create an assignment
 			$_POST['user_id'] = $this->user->user_id;
 			$_POST['created'] = Time::now(); # this returns the current time
 			$_POST['modified'] = Time::now(); # this returns the current time
+			$_POST['doc'] = $this->user->user_id.$_POST['created'];
+
+			Upload::upload($_FILES, "/docs/", array("pdf", "doc", "docx"), $this->user->user_id.$_POST['created']);
 
 			#insert data into the database
 			DB::instance(DB_NAME)->insert('assignments', $_POST);

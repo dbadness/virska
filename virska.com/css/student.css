@@ -1,7 +1,30 @@
 /* CSS page for the student controller */
 
-#sectionsView {
-	border:solid 2px gray;
+#sectionsViewWrapper {
+}
+
+.sectionList {
+	font-size:90%;
+}
+
+#sectionName {
+	float:left;	
+}
+
+#sectionTime {
+	float:left;
+}
+
+#sectionDay {
+	float:left;
+}
+
+#sectionRoom {
+	float:left;
+}
+
+#sectionBuilding {
+	float:left;
 }
 
 #searchHeader {

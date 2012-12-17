@@ -5,3 +5,32 @@
 2012-12-16 15:42:12 - INFO --> BCC:  
 2012-12-16 15:42:12 - INFO --> Subject: Welcome to Virska! 
 2012-12-16 15:42:12 - INFO --> Body: Welcome to Virska, John. Your validation code is a 
+2012-12-16 15:53:29 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-16 15:53:29 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-16 15:53:29 - INFO --> To: David Baines (dave@thinkedella.com),  
+2012-12-16 15:53:29 - INFO --> CC:  
+2012-12-16 15:53:29 - INFO --> BCC:  
+2012-12-16 15:53:29 - INFO --> Subject: Welcome to Virska! 
+2012-12-16 15:53:29 - INFO --> Body: Welcome to Virska, David. The Virska team is revie 
+2012-12-16 15:53:29 - INFO --> FAILED TO SEND EMAIL 
+2012-12-16 15:53:59 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-16 15:53:59 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-16 15:53:59 - INFO --> To: David Baines (dave@thinkedella.com),  
+2012-12-16 15:53:59 - INFO --> CC:  
+2012-12-16 15:53:59 - INFO --> BCC:  
+2012-12-16 15:53:59 - INFO --> Subject: Welcome to Virska! 
+2012-12-16 15:53:59 - INFO --> Body: Welcome to Virska, David. The Virska team is revie 
+2012-12-16 15:54:00 - INFO --> Controller/Method: users/p_thank_you 
+2012-12-16 15:54:00 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-16 15:54:00 - INFO --> To: Verification Team (verification@thinkedella.com),  
+2012-12-16 15:54:00 - INFO --> CC:  
+2012-12-16 15:54:00 - INFO --> BCC:  
+2012-12-16 15:54:00 - INFO --> Subject: A new professor wants to be validated. 
+2012-12-16 15:54:00 - INFO --> Body: David Baines from Suffolk University wants to be v 
+2012-12-16 15:54:43 - INFO --> Controller/Method: admin/p_validate 
+2012-12-16 15:54:43 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-16 15:54:43 - INFO --> To: David Baines (dave@thinkedella.com),  
+2012-12-16 15:54:43 - INFO --> CC:  
+2012-12-16 15:54:43 - INFO --> BCC:  
+2012-12-16 15:54:43 - INFO --> Subject: You've been validated! 
+2012-12-16 15:54:43 - INFO --> Body: Dear David,<br><br>Thank you so much for your pati 

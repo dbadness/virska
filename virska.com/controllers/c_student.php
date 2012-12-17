@@ -34,23 +34,8 @@
 		
 		public function dashboard() {
 			
-			# We'll need classes and sections for our loops in the view for the "sectionView" div
-			$q = "SELECT sections.*, classes.class_name, classes.class_code
-			FROM sections
-			JOIN classes
-			USING (class_id)";
-			
-			$sections = DB::instance(DB_NAME)->select_rows($q);		
-			
-			# We'll also grab the sections they're following so they can unfollow if they need to
-			$q = "SELECT *
-			FROM sections_followed
-			WHERE user_id = ".$this->user->user_id;
-
-			$follows = DB::instance(DB_NAME)->select_rows($q);
-			
 			# Build a query of the professors this user is following - we're only interested in their sections
-			$q = "SELECT * 
+			$q = "SELECT section_id_followed 
 				FROM sections_followed
 				WHERE user_id = ".$this->user->user_id;
 
@@ -68,7 +53,7 @@
 			$connections_string = substr($connections_string, 0, -1);
 
 			# Run our query, store the results in the variable $sections (if they're following sections...)
-			if(isset($connection_string)) {
+			if($connections_string) {
 				
 				$q =
 				"SELECT sections.*, classes.class_name, classes.class_code
