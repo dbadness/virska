@@ -162,7 +162,7 @@
 			$_POST['modified'] = Time::now(); # this returns the current time
 			$_POST['doc'] = $this->user->user_id.$_POST['created'];
 
-			Upload::upload($_FILES, "/docs/", array("pdf", "doc", "docx"), $this->user->user_id.$_POST['created']);
+			Upload::upload($_FILES, "/docs/", array("pdf"), $_POST['doc']);
 
 			#insert data into the database
 			DB::instance(DB_NAME)->insert('assignments', $_POST);

@@ -12,9 +12,14 @@
 			<br>
 			<input name="date" id="datepicker" size="10">
 			<br>
+			<label for="attachment">Document Name</label>
+			<br>
+			<input type="text" name="doc_name">
+			<br>
 			<label for="attachment">Attachment</label>
 			<br>
 			<input type="file" name="doc">
+			<br>
 			<br>
 			<input type="submit" value="Add Assignment">
 		</form>
@@ -43,7 +48,7 @@
 			<?=$assignment['description']?>
 		</div>
 		<div id="attachment">
-			<a href="/<?=$assignment['doc']?>">Download <?=$assignment['doc']?></a>
+			<a href="/docs/<?=$assignment['doc']?>.pdf"><?=$assignment['doc_name']?></a>
 		</div>
 		<div style="clear:both;"></div>
 	</div>
