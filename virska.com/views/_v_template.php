@@ -30,6 +30,16 @@
 							My Classes
 						</div>
 					</a>
+					<a href="/notes">
+						<div class="navButton" id="notes">
+							Notes
+						</div>
+					</a>
+					<a href="/documents">
+						<div class="navButton" id="documents">
+							Documents
+						</div>
+					</a>
 				<?elseif($user->role == 'student'):?>
 					<a href="/student/dashboard">
 						<div class="navButton" id="dashboard">
@@ -41,9 +51,11 @@
 							Notes
 						</div>
 					</a>
-					<div class="navButton" id="documents">
-						Documents
-					</div>
+					<a href="/documents">
+						<div class="navButton" id="documents">
+							Documents
+						</div>
+					</a>
 					<div class="navButton" id="settings">
 						Settings
 					</div>

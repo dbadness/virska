@@ -1,0 +1,46 @@
+#docUpload {
+	background-color:gray;
+	margin-right:auto;
+	margin-left:auto;
+	width:770px;
+}
+
+#docNameLabel {
+	float:left;
+}
+
+#docUploadName {
+	float:left;
+}
+
+#docType {
+	float:left;
+	width:70px;
+	margin-top:7px;
+}
+
+#file {
+	float:left;
+	width:190px;
+	font-size:90%;
+	margin-top:6px;
+}
+
+#uploadButton {
+	float:right;
+	margin-top:5px;
+	margin-right:4px;
+}
+
+#docName {
+	float:left;
+}
+
+#docDownload {
+	margin-right:40px;
+	float:right;
+}
+
+#docDelete {
+	float:right;
+}
