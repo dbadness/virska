@@ -1,35 +1,30 @@
 #docUpload {
-	background-color:gray;
-	margin-right:auto;
-	margin-left:auto;
-	width:770px;
+	padding:10px;
+	background-color:lightgray;
+	border-radius:5px;
+	float:left;
+	width:400px;
 }
 
-#docNameLabel {
-	float:left;
-}
-
-#docUploadName {
-	float:left;
-}
-
-#docType {
-	float:left;
-	width:70px;
-	margin-top:7px;
+#docLimitBox {
+	text-align:center;
+	font-size:90%;
+	margin-top:1px;
+	padding:14px;
+	background-color:lightgray;
+	border-radius:5px;
+	float:right;
+	width:400px;	
 }
 
 #file {
 	float:left;
 	width:190px;
 	font-size:90%;
-	margin-top:6px;
 }
 
 #uploadButton {
 	float:right;
-	margin-top:5px;
-	margin-right:4px;
 }
 
 #docName {

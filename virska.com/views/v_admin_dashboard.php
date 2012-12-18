@@ -21,6 +21,17 @@ Validation Queue
 <br><br>
 User Report
 <br><br>
-<div id="userReport">
-	Total Users: <?=$count?>
+<div id="serverReport">
+	<div id="totalUsers">
+		Total Users: <?=$usercount?>
+	</div>
+	<div id="totalStudents">
+		Total Students:
+	</div>
+	<div id="totalProfessors">
+		Total Professors:
+	</div>
+	<div id="docFolderSize">
+		Documents Folder Size: <?=round(($db_size / 1073741824), 4);?> GB
+	</div>
 </div>

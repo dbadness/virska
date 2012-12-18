@@ -34,11 +34,17 @@ class admin_controller extends base_controller {
 		COUNT(user_id)
 		FROM users";
 		
-		$count = DB::instance(DB_NAME)->select_field($q);			
+		$usercount = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT SUM(size)
+		FROM documents";
+		
+		$db_size = DB::instance(DB_NAME)->select_field($q);	
 		
 		$this->template->content = View::instance("v_admin_dashboard");
 		$this->template->content->professors = $professors;
-		$this->template->content->count = $count;
+		$this->template->content->db_size = $db_size;
+		$this->template->content->usercount = $usercount;
 		$client_files = Array(
 					"/js/admin.js",
 					"/css/admin.css",

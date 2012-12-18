@@ -69,8 +69,7 @@
 						<div id="userIdentifier">
 							Welcome, <?=$user->first_name?>.
 						</div>
-						<div style="clear:both;">
-						</div>
+						<div style="clear:both;"></div>
 					</div>
 			<?else:?>
 				<a href="/users/login">
@@ -83,8 +82,7 @@
 						Sign Up
 					</div>
 				</a>
-				<div style="clear:both;">
-				</div>
+				<div style="clear:both;"></div>
 			<?endif;?>
 		</div>
 	</div>

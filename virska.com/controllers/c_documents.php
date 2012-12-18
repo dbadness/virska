@@ -18,8 +18,15 @@ class documents_controller extends base_controller {
 		
 		$docs = DB::instance(DB_NAME)->select_rows($q);
 		
+		$q = "SELECT SUM(size)
+		FROM documents
+		WHERE user_id = ".$this->user->user_id;
+		
+		$doc_size = DB::instance(DB_NAME)->select_field($q);
+		
 		$this->template->content = View::instance("v_documents_index");
 		$this->template->content->docs = $docs;
+		$this->template->content->doc_size = $doc_size;
 		$this->template->title = $this->user->first_name." ".$this->user->last_name."'s Documents";
 		$client_files = Array(
 							"/js/document.js",
@@ -37,9 +44,11 @@ class documents_controller extends base_controller {
 		# Allow the user to create an assignment
 		$_POST['user_id'] = $this->user->user_id;
 		$_POST['created'] = Time::now(); # this returns the current time
-		$_POST['doc'] = $this->user->user_id.$_POST['created'];
+		$_POST['size'] = $_FILES['doc']['size'];
+		$_POST['doc_name'] = $_FILES['doc']['name'];
+		$_POST['doc_code'] = $this->user->user_id."-".$_FILES['doc']['name'];
 
-		Upload::upload($_FILES, "/docs/", array("pdf", "doc", "xsl", "ppt"), $_POST['doc']);
+		Upload::upload($_FILES, "/docs/", array("pdf", "doc", "xsl", "ppt"), substr($_POST['doc_code'], 0, -4));
 
 		#insert data into the database
 		DB::instance(DB_NAME)->insert('documents', $_POST);

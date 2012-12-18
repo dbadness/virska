@@ -8,4 +8,16 @@ $(document).ready(function(){
 	      } 
 	});
 	
+	$("form").submit(function() {
+      if ($("#file").val() != 0) {
+        return true;
+      }
+     	$("#docLimitBox").html("Please choose a file first.");
+		$("#docLimitBox").css("border", "solid red 3px");
+		$("#docLimitBox").css("background-color", "beige");
+		$("#docLimitBox").css("padding", "11");
+		$('#docLimitBox').effect("shake", { times:2 }, 50);
+      return false;
+    });
+	
 });

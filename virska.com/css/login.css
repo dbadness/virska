@@ -10,20 +10,24 @@
 }
 
 #loginFormEmailLabel {
+	float:left;
 	margin-left:70px;
 	margin-top:8px;
 }
 
 #loginFormPasswordLabel {
+	float:left;
 	margin-left:42px;
 	margin-top:8px;
 }
 
 #loginFormEmailInput {
+	float:right;
 	margin-right:40px;
 }
 
 #loginFormPasswordInput {
+	float:right;
 	margin-right:40px;
 }
 
@@ -55,3 +59,47 @@
 	margin-left:65px;
 	margin-top:6px;
 }
+
+/* sign up page CSS */
+
+#signupForm {
+	padding-top:20px;
+	float:left;
+}
+
+#signupCopyWrapper {
+	margin-top:20px;
+	height:300px;
+	width:580px;
+	padding:30px;
+	float:right;
+	border:solid 1px gray;
+}
+
+#logos {
+	
+}
+
+.logo {
+	float:left;
+}
+
+#bu {
+	margin-left:10px;
+}
+
+#babson {
+	margin-top:-10px;
+	margin-left:30px;
+	margin-right:20px;
+}
+
+#suffolk {
+	margin-top:15px;
+}
+
+#signupCopy {
+	text-align:center;
+}
+
+

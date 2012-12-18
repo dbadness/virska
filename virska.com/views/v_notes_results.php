@@ -20,13 +20,17 @@
 <div class="spacer" style="clear:both"></div>
 <div id="searchResultsWrapper">
 	<div class="listHeader">
-		<div id="titleLabel">
-			<i>Note Title</i>
-		</div>
-		<div id="modifiedLabel">
-			<i>Last Modified</i>
-		</div>
-		<div style="clear:both;"></div>
+		<?if(!$results):?>
+			<p style="text-align:center;">No matching results for '<?=$_POST['search']?>'</p>
+		<?else:?>
+			<div id="titleLabel">
+				<i>Note Title</i>
+			</div>
+			<div id="modifiedLabel">
+				<i>Last Modified</i>
+			</div>
+			<div style="clear:both;"></div>
+		<?endif;?>
 	</div>
 	<?foreach($results as $result):?>
 		<div class="listItem">
