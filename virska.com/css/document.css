@@ -8,13 +8,14 @@
 
 #docLimitBox {
 	text-align:center;
-	font-size:90%;
 	margin-top:1px;
-	padding:14px;
+	padding:10px;
+	padding-top:40px;
 	background-color:lightgray;
 	border-radius:5px;
 	float:right;
-	width:400px;	
+	width:370px;
+	height:53px;	
 }
 
 #file {
@@ -38,4 +39,12 @@
 
 #docDelete {
 	float:right;
+}
+
+#duplicateError {
+	margin-top:10px;
+	padding:10px;
+	background-color:lightgray;
+	border-radius:5px;
+	text-align:center;
 }

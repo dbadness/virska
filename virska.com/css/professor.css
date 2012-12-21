@@ -19,15 +19,53 @@
 	padding:20px;
 }
 
+#newAssignmentWrapper {
+
+}
+
+#newEventLabel {
+	margin-top:5px;
+	float:left;
+}
+
+#newEvent {
+	margin-left:10px;
+	float:left;
+}
+
+#newEventDateLabel {
+	margin-top:15px;
+	float:left;
+}
+
+#newEventDate {
+	margin-top:10px;
+	margin-left:57px;
+	float:left;
+}
+
 #datepicker {
 }
 
-#newAssignment {
 
+#ifAttachment {
+	display:none;
+	float:right;
+	margin-top:10px;
+	border:solid 1px red;
 }
 
-#newAssignmentWrapper {
+#newAttachmentLabel {
+	
+}
 
+#newAttachment {
+	
+}
+
+#assignmentButton {
+	margin-top:10px;
+	float:left;
 }
 
 #dueDateLabel {

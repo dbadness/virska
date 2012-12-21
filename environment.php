@@ -20,9 +20,9 @@ define('ENABLE_OUTGOING_EMAIL', TRUE);
 define('REMOTE_DB', FALSE);
 
 if (REMOTE_DB) {
-	define('DB_HOST', '');
-	define('DB_USER', '');
-	define('DB_PASS', '');
+	define('DB_HOST', 'localhost');
+	define('DB_USER', 'virskaco');
+	define('DB_PASS', 'Maxbemis45!');
 
 } else {
 	define('DB_HOST', 'localhost');

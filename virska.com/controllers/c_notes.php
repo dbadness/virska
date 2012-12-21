@@ -120,14 +120,6 @@
 			
 			$note = DB::instance(DB_NAME)->select_row($q);
 			
-			$q = "SELECT sections.section_name, classes.class_name, classes.class_code
-			FROM sections
-			JOIN classes
-			USING (class_id)
-			WHERE section_id = ".$note['section_id'];
-			
-			$section = DB::instance(DB_NAME)->select_row($q);
-			
 			# Make sure they can't edit other people's notes
 			if($this->user->user_id != $note['user_id']) {
 				Router::redirect("/notes/index");
@@ -146,7 +138,6 @@
 			
 			# Pass the note to the view
 			$this->template->content->note = $note;
-			$this->template->content->section = $section;
 		
 			echo $this->template;
 		}
@@ -204,29 +195,29 @@
 		
 		public function results() {
 
-				# if they searched for a note, deliver it to them
-				# look through the notes table for notes (from this user) that match their search parameters
-				$q = "SELECT *
-				FROM notes 
-				WHERE content
-				LIKE '%".$_POST['search']."%'
-				AND user_id = ".$this->user->user_id;
+			# if they searched for a note, deliver it to them
+			# look through the notes table for notes (from this user) that match their search parameters
+			$q = "SELECT *
+			FROM notes 
+			WHERE content
+			LIKE '%".$_POST['search']."%'
+			AND user_id = ".$this->user->user_id;
+		
+			$results = DB::instance(DB_NAME)->select_rows($q);
 			
-				$results = DB::instance(DB_NAME)->select_rows($q);
-				
-				$client_files = Array(
-									"http://js.nicedit.com/nicEdit-latest.js",
-									"/js/note.js",
-									"/css/note.css"
-									 );
+			$client_files = Array(
+								"http://js.nicedit.com/nicEdit-latest.js",
+								"/js/note.js",
+								"/css/note.css"
+								 );
 
-			    $this->template->client_files = Utils::load_client_files($client_files);
-			
-				$this->template->content = View::instance("v_notes_results");
-				$this->template->content->results = $results;
-				$this->template->title = "Notes containing '".$_POST['search']."' for ".$this->user->first_name." ".$this->user->last_name;
-			
-				echo $this->template;
+		    $this->template->client_files = Utils::load_client_files($client_files);
+		
+			$this->template->content = View::instance("v_notes_results");
+			$this->template->content->results = $results;
+			$this->template->title = "Notes containing '".$_POST['search']."' for ".$this->user->first_name." ".$this->user->last_name;
+		
+			echo $this->template;
 				
 		}
 	}

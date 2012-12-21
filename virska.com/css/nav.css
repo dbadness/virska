@@ -8,15 +8,20 @@
 
 #navBar {
 	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
-   	background-image: -webkit-linear-gradient(top, #0066FF, #0000CC);
-	
+   	background: -webkit-linear-gradient(top, #0066FF, #0000CC);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0066FF', endColorstr='#0000CC');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #0066FF,  #0000CC);
 	height:100px;
 	overflow:auto;
 }
 
 .navButton {
 	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
-   	background-image: -webkit-linear-gradient(top, #DDF1FF, #86CCD6); 	
+   	background: -webkit-linear-gradient(top, #DDF1FF, #86CCD6); 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DDF1FF', endColorstr='#86CCD6');
+	background: -moz-linear-gradient(top,  #DDF1FF,  #86CCD6);
 	
 	color:black;
 	margin-top:27px;

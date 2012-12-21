@@ -20,7 +20,7 @@
 			<div id="sectionList">
 				<?foreach($sections as $section):?>		
 						<?if($section['user_id'] == $professor['user_id']):?>
-							<?=$section['class_code']?> <?=$section['section_name']?> - <a href="/student/p_follow/<?=$section['section_id']?>">Follow this Section</a><br>
+							<a href="/student/p_follow/<?=$section['section_id']?>"><?=$section['class_code']?> <?=$section['section_name']?></a><br>
 						<?endif;?>
 				<?endforeach;?>
 			</div>

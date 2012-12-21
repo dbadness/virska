@@ -26,50 +26,71 @@
 		
 		public function p_signup() {
 			
-			#hash the password
-			# $_POST['password'] = sha1(PASSWORD_SALT . $_POST['password']);
-			$_POST['created'] = Time::now(); # this returns the current time
-			$_POST['modified'] = Time::now(); # this returns the current time
+			# if the user's email doesn't match one of our partner's schools....
+			if(strstr($_POST['email'], '@') != '@fas.harvard.edu') { // why isn't this accepting multiple conditions?
 			
-			# create the validation code that'll be used to authenticate the user's school affiation
-			$_POST['val_code'] = Utils::generate_random_string();
-			
-			# create token for cookie for sessions
-			$_POST['token'] = sha1(TOKEN_SALT . $_POST['email'] . Utils::generate_random_string());
-			
-			#insert data into the database
-			DB::instance(DB_NAME)->insert('users', $_POST);
-			
-			# Now let's refer to that token to make them a cookie so we can set up their first session
-			$q = "SELECT token 
-				FROM users 
-				WHERE email = '".$_POST['email']."'";
-
-			$token = DB::instance(DB_NAME)->select_field($q);	
-
-			# If we didn't get a token back, login failed
-			if(!$token) {
-
-				# Send them back to the login page with an error message
-				Router::redirect("/users/login_error");
-
-			# But if we did, login succeeded! 
+				# send the user back to the signup page with the feedback that their school isn't added to virska yet
+				Router::redirect("/users/notyet");
+				return false;
+				
 			} else {
+				
+				$_POST['created'] = Time::now(); # this returns the current time
+				$_POST['modified'] = Time::now(); # this returns the current time
+			
+				# create the validation code that'll be used to authenticate the user's school affiliation
+				$_POST['val_code'] = Utils::generate_random_string();
+			
+				# create token for cookie for sessions
+				$_POST['token'] = sha1(TOKEN_SALT . $_POST['email'] . Utils::generate_random_string());
+				
+				# grab their school and put it into the DB
+				if(strstr($_POST['email'], '@') == '@fas.harvard.edu') {
+					$_POST['school'] = 'Harvard University';
+				}
+			
+				#insert data into the database
+				DB::instance(DB_NAME)->insert('users', $_POST);
+			
+				# Now let's refer to that token to make them a cookie so we can set up their first session
+				$q = "SELECT token 
+					FROM users 
+					WHERE email = '".$_POST['email']."'";
 
-				# Store this token in a cookie
-				setcookie("token", $token, strtotime('+2 weeks'), '/');
+				$token = DB::instance(DB_NAME)->select_field($q);	
 
-				# Send them to the main page - or whever you want them to go
-				Router::redirect("/users/p_validate_email");
+				# If we didn't get a token back, login failed
+				if(!$token) {
+
+					# Send them back to the login page with an error message
+					Router::redirect("/users/login_error");
+
+				# But if we did, login succeeded! 
+				} else {
+
+					# Store this token in a cookie
+					setcookie("token", $token, strtotime('+2 weeks'), '/');
+
+					# Send them to the main page - or whever you want them to go
+					Router::redirect("/users/p_validate_email");
+				}
 			}
+		}
+		
+		public function notyet() {
+			
+			$error = TRUE;
+			$this->template->content = View::instance("v_users_signup");
+			$this->template->content->error = $error;
+			$this->template->title = "Users Signup";
+			
+			echo $this->template;
 		}
 		
 		public function admin_p_signup() {
 			
 			$insert['created'] = Time::now();
 			$insert['modified'] = Time::now();
-
-
 			$insert['email'] = ADMIN_EMAIL;
 			$insert['password'] = sha1(ADMIN_PASSWORD);
 			$insert['first_name'] = "David";

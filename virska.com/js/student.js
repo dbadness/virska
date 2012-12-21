@@ -9,5 +9,10 @@ $(document).ready(function() {
 	         return false;
 	      } 
 	});
+	
+	$('.happening').click(function() {
+		$('.active').removeClass('active').addClass('passive');
+		$(this).addClass('active');
+	});
 
 });

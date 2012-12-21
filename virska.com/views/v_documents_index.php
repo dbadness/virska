@@ -1,5 +1,6 @@
 <?if($doc_size < 2 * 1073741824):?>
 <div id="docUpload">
+	You can upload Word, Excel, PowerPoint, and PDF files to download later from any computer with internet.<br><br>
 	<form id="docUploadForm" action="/documents/p_upload_doc" method="post" enctype="multipart/form-data">
 			<input id="file" type="file" name="doc">
 			<input id="uploadButton" type="submit" value="Upload Document">
@@ -15,6 +16,11 @@
 	<?=round(($doc_size / 1073741824), 2)?> GB used, <?=2 - (round(($doc_size / 1073741824), 2))?> GB remaining
 </div>
 <div style="clear:both;"></div>
+<?if(isset($upload_error)):?>
+	<div id="duplicateError">
+		That file already exists in your cloud. Please change the file name or delete the file that already exists.
+	</div>
+<?endif;?>
 <div class="spacer"></div>
 	<?if($docs):?>
 		<div id="docsList">

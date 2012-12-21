@@ -1,18 +1,15 @@
+<?if(isset($error)):?>
+	<div id="noSchool" class="errorBox" style="display:block;padding:30px;font-size:130%;">
+		Your school hasn't been added to the list of Virska test schools yet. If you think Virska is something that's needed at your school, let us know by tweeting at us at @virska and we'll look into it!
+	</div>
+<?endif;?>
 <div id="signupForm">
 	<form class="signup" action='/users/p_signup' method='post' accept-charset='UTF-8'>
 		<label for="role">Are you a student or a professor?</label><br>
 	    <select name="role" id="role">
 			<option value="student">Student</option>
 			<option value="professor">Professor</option>
-		</select>		
-
-		<br><br>
-		<label for="role">Which school do you attend?</label><br>		
-	    <select name="school" id="school">
-			<option value="Suffolk University">Suffolk University</option>
-			<option value="Boston University">Boston University</option>
-			<option value="University of Massachusetts">University of Massachusetts</option>
-		</select>		
+		</select>	
 
 		<br><br>
 		
@@ -51,7 +48,7 @@
 	<div class="spacer"></div>
 	<div class="spacer"></div>
 	<div id="signupCopy">
-		Virska will only be available in these three schools while we test everything out. If you'd Virska in your school, remember you can always shoot us a tweet to @virska to let us know!
+		Virska will only be available in these three schools while we test everything out. If you'd like Virska in your school, remember you can always shoot us a tweet to @virska to let us know!
 	</div>
 	<div class="spacer"></div>
 </div>

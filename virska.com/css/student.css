@@ -1,10 +1,36 @@
 /* CSS page for the student controller */
 
 #sectionsViewWrapper {
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #F7F7F7, #CCCCCC);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F7F7F7', endColorstr='#CCCCCC');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #F7F7F7,  #CCCCCC);
+	border:solid 1px gray;
+}
+
+#sectionsFollowingHeader {
+	float:left;
+	padding:10px;
+}
+
+#searchLink {
+	float:right;
+	padding:10px;
+}
+
+#searchPic {
+	float:right;
+}
+
+.sectionListWrapper {
+	padding:10px;
 }
 
 .sectionList {
 	font-size:90%;
+	margin-top:2px;
 }
 
 #sectionName {
@@ -26,6 +52,60 @@
 #sectionBuilding {
 	float:left;
 }
+
+/* ------ Assignment View CSS ------- */
+
+#assignmentViewer {
+	height:400px;
+	border:solid 1px gray;
+}
+
+#assignmentViewerHeader {
+	padding:10px;
+}
+
+#dateHeader {
+}
+
+.happening {
+	width:268px;
+	float:left;
+	text-align:center;
+	padding:15px;
+	border-bottom:solid 1px gray;
+}
+
+.passive {
+	background: -webkit-linear-gradient(top, #F7F7F7, #CCCCCC); 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F7F7F7', endColorstr='#CCCCCC');
+	background: -moz-linear-gradient(top,  #F7F7F7,  #CCCCCC);
+}
+
+.active {
+	/* cross browser gradients */
+	background: -webkit-linear-gradient(top, #DDF1FF, #86CCD6); 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DDF1FF', endColorstr='#86CCD6');
+	background: -moz-linear-gradient(top,  #DDF1FF,  #86CCD6);
+}
+
+#dueTodayLabel {
+	
+}
+
+#dueWeekLabel {
+	border-left:solid 1px gray;
+}
+
+#searchDayLabel {
+	border-left:solid 1px gray;
+	width:269px;
+}
+
+#canvas {
+	
+}
+
+/* -------- Search pages CSS ---------- */
 
 #searchHeader {
 	margin-left:auto;
@@ -74,7 +154,7 @@
 }
 
 #sectionList {
-	margin-left:270px;
+	margin-left:450px;
 }
 
 #searchResultError {
@@ -84,7 +164,10 @@
 	display:block;
 }
 
-
+#unfollowButton {
+	float:right;
+	margin-top:1px;
+}
 
 #professorSearchBox {
 	

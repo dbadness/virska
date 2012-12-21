@@ -1,30 +1,38 @@
 <strong><?=$section['class_name']?>, Section <?=$section['section_name']?></strong>
 <br><br><hr>
 <div id="newAssignmentWrapper">
-	<div id="newAssignment">
-		<form id="newAssignmentForm" action="/professor/p_upload_assignment" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="section_id" value="<?=$section['section_id']?>">
-			<label for="description">Assignment Description:</label>
-			<br>
-			<input size="40" name="description">
-			<br>
-			<label for="date">Due Date:</label>
-			<br>
+	<form id="newAssignmentForm" action="/professor/p_upload_assignment" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="section_id" value="<?=$section['section_id']?>">
+		<div id="newEventLabel">
+			Event Description
+		</div>
+		<div id="newEvent">
+			<input placeholder="'Project One Due' or 'First Essay Draft Due'" size="50" name="description">
+		</div>
+		<div id"attachmentCheck">
+			<input type="checkbox" id="attachmentCheckbox">Attachment?	
+		</div>
+		<div style="clear:both;"></div>
+		<div id="newEventDateLabel">
+			Event Date
+		</div>
+		<div id="newEventDate">
 			<input name="date" id="datepicker" size="10">
-			<br>
-			<label for="attachment">Document Name</label>
-			<br>
-			<input type="text" name="doc_name">
-			<br>
-			<label for="attachment">Attachment</label>
-			<br>
-			<input type="file" name="doc">
-			<br>
-			<br>
-			<input type="submit" value="Add Assignment">
-		</form>
-	</div>
-	<div style="clear:both;"></div>
+		</div>
+		<div id="ifAttachment">
+			<div id="newAttachmentLabel">
+				Attachment:
+			</div>
+			<div id="newAttachment">
+				<input style="width:300px;" type="file" name="doc">
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+		<div id="assignmentButton">
+			<input type="submit" value="Add Event">
+		</div>
+		<div style="clear:both;"></div>
+	</form>
 </div>
 <hr>
 <div id="assignmentHeader" class="listHeader">

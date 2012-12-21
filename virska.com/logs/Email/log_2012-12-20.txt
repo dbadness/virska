@@ -1,0 +1,7 @@
+2012-12-20 15:19:42 - INFO --> Controller/Method: users/p_login 
+2012-12-20 15:19:42 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-20 15:19:42 - INFO --> To: Virska (webmaster@virska.com),  
+2012-12-20 15:19:42 - INFO --> CC:  
+2012-12-20 15:19:42 - INFO --> BCC:  
+2012-12-20 15:19:42 - INFO --> Subject: Virska SQL Error 
+2012-12-20 15:19:42 - INFO --> Body: <h2>SQL Error</h2>  <h2>Query History</h2><h2>Rout 

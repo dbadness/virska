@@ -124,7 +124,7 @@
 			FROM sections_followed
 			WHERE user_id = ".$this->user->user_id;
 
-			$follows = DB::instance(DB_NAME)->select_rows($q);
+			$follows = DB::instance(DB_NAME)->select_array($q, 'section_id_followed');
 			
 			$this->template->content = View::instance("v_student_search_results");		
 			$this->template->title = "Professors at ".$this->user->school;
