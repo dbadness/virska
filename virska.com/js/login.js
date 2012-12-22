@@ -7,6 +7,7 @@ $(document).ready(function() {
         return true;
       }
       	$("#noValuesError").show();
+		
 		$('#loginForm').effect("shake", { times:2 }, 50);
       return false;
     });

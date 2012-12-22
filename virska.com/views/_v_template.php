@@ -82,6 +82,11 @@
 						Sign Up
 					</div>
 				</a>
+				<a href="/">
+					<div id="logo">
+						<img src="/images/logo.png">
+					</div>
+				</a>
 				<div style="clear:both;"></div>
 			<?endif;?>
 		</div>

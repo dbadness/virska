@@ -1,6 +1,6 @@
 <?if(isset($error)):?>
-	<div id="noSchool" class="errorBox" style="display:block;padding:30px;font-size:130%;">
-		Your school hasn't been added to the list of Virska test schools yet. If you think Virska is something that's needed at your school, let us know by tweeting at us at @virska and we'll look into it!
+	<div id="noSchool">
+		<h3>Your school hasn't been added to the list of Virska test schools yet.</h3>If you think Virska is something that's needed at your school, let us know by tweeting at us at @virska and we'll look into it!
 	</div>
 <?endif;?>
 <div id="signupForm">
@@ -30,6 +30,9 @@
 
 	   	<input type='submit' value='Sign Up' />
 	</form>
+	<div style="float:left;margin-top:11px;" class="errorBox" id="noValuesError">
+		Please make sure all boxes are filled in correctly.
+	</div>
 </div>
 <div id="signupCopyWrapper">
 	<div id="logos">

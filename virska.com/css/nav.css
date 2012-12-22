@@ -55,7 +55,10 @@
 	
 }
 
-
+#logo {
+	margin-top:-80px;
+	float:right;
+}
 #logout {
 	float:right;
 	color:white;
