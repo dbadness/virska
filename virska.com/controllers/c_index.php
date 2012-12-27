@@ -41,4 +41,30 @@ class index_controller extends base_controller {
 		echo $this->template;
 	}
 	
+	public function about() {
+		
+		$this->template->content = View::instance("v_index_about");
+		$client_files = Array(
+					"/css/index.css",
+					"/js/index.js"
+                    );
+ 		$this->template->client_files = Utils::load_client_files($client_files);
+		$this->template->title = "About Virska";
+		
+		echo $this->template;
+	}
+	
+	public function contact() {
+		
+		$this->template->content = View::instance("v_index_contact");
+		$client_files = Array(
+					"/css/index.css",
+					"/js/index.js"
+                    );
+ 		$this->template->client_files = Utils::load_client_files($client_files);
+		$this->template->title = "Contact Virska";
+		
+		echo $this->template;
+	}
+	
 } // end class

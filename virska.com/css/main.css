@@ -9,6 +9,10 @@ body {
 	font-family: Tahoma, Geneva, sans-serif;
 }
 
+a img {
+	border:none;
+}
+
 input {
 	font-size:120%;
 }
