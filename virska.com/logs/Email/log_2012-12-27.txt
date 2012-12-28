@@ -1,0 +1,28 @@
+2012-12-27 18:17:16 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-27 18:17:16 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-27 18:17:16 - INFO --> To: David Baines (dbaines@fas.harvard.edu),  
+2012-12-27 18:17:16 - INFO --> CC:  
+2012-12-27 18:17:16 - INFO --> BCC:  
+2012-12-27 18:17:16 - INFO --> Subject: Welcome to Virska! 
+2012-12-27 18:17:16 - INFO --> Body: Welcome to Virska, David. Your validation code is  
+2012-12-27 18:18:42 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-27 18:18:42 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-27 18:18:42 - INFO --> To: David Baines (dbaines@fas.harvard.edu),  
+2012-12-27 18:18:42 - INFO --> CC:  
+2012-12-27 18:18:42 - INFO --> BCC:  
+2012-12-27 18:18:42 - INFO --> Subject: Welcome to Virska! 
+2012-12-27 18:18:42 - INFO --> Body: Welcome to Virska, David. The Virska team is revie 
+2012-12-27 18:18:43 - INFO --> Controller/Method: users/p_thank_you 
+2012-12-27 18:18:43 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-27 18:18:43 - INFO --> To: Verification Team (verification@thinkedella.com),  
+2012-12-27 18:18:43 - INFO --> CC:  
+2012-12-27 18:18:43 - INFO --> BCC:  
+2012-12-27 18:18:43 - INFO --> Subject: A new professor wants to be validated. 
+2012-12-27 18:18:43 - INFO --> Body: David Baines from Harvard University wants to be v 
+2012-12-27 18:19:37 - INFO --> Controller/Method: admin/p_validate 
+2012-12-27 18:19:37 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-27 18:19:37 - INFO --> To: David Baines (dbaines@fas.harvard.edu),  
+2012-12-27 18:19:37 - INFO --> CC:  
+2012-12-27 18:19:37 - INFO --> BCC:  
+2012-12-27 18:19:37 - INFO --> Subject: You've been validated! 
+2012-12-27 18:19:37 - INFO --> Body: Dear David,<br><br>Thank you so much for your pati 

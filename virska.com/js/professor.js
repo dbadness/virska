@@ -7,8 +7,20 @@ $(document).ready(function() {
 	    });
 	});
 	
-	$("#attachmentCheckbox").click(function() {
-		$("#ifAttachment").show();
-		$("#assignmentButton").css("margin-top", "-7px");
+	$("#addAttachment").click(function() {
+		$("#attachment").show();
+		$("#eventDate").css("margin-top", "-41px");
+		$(this).css("width", "170px");
+		$(this).css("height", "20px");
+		$(this).html("Add an Attachment <div id=\"attachmentCheck\"><img src='/images/checkmark.png' width='25'></div><div style='clear:right;'></div>");
+	}); 
+	
+	// Make sure the user knows that they're willing to delete their event
+	$('#deleteButton').click(function() {
+	   var answer = confirm("Are you sure you want to delete this event? This action cannot be undone.");
+	      if (!answer) {
+	         return false;
+	      } 
 	});
+
 });

@@ -25,9 +25,9 @@
 		<div id="headerContainer">
 			<?if($user):?>
 				<?if($user->role == 'professor'):?>
-					<a href="/professor/classes">
-						<div class="navButton" id="myClasses">
-							My Classes
+					<a href="/professor/dashboard">
+						<div class="navButton" id="professorDashboard">
+							Dashboard
 						</div>
 					</a>
 					<a href="/notes">

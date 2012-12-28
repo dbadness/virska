@@ -1,66 +1,141 @@
 /* CSS page for the professor controller */
 
-#wrapper {
+/* ----- Sections View CSS ------ */
+
+#mySectionsHeader {
+	float:left;
+	padding:10px;
+}
+
+#editClasses {
+	float:right;
+	padding:10px;
+}
+
+#sectionsViewWrapper {
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #F7F7F7, #CCCCCC);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F7F7F7', endColorstr='#CCCCCC');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #F7F7F7,  #CCCCCC);
+	border:solid 1px gray;
+}
+
+.sectionListWrapper {
+	padding:10px;
+}
+
+.sectionList {
+	font-size:90%;
+	margin-top:2px;
+}
+
+#sectionName {
+	float:left;	
+}
+
+#sectionTime {
+	float:left;
+}
+
+#sectionDay {
+	float:left;
+}
+
+#sectionRoom {
+	float:left;
+}
+
+#sectionBuilding {
+	float:left;
+}
+
+#editSection {
+	float:right;
+}
+
+/* ----- Add a class and section CSS (professor/classes) ---- */
+
+#addClassWrapper {
 	width:650px;
 	margin-left:auto;
 	margin-right:auto;
 }
 
-#add-class {
+#addClass {
 	width:280px;
 	float:left;
 	padding:20px;
 }
 
-#add-section {
+#addSection {
 	width:280px;
 	float:right;
 	border-left:1px solid gray;
 	padding:20px;
 }
 
-#newAssignmentWrapper {
 
+/* ----- Add an assignment CSS (/professor/section/X) ---*/
+
+#newEventWrapper {
+}
+
+#descriptionInput {
+	float:left;
 }
 
 #newEventLabel {
-	margin-top:5px;
-	float:left;
 }
 
 #newEvent {
-	margin-left:10px;
+}
+
+#eventDate {
 	float:left;
+	margin-top:4px;
 }
 
 #newEventDateLabel {
-	margin-top:15px;
-	float:left;
 }
 
 #newEventDate {
-	margin-top:10px;
-	margin-left:57px;
-	float:left;
 }
 
 #datepicker {
 }
 
-
-#ifAttachment {
-	display:none;
+#attachmentBox {
 	float:right;
-	margin-top:10px;
-	border:solid 1px red;
+	width:300px;
+	margin-top:20px;
 }
 
-#newAttachmentLabel {
-	
+#addAttachment {
+	margin-left:auto;
+	margin-right:auto;
+	width:140px;
+	padding:10px;
+	border:solid 1px black;
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #F7F7F7, #CCCCCC);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F7F7F7', endColorstr='#CCCCCC');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #F7F7F7,  #CCCCCC);
+	cursor:pointer;
 }
 
-#newAttachment {
-	
+#attachment {	
+	display:none;
+	margin-top:20px;
+	font-size:80%;
+}
+
+#attachmentCheck {
+	float:right;
+	margin-top:-2px;
 }
 
 #assignmentButton {
@@ -68,16 +143,20 @@
 	float:left;
 }
 
+/* ----- Event list CSS ----- */
+
 #dueDateLabel {
 	float:left;
 }
 
 #descriptionLabel {
 	float:left;
+	margin-left:100px;
 }
 
 #attachmentLabel {
-	float:left;	
+	float:left;
+	margin-left:400px;
 }
 
 #dueDate {
@@ -86,8 +165,14 @@
 
 #description {
 	float:left;	
+	margin-left:80px;
 }
 
-#attachment {
-	float:left;	
+#attachmentIcon {
+	margin-right:165px;
+	float:right;
+}
+
+#deleteEvent {
+	float:right;
 }

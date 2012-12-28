@@ -106,7 +106,7 @@ class documents_controller extends base_controller {
 	
 	public function p_delete_doc($doc_id) {
 		
-		#Delete the note for them
+		#Delete the document for them
 		DB::instance(DB_NAME)->delete('documents', "WHERE doc_id = ".$doc_id);
 
 		# Bring them to their notes page

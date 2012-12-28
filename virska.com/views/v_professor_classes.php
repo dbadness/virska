@@ -15,9 +15,8 @@
 <br>
 <br>
 <hr>
-<div id="wrapper">
-	<br>
-	<div id="add-class">
+<div id="addClassWrapper">
+	<div id="addClass">
 		<form class="form" id="class" method="post" action="/professor/p_add_class" >
 			<label for="class_code">Class Code (ie. MGT 101)</label>
 			<input type="text" name="class_code" id="class_code">
@@ -30,7 +29,7 @@
 			<input type="submit" value="Add Class">
 		</form>
 	</div>
-	<div id="add-section">
+	<div id="addSection">
 		<form class="form" id="section" method="post" action="/professor/p_add_section" >
 			<label for="section_name">Section Name</label>
 			<input type="text" name="section_name" id="section_name">

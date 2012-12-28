@@ -28,7 +28,19 @@
 		
 		public function dashboard() {
 			
-			$this->template->content = View::instance("v_professor_dashboard");
+			# Run our query, store the results in the variable $sections (if they're following sections...
+			$q =
+			"SELECT sections.*, classes.class_name, classes.class_code
+			FROM sections 
+			JOIN classes USING (class_id) 
+			WHERE sections.user_id = ".$this->user->user_id;
+			
+			$sections = DB::instance(DB_NAME)->select_rows($q);
+			
+			# The user's main dashboard in Virska
+			$this->template->content = View::instance('v_professor_dashboard');
+			$this->template->title = "Dashboard for ".$this->user->first_name." ".$this->user->last_name;
+			$this->template->content->sections = $sections;
 			
 			echo $this->template;
 		}
@@ -136,38 +148,55 @@
 			
 			#  Give the user the ability to find the assignments associated with the selected section
 			$q = "SELECT *
-				FROM assignments 
+				FROM events 
 				WHERE user_id = ".$this->user->user_id." 
 				AND section_id = ".$section_id;
 
-			$assignments = DB::instance(DB_NAME)->select_rows($q);
+			$events = DB::instance(DB_NAME)->select_rows($q);
 						
 			# Setup the view
 			$this->template->content = View::instance('v_professor_section');
 	
 			# Pass data back to the view
 			$this->template->content->section = $section;
-			$this->template->content->assignments = $assignments;
+			$this->template->content->events = $events;
 			$this->template->title = $section['class_name'].", Section ".$section['section_name'];
 	
 			# Render the view
 			echo $this->template;
 		}
 				
-		public function p_upload_assignment() {
+		public function p_add_event() {
 			
-			# Allow the user to create an assignment
+			# Allow the professor to create an event
 			$_POST['user_id'] = $this->user->user_id;
 			$_POST['created'] = Time::now(); # this returns the current time
 			$_POST['modified'] = Time::now(); # this returns the current time
-			$_POST['doc'] = $this->user->user_id.$_POST['created'];
-
-			Upload::upload($_FILES, "/docs/", array("pdf"), $_POST['doc']);
+			
+			if($_FILES['doc']['name'] != "") {
+				# Files are labeled in the convention "created-file_name" ... ie "53434554-Market Survey.doc"
+				$_POST['doc'] = $_POST['created']."-".$_FILES['doc']['name'];
+		
+				# user upload method to determine where the file is going, what the $_FILES array will accept, and what the file will be called
+				# we also have to strip off the .doc.doc problem with substr
+				Upload::upload($_FILES, "/docs/", array("pdf", "doc", "xls", "ppt"), substr($_POST['doc'], 0, -4));
+			}
 
 			#insert data into the database
-			DB::instance(DB_NAME)->insert('assignments', $_POST);
-
+			DB::instance(DB_NAME)->insert('events', $_POST);
+			
+			# send the professor back to their list of events
 			Router::redirect("/professor/section/".$_POST['section_id']);
+		}
+		
+		public function p_delete_event($event_id, $this_section) {
+		
+			#Delete the event for them
+			DB::instance(DB_NAME)->delete('events', "WHERE event_id = ".$event_id);
+
+			# Bring them to the section page that they were editing
+			Router::redirect("/professor/section/".$this_section);	
+
 		}
 	}
 
