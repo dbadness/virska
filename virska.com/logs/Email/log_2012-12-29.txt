@@ -1,0 +1,7 @@
+2012-12-29 15:43:12 - INFO --> Controller/Method: users/p_validate_email 
+2012-12-29 15:43:12 - INFO --> From: Virska (no-reply@virska.com) 
+2012-12-29 15:43:12 - INFO --> To: David Baines (dbaines@fas.harvard.edu),  
+2012-12-29 15:43:12 - INFO --> CC:  
+2012-12-29 15:43:12 - INFO --> BCC:  
+2012-12-29 15:43:12 - INFO --> Subject: Welcome to Virska! 
+2012-12-29 15:43:12 - INFO --> Body: Welcome to Virska, David. Your validation code is  

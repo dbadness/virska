@@ -150,7 +150,8 @@
 			$q = "SELECT *
 				FROM events 
 				WHERE user_id = ".$this->user->user_id." 
-				AND section_id = ".$section_id;
+				AND section_id = ".$section_id."
+				ORDER BY date ASC";
 
 			$events = DB::instance(DB_NAME)->select_rows($q);
 						

@@ -10,6 +10,7 @@ $(document).ready(function() {
 	$("#addAttachment").click(function() {
 		$("#attachment").show();
 		$("#eventDate").css("margin-top", "-41px");
+		$("#submissions").css("margin-top", "-40px");
 		$(this).css("width", "170px");
 		$(this).css("height", "20px");
 		$(this).html("Add an Attachment <div id=\"attachmentCheck\"><img src='/images/checkmark.png' width='25'></div><div style='clear:right;'></div>");

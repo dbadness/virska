@@ -106,6 +106,28 @@
 #datepicker {
 }
 
+#submissions {
+	float:left;
+	margin-left:40px;
+	margin-top:5px;
+}
+
+#submissionsLabel {
+	float:left;
+	margin-left:7px;
+}
+
+#submissionsInput {
+	float:left;
+	margin-top:7px;
+}
+
+#submissionsDesc {
+	margin-top:7px;
+	float:right;
+	font-size:80%;
+}
+
 #attachmentBox {
 	float:right;
 	width:300px;
@@ -143,7 +165,7 @@
 	float:left;
 }
 
-/* ----- Event list CSS ----- */
+/* --------- Event list CSS --------- */
 
 #dueDateLabel {
 	float:left;
@@ -151,12 +173,17 @@
 
 #descriptionLabel {
 	float:left;
-	margin-left:100px;
+	margin-left:132px;
 }
 
 #attachmentLabel {
 	float:left;
 	margin-left:400px;
+}
+
+#submissionsEnabled {
+	float:left;
+	margin-left:20px;
 }
 
 #dueDate {
@@ -169,8 +196,21 @@
 }
 
 #attachmentIcon {
-	margin-right:165px;
+	margin-right:47px;
 	float:right;
+}
+
+#submissionsEnabledContainer {
+	width:100px;
+	min-height:1px;
+	float:right;
+	margin-right:13px;
+}
+
+#submissionsEnabledIcon {
+	width:20px;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 #deleteEvent {

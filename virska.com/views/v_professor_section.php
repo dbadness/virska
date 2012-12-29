@@ -29,6 +29,19 @@
 					<input name="date" id="datepicker" size="10">
 				</div>
 			</div>
+			<div id="submissions">
+				<div id="submissionsLabel">
+					Allow Submissions?
+				</div>
+				<br>
+				<div id="submissionsInput">
+					<input type="checkbox" name="submissions" value="1">
+				</div>
+				<div id="submissionsDesc">
+					Allowing submissions enables students<br>to submit their assignments for your review.
+				</div>
+				<div style="clear:both;"></div>
+			</div>
 			<div style="clear:both;"></div>
 			<div id="assignmentButton">
 				<input type="submit" value="Add Event">
@@ -40,13 +53,16 @@
 <div class="spacer"></div>
 <div id="assignmentHeader" class="listHeader">
 	<div id="dueDateLabel">
-		<i>Due Date</i>
+		<i>Date</i>
 	</div>
 	<div id="descriptionLabel">
 		<i>Description</i>
 	</div>
 	<div id="attachmentLabel">
-		<i>Attachment</i>
+		<i>Attachment?</i>
+	</div>
+	<div id="submissionsEnabled">
+		<i>Submissions?</i>
 	</div>
 	<div style="clear:both;"></div>
 </div>
@@ -60,6 +76,13 @@
 		</div>
 		<div id="deleteEvent">
 			<a id="deleteButton" href="/professor/p_delete_event/<?=$event['event_id']?>/<?=$event['section_id']?>"><img src="/images/delete.png" width="20"></a>
+		</div>
+		<div id="submissionsEnabledContainer">
+			<div id="submissionsEnabledIcon">
+				<?if($event['submissions'] == 1):?>
+				<img src="/images/upload.png" width="20">
+				<?endif;?>
+			</div>
 		</div>
 		<?if($event['doc']):?>
 			<div id="attachmentIcon">

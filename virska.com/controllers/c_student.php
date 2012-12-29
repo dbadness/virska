@@ -64,13 +64,145 @@
 			
 			$sections = DB::instance(DB_NAME)->select_rows($q);
 			
+			# Let's find the events that are happening today to start our page off right
+			if($connections_string) {
+				
+				$q =
+				"SELECT sections.*, events.*
+				FROM sections 
+				JOIN events USING (section_id) 
+				WHERE sections.section_id IN (".$connections_string.")
+				AND date = '".date("m/d/Y")."'";
+				# remember to surround the dates in single quotes because they're strings in mysql
+			}
+			
+			$todays_events = DB::instance(DB_NAME)->select_rows($q);
+			
 			# The user's main dashboard in Virska
 			$this->template->content = View::instance('v_student_dashboard');
 			$this->template->title = "Dashboard for ".$this->user->first_name." ".$this->user->last_name;
 			$this->template->content->sections = $sections;
+			$this->template->content->todays_events = $todays_events;
 			
 			echo $this->template;
 		}
+		
+		public function p_today() {
+			
+			# Build a query of the professors this user is following - we're only interested in their sections
+			$q = "SELECT section_id_followed 
+				FROM sections_followed
+				WHERE user_id = ".$this->user->user_id;
+
+			# Execute our query, storing the results in a variable $connections
+			$connections = DB::instance(DB_NAME)->select_rows($q);
+
+			# In order to query for the sections we need, we're going to need a string of section id's, separated by commas
+			# To create this, loop through our connections array
+			$connections_string = "";
+			foreach($connections as $connection) {
+				$connections_string .= $connection['section_id_followed'].",";
+			}
+
+			# Remove the final comma 
+			$connections_string = substr($connections_string, 0, -1);	
+			
+			# Run our query, store the results in the variable $sections (if they're following sections...)
+			if($connections_string) {
+
+				$q =
+				"SELECT sections.*, events.*
+				FROM sections 
+				JOIN events USING (section_id) 
+				WHERE sections.section_id IN (".$connections_string.")
+				AND date = '".date("m/d/Y")."'";
+			}
+			
+			$todays_events = DB::instance(DB_NAME)->select_rows($q);
+			
+			print_r($todays_events);
+		}
+		
+		public function p_this_week() {
+			
+			# Build a query of the professors this user is following - we're only interested in their sections
+			$q = "SELECT section_id_followed 
+				FROM sections_followed
+				WHERE user_id = ".$this->user->user_id;
+
+			# Execute our query, storing the results in a variable $connections
+			$connections = DB::instance(DB_NAME)->select_rows($q);
+
+			# In order to query for the sections we need, we're going to need a string of section id's, separated by commas
+			# To create this, loop through our connections array
+			$connections_string = "";
+			foreach($connections as $connection) {
+				$connections_string .= $connection['section_id_followed'].",";
+			}
+
+			# Remove the final comma 
+			$connections_string = substr($connections_string, 0, -1);
+
+			# Run our query, store the results in the variable $sections (if they're following sections...)
+			if($connections_string) {
+				
+				$q =
+				"SELECT sections.*, events.*
+				FROM sections 
+				JOIN events USING (section_id) 
+				WHERE sections.section_id IN (".$connections_string.")
+				AND date = '".date("m/d/y")."' 
+				OR '".date("m/d/y", strtotime('+1 day'))."'
+				OR '".date("m/d/y", strtotime('+2 days'))."'
+				OR '".date("m/d/y", strtotime('+3 days'))."'
+				OR '".date("m/d/y", strtotime('+4 days'))."'
+				OR '".date("m/d/y", strtotime('+5 days'))."'
+				OR '".date("m/d/y", strtotime('+6 days'))."'
+				OR '".date("m/d/y", strtotime('+7 days'))."'";
+				# we can use the string to time function to return the events happening in the next week
+				# because they're strings however, we have to fetch each day individually
+			}
+			
+			$weeks_events = DB::instance(DB_NAME)->select_rows($q);
+			
+			print_r($weeks_events);
+			
+		}
+		
+		public function p_search_date() {
+			
+			# Build a query of the professors this user is following - we're only interested in their sections
+			$q = "SELECT section_id_followed 
+				FROM sections_followed
+				WHERE user_id = ".$this->user->user_id;
+
+			# Execute our query, storing the results in a variable $connections
+			$connections = DB::instance(DB_NAME)->select_rows($q);
+
+			# In order to query for the sections we need, we're going to need a string of section id's, separated by commas
+			# To create this, loop through our connections array
+			$connections_string = "";
+			foreach($connections as $connection) {
+				$connections_string .= $connection['section_id_followed'].",";
+			}
+
+			# Remove the final comma 
+			$connections_string = substr($connections_string, 0, -1);
+
+			# Run our query, store the results in the variable $sections (if they're following sections...)
+			if($connections_string) {
+				
+				$q =
+				"SELECT sections.*, events.*
+				FROM sections 
+				JOIN events USING (section_id) 
+				WHERE sections.section_id IN (".$connections_string.")
+				AND date = '".$_POST['date']."'";
+			}
+		
+			$searched_events = DB::instance(DB_NAME)->select_rows($q);
+			
+			print_r($searched_events);
 		
 		public function sections() {
 			
