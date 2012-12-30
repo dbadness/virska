@@ -10,9 +10,27 @@ $(document).ready(function() {
 	      } 
 	});
 	
-	$('.happening').click(function() {
-		$('.active').removeClass('active').addClass('passive');
-		$(this).addClass('active');
+	$('#dueToday').show("fast");
+
+	$('#dueTodayLabel').click(function() {
+
+		$('#dueToday').show();
+		$('#dueWeek').hide();
+		$('#searchDay').hide();
 	});
 
+	$('#dueWeekLabel').click(function() {
+
+		$('#dueWeek').show();
+		$('#dueToday').hide();
+		$('#searchDay').hide();
+	});
+
+	$('#searchDayLabel').click(function() {
+
+		$('#searchDay').show();
+		$('#dueWeek').hide();
+		$('#dueToday').hide();
+	});
+	
 });

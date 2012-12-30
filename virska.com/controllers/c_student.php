@@ -68,9 +68,10 @@
 			if($connections_string) {
 				
 				$q =
-				"SELECT sections.*, events.*
+				"SELECT sections.*, events.*, classes.class_name
 				FROM sections 
 				JOIN events USING (section_id) 
+				JOIN classes USING (class_id) 
 				WHERE sections.section_id IN (".$connections_string.")
 				AND date = '".date("m/d/Y")."'";
 				# remember to surround the dates in single quotes because they're strings in mysql
@@ -111,12 +112,17 @@
 			if($connections_string) {
 
 				$q =
-				"SELECT sections.*, events.*
+				"SELECT sections.*, events.*, classes.class_name
 				FROM sections 
 				JOIN events USING (section_id) 
+				JOIN classes USING (class_id) 
 				WHERE sections.section_id IN (".$connections_string.")
 				AND date = '".date("m/d/Y")."'";
+				# remember to surround the dates in single quotes because they're strings in mysql
 			}
+			
+			# LEFT JOIN events ON (sections.section_id = events.section_id)
+			# AND events.date = '".date("m/d/Y")."'";
 			
 			$todays_events = DB::instance(DB_NAME)->select_rows($q);
 			
@@ -147,9 +153,10 @@
 			if($connections_string) {
 				
 				$q =
-				"SELECT sections.*, events.*
+				"SELECT sections.*, events.*, classes.class_name
 				FROM sections 
 				JOIN events USING (section_id) 
+				JOIN classes USING (class_id) 
 				WHERE sections.section_id IN (".$connections_string.")
 				AND date = '".date("m/d/y")."' 
 				OR '".date("m/d/y", strtotime('+1 day'))."'
@@ -193,9 +200,10 @@
 			if($connections_string) {
 				
 				$q =
-				"SELECT sections.*, events.*
+				"SELECT sections.*, events.*, classes.class_name
 				FROM sections 
 				JOIN events USING (section_id) 
+				JOIN classes USING (class_id) 
 				WHERE sections.section_id IN (".$connections_string.")
 				AND date = '".$_POST['date']."'";
 			}
@@ -203,6 +211,7 @@
 			$searched_events = DB::instance(DB_NAME)->select_rows($q);
 			
 			print_r($searched_events);
+		}
 		
 		public function sections() {
 			

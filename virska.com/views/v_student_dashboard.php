@@ -51,5 +51,74 @@
 		<div style="clear:both;"></div>
 	</div>
 	<div id="canvas">
+		<div class="listHeader">
+			<div id="sClassNameLabel">
+				<i>Class</i>
+			</div>
+			<div id="sDescLabel">
+				<i>Description</i>
+			</div>
+			<div id="sSubmissionLabel">
+				<i>Submission</i>
+			</div>
+			<div id="sAttachmentLabel">
+				<i>Attachment</i>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div id="dueToday" class="visible">
+			due Today
+			<?foreach($todays_events as $todays_event):?>
+				<div class="listItem">
+					<div id="sClassName">
+						<?=$todays_event['class_name']?> - <?=$todays_event['section_name']?>
+					</div>
+					<div id="sDesc">
+					</div>
+					<div id="sSubmission">
+					</div>
+					<div id="sAttachment">
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+			<?endforeach;?>
+		</div>
+		<div id="dueWeek" class="invisible">
+			due Week
+			<?foreach($weeks_events as $weeks_event):?>
+				<div class="listItem">
+					<div id="sClassName">
+						<?=$weeks_event['class_name']?> - <?=$weeks_event['section_name']?>
+					</div>
+					<div id="sDesc">
+					</div>
+					<div id="sSubmission">
+					</div>
+					<div id="sAttachment">
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+			<?endforeach;?>
+		</div>
+		<div id="searchDay" class="invisible">
+			search Day
+			<?foreach($searched_events as $searched_event):?>
+				<div class="listItem">
+					<div id="sClassName">
+						<?=$searched_event['class_name']?> - <?=$searched_event['section_name']?>
+					</div>
+					<div id="sDesc">
+					</div>
+					<div id="sSubmission">
+					</div>
+					<div id="sAttachment">
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+			<?endforeach;?>
+		</div>
+		<div id="statusGraphic" class="invisible">
+			<img src="/images/ajaxLoader.gif">
+		</div>
 	</div>
 </div>

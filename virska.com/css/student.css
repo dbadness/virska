@@ -55,7 +55,7 @@
 	float:left;
 }
 
-/* ------ Assignment View CSS ------- */
+/* ------ Assignment Viewer Header CSS ------- */
 
 #assignmentViewer {
 	height:400px;
@@ -103,8 +103,76 @@
 	width:269px;
 }
 
+/* ------ Assignment Viewer Canvas CSS ------- */
+
 #canvas {
 	
+}
+
+#dueToday {
+	
+}
+
+#sClassNameLabel {
+	float:left;
+}
+
+#sDescLabel {
+	float:left;
+}
+
+#sAttachmentLabel {
+	float:right;
+}
+
+#sSubmissionLabel {
+	float:right	;
+}
+
+#sClassName {
+	
+}
+
+#sDesc {
+	
+}
+
+#sAttachment {
+	
+}
+
+#sSubmission {
+	
+}
+
+#statusGraphic {
+	padding:20px;
+	width:65px;
+	margin-top:80px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.visible {
+	display:block;
+}
+
+.invisible {
+	display:none;
+}
+
+/* ------ Today's View Specific CSS -------- */
+
+/* ------ This Week's View Specific CSS -------- */
+
+#dueWeek {
+	display:none;
+}
+
+/* ------ Search for Day View Specific CSS -------- */
+
+#searchDay {
+	display:none;
 }
 
 /* -------- Search pages CSS ---------- */
