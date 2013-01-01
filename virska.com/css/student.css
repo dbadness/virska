@@ -201,9 +201,15 @@
 	padding-bottom:10px;
 	width:600px;
 	min-height:80px;
-   	background-image: -webkit-linear-gradient(top, #eeeef6, #d3d4d6);
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #eeeef6, #d3d4d6);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeef6', endColorstr='#d3d4d6');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #eeeef6,  #d3d4d6);
 	border:solid 2px gray;
 	border-radius:5px;
+	overflow:auto;
 }
 
 #picture {
@@ -224,7 +230,10 @@
 }
 
 #sectionList {
-	margin-left:450px;
+	margin-right:20px;
+	width:200px;
+	text-align:right;
+	float:right;
 }
 
 #searchResultError {

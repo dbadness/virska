@@ -20,10 +20,15 @@
 			<div id="sectionList">
 				<?foreach($sections as $section):?>		
 						<?if($section['user_id'] == $professor['user_id']):?>
-							<a href="/student/p_follow/<?=$section['section_id']?>"><?=$section['class_code']?> <?=$section['section_name']?></a><br>
+							<?if(isset($connections[$section['section_id']])):?>
+								<i>Following <?=$section['class_code']?> <?=$section['section_name']?></i><br>
+							<?else:?>
+								<a href="/student/p_follow/<?=$section['section_id']?>"><?=$section['class_code']?> <?=$section['section_name']?></a><br>
+							<?endif;?>
 						<?endif;?>
 				<?endforeach;?>
 			</div>
+			<div style="clear:both;"></div>
 		</div>
 	<?endforeach;?>
 <?else:?>

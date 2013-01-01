@@ -261,17 +261,17 @@
 			$sections = DB::instance(DB_NAME)->select_rows($q);
 			
 			# We'll also grab the sections they're followeing so they can unfollow if they need to
-			$q = "SELECT *
+			$q = "SELECT section_id_followed
 			FROM sections_followed
 			WHERE user_id = ".$this->user->user_id;
 
-			$follows = DB::instance(DB_NAME)->select_array($q, 'section_id_followed');
+			$connections = DB::instance(DB_NAME)->select_array($q, 'section_id_followed');
 			
 			$this->template->content = View::instance("v_student_search_results");		
 			$this->template->title = "Professors at ".$this->user->school;
 			$this->template->content->professors = $professors;
 			$this->template->content->sections = $sections;
-			$this->template->content->follows = $follows;
+			$this->template->content->connections = $connections;
 			
 			echo $this->template;
 		}	
@@ -296,17 +296,17 @@
 			$sections = DB::instance(DB_NAME)->select_rows($q);
 			
 			# We'll also grab the sections they're followeing so they can unfollow if they need to
-			$q = "SELECT *
+			$q = "SELECT section_id_followed
 			FROM sections_followed
 			WHERE user_id = ".$this->user->user_id;
 
-			$follows = DB::instance(DB_NAME)->select_rows($q);
+			$connections = DB::instance(DB_NAME)->select_array($q, 'section_id_followed');
 			
 			$this->template->content = View::instance("v_student_search_results");		
 			$this->template->title = "Professors at ".$this->user->school;
 			$this->template->content->professors = $professors;
 			$this->template->content->sections = $sections;
-			$this->template->content->follows = $follows;
+			$this->template->content->connections = $connections;
 			
 			echo $this->template;			
 		}

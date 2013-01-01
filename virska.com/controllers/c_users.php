@@ -386,18 +386,6 @@
 			
 			echo $this->template;
 		}
-		
-		public function validate_e () {
-			
-			$this->template->content = View::instance("e_users_validate");
-			
-			$client_files = Array(
-						"/css/email.css"
-	                    );			
-			
-			echo $this->template;
-			
-		}
 	}
 
 ?>

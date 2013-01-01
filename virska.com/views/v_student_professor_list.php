@@ -10,18 +10,23 @@
 <br>
 <!-- the following code is also on the "search results page" please update on both if changes are to be made -->
 <?foreach($professors as $professor):?>
-	<div class="searchResult">
+	<div class="searchResult">	
 		<div id="picture">
-		</div>	
+		</div>
 		<div id="nameBlock">
 			<?=$professor['first_name']?> <?=$professor['last_name']?>
 		</div>
 		<div id="sectionList">
-			<?foreach($sections as $section):?>				
-					<?if($section['user_id'] == $professor['user_id']:?>
-						<?=$section['class_code']?> <?=$section['section_name']?> - <a href="/student/p_follow/<?=$section['section_id']?>">Follow this Section</a><br>
+			<?foreach($sections as $section):?>		
+					<?if($section['user_id'] == $professor['user_id']):?>
+						<?if(isset($connections[$section['section_id']])):?>
+							<i>Following <?=$section['class_code']?> <?=$section['section_name']?></i><br>
+						<?else:?>
+							<a href="/student/p_follow/<?=$section['section_id']?>"><?=$section['class_code']?> <?=$section['section_name']?></a><br>
+						<?endif;?>
 					<?endif;?>
 			<?endforeach;?>
 		</div>
+		<div style="clear:both;"></div>
 	</div>
 <?endforeach;?>
