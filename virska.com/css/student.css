@@ -130,19 +130,19 @@
 }
 
 #sClassName {
-	
+	float:left;
 }
 
 #sDesc {
-	
+	float:left;
 }
 
 #sAttachment {
-	
+	float:right;
 }
 
 #sSubmission {
-	
+	float:right;
 }
 
 #statusGraphic {

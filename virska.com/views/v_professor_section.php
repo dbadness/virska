@@ -86,7 +86,7 @@
 		</div>
 		<?if($event['doc']):?>
 			<div id="attachmentIcon">
-				<a  href="/docs/<?=$event['doc']?>"><img src="/images/attachment.png" width="20"></a>
+				<a href="/docs/<?=$event['doc']?>"><img src="/images/attachment.png" width="20"></a>
 			</div>
 		<?endif;?>
 		<div style="clear:both;"></div>

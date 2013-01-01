@@ -10,8 +10,13 @@ $(document).ready(function() {
 	      } 
 	});
 	
-	$('#dueToday').show("fast");
-
+	$('.happening').click(function() {
+		
+		$('.active').removeClass('active').addClass('passive');
+		$(this).addClass('active');
+		
+	})
+	
 	$('#dueTodayLabel').click(function() {
 
 		$('#dueToday').show();

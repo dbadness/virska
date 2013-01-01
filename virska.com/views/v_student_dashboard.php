@@ -67,18 +67,22 @@
 			<div style="clear:both;"></div>
 		</div>
 		<div id="dueToday" class="visible">
-			due Today
 			<?foreach($todays_events as $todays_event):?>
 				<div class="listItem">
 					<div id="sClassName">
 						<?=$todays_event['class_name']?> - <?=$todays_event['section_name']?>
 					</div>
 					<div id="sDesc">
+						<?=$todays_event['description']?>
 					</div>
 					<div id="sSubmission">
+						<?=$todays_event['submissions']?>
 					</div>
-					<div id="sAttachment">
-					</div>
+					<?if($todays_event['doc']):?>
+						<div id="sAttachment">
+							<a href="/docs/<?=$todays_event['doc']?>"><img src="/images/attachment.png" width="20"></a>
+						</div>
+					<?endif;?>
 					<div style="clear:both;"></div>
 				</div>
 			<?endforeach;?>
