@@ -18,24 +18,44 @@ $(document).ready(function() {
 	})
 	
 	$('#dueTodayLabel').click(function() {
-
+		$('#sDateLabel').hide();
+		$('#sDescLabel').css("margin-left", "0px");
+		$('#sClassLabel').show();
+		$('#sClassLabel').css("margin-left", "20px");
 		$('#dueToday').show();
 		$('#dueWeek').hide();
 		$('#searchDay').hide();
 	});
 
 	$('#dueWeekLabel').click(function() {
-
+		$('#sClassLabel').show();
+		$('#sClassLabel').css("margin-left", "0px");
+		$('#sDateLabel').show();
+		$('#sDescLabel').show();
+		$('#sDescLabel').css("margin-left", "20px");
 		$('#dueWeek').show();
 		$('#dueToday').hide();
 		$('#searchDay').hide();
 	});
 
 	$('#searchDayLabel').click(function() {
-
+		$('#sDateLabel').hide();
+		$('#sClassLabel').hide();
+		$('#sDescLabel').hide();
 		$('#searchDay').show();
 		$('#dueWeek').hide();
 		$('#dueToday').hide();
 	});
+	
+	// because we're using the multiple lists in the same view, we have to distiguish the jQuery for each lists beginning and end
+	$(".dayView:odd").css("background-color", "white");
+	$(".dayView:even").css("background-color", "#CCFFFF");
+	$(".dayView:first").css("border-top", "solid 1px gray");
+	$(".dayView:last").css("border-bottom", "solid 1px gray");
+	
+	$(".weekView:odd").css("background-color", "white");
+	$(".weekView:even").css("background-color", "#CCFFFF");
+	$(".weekView:first").css("border-top", "solid 1px gray");
+	$(".weekView:last").css("border-bottom", "solid 1px gray");
 	
 });

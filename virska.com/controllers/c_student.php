@@ -68,7 +68,7 @@
 			if($connections_string) {
 				
 				$q =
-				"SELECT sections.*, events.*, classes.class_name
+				"SELECT sections.*, events.*, classes.class_code
 				FROM sections 
 				JOIN events USING (section_id) 
 				JOIN classes USING (class_id) 
@@ -79,11 +79,29 @@
 			
 			$todays_events = DB::instance(DB_NAME)->select_rows($q);
 			
+			# Run our query, store the results in the variable $sections (if they're following sections...)
+			if($connections_string) {
+				
+				$q =
+				"SELECT sections.*, events.*, classes.class_code
+				FROM sections 
+				JOIN events USING (section_id) 
+				JOIN classes USING (class_id) 
+				WHERE sections.section_id IN (".$connections_string.")
+				AND date BETWEEN '".date("m/d/y")."' AND '".date("m/d/y", strtotime('+7 days'))."'
+				ORDER BY date ASC";
+				# we can use the string to time function to return the events happening in the next week
+				# because they're strings and not dates, however, we have to fetch each day individually
+			}
+			
+			$weeks_events = DB::instance(DB_NAME)->select_rows($q);
+			
 			# The user's main dashboard in Virska
 			$this->template->content = View::instance('v_student_dashboard');
 			$this->template->title = "Dashboard for ".$this->user->first_name." ".$this->user->last_name;
 			$this->template->content->sections = $sections;
 			$this->template->content->todays_events = $todays_events;
+			$this->template->content->weeks_events = $weeks_events;
 			
 			echo $this->template;
 		}

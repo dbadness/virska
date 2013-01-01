@@ -1,3 +1,5 @@
+<?$day_count = 1;?>
+<?$week_count = 1;?>
 <div id="sectionsFollowingHeader">
 	<strong>Sections I'm Following</strong>
 </div>
@@ -52,7 +54,10 @@
 	</div>
 	<div id="canvas">
 		<div class="listHeader">
-			<div id="sClassNameLabel">
+			<div id="sDateLabel">
+				<i>Due Date</i>
+			</div>
+			<div id="sClassLabel">
 				<i>Class</i>
 			</div>
 			<div id="sDescLabel">
@@ -66,11 +71,11 @@
 			</div>
 			<div style="clear:both;"></div>
 		</div>
-		<div id="dueToday" class="visible">
+		<div id="dueToday">
 			<?foreach($todays_events as $todays_event):?>
-				<div class="listItem">
+				<div class="listItem dayView">
 					<div id="sClassName">
-						<?=$todays_event['class_name']?> - <?=$todays_event['section_name']?>
+						<?=$day_count++?>. <?=$todays_event['class_code']?>
 					</div>
 					<div id="sDesc">
 						<?=$todays_event['description']?>
@@ -87,24 +92,31 @@
 				</div>
 			<?endforeach;?>
 		</div>
-		<div id="dueWeek" class="invisible">
-			due Week
+		<div id="dueWeek">
 			<?foreach($weeks_events as $weeks_event):?>
-				<div class="listItem">
+				<div class="listItem weekView">
+					<div id="sDate">
+						<?=$week_count++?>. <?=$weeks_event['date']?>
+					</div>
 					<div id="sClassName">
-						<?=$weeks_event['class_name']?> - <?=$weeks_event['section_name']?>
+						<?=$weeks_event['class_code']?>
 					</div>
 					<div id="sDesc">
+						<?=$weeks_event['description']?>
 					</div>
 					<div id="sSubmission">
+						<?=$weeks_event['submissions']?>
 					</div>
-					<div id="sAttachment">
-					</div>
+					<?if($weeks_event['doc']):?>
+						<div id="sAttachment">
+							<a href="/docs/<?=$weeks_event['doc']?>"><img src="/images/attachment.png" width="20"></a>
+						</div>
+					<?endif;?>
 					<div style="clear:both;"></div>
 				</div>
 			<?endforeach;?>
 		</div>
-		<div id="searchDay" class="invisible">
+		<div id="searchDay">
 			search Day
 			<?foreach($searched_events as $searched_event):?>
 				<div class="listItem">
