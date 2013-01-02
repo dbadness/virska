@@ -99,7 +99,9 @@
 		</div>
 		<div class="spacer">
 		</div>
-		<div id="footer">
+		<div id="footer" style="text-align:center;">
+			<div class="spacer"></div>
+			Here's the footer.
 		</div>
 	</div>
 </body>

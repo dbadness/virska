@@ -96,12 +96,17 @@
 			
 			$weeks_events = DB::instance(DB_NAME)->select_rows($q);
 			
+			$fname = $this->user->first_name;
+			$lname = $this->user->last_name;
+			
 			# The user's main dashboard in Virska
 			$this->template->content = View::instance('v_student_dashboard');
 			$this->template->title = "Dashboard for ".$this->user->first_name." ".$this->user->last_name;
 			$this->template->content->sections = $sections;
 			$this->template->content->todays_events = $todays_events;
 			$this->template->content->weeks_events = $weeks_events;
+			$this->template->content->fname = $fname;
+			$this->template->content->lname = $lname;
 			
 			echo $this->template;
 		}

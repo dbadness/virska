@@ -19,6 +19,7 @@ $(document).ready(function() {
 	
 	$('#dueTodayLabel').click(function() {
 		$('#sDateLabel').hide();
+		$('#sDescLabel').show();
 		$('#sDescLabel').css("margin-left", "0px");
 		$('#sClassLabel').show();
 		$('#sClassLabel').css("margin-left", "20px");
