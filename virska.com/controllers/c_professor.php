@@ -45,19 +45,11 @@
 			echo $this->template;
 		}
 
-		public function profile() {
-				
-			# If user is blank, they're not logged in, show message and don't do anything else
-			if(!$this->user) {
-				Router::redirect("/users/login");
-				# Return will force this method to exit here so the rest of 
-				# the code won't be executed and the profile view won't be displayed.
-				return false;
-			}
-
+		public function settings() {
+			
 			# Setup view
-			$this->template->content = View::instance('v_professor_profile');
-			$this->template->title   = "Profile of ".$this->user->first_name;
+			$this->template->content = View::instance('v_professor_settings');
+			$this->template->title   = "Settings Page for Professor ".$this->user->last_name;
 
 			# Render template
 			echo $this->template;
@@ -71,9 +63,17 @@
 			
 			$submissions = DB::instance(DB_NAME)->select_rows($q);
 			
+			$q = "SELECT events.date
+			FROM events
+			WHERE event_id = ".$event_id;
+			
+			$date = DB::instance(DB_NAME)->select_field($q);			
+			
 			$this->template->title = "Submissions for ".$description;
 			$this->template->content = View::instance("v_professor_submissions");
 			$this->template->content->submissions = $submissions;
+			$this->template->content->description = $description;
+			$this->template->content->date = $date;
 			
 			echo $this->template;
 			

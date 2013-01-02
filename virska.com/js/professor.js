@@ -23,5 +23,10 @@ $(document).ready(function() {
 	         return false;
 	      } 
 	});
+	
+	$(".submissionList:odd").css("background-color", "white");
+	$(".submissionList:even").css("background-color", "#CCFFFF");
+	$(".submissionList:first").css("border-top", "solid 1px gray");
+	$(".submissionList:last").css("border-bottom", "solid 2px gray");
 
 });

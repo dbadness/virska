@@ -219,3 +219,44 @@
 
 /* ----- Submissions View CSS -----*/
 
+#submissionWrapperHeader {
+	border-top:solid 2px gray;
+	border-left:solid 2px gray;
+	border-right:solid 2px gray;
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #F7F7F7, #CCCCCC);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F7F7F7', endColorstr='#CCCCCC');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #F7F7F7,  #CCCCCC);
+}
+
+#submissionWrapper {
+	border-left:solid 2px gray;
+	border-right:solid 2px gray;
+}
+
+.submissionItem {
+	padding:10px;
+}
+
+#studentNameW {
+	float:left;
+	width:300px;
+}
+
+#lastModifiedW {
+	float:left;
+	width:300px;
+}
+
+#downloadW {
+	float:right;
+	width:230px;
+}
+
+#download {
+	width:20px;
+	margin-left:auto;
+	margin-right:auto;
+}

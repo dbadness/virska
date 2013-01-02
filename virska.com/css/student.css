@@ -131,10 +131,11 @@
 
 .sAttachmentLabel {
 	float:right;
+	margin-right:60px;
 }
 
 .sSubmissionLabel {
-	float:right	;
+	float:right;
 }
 
 .sDate {
@@ -153,8 +154,7 @@
 
 .sAttachment {
 	float:right;
-	width:100px;
-	border:solid 1px blue;
+	margin-right:85px;
 }
 
 .sSubmission {

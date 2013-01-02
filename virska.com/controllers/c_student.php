@@ -99,7 +99,7 @@
 			if($connections_string) {
 				
 				$q =
-				"SELECT event_id
+				"SELECT event_id, modified
 				FROM submissions
 				WHERE section_id IN (".$connections_string.")
 				AND user_id = ".$this->user->user_id;
@@ -135,6 +135,20 @@
 			Upload::upload($_FILES, "/docs/", array("pdf", "doc", "xls", "ppt"), substr($_POST['doc'], 0, -4));
 			
 			DB::instance(DB_NAME)->insert('submissions', $_POST);
+			
+			Router::redirect("/student/dashboard");
+		}
+		
+		public function p_resubmit ($event_id) {
+			
+			$_POST['modified'] = Time::now();
+			$_POST['doc'] = $_POST['modified']."-".$_FILES['submission']['name'];
+			
+			$data = Array('modified' => $_POST['modified'], 'doc' => $_POST['doc']);
+			
+			Upload::upload($_FILES, "/docs/", array("pdf", "doc", "xls", "ppt"), substr($_POST['doc'], 0, -4));
+			
+			DB::instance(DB_NAME)->update("submissions", $data, "WHERE event_id = '".$event_id."' AND user_id = '".$this->user->user_id."'");
 			
 			Router::redirect("/student/dashboard");
 		}
