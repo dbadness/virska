@@ -91,10 +91,21 @@
 				AND date BETWEEN '".date("m/d/y")."' AND '".date("m/d/y", strtotime('+7 days'))."'
 				ORDER BY date ASC";
 				# we can use the string to time function to return the events happening in the next week
-				# because they're strings and not dates, however, we have to fetch each day individually
 			}
 			
 			$weeks_events = DB::instance(DB_NAME)->select_rows($q);
+			
+			# Run our query, store the results in the variable $sections (if they're following sections...)
+			if($connections_string) {
+				
+				$q =
+				"SELECT event_id
+				FROM submissions
+				WHERE section_id IN (".$connections_string.")
+				AND user_id = ".$this->user->user_id;
+			}
+			
+			$submissions = DB::instance(DB_NAME)->select_array($q, 'event_id');
 			
 			$fname = $this->user->first_name;
 			$lname = $this->user->last_name;
@@ -105,100 +116,29 @@
 			$this->template->content->sections = $sections;
 			$this->template->content->todays_events = $todays_events;
 			$this->template->content->weeks_events = $weeks_events;
+			$this->template->content->submissions = $submissions;
 			$this->template->content->fname = $fname;
 			$this->template->content->lname = $lname;
 			
 			echo $this->template;
 		}
 		
-		public function p_today() {
+		public function p_submit($event_id) {
 			
-			# Build a query of the professors this user is following - we're only interested in their sections
-			$q = "SELECT section_id_followed 
-				FROM sections_followed
-				WHERE user_id = ".$this->user->user_id;
-
-			# Execute our query, storing the results in a variable $connections
-			$connections = DB::instance(DB_NAME)->select_rows($q);
-
-			# In order to query for the sections we need, we're going to need a string of section id's, separated by commas
-			# To create this, loop through our connections array
-			$connections_string = "";
-			foreach($connections as $connection) {
-				$connections_string .= $connection['section_id_followed'].",";
-			}
-
-			# Remove the final comma 
-			$connections_string = substr($connections_string, 0, -1);	
+			$_POST['created'] = Time::now();
+			$_POST['modified'] = Time::now();
+			$_POST['user_id'] = $this->user->user_id;
+			$_POST['doc'] = $_POST['modified']."-".$_FILES['submission']['name']; 
+			# in case the student modifies their submission, let's rewrite the existing file in the docs folder
+			$_POST['event_id'] = $event_id;
 			
-			# Run our query, store the results in the variable $sections (if they're following sections...)
-			if($connections_string) {
-
-				$q =
-				"SELECT sections.*, events.*, classes.class_name
-				FROM sections 
-				JOIN events USING (section_id) 
-				JOIN classes USING (class_id) 
-				WHERE sections.section_id IN (".$connections_string.")
-				AND date = '".date("m/d/Y")."'";
-				# remember to surround the dates in single quotes because they're strings in mysql
-			}
+			Upload::upload($_FILES, "/docs/", array("pdf", "doc", "xls", "ppt"), substr($_POST['doc'], 0, -4));
 			
-			# LEFT JOIN events ON (sections.section_id = events.section_id)
-			# AND events.date = '".date("m/d/Y")."'";
+			DB::instance(DB_NAME)->insert('submissions', $_POST);
 			
-			$todays_events = DB::instance(DB_NAME)->select_rows($q);
-			
-			print_r($todays_events);
+			Router::redirect("/student/dashboard");
 		}
-		
-		public function p_this_week() {
-			
-			# Build a query of the professors this user is following - we're only interested in their sections
-			$q = "SELECT section_id_followed 
-				FROM sections_followed
-				WHERE user_id = ".$this->user->user_id;
 
-			# Execute our query, storing the results in a variable $connections
-			$connections = DB::instance(DB_NAME)->select_rows($q);
-
-			# In order to query for the sections we need, we're going to need a string of section id's, separated by commas
-			# To create this, loop through our connections array
-			$connections_string = "";
-			foreach($connections as $connection) {
-				$connections_string .= $connection['section_id_followed'].",";
-			}
-
-			# Remove the final comma 
-			$connections_string = substr($connections_string, 0, -1);
-
-			# Run our query, store the results in the variable $sections (if they're following sections...)
-			if($connections_string) {
-				
-				$q =
-				"SELECT sections.*, events.*, classes.class_name
-				FROM sections 
-				JOIN events USING (section_id) 
-				JOIN classes USING (class_id) 
-				WHERE sections.section_id IN (".$connections_string.")
-				AND date = '".date("m/d/y")."' 
-				OR '".date("m/d/y", strtotime('+1 day'))."'
-				OR '".date("m/d/y", strtotime('+2 days'))."'
-				OR '".date("m/d/y", strtotime('+3 days'))."'
-				OR '".date("m/d/y", strtotime('+4 days'))."'
-				OR '".date("m/d/y", strtotime('+5 days'))."'
-				OR '".date("m/d/y", strtotime('+6 days'))."'
-				OR '".date("m/d/y", strtotime('+7 days'))."'";
-				# we can use the string to time function to return the events happening in the next week
-				# because they're strings however, we have to fetch each day individually
-			}
-			
-			$weeks_events = DB::instance(DB_NAME)->select_rows($q);
-			
-			print_r($weeks_events);
-			
-		}
-		
 		public function p_search_date() {
 			
 			# Build a query of the professors this user is following - we're only interested in their sections

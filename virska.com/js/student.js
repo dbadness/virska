@@ -18,31 +18,31 @@ $(document).ready(function() {
 	})
 	
 	$('#dueTodayLabel').click(function() {
-		$('#sDateLabel').hide();
-		$('#sDescLabel').show();
-		$('#sDescLabel').css("margin-left", "0px");
-		$('#sClassLabel').show();
-		$('#sClassLabel').css("margin-left", "20px");
+		$('.sDateLabel').hide();
+		$('.sDescLabel').show();
+		$('.sDescLabel').css("margin-left", "0px");
+		$('.sClassLabel').show();
+		$('.sClassLabel').css("margin-left", "20px");
 		$('#dueToday').show();
 		$('#dueWeek').hide();
 		$('#searchDay').hide();
 	});
 
 	$('#dueWeekLabel').click(function() {
-		$('#sClassLabel').show();
-		$('#sClassLabel').css("margin-left", "0px");
-		$('#sDateLabel').show();
-		$('#sDescLabel').show();
-		$('#sDescLabel').css("margin-left", "20px");
+		$('.sClassLabel').show();
+		$('.sClassLabel').css("margin-left", "0px");
+		$('.sDateLabel').show();
+		$('.sDescLabel').show();
+		$('.sDescLabel').css("margin-left", "20px");
 		$('#dueWeek').show();
 		$('#dueToday').hide();
 		$('#searchDay').hide();
 	});
 
 	$('#searchDayLabel').click(function() {
-		$('#sDateLabel').hide();
-		$('#sClassLabel').hide();
-		$('#sDescLabel').hide();
+		$('.sDateLabel').hide();
+		$('.sClassLabel').hide();
+		$('.sDescLabel').hide();
 		$('#searchDay').show();
 		$('#dueWeek').hide();
 		$('#dueToday').hide();
@@ -58,5 +58,13 @@ $(document).ready(function() {
 	$(".weekView:even").css("background-color", "#CCFFFF");
 	$(".weekView:first").css("border-top", "solid 1px gray");
 	$(".weekView:last").css("border-bottom", "solid 1px gray");
+	
+	$("form").submit(function() {
+      if ($("#file").val() != 0) {
+        return true;
+      }
+		$(this).effect("shake", { times:2 }, 50);
+      	return false;
+    });
 	
 });

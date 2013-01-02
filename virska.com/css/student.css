@@ -160,15 +160,30 @@
 .sSubmission {
 	margin-left:auto;
 	margin-right:auto;
-	border:solid 1px red;
+	padding:10px;
+	border:solid 3px gray;
+	border-radius:3px;
 	width:400px;
+	
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #FFEC8B, #FCDC3B);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEC8B', endColorstr='#FCDC3B');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #FFEC8B,  #FCDC3B);
 }
 
 .submissionLabel {
-	
+	float:left;
 }
 
 .submissionInput {
+	float:left;
+}
+
+.sSubmitButton {
+	float:right;
+	margin-top:-7px;
 }
 
 /* ------ Today's View Specific CSS -------- */

@@ -63,6 +63,22 @@
 			echo $this->template;
 		}
 		
+		public function submissions($description, $event_id) {
+			
+			$q = "SELECT *
+			FROM submissions
+			WHERE event_id = ".$event_id;
+			
+			$submissions = DB::instance(DB_NAME)->select_rows($q);
+			
+			$this->template->title = "Submissions for ".$description;
+			$this->template->content = View::instance("v_professor_submissions");
+			$this->template->content->submissions = $submissions;
+			
+			echo $this->template;
+			
+		}
+		
 		public function classes() {
 			
 			# If user is blank, they're not logged in, show message and don't do anything else

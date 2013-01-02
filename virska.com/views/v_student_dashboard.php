@@ -84,21 +84,45 @@
 					</div>
 					<div style="clear:both;"></div>
 					<?if($todays_event['submissions'] == 1):?>
-						<div class="sSubmission">
-							<div class="submissionLabel">
-								This event requires a submission:
-							</div>
-							<div class="submissionInput">
-								<form method="post" action="/student/p_submit/<?=$todays_event['event_id']?>" enctype="multipart/form-data">
-									<input type="hidden" name="event_id" value="<?=$todays_event['event_id']?>">
-									<input type="hidden" name="student_fname" value="<?=$fname?>">
-									<input type="hidden" name="student_lname" value="<?=$lname?>">
-									<input type="file" id="file" name="submission">
-									<br>
-									<input type="submit" value="Submit">
+						<?if(isset($submissions[$todays_event['event_id']])):?>
+							<div class="sSubmission">
+								<form method="post" action="/student/p_resubmit/<?=$todays_event['event_id']?>" enctype="multipart/form-data">
+									<div class="submissionLabel">
+										Phew... Already submitted. Resubmit?
+									</div>
+									<div class="submissionInput">
+										<input type="hidden" name="event_id" value="<?=$todays_event['event_id']?>">
+										<input type="hidden" name="section_id" value="<?=$todays_event['section_id']?>">
+										<input type="hidden" name="student_fname" value="<?=$fname?>">
+										<input type="hidden" name="student_lname" value="<?=$lname?>">
+										<input type="file" id="file" name="submission" style="width:330px;">
+									</div>
+									<div class="sSubmitButton">
+										<input type="submit" value="Submit">
+									</div>
+									<div style="clear:both;"></div>
 								</form>
 							</div>
-						</div>
+						<?else:?>
+							<div class="sSubmission">
+								<form method="post" action="/student/p_submit/<?=$todays_event['event_id']?>" enctype="multipart/form-data">
+									<div class="submissionLabel">
+										This event requires a submission (what a drag):
+									</div>
+									<div class="submissionInput">
+										<input type="hidden" name="event_id" value="<?=$todays_event['event_id']?>">
+										<input type="hidden" name="section_id" value="<?=$todays_event['section_id']?>">
+										<input type="hidden" name="student_fname" value="<?=$fname?>">
+										<input type="hidden" name="student_lname" value="<?=$lname?>">
+										<input type="file" id="file" name="submission" style="width:330px;">
+									</div>
+									<div class="sSubmitButton">
+										<input type="submit" value="Submit">
+									</div>
+									<div style="clear:both;"></div>
+								</form>
+							</div>
+						<?endif;?>
 					<?endif;?>
 				</div>
 			<?endforeach;?>

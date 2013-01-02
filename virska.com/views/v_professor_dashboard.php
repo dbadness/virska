@@ -2,7 +2,7 @@
 	<strong>My Sections</strong>
 </div>
 <div id="editClasses">
-	<a href="/professor/classes">Add/Edit Classes and Sections</a>
+	<a href="/professor/classes">Add Classes and Sections</a>
 </div>
 <div style="clear:both;"></div>
 <div id="sectionsViewWrapper">	
@@ -24,7 +24,7 @@
 				on <?=$section['mo']?> <?=$section['tu']?> <?=$section['we']?> <?=$section['th']?> <?=$section['fr']?> <?=$section['sa']?> <?=$section['su']?>
 			</div>
 			<div id="editSection" class="sectionList">
-				<a href="/professor/section/<?=$section['section_id']?>">Edit</a>
+				<a href="/professor/section/<?=$section['section_id']?>">View</a>
 			</div>
 			<div style="clear:both;"></div>
 		</div>

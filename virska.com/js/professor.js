@@ -17,7 +17,7 @@ $(document).ready(function() {
 	}); 
 	
 	// Make sure the user knows that they're willing to delete their event
-	$('#deleteButton').click(function() {
+	$('#deleteEvent').click(function() {
 	   var answer = confirm("Are you sure you want to delete this event? This action cannot be undone.");
 	      if (!answer) {
 	         return false;
