@@ -28,5 +28,12 @@ $(document).ready(function() {
 	$(".submissionList:even").css("background-color", "#CCFFFF");
 	$(".submissionList:first").css("border-top", "solid 1px gray");
 	$(".submissionList:last").css("border-bottom", "solid 2px gray");
+	
+	$('#feedbackField').keyup(function() {
+
+		length = $(this).val().length;
+		count = 300 - length;
+		$('#charCount').html(count);
+	});
 
 });

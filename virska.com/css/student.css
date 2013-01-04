@@ -55,6 +55,17 @@
 	float:left;
 }
 
+#unfollowButton {
+	float:right;
+	margin-top:1px;
+}
+
+#gradesButton {
+	float:right;
+	margin-right:10px;
+	margin-top:1px;
+}
+
 /* ------ Assignment Viewer Header CSS ------- */
 
 #assignmentViewer {
@@ -268,11 +279,6 @@
 	display:block;
 }
 
-#unfollowButton {
-	float:right;
-	margin-top:1px;
-}
-
 #professorSearchBox {
 	
 }
@@ -285,4 +291,30 @@
 	float:right;
 	margin-top:5px;
 	margin-right:20px;
+}
+
+/* ------ Grades Page CSS ------ */
+
+#gradesWrapper {
+	
+}
+
+.submissionList {
+	
+}
+
+#lastModified {
+	float:left;
+}
+
+#comments {
+	float:right;
+}
+
+#commentsLabel {
+	
+}
+
+#commentsContent {
+	
 }

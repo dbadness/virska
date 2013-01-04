@@ -55,7 +55,7 @@
 			echo $this->template;
 		}
 		
-		public function submissions($description, $event_id) {
+		public function submissions($event_id) {
 			
 			$q = "SELECT *
 			FROM submissions
@@ -63,22 +63,33 @@
 			
 			$submissions = DB::instance(DB_NAME)->select_rows($q);
 			
-			$q = "SELECT events.date
+			$q = "SELECT *
 			FROM events
 			WHERE event_id = ".$event_id;
 			
-			$date = DB::instance(DB_NAME)->select_field($q);			
+			$event = DB::instance(DB_NAME)->select_row($q);			
 			
-			$this->template->title = "Submissions for ".$description;
+			$this->template->title = "Submissions for ".$event['description'];
 			$this->template->content = View::instance("v_professor_submissions");
 			$this->template->content->submissions = $submissions;
-			$this->template->content->description = $description;
-			$this->template->content->date = $date;
+			$this->template->content->event = $event;
 			
 			echo $this->template;
 			
 		}
 		
+		public function p_grade() {
+			
+
+			$change = Array('comments' => $_POST['comments']);
+			
+			DB::instance(DB_NAME)->update("submissions", $change, "WHERE submission_id = '".$_POST['submission_id']."'");
+			
+			# send them back to the event from which they came
+			Router::redirect("/professor/submissions/".$_POST['event_id']);
+			
+		}
+	
 		public function classes() {
 			
 			# If user is blank, they're not logged in, show message and don't do anything else

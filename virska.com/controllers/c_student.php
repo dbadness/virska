@@ -123,7 +123,32 @@
 			echo $this->template;
 		}
 		
-		public function p_submit($event_id) {
+		public function grades($section_id) {
+			
+			$q = "SELECT sections.*, classes.class_code
+			FROM sections
+			JOIN classes USING (class_id)
+			WHERE section_id = ".$section_id;
+			
+			$section = DB::instance(DB_NAME)->select_row($q);
+			
+			$q = "SELECT *
+			FROM submissions
+			WHERE section_id = ".$section_id."
+			AND user_id = ".$this->user->user_id;
+			
+			$submissions = DB::instance(DB_NAME)->select_rows($q);
+
+			$this->template->content = View::instance('v_student_grades');
+			$this->template->title = "Grades for ".$this->user->first_name." ".$this->user->last_name." in ".$section['class_code'];
+			$this->template->content->section = $section;
+			$this->template->content->submissions = $submissions;
+			
+			# Render template
+			echo $this->template;	
+		}
+		
+		public function p_submit($event_id, $event_desc) {
 			
 			$_POST['created'] = Time::now();
 			$_POST['modified'] = Time::now();
@@ -188,27 +213,6 @@
 			$searched_events = DB::instance(DB_NAME)->select_rows($q);
 			
 			print_r($searched_events);
-		}
-		
-		public function sections() {
-			
-			# Sets up array of followed sections so we can pull data from it for the assignments, syllabi, and schedule views
-			$q = "SELECT *
-			FROM sections_followed
-			WHERE user_id = ".$this->user->user_id;
-			
-			$sections_followed = DB::instance(DB_NAME)->select_array($q, 'section_id_followed');
-		}
-		
-		public function assignments() {
-			
-			# Lists the assignments that student is following
-				
-		}
-		
-		public function syllabus() {
-			
-			# Lists individual classes inside a section so the student knows what's happening that day
 		}
 		
 		public function search() {
@@ -318,11 +322,6 @@
 
 		}
 	
-		public function schedule() {
-			
-			# Displays what sections the student is following and when and where the classes are
-		}
-		
 		public function settings() {
 				
 			# Setup view

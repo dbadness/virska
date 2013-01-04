@@ -80,7 +80,7 @@
 		<div id="submissionsEnabledContainer">
 			<div id="submissionsEnabledIcon">
 				<?if($event['submissions'] == 1):?>
-					<a href="/professor/submissions/<?=$event['description']?>/<?=$event['event_id']?>">View</a>
+					<a href="/professor/submissions/<?=$event['event_id']?>">View</a>
 				<?endif;?>
 			</div>
 		</div>

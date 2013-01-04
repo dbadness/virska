@@ -1,5 +1,5 @@
 <div class="listHeader">
-	<strong>Submissions for <?=$description?> which was due for <?=$date?>.</strong>
+	<strong>Submissions for <?=$event['description']?> which was due for <?=$event['date']?>.</strong>
 </div>
 <div id="submissionWrapperHeader">
 	<div id="studentNameW" class="submissionItem">
@@ -28,6 +28,26 @@
 				</div>
 			</div>
 			<div style="clear:both;"></div>
+			<hr>
+			<div class="submissionItem">
+				<div id="feedbackLabel">
+					Notes/Grades/Feedback
+				</div>
+				<div id="charCountLabel">
+					Characters Remaining:
+				</div>
+				<div id="charCount">
+					300
+				</div>
+				<div id="feedback">
+					<form method="post" action="/professor/p_grade">
+						<input type="hidden" name="submission_id" value="<?=$submission['submission_id']?>">
+						<input type="hidden" name="event_id" value="<?=$event['event_id']?>">
+						<textarea id="feedbackField" name="comments" cols="120" rows="4" maxlength="300"><?=$submission['comments']?></textarea><br>
+						<input type="submit" value="Publish to this Student">
+					</form>
+				</div>
+			</div>
 		</div>
 	<?endforeach;?>
 </div>
