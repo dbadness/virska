@@ -43,7 +43,8 @@ class documents_controller extends base_controller {
 		
 		$q = "SELECT count(doc_name)
 		FROM documents
-		WHERE doc_name = '".$_FILES['doc']['name']."'";
+		WHERE doc_name = '".$_FILES['doc']['name']."'
+		AND user_id = ".$this->user->user_id;
 		
 		$sum = DB::instance(DB_NAME)->select_field($q);
 		

@@ -56,9 +56,11 @@
 							Documents
 						</div>
 					</a>
-					<div class="navButton" id="settings">
-						Settings
-					</div>
+					<a href="/student/settings">
+						<div class="navButton" id="settings">
+							Settings
+						</div>
+					</a>
 				<?endif;?>
 					<div id="userInfo">
 						<a href="/users/logout">
@@ -99,9 +101,24 @@
 		</div>
 		<div class="spacer">
 		</div>
-		<div id="footer" style="text-align:center;">
+		<div id="footer">
 			<div class="spacer"></div>
-			Here's the footer.
+			<div style="text-align:center;">
+				<a href="/">Home</a> | <a href="/index/contact">Contact</a> | <a href="/index/about">About</a> | <a href="/index/legal">Legal</a>
+			</div>
+			<br>
+			<div id="footerWrapper">
+				<div>
+				<div id="copyright">
+					&#174;2013 Edella, Inc
+				</div>
+				<div id="twitter">
+					<a href="https://twitter.com/Virska" class="twitter-follow-button" data-show-count="false">Follow @virska</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</div>
+				<div style="clear:both;">
+			</div>
+			<div class="spacer"></div>
 		</div>
 	</div>
 </body>

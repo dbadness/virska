@@ -1,20 +1,8 @@
 /* ------ CSS for the index page ---- */
 
 .wrapper {
-	border-left:solid 1px gray;
-	border-right:solid 1px gray;
 	color:#3B3B3B;
-	padding:20px;
-}
-
-#graphic {
-	opacity:.9;
-	width:700px;
-	margin-left:auto;
-	margin-right:auto;
-}
-
-#indexSpacer {
-	border-left:solid 1px gray;
-	border-right:solid 1px gray;	
+	padding-right:20px;
+	padding-left:20px;
+	padding-bottom:20px;
 }

@@ -326,7 +326,7 @@
 				
 			# Setup view
 			$this->template->content = View::instance('v_student_settings');
-			$this->template->title   = "Profile of ".$this->user->first_name;
+			$this->template->title = "Profile of ".$this->user->first_name;
 
 			# Render template
 			echo $this->template;

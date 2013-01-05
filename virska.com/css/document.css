@@ -1,9 +1,15 @@
 #docUpload {
 	padding:10px;
-	background-color:lightgray;
-	border-radius:5px;
+	border-radius:3px;
+	border:solid 2px gray;
 	float:left;
 	width:400px;
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #F1EFFF, #D9D7E5);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1EFFF', endColorstr='#D9D7E5');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #F1EFFF,  #D9D7E5);
 }
 
 #docLimitBox {
@@ -11,11 +17,17 @@
 	margin-top:1px;
 	padding:10px;
 	padding-top:40px;
-	background-color:lightgray;
-	border-radius:5px;
+	border:solid 2px gray;
+	border-radius:3px;
 	float:right;
 	width:370px;
-	height:53px;	
+	height:53px;
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #F1EFFF, #D9D7E5);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1EFFF', endColorstr='#D9D7E5');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #F1EFFF,  #D9D7E5);	
 }
 
 #file {
@@ -44,7 +56,12 @@
 #duplicateError {
 	margin-top:10px;
 	padding:10px;
-	background-color:lightgray;
-	border-radius:5px;
+	border-radius:3px;
 	text-align:center;
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #FFEC8B, #FCDC3B);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEC8B', endColorstr='#FCDC3B');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #FFEC8B,  #FCDC3B);
 }

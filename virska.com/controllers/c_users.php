@@ -386,6 +386,15 @@
 			
 			echo $this->template;
 		}
+		
+		public function p_update_email() {
+				
+			$data = Array('email' => $_POST['email']);
+			
+			DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = '".$this->user->user_id."'");
+			
+			Router::redirect("/student/settings");
+		}
 	}
 
 ?>

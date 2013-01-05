@@ -1,20 +1,20 @@
-<?if($doc_size < 2 * 1073741824):?>
-<div id="docUpload">
-	You can upload Word, Excel, PowerPoint, and PDF files to download later from any computer with internet.<br><br>
-	<form id="docUploadForm" action="/documents/p_upload_doc" method="post" enctype="multipart/form-data">
-			<input id="file" type="file" name="doc">
-			<input id="uploadButton" type="submit" value="Upload Document">
-		<div style="clear:both;"></div>
-	</form>
-</div>
+<?if($doc_size < 104857600):?>
+	<div id="docUpload">
+		You can upload Word, Excel, PowerPoint, and PDF files to download later from any computer with internet.<br><br>
+		<form id="docUploadForm" action="/documents/p_upload_doc" method="post" enctype="multipart/form-data">
+				<input id="file" type="file" name="doc">
+				<input id="uploadButton" type="submit" value="Upload Document">
+			<div style="clear:both;"></div>
+		</form>
+	</div>
 <?else:?>
-<div id="docUpload">
-	You're over your 2GB limit. Please delete documents to add more.
-</div>
+	<div id="docUpload">
+		You're over your 100 MB limit. Please delete documents to add more.
+	</div>
 <?endif;?>	
 <div id="docLimitBox">
-	<?=round(($doc_size / 1073741824), 2)?> GB used, <?=2 - (round(($doc_size / 1073741824), 2))?> GB remaining
-</div>
+	<?=round(($doc_size / 1048576), 2)?> MB used, <?=100 - (round(($doc_size / 1048576), 2))?> MB remaining
+</div>					
 <div style="clear:both;"></div>
 <?if(isset($upload_error)):?>
 	<div id="duplicateError">
