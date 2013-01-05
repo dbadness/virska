@@ -9,7 +9,7 @@
 					Event Description
 				</div>
 				<div id="newEvent">
-					<input placeholder="'Project One Due' or 'First Essay Draft Due'" size="50" name="description">
+					<input placeholder="'Project One Due' or 'First Essay Draft Due'" size="50" name="description"  class="inputs">
 				</div>
 			</div>
 			<div id="attachmentBox">
@@ -26,7 +26,7 @@
 					Event Date
 				</div>
 				<div id="newEventDate">
-					<input name="date" id="datepicker" size="10">
+					<input name="date" class="inputs" id="datepicker" size="10">
 				</div>
 			</div>
 			<div id="submissions">
@@ -51,44 +51,52 @@
 	</form>
 </div>
 <div class="spacer"></div>
-<div id="assignmentHeader" class="listHeader">
-	<div id="dueDateLabel">
-		<i>Date</i>
-	</div>
-	<div id="descriptionLabel">
-		<i>Description</i>
-	</div>
-	<div id="attachmentLabel">
-		<i>Attachment?</i>
-	</div>
-	<div id="submissionsEnabled">
-		<i>Submissions?</i>
-	</div>
-	<div style="clear:both;"></div>
-</div>
-<?foreach($events as $event):?>	
-	<div id="assignmentList" class="listItem">
-		<div id="dueDate">
-			<?=$event['date']?>
+<div>
+	<?if(!$events):?>
+		<div id="noEvents">
+			<i>To add an "event" to this section, like an assignment or project, use the box above.</i>
 		</div>
-		<div id="description">
-			<?=$event['description']?>
+	<?else:?>
+		<div id="assignmentHeader" class="listHeader">
+			<div id="dueDateLabel">
+				<i>Date</i>
+			</div>
+			<div id="descriptionLabel">
+				<i>Description</i>
+			</div>
+			<div id="attachmentLabel">
+				<i>Attachment?</i>
+			</div>
+			<div id="submissionsEnabled">
+				<i>Submissions?</i>
+			</div>
+			<div style="clear:both;"></div>
 		</div>
-		<div id="deleteEvent">
-			<a id="deleteButton" href="/professor/p_delete_event/<?=$event['event_id']?>/<?=$event['section_id']?>"><img src="/images/delete.png" width="20"></a>
-		</div>
-		<div id="submissionsEnabledContainer">
-			<div id="submissionsEnabledIcon">
-				<?if($event['submissions'] == 1):?>
-					<a href="/professor/submissions/<?=$event['event_id']?>">View</a>
+		<?foreach($events as $event):?>	
+			<div id="assignmentList" class="listItem">
+				<div id="dueDate">
+					<?=$event['date']?>
+				</div>
+				<div id="description">
+					<?=$event['description']?>
+				</div>
+				<div id="deleteEvent">
+					<a id="deleteButton" href="/professor/p_delete_event/<?=$event['event_id']?>/<?=$event['section_id']?>"><img src="/images/delete.png" width="20"></a>
+				</div>
+				<div id="submissionsEnabledContainer">
+					<div id="submissionsEnabledIcon">
+						<?if($event['submissions'] == 1):?>
+							<a href="/professor/submissions/<?=$event['event_id']?>">View</a>
+						<?endif;?>
+					</div>
+				</div>
+				<?if($event['doc']):?>
+					<div id="attachmentIcon">
+						<a href="/docs/<?=$event['doc']?>"><img src="/images/attachment.png" width="20"></a>
+					</div>
 				<?endif;?>
+				<div style="clear:both;"></div>
 			</div>
-		</div>
-		<?if($event['doc']):?>
-			<div id="attachmentIcon">
-				<a href="/docs/<?=$event['doc']?>"><img src="/images/attachment.png" width="20"></a>
-			</div>
-		<?endif;?>
-		<div style="clear:both;"></div>
-	</div>
-<?endforeach;?>
+		<?endforeach;?>
+	<?endif;?>
+</div>

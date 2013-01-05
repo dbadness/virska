@@ -14,11 +14,11 @@
 
 #sectionsViewWrapper {
 	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
-   	background: -webkit-linear-gradient(top, #F7F7F7, #CCCCCC);
+   	background: -webkit-linear-gradient(top, #F1EFFF, #D9D7E5);
 	/* IE */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F7F7F7', endColorstr='#CCCCCC');
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1EFFF', endColorstr='#D9D7E5');
 	/* Firefox */
-	background: -moz-linear-gradient(top,  #F7F7F7,  #CCCCCC);
+	background: -moz-linear-gradient(top,  #F1EFFF,  #D9D7E5);
 	border:solid 1px gray;
 }
 
@@ -141,11 +141,11 @@
 	padding:10px;
 	border:solid 1px black;
 	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
-   	background: -webkit-linear-gradient(top, #F7F7F7, #CCCCCC);
+   	background: -webkit-linear-gradient(top, #F1EFFF, #D9D7E5);
 	/* IE */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F7F7F7', endColorstr='#CCCCCC');
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1EFFF', endColorstr='#D9D7E5');
 	/* Firefox */
-	background: -moz-linear-gradient(top,  #F7F7F7,  #CCCCCC);
+	background: -moz-linear-gradient(top,  #F1EFFF,  #D9D7E5);
 	cursor:pointer;
 }
 
@@ -224,11 +224,11 @@
 	border-left:solid 2px gray;
 	border-right:solid 2px gray;
 	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
-   	background: -webkit-linear-gradient(top, #F7F7F7, #CCCCCC);
+   	background: -webkit-linear-gradient(top, #F1EFFF, #D9D7E5);
 	/* IE */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F7F7F7', endColorstr='#CCCCCC');
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1EFFF', endColorstr='#D9D7E5');
 	/* Firefox */
-	background: -moz-linear-gradient(top,  #F7F7F7,  #CCCCCC);
+	background: -moz-linear-gradient(top,  #F1EFFF,  #D9D7E5);
 }
 
 #submissionWrapper {
@@ -238,6 +238,17 @@
 
 .submissionItem {
 	padding:10px;
+}
+
+#noSubmissions {
+	padding:40px;
+	text-align:center;
+	border-bottom:solid 2px gray;
+}
+
+#noEvents {
+	padding:30px;
+	text-align:center;
 }
 
 #studentNameW {
@@ -277,4 +288,9 @@
 	float:left;
 	margin-top:4px;
 	margin-left:3px;
+}
+
+#gradedOn {
+	float:right;
+	margin-right:7px;
 }

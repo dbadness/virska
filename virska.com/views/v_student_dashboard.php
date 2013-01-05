@@ -56,148 +56,174 @@
 		<div style="clear:both;"></div>
 	</div>
 	<div id="canvas">
-		<div class="listHeader">
-			<div class="sDateLabel">
-				<i>Due Date</i>
-			</div>
-			<div class="sClassLabel">
-				<i>Class</i>
-			</div>
-			<div class="sDescLabel">
-				<i>Description</i>
-			</div>
-			<div class="sAttachmentLabel">
-				<i>Attachment</i>
-			</div>
-			<div style="clear:both;"></div>
-		</div>
 		<div id="dueToday">
-			<?foreach($todays_events as $todays_event):?>
-				<div class="listItem dayView">
-					<div class="sClassName">
-						<?=$day_count++?>. <?=$todays_event['class_code']?>
+			<?if(!$todays_events):?>
+				<div class="vacation">
+					Nothing is going on today. Time for video games. Or whatever girls do when there's no homework.
+				</div>
+			<?else:?>
+				<div class="listHeader">
+					<div class="sDateLabel">
+						<i>Due Date</i>
 					</div>
-					<div class="sDesc">
-						<?=$todays_event['description']?>
+					<div class="sClassLabel">
+						<i>Class</i>
 					</div>
-					<div class="sAttachment">
-						<?if(isset($todays_event['doc'])):?>
-							<a href="/docs/<?=$todays_event['doc']?>"><img src="/images/attachment.png" width="20"></a>
-						<?endif;?>
+					<div class="sDescLabel">
+						<i>Description</i>
+					</div>
+					<div class="sAttachmentLabel">
+						<i>Attachment</i>
 					</div>
 					<div style="clear:both;"></div>
-					<?if($todays_event['submissions'] == 1):?>
-						<?if(isset($submissions[$todays_event['event_id']])):?>
-							<div class="sSubmission">
-								<form method="post" action="/student/p_resubmit/<?=$todays_event['event_id']?>" enctype="multipart/form-data">
-									<div class="submissionLabel">
-										Phew... Already submitted. Resubmit?
-									</div>
-									<div class="submissionInput">
-										<input type="hidden" name="event_id" value="<?=$todays_event['event_id']?>">
-										<input type="hidden" name="section_id" value="<?=$todays_event['section_id']?>">
-										<input type="hidden" name="event_desc" value="<?=$todays_event['description']?>">
-										<input type="hidden" name="student_fname" value="<?=$fname?>">
-										<input type="hidden" name="student_lname" value="<?=$lname?>">
-										<input type="file" id="file" name="submission" style="width:330px;">
-									</div>
-									<div class="sSubmitButton">
-										<input type="submit" value="Submit">
-									</div>
-									<div style="clear:both;"></div>
-								</form>
-							</div>
-						<?else:?>
-							<div class="sSubmission">
-								<form method="post" action="/student/p_submit/<?=$todays_event['event_id']?>/<?=$todays_event['description']?>" enctype="multipart/form-data">
-									<div class="submissionLabel">
-										This event requires a submission (what a drag):
-									</div>
-									<div class="submissionInput">
-										<input type="hidden" name="event_id" value="<?=$todays_event['event_id']?>">
-										<input type="hidden" name="section_id" value="<?=$todays_event['section_id']?>">
-										<input type="hidden" name="event_desc" value="<?=$todays_event['description']?>">
-										<input type="hidden" name="student_fname" value="<?=$fname?>">
-										<input type="hidden" name="student_lname" value="<?=$lname?>">
-										<input type="file" id="file" name="submission" style="width:330px;">
-									</div>
-									<div class="sSubmitButton">
-										<input type="submit" value="Submit">
-									</div>
-									<div style="clear:both;"></div>
-								</form>
-							</div>
-						<?endif;?>
-					<?endif;?>
 				</div>
-			<?endforeach;?>
+				<?foreach($todays_events as $todays_event):?>	
+					<div class="listItem dayView"> 
+						<div class="sClassName">
+							<?=$day_count++?>. <?=$todays_event['class_code']?>
+						</div>
+						<div class="sDesc">
+							<?=$todays_event['description']?>
+						</div>
+						<div class="sAttachment">
+							<?if(isset($todays_event['doc'])):?>
+								<a href="/docs/<?=$todays_event['doc']?>"><img src="/images/attachment.png" width="20"></a>
+							<?endif;?>
+						</div>
+						<div style="clear:both;"></div>
+						<?if($todays_event['submissions'] == 1):?>
+							<?if(isset($submissions[$todays_event['event_id']])):?>
+								<div class="sSubmission">
+									<form method="post" action="/student/p_resubmit/<?=$todays_event['event_id']?>" enctype="multipart/form-data">
+										<div class="submissionLabel">
+											Phew... Already submitted. Resubmit?
+										</div>
+										<div class="submissionInput">
+											<input type="hidden" name="event_id" value="<?=$todays_event['event_id']?>">
+											<input type="hidden" name="section_id" value="<?=$todays_event['section_id']?>">
+											<input type="hidden" name="event_desc" value="<?=$todays_event['description']?>">
+											<input type="hidden" name="student_fname" value="<?=$fname?>">
+											<input type="hidden" name="student_lname" value="<?=$lname?>">
+											<input type="file" id="file" name="submission" style="width:330px;">
+										</div>
+										<div class="sSubmitButton">
+											<input type="submit" value="Submit">
+										</div>
+										<div style="clear:both;"></div>
+									</form>
+								</div>
+							<?else:?>
+								<div class="sSubmission">
+									<form method="post" action="/student/p_submit/<?=$todays_event['event_id']?>/<?=$todays_event['description']?>" enctype="multipart/form-data">
+										<div class="submissionLabel">
+											This event requires a submission (what a drag):
+										</div>
+										<div class="submissionInput">
+											<input type="hidden" name="event_id" value="<?=$todays_event['event_id']?>">
+											<input type="hidden" name="section_id" value="<?=$todays_event['section_id']?>">
+											<input type="hidden" name="event_desc" value="<?=$todays_event['description']?>">
+											<input type="hidden" name="student_fname" value="<?=$fname?>">
+											<input type="hidden" name="student_lname" value="<?=$lname?>">
+											<input type="file" id="file" name="submission" style="width:330px;">
+										</div>
+										<div class="sSubmitButton">
+											<input type="submit" value="Submit">
+										</div>
+										<div style="clear:both;"></div>
+									</form>
+								</div>
+							<?endif;?>
+						<?endif;?>
+					</div>
+				<?endforeach;?>
+			<?endif;?>
 		</div>
 		<div id="dueWeek">
-			<?foreach($weeks_events as $weeks_event):?>
-				<div class="listItem weekView">
-					<div class="sDate">
-						<?=$week_count++?>. <?=$weeks_event['date']?>
+			<?if(!$weeks_events):?>
+				<div class="vacation">
+					Nothing is going on today. Time for video games. Or whatever girls do when there's no homework.
+				</div>
+			<?else:?>
+				<div class="listHeader">
+					<div class="sDateLabel">
+						<i>Due Date</i>
 					</div>
-					<div class="sClassName">
-						<?=$weeks_event['class_code']?>
+					<div class="sClassLabel">
+						<i>Class</i>
 					</div>
-					<div class="sDesc">
-						<?=$weeks_event['description']?>
+					<div class="sDescLabel">
+						<i>Description</i>
 					</div>
-					<?if($weeks_event['doc']):?>
-						<div class="sAttachment">
-							<a href="/docs/<?=$weeks_event['doc']?>"><img src="/images/attachment.png" width="20"></a>
-						</div>
-					<?endif;?>
+					<div class="sAttachmentLabel">
+						<i>Attachment</i>
+					</div>
 					<div style="clear:both;"></div>
-					<?if($weeks_event['submissions'] == 1):?>
-						<?if(isset($submissions[$weeks_event['event_id']])):?>
-							<div class="sSubmission">
-								<form method="post" action="/student/p_resubmit/<?=$weeks_event['event_id']?>/<?=$weeks_event['description']?>" enctype="multipart/form-data">
-									<div class="submissionLabel">
-										Phew... Already submitted. Resubmit?
-									</div>
-									<div class="submissionInput">
-										<input type="hidden" name="event_id" value="<?=$weeks_event['event_id']?>">
-										<input type="hidden" name="section_id" value="<?=$weeks_event['section_id']?>">
-										<input type="hidden" name="event_desc" value="<?=$weeks_event['description']?>">
-										<input type="hidden" name="student_fname" value="<?=$fname?>">
-										<input type="hidden" name="student_lname" value="<?=$lname?>">
-										<input type="file" id="file" name="submission" style="width:330px;">
-									</div>
-									<div class="sSubmitButton">
-										<input type="submit" value="Submit">
-									</div>
-									<div style="clear:both;"></div>
-								</form>
-							</div>
-						<?else:?>
-							<div class="sSubmission">
-								<form method="post" action="/student/p_submit/<?=$weeks_event['event_id']?>/<?=$weeks_event['description']?>" enctype="multipart/form-data">
-									<div class="submissionLabel">
-										This event requires a submission (what a drag):
-									</div>
-									<div class="submissionInput">
-										<input type="hidden" name="event_id" value="<?=$weeks_event['event_id']?>">
-										<input type="hidden" name="section_id" value="<?=$weeks_event['section_id']?>">
-										<input type="hidden" name="event_desc" value="<?=$weeks_event['description']?>">
-										<input type="hidden" name="student_fname" value="<?=$fname?>">
-										<input type="hidden" name="student_lname" value="<?=$lname?>">
-										<input type="file" id="file" name="submission" style="width:330px;">
-									</div>
-									<div class="sSubmitButton">
-										<input type="submit" value="Submit">
-									</div>
-									<div style="clear:both;"></div>
-								</form>
+				</div>
+				<?foreach($weeks_events as $weeks_event):?>
+					<div class="listItem weekView">
+						<div class="sDate">
+							<?=$week_count++?>. <?=$weeks_event['date']?>
+						</div>
+						<div class="sClassName">
+							<?=$weeks_event['class_code']?>
+						</div>
+						<div class="sDesc">
+							<?=$weeks_event['description']?>
+						</div>
+						<?if($weeks_event['doc']):?>
+							<div class="sAttachment">
+								<a href="/docs/<?=$weeks_event['doc']?>"><img src="/images/attachment.png" width="20"></a>
 							</div>
 						<?endif;?>
-					<?endif;?>
-				</div>
-			<?endforeach;?>
+						<div style="clear:both;"></div>
+						<?if($weeks_event['submissions'] == 1):?>
+							<?if(isset($submissions[$weeks_event['event_id']])):?>
+								<div class="sSubmission">
+									<form method="post" action="/student/p_resubmit/<?=$weeks_event['event_id']?>/<?=$weeks_event['description']?>" enctype="multipart/form-data">
+										<div class="submissionLabel">
+											Phew... Already submitted. Resubmit?
+										</div>
+										<div class="submissionInput">
+											<input type="hidden" name="event_id" value="<?=$weeks_event['event_id']?>">
+											<input type="hidden" name="section_id" value="<?=$weeks_event['section_id']?>">
+											<input type="hidden" name="event_desc" value="<?=$weeks_event['description']?>">
+											<input type="hidden" name="student_fname" value="<?=$fname?>">
+											<input type="hidden" name="student_lname" value="<?=$lname?>">
+											<input type="file" id="file" name="submission" style="width:330px;">
+										</div>
+										<div class="sSubmitButton">
+											<input type="submit" value="Submit">
+										</div>
+										<div style="clear:both;"></div>
+									</form>
+								</div>
+							<?else:?>
+								<div class="sSubmission">
+									<form method="post" action="/student/p_submit/<?=$weeks_event['event_id']?>/<?=$weeks_event['description']?>" enctype="multipart/form-data">
+										<div class="submissionLabel">
+											This event requires a submission (what a drag):
+										</div>
+										<div class="submissionInput">
+											<input type="hidden" name="event_id" value="<?=$weeks_event['event_id']?>">
+											<input type="hidden" name="section_id" value="<?=$weeks_event['section_id']?>">
+											<input type="hidden" name="event_desc" value="<?=$weeks_event['description']?>">
+											<input type="hidden" name="student_fname" value="<?=$fname?>">
+											<input type="hidden" name="student_lname" value="<?=$lname?>">
+											<input type="file" id="file" name="submission" style="width:330px;">
+										</div>
+										<div class="sSubmitButton">
+											<input type="submit" value="Submit">
+										</div>
+										<div style="clear:both;"></div>
+									</form>
+								</div>
+							<?endif;?>
+						<?endif;?>
+					</div>
+				<?endforeach;?>
+			<?endif;?>
 		</div>
 		<div id="searchDay">
-			search Day
 			<?foreach($searched_events as $searched_event):?>
 				<div class="listItem">
 					<div id="sClassName">

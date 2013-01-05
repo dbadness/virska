@@ -80,8 +80,10 @@
 		
 		public function p_grade() {
 			
-
-			$change = Array('comments' => $_POST['comments']);
+			$_POST['graded'] = "Graded on ".Time::display(Time::now());
+			$change = Array('comments' => $_POST['comments'],
+							'grade' => $_POST['grade'],
+							'graded' => $_POST['graded']);
 			
 			DB::instance(DB_NAME)->update("submissions", $change, "WHERE submission_id = '".$_POST['submission_id']."'");
 			

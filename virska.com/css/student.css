@@ -202,6 +202,10 @@
 
 /* ------ Today's View Specific CSS -------- */
 
+.vacation {
+	padding:30px;
+}
+
 /* ------ This Week's View Specific CSS -------- */
 
 #dueWeek {
@@ -302,8 +306,12 @@
 	
 }
 
+#noGrades {
+	text-align:center;
+}
+
 .submissionList {
-	
+	padding:10px;
 }
 
 #lastModified {
@@ -319,7 +327,10 @@
 }
 
 #commentsContent {
-	
+	padding:10px;
+	width:300px;
+	border:solid 2px gray;
+	background-color:white;
 }
 
 /* -------- Settings Page CSS ------ */

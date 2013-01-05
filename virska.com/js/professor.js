@@ -35,5 +35,14 @@ $(document).ready(function() {
 		count = 300 - length;
 		$('#charCount').html(count);
 	});
+	
+	$("form").submit(function() {
+	if ($(".inputs").val() != 0) {
+		return true;
+	}
+    $("#noEventError").show();
+	$('form').effect("shake", { times:2 }, 50);
+	return false;
+    });
 
 });

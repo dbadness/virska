@@ -67,4 +67,17 @@ class index_controller extends base_controller {
 		echo $this->template;
 	}
 	
+	public function legal() {
+		
+		$this->template->content = View::instance("v_index_legal");
+		$client_files = Array(
+					"/css/index.css",
+					"/js/index.js"
+                    );
+ 		$this->template->client_files = Utils::load_client_files($client_files);
+		$this->template->title = "Legal for Virska and Edella, Inc";
+		
+		echo $this->template;
+	}
+	
 } // end class
