@@ -1,5 +1,6 @@
 <?$day_count = 1;?>
 <?$week_count = 1;?>
+<?$search_count = 1;?>
 <div id="sectionsFollowingHeader">
 	<strong>Sections I'm Following</strong>
 </div>
@@ -86,7 +87,7 @@
 							<?=$todays_event['description']?>
 						</div>
 						<div class="sAttachment">
-							<?if(isset($todays_event['doc'])):?>
+							<?if($todays_event['doc']):?>
 								<a href="/docs/<?=$todays_event['doc']?>"><img src="/images/attachment.png" width="20"></a>
 							<?endif;?>
 						</div>
@@ -237,7 +238,11 @@
 					</form>
 				</div>
 			</div>
-			<?if(isset($searched_events)):?>
+			<?if(!$searched_events):?>
+				<div class="vacation">
+					Nothing is going on today. Time for video games. Or whatever girls do when there's no homework.
+				</div>
+			<?else:?>
 				<div class="listHeader">
 					<div class="sDateLabel">
 						<i>Due Date</i>
@@ -255,15 +260,18 @@
 				</div>
 				<?foreach($searched_events as $searched_event):?>
 					<div class="listItem">
-						<div id="sClassName">
-							<?=$searched_event['class_name']?> - <?=$searched_event['section_name']?>
+						<div class="sClassName">
+							<?=$search_count++?>. <?=$searched_event['class_code']?>
 						</div>
-						<div id="sDesc">
+						<div class="sDesc">
+							<?=$searched_event['description']?>
 						</div>
-						<div id="sSubmission">
+						<div class="sAttachment">
+							<?if($searched_event['doc']):?>
+								<a href="/docs/<?=$searched_event['doc']?>"><img src="/images/attachment.png" width="20"></a>
+							<?endif;?>
 						</div>
-						<div id="sAttachment">
-						</div>
+						<div style="clear:both;"></div>
 						<div style="clear:both;"></div>
 					</div>
 				<?endforeach;?>

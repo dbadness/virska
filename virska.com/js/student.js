@@ -43,8 +43,10 @@ $(document).ready(function() {
 
 	$('#searchDayLabel').click(function() {
 		$('.sDateLabel').hide();
-		$('.sClassLabel').hide();
-		$('.sDescLabel').hide();
+		$('.sClassLabel').show();
+		$('.sClassLabel').css("margin-left", "20px");
+		$('.sDescLabel').show();
+		$('.sDescLabel').css("margin-left", "0px");
 		$('#searchDay').show();
 		$('#dueWeek').hide();
 		$('#dueToday').hide();

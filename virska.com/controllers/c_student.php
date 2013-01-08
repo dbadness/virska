@@ -267,7 +267,7 @@
 			if($connections_string) {
 				
 				$q =
-				"SELECT sections.*, events.*, classes.class_name
+				"SELECT sections.*, events.*, classes.class_code
 				FROM sections 
 				JOIN events USING (section_id) 
 				JOIN classes USING (class_id) 
