@@ -107,7 +107,16 @@ class documents_controller extends base_controller {
 	
 	public function p_delete_doc($doc_id) {
 		
-		#Delete the document for them
+		# Delete the doc from the docs folder so our server doesn't get too big
+		$q = "SELECT doc_code
+		FROM documents
+		WHERE doc_id = ".$doc_id;
+		
+		$document = DB::instance(DB_NAME)->select_field($q);
+		
+		# unlink('/docs/'.$document); Let's figure this out
+		
+		#Delete the document for them on the site
 		DB::instance(DB_NAME)->delete('documents', "WHERE doc_id = ".$doc_id);
 
 		# Bring them to their notes page
