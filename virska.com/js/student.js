@@ -26,6 +26,7 @@ $(document).ready(function() {
 		$('#dueToday').show();
 		$('#dueWeek').hide();
 		$('#searchDay').hide();
+		$('#searchDayActive').hide();
 	});
 
 	$('#dueWeekLabel').click(function() {
@@ -37,6 +38,7 @@ $(document).ready(function() {
 		$('#dueWeek').show();
 		$('#dueToday').hide();
 		$('#searchDay').hide();
+		$('#searchDayActive').hide();
 	});
 
 	$('#searchDayLabel').click(function() {
@@ -46,7 +48,8 @@ $(document).ready(function() {
 		$('#searchDay').show();
 		$('#dueWeek').hide();
 		$('#dueToday').hide();
-	});
+		$('#searchDayActive').show();
+	});	
 	
 	// because we're using the multiple lists in the same view, we have to distiguish the jQuery for each lists beginning and end
 	$(".dayView:odd").css("background-color", "white");
@@ -72,5 +75,11 @@ $(document).ready(function() {
 	$(".submissionList:first").css("border-top", "solid 1px gray");
 	$(".submissionList:last").css("border-bottom", "solid 1px gray");
 	
+	$(function() {
+	    $("#datepicker").datepicker();
+	    $("#format").change(function() {
+	        $("#datepicker").datepicker( "option" , "dateFormat", $(this).val() );
+	    });
+	});
 	
 });

@@ -218,6 +218,30 @@
 	display:none;
 }
 
+#searchDayActive {
+	
+}
+
+#searchDateW {
+	border-bottom:solid 2px gray;
+	padding:30px;	
+}
+
+#searchDate {
+	width:210px;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+#searchDateInput {
+	float:left;
+}
+
+#searchDateSubmit {
+	float:right;
+	margin-top:3px;
+}
+
 /* -------- Search pages CSS ---------- */
 
 #searchHeader {

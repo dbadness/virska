@@ -44,25 +44,25 @@
 </div>
 <div id="assignmentViewer">
 	<div id="dateHeader">
-		<div id="dueTodayLabel" class="happening active">
+		<div id="dueTodayLabel" class="happening passive">
 			Happening Today
 		</div>	
 		<div id="dueWeekLabel" class="happening passive">
 			Happening This Week
 		</div>
-		<div id="searchDayLabel" class="happening passive">
+		<div id="searchDayLabel" class="happening active">
 			Search by Day
 		</div>
 		<div style="clear:both;"></div>
 	</div>
 	<div id="canvas">
-		<div id="dueToday">
+		<div id="dueToday" style="display:none">
 			<?if(!$todays_events):?>
 				<div class="vacation">
 					Nothing is going on today. Time for video games. Or whatever girls do when there's no homework.
 				</div>
 			<?else:?>
-				<div class="listHeader">
+				<div class="listHeader" style="display:none;">
 					<div class="sDateLabel">
 						<i>Due Date</i>
 					</div>
@@ -138,13 +138,13 @@
 				<?endforeach;?>
 			<?endif;?>
 		</div>
-		<div id="dueWeek">
+		<div id="dueWeek" style="display:none;">
 			<?if(!$weeks_events):?>
 				<div class="vacation">
 					Nothing is going on today. Time for video games. Or whatever girls do when there's no homework.
 				</div>
 			<?else:?>
-				<div class="listHeader">
+				<div class="listHeader" style="display:none;">
 					<div class="sDateLabel">
 						<i>Due Date</i>
 					</div>
@@ -223,12 +223,12 @@
 				<?endforeach;?>
 			<?endif;?>
 		</div>
-		<div id="searchDay">
+		<div id="searchDayActive">
 			<div id="searchDateW">
 				<div id="searchDate">
 					<form method="post" action="/student/dashboard_results">
 						<div id="searchDateInput">
-							<input name="date" id="datepicker" class="inputs" size="10">
+							<input name="date" id="datepicker" class="inputs" size="13" value="<?=$date?>">
 						</div>
 						<div id="searchDateSubmit">
 							<input type="submit" value="Search" id="searchDateButton">
@@ -237,6 +237,37 @@
 					</form>
 				</div>
 			</div>
+			<?if(isset($searched_events)):?>
+				<div class="listHeader">
+					<div class="sDateLabel">
+						<i>Due Date</i>
+					</div>
+					<div class="sClassLabel">
+						<i>Class</i>
+					</div>
+					<div class="sDescLabel">
+						<i>Description</i>
+					</div>
+					<div class="sAttachmentLabel">
+						<i>Attachment</i>
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+				<?foreach($searched_events as $searched_event):?>
+					<div class="listItem">
+						<div id="sClassName">
+							<?=$searched_event['class_name']?> - <?=$searched_event['section_name']?>
+						</div>
+						<div id="sDesc">
+						</div>
+						<div id="sSubmission">
+						</div>
+						<div id="sAttachment">
+						</div>
+						<div style="clear:both;"></div>
+					</div>
+				<?endforeach;?>
+			<?endif;?>
 		</div>
 	</div>
 </div>

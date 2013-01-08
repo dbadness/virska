@@ -21,7 +21,8 @@
 			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
 			$client_files = Array(
 								"/js/student.js",
-								"/css/student.css"
+								"/css/student.css",
+								"http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css"
 								 );
 
 		    $this->template->client_files = Utils::load_client_files($client_files);
@@ -110,6 +111,15 @@
 			$fname = $this->user->first_name;
 			$lname = $this->user->last_name;
 			
+			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
+			$client_files = Array(
+								"/js/student.js",
+								"/css/student.css",
+								"http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css"
+								 );
+
+		    $this->template->client_files = Utils::load_client_files($client_files);
+			
 			# The user's main dashboard in Virska
 			$this->template->content = View::instance('v_student_dashboard');
 			$this->template->title = "Dashboard for ".$this->user->first_name." ".$this->user->last_name;
@@ -178,7 +188,7 @@
 			Router::redirect("/student/dashboard");
 		}
 
-		public function p_search_date() {
+		public function dashboard_results() {
 			
 			# Build a query of the professors this user is following - we're only interested in their sections
 			$q = "SELECT section_id_followed 
@@ -202,6 +212,61 @@
 			if($connections_string) {
 				
 				$q =
+				"SELECT sections.*, classes.class_name, classes.class_code
+				FROM sections 
+				JOIN classes USING (class_id) 
+				WHERE sections.section_id IN (".$connections_string.")";
+			}
+			
+			$sections = DB::instance(DB_NAME)->select_rows($q);
+			
+			# Let's find the events that are happening today to start our page off right
+			if($connections_string) {
+				
+				$q =
+				"SELECT sections.*, events.*, classes.class_code
+				FROM sections 
+				JOIN events USING (section_id) 
+				JOIN classes USING (class_id) 
+				WHERE sections.section_id IN (".$connections_string.")
+				AND date = '".date("m/d/Y")."'";
+				# remember to surround the dates in single quotes because they're strings in mysql
+			}
+			
+			$todays_events = DB::instance(DB_NAME)->select_rows($q);
+			
+			# Run our query, store the results in the variable $sections (if they're following sections...)
+			if($connections_string) {
+				
+				$q =
+				"SELECT sections.*, events.*, classes.class_code
+				FROM sections 
+				JOIN events USING (section_id) 
+				JOIN classes USING (class_id) 
+				WHERE sections.section_id IN (".$connections_string.")
+				AND date BETWEEN '".date("m/d/y")."' AND '".date("m/d/y", strtotime('+7 days'))."'
+				ORDER BY date ASC";
+				# we can use the string to time function to return the events happening in the next week
+			}
+			
+			$weeks_events = DB::instance(DB_NAME)->select_rows($q);
+			
+			# Run our query, store the results in the variable $sections (if they're following sections...)
+			if($connections_string) {
+				
+				$q =
+				"SELECT event_id, modified
+				FROM submissions
+				WHERE section_id IN (".$connections_string.")
+				AND user_id = ".$this->user->user_id;
+			}
+			
+			$submissions = DB::instance(DB_NAME)->select_array($q, 'event_id');
+			
+			# Run our query, store the results in the variable $sections (if they're following sections...)
+			if($connections_string) {
+				
+				$q =
 				"SELECT sections.*, events.*, classes.class_name
 				FROM sections 
 				JOIN events USING (section_id) 
@@ -209,10 +274,28 @@
 				WHERE sections.section_id IN (".$connections_string.")
 				AND date = '".$_POST['date']."'";
 			}
-		
+			
 			$searched_events = DB::instance(DB_NAME)->select_rows($q);
 			
-			print_r($searched_events);
+			$fname = $this->user->first_name;
+			$lname = $this->user->last_name;
+			
+			$date = $_POST['date'];
+			
+			# The user's main dashboard in Virska
+			$this->template->content = View::instance('v_student_dashboard_results');
+			$this->template->title = "Dashboard for ".$this->user->first_name." ".$this->user->last_name;
+			$this->template->content->sections = $sections;
+			$this->template->content->todays_events = $todays_events;
+			$this->template->content->weeks_events = $weeks_events;
+			$this->template->content->searched_events = $searched_events;
+			$this->template->content->submissions = $submissions;
+			$this->template->content->fname = $fname;
+			$this->template->content->lname = $lname;
+			$this->template->content->date = $date;
+			
+			echo $this->template;
+			
 		}
 		
 		public function search() {
