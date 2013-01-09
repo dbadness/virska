@@ -84,4 +84,12 @@ $(document).ready(function() {
 	    });
 	});
 	
+	$("form").submit(function() {
+      if ($(".inputs").val() != 0) {
+        return true;
+      }
+		$(this).effect("shake", { times:2 }, 50);
+      	return false;
+    });
+	
 });

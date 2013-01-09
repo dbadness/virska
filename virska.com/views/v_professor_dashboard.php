@@ -31,3 +31,31 @@
 	<?endforeach;?>
 </div>
 <div class="spacer"></div>
+<div class="listHeader">
+	<strong>Create a message to send to your students:<br>(for example: "Project 1 Grades are posted!" or "Today's class is cancelled...")</strong>
+</div>
+<div id="messagesWrapper">
+	<div id="message">
+		<form method="post" action="/professor/p_message">
+			<div style="width:220px;">
+				<div id="sectionSelectorLabel">
+					Send to class:
+				</div>
+				<div id="sectionSelector">
+					<select name="section">
+						<?foreach($sections as $section):?>
+							<option value="<?=$section['class_code']."-".$section['section_name']?>"><?=$section['class_code']."-".$section['section_name']?></option>
+						<?endforeach;?>
+					</select>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div id="messageContent">
+				<textarea name="message" maxlength="200" cols="76"></textarea>
+			</div>
+			<div id="messageSubmit">
+				<input type="submit" value="Send Message" id="sendMessage">
+			</div>
+		</form>
+	</div>
+</div>
