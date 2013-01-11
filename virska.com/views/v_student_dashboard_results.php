@@ -13,7 +13,7 @@
 <div style="clear:both;"></div>
 <div id="sectionsViewWrapper">
 	<?if(!$sections):?>
-		<div class="vacation">
+		<div class="ifNoVariables">
 			<i>You're not following any sections yet. Click on 'Search for Classes for Follow' to find your professor's sections.</i>
 		</div>
 	<?else:?>
@@ -65,21 +65,21 @@
 	<div id="canvas">
 		<div id="dueToday" style="display:none">
 			<?if(!$todays_events):?>
-				<div class="vacation">
+				<div class="ifNoVariables">
 					Nothing is going on today. Time for video games. Or whatever girls do when there's no homework.
 				</div>
 			<?else:?>
-				<div class="listHeader" style="display:none;">
-					<div class="sDateLabel">
+				<div class="listHeader">
+					<div class="sDateLabel" style="display:none;">
 						<i>Due Date</i>
 					</div>
-					<div class="sClassLabel">
+					<div class="sClassLabel" style="display:none;">
 						<i>Class</i>
 					</div>
-					<div class="sDescLabel">
+					<div class="sDescLabel" style="display:none;">
 						<i>Description</i>
 					</div>
-					<div class="sAttachmentLabel">
+					<div class="sAttachmentLabel" style="display:none;">
 						<i>Attachment</i>
 					</div>
 					<div style="clear:both;"></div>
@@ -98,6 +98,7 @@
 							<?endif;?>
 						</div>
 						<div style="clear:both;"></div>
+						<br>
 						<?if($todays_event['submissions'] == 1):?>
 							<?if(isset($submissions[$todays_event['event_id']])):?>
 								<div class="sSubmission">
@@ -147,21 +148,21 @@
 		</div>
 		<div id="dueWeek" style="display:none;">
 			<?if(!$weeks_events):?>
-				<div class="vacation">
+				<div class="ifNoVariables">
 					Nothing is going on today. Time for video games. Or whatever girls do when there's no homework.
 				</div>
 			<?else:?>
-				<div class="listHeader" style="display:none;">
-					<div class="sDateLabel">
+				<div class="listHeader">
+					<div class="sDateLabel" style="display:none;">
 						<i>Due Date</i>
 					</div>
-					<div class="sClassLabel">
+					<div class="sClassLabel" style="display:none;">
 						<i>Class</i>
 					</div>
-					<div class="sDescLabel">
+					<div class="sDescLabel" style="display:none;">
 						<i>Description</i>
 					</div>
-					<div class="sAttachmentLabel">
+					<div class="sAttachmentLabel" style="display:none;">
 						<i>Attachment</i>
 					</div>
 					<div style="clear:both;"></div>
@@ -183,6 +184,7 @@
 							</div>
 						<?endif;?>
 						<div style="clear:both;"></div>
+						<br>
 						<?if($weeks_event['submissions'] == 1):?>
 							<?if(isset($submissions[$weeks_event['event_id']])):?>
 								<div class="sSubmission">
@@ -245,18 +247,18 @@
 				</div>
 			</div>
 			<?if(!$searched_events):?>
-				<div class="vacation" id="noSearchResults">
-					Nothing is happening on <?=$date?>. Woo hoo!
+				<div class="ifNoVariables" id="noSearchResults" style="padding:30px;">
+					<h2>Nothing is happening on <?=$date?>. Woo hoo!</h2>
 				</div>
 			<?else:?>
-				<div class="listHeader">
-					<div class="sDateLabel">
+				<div class="listHeader" style="border-top:solid 1px gray;">
+					<div class="sDateLabel" style="display:block;">
 						<i>Due Date</i>
 					</div>
-					<div class="sClassLabel">
+					<div class="sClassLabel" style="margin-left:0px;">
 						<i>Class</i>
 					</div>
-					<div class="sDescLabel">
+					<div class="sDescLabel" style="margin-left:20px;">
 						<i>Description</i>
 					</div>
 					<div class="sAttachmentLabel">
@@ -265,19 +267,66 @@
 					<div style="clear:both;"></div>
 				</div>
 				<?foreach($searched_events as $searched_event):?>
-					<div class="listItem">
+					<div class="listItem searchView">
+						<div class="sDate">
+							<?=$search_count++?>. <?=$searched_event['date']?>
+						</div>
 						<div class="sClassName">
-							<?=$search_count++?>. <?=$searched_event['class_code']?>
+							<?=$searched_event['class_code']?>
 						</div>
 						<div class="sDesc">
 							<?=$searched_event['description']?>
 						</div>
-						<div class="sAttachment">
-							<?if($searched_event['doc']):?>
+						<?if($searched_event['doc']):?>
+							<div class="sAttachment">
 								<a href="/docs/<?=$searched_event['doc']?>"><img src="/images/attachment.png" width="20"></a>
-							<?endif;?>
-						</div>
+							</div>
+						<?endif;?>
 						<div style="clear:both;"></div>
+						<br>
+						<?if($searched_event['submissions'] == 1):?>
+							<?if(isset($submissions[$weeks_event['event_id']])):?>
+								<div class="sSubmission">
+									<form method="post" action="/student/p_resubmit/<?=$searched_event['event_id']?>/<?=$searched_event['description']?>" enctype="multipart/form-data">
+										<div class="submissionLabel">
+											Phew... Already submitted. Resubmit?
+										</div>
+										<div class="submissionInput">
+											<input type="hidden" name="event_id" value="<?=$searched_event['event_id']?>">
+											<input type="hidden" name="section_id" value="<?=$searched_event['section_id']?>">
+											<input type="hidden" name="event_desc" value="<?=$searched_event['description']?>">
+											<input type="hidden" name="student_fname" value="<?=$user->first_name?>">
+											<input type="hidden" name="student_lname" value="<?=$user->last_name?>">
+											<input type="file" id="file" name="submission" style="width:330px;">
+										</div>
+										<div class="sSubmitButton">
+											<input type="submit" value="Submit">
+										</div>
+										<div style="clear:both;"></div>
+									</form>
+								</div>
+							<?else:?>
+								<div class="sSubmission">
+									<form method="post" action="/student/p_submit/<?=$searched_event['event_id']?>/<?=$searched_event['description']?>" enctype="multipart/form-data">
+										<div class="submissionLabel">
+											This event requires a submission (what a drag):
+										</div>
+										<div class="submissionInput">
+											<input type="hidden" name="event_id" value="<?=$searched_event['event_id']?>">
+											<input type="hidden" name="section_id" value="<?=$searched_event['section_id']?>">
+											<input type="hidden" name="event_desc" value="<?=$searched_event['description']?>">
+											<input type="hidden" name="student_fname" value="<?=$user->first_name?>">
+											<input type="hidden" name="student_lname" value="<?=$user->last_name?>">
+											<input type="file" id="file" name="submission" style="width:330px;">
+										</div>
+										<div class="sSubmitButton">
+											<input type="submit" value="Submit">
+										</div>
+										<div style="clear:both;"></div>
+									</form>
+								</div>
+							<?endif;?>
+						<?endif;?>
 					</div>
 				<?endforeach;?>
 			<?endif;?>
@@ -294,7 +343,7 @@
 <div style="clear:both;"></div>
 <div id="messagesWrapper">
 	<?if(!$unread_messages):?>
-		<div class="vacation">
+		<div class="ifNoVariables">
 			No New Messages
 		</div>
 	<?else:?>

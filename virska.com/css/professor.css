@@ -76,6 +76,16 @@
 	padding:20px;
 }
 
+#messagesWrapper {
+	border:solid 1px gray;
+	padding:20px;
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #F1EFFF, #D9D7E5);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1EFFF', endColorstr='#D9D7E5');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #F1EFFF,  #D9D7E5);
+}
 
 /* ----- Add an assignment CSS (/professor/section/X) ---*/
 
@@ -295,17 +305,48 @@
 	margin-right:7px;
 }
 
-/* ------------ Messages CSS ------- */
+/* -------- Messages CSS -------*/
 
 #messagesWrapper {
 	border:solid 1px gray;
+}
+
+.messageContainer {
 	padding:20px;
-	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
-   	background: -webkit-linear-gradient(top, #F1EFFF, #D9D7E5);
-	/* IE */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1EFFF', endColorstr='#D9D7E5');
-	/* Firefox */
-	background: -moz-linear-gradient(top,  #F1EFFF,  #D9D7E5);
+	border-bottom:solid 1px gray;
+}
+
+#messageViewerHeader {
+	float:left;
+}
+
+#messageHeaderCopy {
+	float:left;
+}
+
+#sentMessages {
+	margin-top:18px;
+	float:right;
+}
+
+.readMessageContainer {
+	padding:20px;
+}
+
+.messageHeader {
+	
+}
+
+.from {
+	float:left;
+}
+
+.markRead {
+	float:right;
+}
+
+.deleteMessage {
+	float:right;
 }
 
 #sectionSelectorLabel {

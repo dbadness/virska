@@ -3,7 +3,7 @@
 </div>
 <div id="messagesWrapper">
 	<?if(!$read_messages):?>
-		<div class="vacation">
+		<div class="ifNoVariables">
 			No Read Messages
 		</div>
 	<?else:?>

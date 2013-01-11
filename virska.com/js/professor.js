@@ -45,4 +45,6 @@ $(document).ready(function() {
 	return false;
     });
 
+	$(".messageContainer:last").css("border-bottom", "solid 0px gray");
+
 });

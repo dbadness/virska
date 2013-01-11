@@ -4,7 +4,7 @@
 <div id="gradesWrapper">
 	<?if(!$submissions):?>
 		<div class="spacer"></div>
-		<div id="noGrades">
+		<div class="ifNoVariables">
 			<i>No grades have been posted yet.</i>
 		</div>
 	<?else:?>

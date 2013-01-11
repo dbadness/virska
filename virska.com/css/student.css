@@ -201,11 +201,6 @@
 
 /* ------ Today's View Specific CSS -------- */
 
-.vacation {
-	padding:50px;
-	text-align:center;
-}
-
 /* ------ This Week's View Specific CSS -------- */
 
 #dueWeek {
@@ -223,7 +218,7 @@
 }
 
 #searchDateW {
-	padding:30px;	
+	padding:44px;	
 }
 
 #searchDate {

@@ -49,7 +49,7 @@
 			
 			$q = "SELECT *
 			FROM sections_followed
-			WHERE section_id_followed = ".$_POST['section'];
+			WHERE section_id_followed = ".$_POST['section_id'];
 			
 			$students = DB::instance(DB_NAME)->select_rows($q);
 			
@@ -67,9 +67,37 @@
 				
 			}
 			
-			Router::redirect("/professor/dashboard");
+			Router::redirect("/professor/messages");
 		}
 
+		public function messages() {
+			
+			$q = "SELECT messages.*, classes.class_code, sections.section_name
+			FROM messages
+			JOIN sections USING (section_id)
+			JOIN classes USING (class_id)
+			WHERE prof_id = ".$this->user->user_id."
+			GROUP BY message";
+			
+			$messages = DB::instance(DB_NAME)->select_rows($q);
+			
+			$this->template->content = View::instance("v_professor_messages");
+			$this->template->content->messages = $messages;
+			
+			echo $this->template;
+			
+		}
+
+		public function p_delete_message() {
+			
+			# Delete this message forever (also delete it fo students)
+			$where_condition = "WHERE prof_id = '".$_POST['prof_id']."' AND message = '".$_POST['message']."'";
+			DB::instance(DB_NAME)->delete('messages', $where_condition);
+			
+			Router::redirect("/professor/messages");
+			
+		}
+		
 		public function settings() {
 			
 			# Setup view

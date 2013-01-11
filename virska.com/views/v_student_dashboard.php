@@ -12,7 +12,7 @@
 <div style="clear:both;"></div>
 <div id="sectionsViewWrapper">
 	<?if(!$sections):?>
-		<div class="vacation">
+		<div class="ifNoVariables">
 			<i>You're not following any sections yet. Click on 'Search for Classes for Follow' to find your professor's sections.</i>
 		</div>
 	<?else:?>
@@ -64,7 +64,7 @@
 	<div id="canvas">
 		<div id="dueToday">
 			<?if(!$todays_events):?>
-				<div class="vacation">
+				<div class="ifNoVariables">
 					Nothing is going on today. Time for video games. Or whatever girls do when there's no homework.
 				</div>
 			<?else:?>
@@ -97,6 +97,7 @@
 							<?endif;?>
 						</div>
 						<div style="clear:both;"></div>
+						<br>
 						<?if($todays_event['submissions'] == 1):?>
 							<?if(isset($submissions[$todays_event['event_id']])):?>
 								<div class="sSubmission">
@@ -146,7 +147,7 @@
 		</div>
 		<div id="dueWeek">
 			<?if(!$weeks_events):?>
-				<div class="vacation">
+				<div class="ifNoVariables">
 					Nothing is going on today. Time for video games. Or whatever girls do when there's no homework.
 				</div>
 			<?else:?>
@@ -182,6 +183,7 @@
 							</div>
 						<?endif;?>
 						<div style="clear:both;"></div>
+						<br>
 						<?if($weeks_event['submissions'] == 1):?>
 							<?if(isset($submissions[$weeks_event['event_id']])):?>
 								<div class="sSubmission">
@@ -256,7 +258,7 @@
 <div style="clear:both;"></div>
 <div id="messagesWrapper">
 	<?if(!$unread_messages):?>
-		<div class="vacation">
+		<div class="ifNoVariables">
 			No New Messages
 		</div>
 	<?else:?>

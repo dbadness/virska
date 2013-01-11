@@ -32,7 +32,13 @@
 </div>
 <div class="spacer"></div>
 <div class="listHeader">
-	<strong>Create a message to send to your students:<br>(for example: "Project 1 Grades are posted!" or "Today's class is cancelled...")</strong>
+	<div id="messageHeaderCopy">
+		<strong>Create a message to send to your students:<br>(for example: "Project 1 Grades are posted!" or "Today's class is cancelled...")</strong>
+	</div>
+	<div id="sentMessages">
+		<a href="/professor/messages">View Sent Messages</a>
+	</div>
+	<div style="clear:both;"></div>
 </div>
 <div id="messagesWrapper">
 	<div id="message">
@@ -42,7 +48,7 @@
 					Send to class:
 				</div>
 				<div id="sectionSelector">
-					<select name="section">
+					<select name="section_id">
 						<?foreach($sections as $section):?>
 							<option value="<?=$section['section_id']?>"><?=$section['class_code']."-".$section['section_name']?></option>
 						<?endforeach;?>

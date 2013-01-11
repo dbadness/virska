@@ -28,9 +28,9 @@ $(document).ready(function() {
 	});
 
 	$('#dueWeekLabel').click(function() {
+		$('.sDateLabel').show();
 		$('.sClassLabel').show();
 		$('.sClassLabel').css("margin-left", "0px");
-		$('.sDateLabel').show();
 		$('.sDescLabel').show();
 		$('.sDescLabel').css("margin-left", "20px");
 		$('#dueWeek').show();
@@ -40,11 +40,11 @@ $(document).ready(function() {
 	});
 
 	$('#searchDayLabel').click(function() {
-		$('.sDateLabel').hide();
+		$('.sDateLabel').show();
 		$('.sClassLabel').show();
-		$('.sClassLabel').css("margin-left", "20px");
+		$('.sClassLabel').css("margin-left", "0px");
 		$('.sDescLabel').show();
-		$('.sDescLabel').css("margin-left", "0px");
+		$('.sDescLabel').css("margin-left", "20px");
 		$('#searchDay').show();
 		$('#dueWeek').hide();
 		$('#dueToday').hide();
@@ -61,6 +61,11 @@ $(document).ready(function() {
 	$(".weekView:even").css("background-color", "#CCFFFF");
 	$(".weekView:first").css("border-top", "solid 1px gray");
 	$(".weekView:last").css("border-bottom", "solid 1px gray");
+	
+	$(".searchView:odd").css("background-color", "white");
+	$(".searchView:even").css("background-color", "#CCFFFF");
+	$(".searchView:first").css("border-top", "solid 1px gray");
+	$(".searchView:last").css("border-bottom", "solid 1px gray");
 	
 	$("form").submit(function() {
 		if ($("#file").val() != 0) {

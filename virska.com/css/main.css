@@ -57,6 +57,11 @@ textarea {
 	padding:10px;
 }
 
+.ifNoVariables {
+	padding:50px;
+	text-align:center;
+}
+
 #container {
 	margin-left:auto;
 	margin-right:auto;
