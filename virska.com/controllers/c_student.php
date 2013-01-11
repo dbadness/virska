@@ -108,17 +108,13 @@
 			
 			$submissions = DB::instance(DB_NAME)->select_array($q, 'event_id');
 			
-			$fname = $this->user->first_name;
-			$lname = $this->user->last_name;
+			# Select all of the unread messages that belong to this student
+			$q = "SELECT *
+			FROM messages
+			WHERE user_id = ".$this->user->user_id."
+			AND unread = 1";
 			
-			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
-			$client_files = Array(
-								"/js/student.js",
-								"/css/student.css",
-								"http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css"
-								 );
-
-		    $this->template->client_files = Utils::load_client_files($client_files);
+			$unread_messages = DB::instance(DB_NAME)->select_rows($q);
 			
 			# The user's main dashboard in Virska
 			$this->template->content = View::instance('v_student_dashboard');
@@ -127,10 +123,55 @@
 			$this->template->content->todays_events = $todays_events;
 			$this->template->content->weeks_events = $weeks_events;
 			$this->template->content->submissions = $submissions;
-			$this->template->content->fname = $fname;
-			$this->template->content->lname = $lname;
+			$this->template->content->unread_messages = $unread_messages;
 			
 			echo $this->template;
+		}
+		
+		public function messages() {
+			
+			# Select all of the read messages that belong to this student
+			$q = "SELECT *
+			FROM messages
+			WHERE user_id = ".$this->user->user_id."
+			AND unread = 0";
+			
+			$read_messages = DB::instance(DB_NAME)->select_rows($q);
+			
+			$this->template->content = View::instance("v_student_messages");
+			
+			$this->template->content->read_messages = $read_messages;
+			
+			echo $this->template;
+			
+		}
+		
+		public function p_read() {
+			
+			$data = Array('unread' => 0);
+			
+			DB::instance(DB_NAME)->update("messages", $data, "WHERE message_id = '".$_POST['message_id']."'");
+			
+			Router::redirect("/student/dashboard");
+			
+		}
+		
+		public function p_unread() {
+			
+			$data = Array('unread' => 1);
+			
+			DB::instance(DB_NAME)->update("messages", $data, "WHERE message_id = '".$_POST['message_id']."'");
+			
+			Router::redirect("/student/messages");
+		}
+		
+		public function p_delete_message() {
+			
+			# Delete this message forever
+			$where_condition = 'WHERE message_id = '.$_POST['message_id'];
+			DB::instance(DB_NAME)->delete('messages', $where_condition);
+			
+			Router::redirect("/student/messages");
 		}
 		
 		public function grades($section_id) {
@@ -189,6 +230,10 @@
 		}
 
 		public function dashboard_results() {
+			
+			if(!$_POST) {
+				Router::redirect("/student/dashboard");
+			}
 			
 			# Build a query of the professors this user is following - we're only interested in their sections
 			$q = "SELECT section_id_followed 
@@ -277,8 +322,21 @@
 			
 			$searched_events = DB::instance(DB_NAME)->select_rows($q);
 			
-			$fname = $this->user->first_name;
-			$lname = $this->user->last_name;
+			# Select all of the messages that belong to this student
+			$q = "SELECT *
+			FROM messages
+			WHERE user_id = ".$this->user->user_id."
+			AND unread = 1";
+			
+			$unread_messages = DB::instance(DB_NAME)->select_rows($q);
+			
+			# Select all of the messages that belong to this student
+			$q = "SELECT *
+			FROM messages
+			WHERE user_id = ".$this->user->user_id."
+			AND unread = 0";
+			
+			$read_messages = DB::instance(DB_NAME)->select_rows($q);
 			
 			$date = $_POST['date'];
 			
@@ -290,9 +348,9 @@
 			$this->template->content->weeks_events = $weeks_events;
 			$this->template->content->searched_events = $searched_events;
 			$this->template->content->submissions = $submissions;
-			$this->template->content->fname = $fname;
-			$this->template->content->lname = $lname;
 			$this->template->content->date = $date;
+			$this->template->content->unread_messages = $unread_messages;
+			$this->template->content->read_messages = $read_messages;
 			
 			echo $this->template;
 			

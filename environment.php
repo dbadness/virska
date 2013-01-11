@@ -8,7 +8,7 @@ This file should not be tracked in your Git repo.
 -------------------------------------------------------------------------------------------------*/
 
 # We're on the local environment so toggle IN_PRODUCTION off
-define('IN_PRODUCTION', TRUE);
+define('IN_PRODUCTION', FALSE);
 
 # Always display errors on local environment
 define('DISPLAY_ERRORS', TRUE);

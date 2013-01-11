@@ -108,8 +108,8 @@
 											<input type="hidden" name="event_id" value="<?=$todays_event['event_id']?>">
 											<input type="hidden" name="section_id" value="<?=$todays_event['section_id']?>">
 											<input type="hidden" name="event_desc" value="<?=$todays_event['description']?>">
-											<input type="hidden" name="student_fname" value="<?=$fname?>">
-											<input type="hidden" name="student_lname" value="<?=$lname?>">
+											<input type="hidden" name="student_fname" value="<?=$user->first_name?>">
+											<input type="hidden" name="student_lname" value="<?=$user->last_name?>">
 											<input type="file" id="file" name="submission" style="width:330px;">
 										</div>
 										<div class="sSubmitButton">
@@ -128,8 +128,8 @@
 											<input type="hidden" name="event_id" value="<?=$todays_event['event_id']?>">
 											<input type="hidden" name="section_id" value="<?=$todays_event['section_id']?>">
 											<input type="hidden" name="event_desc" value="<?=$todays_event['description']?>">
-											<input type="hidden" name="student_fname" value="<?=$fname?>">
-											<input type="hidden" name="student_lname" value="<?=$lname?>">
+											<input type="hidden" name="student_fname" value="<?=$user->first_name?>">
+											<input type="hidden" name="student_lname" value="<?=$user->last_name?>">
 											<input type="file" id="file" name="submission" style="width:330px;">
 										</div>
 										<div class="sSubmitButton">
@@ -193,8 +193,8 @@
 											<input type="hidden" name="event_id" value="<?=$weeks_event['event_id']?>">
 											<input type="hidden" name="section_id" value="<?=$weeks_event['section_id']?>">
 											<input type="hidden" name="event_desc" value="<?=$weeks_event['description']?>">
-											<input type="hidden" name="student_fname" value="<?=$fname?>">
-											<input type="hidden" name="student_lname" value="<?=$lname?>">
+											<input type="hidden" name="student_fname" value="<?=$user->first_name?>">
+											<input type="hidden" name="student_lname" value="<?=$user->last_name?>">
 											<input type="file" id="file" name="submission" style="width:330px;">
 										</div>
 										<div class="sSubmitButton">
@@ -213,8 +213,8 @@
 											<input type="hidden" name="event_id" value="<?=$weeks_event['event_id']?>">
 											<input type="hidden" name="section_id" value="<?=$weeks_event['section_id']?>">
 											<input type="hidden" name="event_desc" value="<?=$weeks_event['description']?>">
-											<input type="hidden" name="student_fname" value="<?=$fname?>">
-											<input type="hidden" name="student_lname" value="<?=$lname?>">
+											<input type="hidden" name="student_fname" value="<?=$user->first_name?>">
+											<input type="hidden" name="student_lname" value="<?=$user->last_name?>">
 											<input type="file" id="file" name="submission" style="width:330px;">
 										</div>
 										<div class="sSubmitButton">
@@ -245,4 +245,39 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div class="spacer"></div>
+<div class="listHeader" id="messageViewerHeader">
+	<strong>Messages</strong>
+</div>
+<div class="listHeader" id="readReadMessages">
+	<a href="/student/messages">View Read Messages</a>
+</div>
+<div style="clear:both;"></div>
+<div id="messagesWrapper">
+	<?if(!$unread_messages):?>
+		<div class="vacation">
+			No New Messages
+		</div>
+	<?else:?>
+		<?foreach($unread_messages as $unread_message):?>
+			<div class="messageContainer">
+				<div class="messageHeader">
+					<form method="post" action="/student/p_read">
+						<div class="from">
+							<i>From <?=$unread_message['first_name']?> <?=$unread_message['last_name']?>:</i>
+						</div>
+						<div class="markRead">
+							<input id="message" name="message_id" type="hidden" value="<?=$unread_message['message_id']?>">
+							<input type="submit" value="Mark as Read">
+						</div>
+						<div style="clear:both;"></div>
+					</form>	
+				</div>
+				<div class="messageContent">
+					<?=$unread_message['message']?>
+				</div>
+			</div>
+		<?endforeach;?>
+	<?endif;?>
 </div>

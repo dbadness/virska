@@ -44,7 +44,7 @@
 				<div id="sectionSelector">
 					<select name="section">
 						<?foreach($sections as $section):?>
-							<option value="<?=$section['class_code']."-".$section['section_name']?>"><?=$section['class_code']."-".$section['section_name']?></option>
+							<option value="<?=$section['section_id']?>"><?=$section['class_code']."-".$section['section_name']?></option>
 						<?endforeach;?>
 					</select>
 				</div>

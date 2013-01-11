@@ -12,32 +12,38 @@
 </div>
 <div style="clear:both;"></div>
 <div id="sectionsViewWrapper">
-	<?foreach($sections as $section):?>
-		<div class="sectionListWrapper">
-			<div id="sectionName" class="sectionList">
-				<?=$section['class_code']?>, <?=$section['class_name']?>, Section <?=$section['section_name']?>&nbsp
-			</div>
-			<div id="sectionTime" class="sectionList">
-				meets from <?=$section['time_start_hour']?>:<?=$section['time_start_min']?><?=$section['am_pm_start']?> to <?=$section['time_end_hour']?>:<?=$section['time_end_min']?><?=$section['am_pm_end']?>&nbsp
-			</div>
-			<div id="sectionBuilding" class="sectionList">
-				in <?=$section['building']?>,&nbsp
-			</div>
-			<div id="sectionRoom" class="sectionList">
-				room <?=$section['room_number']?>,&nbsp
-			</div>
-			<div id="sectionDay" class="sectionList">
-				on <?=$section['mo']?> <?=$section['tu']?> <?=$section['we']?> <?=$section['th']?> <?=$section['fr']?> <?=$section['sa']?> <?=$section['su']?>
-			</div>
-			<div id="unfollowButton" class="sectionList">
-				<a href="/student/p_unfollow/<?=$section['section_id']?>"><img src="/images/delete.png" width="20" title="Unfollow Section"></a>
-			</div>
-			<div id="gradesButton" class="sectionList">
-				<a href="/student/grades/<?=$section['section_id']?>"><img src="/images/grades.png" width="20" title="View Grades"></a>
-			</div>
-			<div style="clear:both;"></div>
+	<?if(!$sections):?>
+		<div class="vacation">
+			<i>You're not following any sections yet. Click on 'Search for Classes for Follow' to find your professor's sections.</i>
 		</div>
-	<?endforeach;?>
+	<?else:?>
+		<?foreach($sections as $section):?>
+			<div class="sectionListWrapper">
+				<div id="sectionName" class="sectionList">
+					<?=$section['class_code']?>, <?=$section['class_name']?>, Section <?=$section['section_name']?>&nbsp
+				</div>
+				<div id="sectionTime" class="sectionList">
+					meets from <?=$section['time_start_hour']?>:<?=$section['time_start_min']?><?=$section['am_pm_start']?> to <?=$section['time_end_hour']?>:<?=$section['time_end_min']?><?=$section['am_pm_end']?>&nbsp
+				</div>
+				<div id="sectionBuilding" class="sectionList">
+					in <?=$section['building']?>,&nbsp
+				</div>
+				<div id="sectionRoom" class="sectionList">
+					room <?=$section['room_number']?>,&nbsp
+				</div>
+				<div id="sectionDay" class="sectionList">
+					on <?=$section['mo']?> <?=$section['tu']?> <?=$section['we']?> <?=$section['th']?> <?=$section['fr']?> <?=$section['sa']?> <?=$section['su']?>
+				</div>
+				<div id="unfollowButton" class="sectionList">
+					<a href="/student/p_unfollow/<?=$section['section_id']?>"><img src="/images/delete.png" width="20" title="Unfollow Section"></a>
+				</div>
+				<div id="gradesButton" class="sectionList">
+					<a href="/student/grades/<?=$section['section_id']?>"><img src="/images/grades.png" width="20" title="View Grades"></a>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+		<?endforeach;?>
+	<?endif;?>
 </div>
 <div class="spacer"></div>
 <div id="assignmentViewerHeader">
@@ -239,8 +245,8 @@
 				</div>
 			</div>
 			<?if(!$searched_events):?>
-				<div class="vacation">
-					Nothing is going on today. Time for video games. Or whatever girls do when there's no homework.
+				<div class="vacation" id="noSearchResults">
+					Nothing is happening on <?=$date?>. Woo hoo!
 				</div>
 			<?else:?>
 				<div class="listHeader">
@@ -272,10 +278,44 @@
 							<?endif;?>
 						</div>
 						<div style="clear:both;"></div>
-						<div style="clear:both;"></div>
 					</div>
 				<?endforeach;?>
 			<?endif;?>
 		</div>
 	</div>
+</div>
+<div class="spacer"></div>
+<div class="listHeader" id="messageViewerHeader">
+	<strong>Messages</strong>
+</div>
+<div class="listHeader" id="readReadMessages">
+	<a href="/student/messages">View Read Messages</a>
+</div>
+<div style="clear:both;"></div>
+<div id="messagesWrapper">
+	<?if(!$unread_messages):?>
+		<div class="vacation">
+			No New Messages
+		</div>
+	<?else:?>
+		<?foreach($unread_messages as $unread_message):?>
+			<div class="messageContainer">
+				<div class="messageHeader">
+					<form method="post" action="/student/p_read">
+						<div class="from">
+							<i>From <?=$unread_message['first_name']?> <?=$unread_message['last_name']?>:</i>
+						</div>
+						<div class="markRead">
+							<input id="message" name="message_id" type="hidden" value="<?=$unread_message['message_id']?>">
+							<input type="submit" value="Mark as Read">
+						</div>
+						<div style="clear:both;"></div>
+					</form>	
+				</div>
+				<div class="messageContent">
+					<?=$unread_message['message']?>
+				</div>
+			</div>
+		<?endforeach;?>
+	<?endif;?>
 </div>

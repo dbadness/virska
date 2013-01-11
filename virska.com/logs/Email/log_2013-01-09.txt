@@ -1,0 +1,16 @@
+2013-01-09 12:48:03 - INFO --> Controller/Method: professor/p_message 
+2013-01-09 12:48:03 - INFO --> From: Virska (no-reply@virska.com) 
+2013-01-09 12:48:03 - INFO --> To: Virska (webmaster@virska.com),  
+2013-01-09 12:48:03 - INFO --> CC:  
+2013-01-09 12:48:03 - INFO --> BCC:  
+2013-01-09 12:48:03 - INFO --> Subject: Virska SQL Error 
+2013-01-09 12:48:03 - INFO --> Body: <h2>SQL Error</h2> SELECT *
+			FROM sections_follo 
+2013-01-09 12:48:47 - INFO --> Controller/Method: professor/p_message 
+2013-01-09 12:48:47 - INFO --> From: Virska (no-reply@virska.com) 
+2013-01-09 12:48:47 - INFO --> To: Virska (webmaster@virska.com),  
+2013-01-09 12:48:47 - INFO --> CC:  
+2013-01-09 12:48:47 - INFO --> BCC:  
+2013-01-09 12:48:47 - INFO --> Subject: Virska SQL Error 
+2013-01-09 12:48:47 - INFO --> Body: <h2>SQL Error</h2> SELECT *
+			FROM sections_follo 

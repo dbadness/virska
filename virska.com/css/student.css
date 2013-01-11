@@ -69,7 +69,6 @@
 /* ------ Assignment Viewer Header CSS ------- */
 
 #assignmentViewer {
-	min-height:400px;
 	border:solid 1px gray;
 }
 
@@ -224,7 +223,6 @@
 }
 
 #searchDateW {
-	border-bottom:solid 2px gray;
 	padding:30px;	
 }
 
@@ -241,6 +239,55 @@
 #searchDateSubmit {
 	float:right;
 	margin-top:3px;
+}
+
+#noSearchResults {
+	border-top:solid 1px gray;
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #FFEC8B, #FCDC3B);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEC8B', endColorstr='#FCDC3B');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #FFEC8B,  #FCDC3B);
+}
+
+/* -------- Messages CSS -------*/
+
+#messagesWrapper {
+	border:solid 1px gray;
+}
+
+.messageContainer {
+	padding:20px;
+	border-bottom:solid 1px gray;
+}
+
+#messageViewerHeader {
+	float:left;
+}
+
+#readReadMessages {
+	float:right;
+}
+
+.readMessageContainer {
+	padding:20px;
+}
+
+.messageHeader {
+	
+}
+
+.from {
+	float:left;
+}
+
+.markRead {
+	float:right;
+}
+
+.deleteMessage {
+	float:right;
 }
 
 /* -------- Search pages CSS ---------- */
@@ -384,22 +431,3 @@
 	float:right;
 	margin-top:3px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

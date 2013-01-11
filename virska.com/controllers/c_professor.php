@@ -44,6 +44,31 @@
 			
 			echo $this->template;
 		}
+		
+		public function p_message() {
+			
+			$q = "SELECT *
+			FROM sections_followed
+			WHERE section_id_followed = ".$_POST['section'];
+			
+			$students = DB::instance(DB_NAME)->select_rows($q);
+			
+			$_POST['prof_id'] = $this->user->user_id;
+			$_POST['created'] = Time::now();
+			$_POST['first_name'] = $this->user->first_name;
+			$_POST['last_name'] = $this->user->last_name;
+			$_POST['unread'] = 1;
+			
+			foreach($students as $student) {
+				
+				$_POST['user_id'] = $student['user_id'];
+				
+				DB::instance(DB_NAME)->insert('messages', $_POST);
+				
+			}
+			
+			Router::redirect("/professor/dashboard");
+		}
 
 		public function settings() {
 			

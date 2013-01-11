@@ -11,11 +11,9 @@ $(document).ready(function() {
 	});
 	
 	$('.happening').click(function() {
-		
 		$('.active').removeClass('active').addClass('passive');
 		$(this).addClass('active');
-		
-	})
+	});
 	
 	$('#dueTodayLabel').click(function() {
 		$('.sDateLabel').hide();
@@ -65,11 +63,17 @@ $(document).ready(function() {
 	$(".weekView:last").css("border-bottom", "solid 1px gray");
 	
 	$("form").submit(function() {
-      if ($("#file").val() != 0) {
-        return true;
-      }
+		if ($("#file").val() != 0) {
+			return true;
+		}
+		if ($(".inputs").val() != 0) {
+			return true;
+		}
+		if ($("#message").val() != 0) {
+			return true;
+		}
 		$(this).effect("shake", { times:2 }, 50);
-      	return false;
+		return false;
     });
 
 	$(".submissionList:odd").css("background-color", "white");
@@ -83,13 +87,5 @@ $(document).ready(function() {
 	        $("#datepicker").datepicker( "option" , "dateFormat", $(this).val() );
 	    });
 	});
-	
-	$("form").submit(function() {
-      if ($(".inputs").val() != 0) {
-        return true;
-      }
-		$(this).effect("shake", { times:2 }, 50);
-      	return false;
-    });
 	
 });
