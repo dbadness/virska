@@ -16,10 +16,16 @@
 	<?=round(($doc_size / 1048576), 2)?> MB used, <?=100 - (round(($doc_size / 1048576), 2))?> MB remaining
 </div>					
 <div style="clear:both;"></div>
-<?if(isset($upload_error)):?>
-	<div id="duplicateError">
-		That file already exists in your cloud. Please change the file name or delete the file that already exists.
-	</div>
+<?if(isset($error)):?>
+	<?if($error == 1):?>
+		<div class="docError">
+			Virska only accepts Word, Excel, Powerpoint, Pages, Numbers, Keynote, PDF, PNG and JPG file formats at this time.
+		</div>
+	<?elseif($error == 2):?>
+		<div class="docError">
+			That file already exists in your cloud. Please change the file name or delete the file that already exists.
+		</div>
+	<?endif;?>
 <?endif;?>
 <div class="spacer"></div>
 	<?if($docs):?>

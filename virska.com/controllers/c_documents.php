@@ -4,6 +4,13 @@ class documents_controller extends base_controller {
 
 	public function __construct() {
 		parent::__construct();
+		
+		$client_files = Array(
+							"/js/document.js",
+							"/css/document.css"
+							 );
+
+	    $this->template->client_files = Utils::load_client_files($client_files);
 
 	}
 	
@@ -28,19 +35,13 @@ class documents_controller extends base_controller {
 		$this->template->content->docs = $docs;
 		$this->template->content->doc_size = $doc_size;
 		$this->template->title = $this->user->first_name." ".$this->user->last_name."'s Documents";
-		$client_files = Array(
-							"/js/document.js",
-							"/css/document.css"
-							 );
-
-	    $this->template->client_files = Utils::load_client_files($client_files);
 	
 		echo $this->template;
 		
 	}
 	
 	public function p_upload_doc() {
-		
+	
 		$q = "SELECT count(doc_name)
 		FROM documents
 		WHERE doc_name = '".$_FILES['doc']['name']."'
@@ -48,13 +49,42 @@ class documents_controller extends base_controller {
 		
 		$sum = DB::instance(DB_NAME)->select_field($q);
 		
-		if($sum == 1) {
+		$filetypes = array("docx", # word for mac or windows 2010, 2011
+		"xslx", # excel for mac or windows 2010, 2011
+		"pptx", #powerpoint for mac or windows 2010, 2011
+		"doc", # word for mac or windows 2004
+		"xsl", # excel for mac or windows 2004
+		"ppt", # powerpoint for mac or windows 2004
+		"pages", # pages
+		"numbers", # numbers
+		"keynote", # keynote
+		"png", # png
+		"jpg", # jpg
+		"jpeg", #jpeg
+		"pdf"); # pdf
+		
+		if(!in_array(pathinfo($_FILES['doc']['name'])['extension'], $filetypes)){
+			
+			# give them a file-type error
+			$error = 1;
+			# Make sure they're not overwriting an existing document with the same name
+			Router::redirect("/documents/upload_error/".$error);
+			return false;
+		} elseif($sum == 1) {
 			
 			# Make sure they're not overwriting an existing document with the same name
-			Router::redirect("/documents/upload_error");
+			$error = 2;
+			Router::redirect("/documents/upload_error/".$error);
 			return false;
 			
 		} else {
+			
+			$value = strlen(pathinfo($_FILES['doc']['name'])['extension']) + 1;
+			
+			$new_val = 0 - $value;
+			
+			# let's find out how many characters we need to chop off of the extension
+			if($_FILES['doc'])
 		
 			# If they're not, allow them to upload their document
 			# Set up the $_POST array so the user can upload their document effectively
@@ -64,17 +94,16 @@ class documents_controller extends base_controller {
 			$_POST['doc_name'] = $_FILES['doc']['name'];
 			$_POST['doc_code'] = $this->user->user_id."-".$_FILES['doc']['name'];
 
-			Upload::upload($_FILES, "/docs/", array("pdf", "doc", "xsl", "ppt"), substr($_POST['doc_code'], 0, -4));
+			Upload::upload($_FILES, "/docs/", array("pdf", "doc", "xsl", "ppt", "pages", "numbers", "keynote", "jpeg", "png", "jpg", "docx", "xlsx", "pptx"), substr($_POST['doc_code'], 0, $new_val));
 
 			#insert data into the database
 			DB::instance(DB_NAME)->insert('documents', $_POST);
 
 			Router::redirect("/documents");
-		
-		}	
+		}
 	}
 	
-	public function upload_error() {
+	public function upload_error($error) {
 		
 		$q = "SELECT *
 		FROM documents
@@ -87,19 +116,19 @@ class documents_controller extends base_controller {
 		WHERE user_id = ".$this->user->user_id;
 		
 		$doc_size = DB::instance(DB_NAME)->select_field($q);
-		
-		$upload_error = TRUE;		
+			
 		$this->template->content = View::instance("v_documents_index");
 		$this->template->content->docs = $docs;
 		$this->template->content->doc_size = $doc_size;
-		$this->template->content->upload_error = $upload_error;
+		
+		# process the appropriate error to give the user feedback
+		if($error == 1) {
+			$this->template->content->error = $error;
+		} elseif($error == 2) {
+			$this->template->content->error = $error;
+		}
+		
 		$this->template->title = $this->user->first_name." ".$this->user->last_name."'s Documents";
-		$client_files = Array(
-							"/js/document.js",
-							"/css/document.css"
-							 );
-
-	    $this->template->client_files = Utils::load_client_files($client_files);
 	
 		echo $this->template;
 		
