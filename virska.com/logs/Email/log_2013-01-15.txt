@@ -1,0 +1,7 @@
+2013-01-15 23:17:39 - INFO --> Controller/Method: users/p_validate_email 
+2013-01-15 23:17:39 - INFO --> From: Virska (no-reply@virska.com) 
+2013-01-15 23:17:39 - INFO --> To: David Baines (dave.baines@me.com),  
+2013-01-15 23:17:39 - INFO --> CC:  
+2013-01-15 23:17:39 - INFO --> BCC:  
+2013-01-15 23:17:39 - INFO --> Subject: Welcome to Virska! 
+2013-01-15 23:17:39 - INFO --> Body: Welcome to Virska, David. <br><br>You can head to  

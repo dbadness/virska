@@ -3,36 +3,31 @@
 #loginForm {
 	margin-left:auto;
 	margin-right:auto;
-	padding-top:30px;
-	padding-bottom:30px;
-	width:400px;
+	padding:30px;
+	width:350px;
 	border:solid 1px gray;
 }
 
 #loginFormEmailLabel {
 	float:left;
-	margin-left:70px;
 	margin-top:8px;
 }
 
 #loginFormPasswordLabel {
 	float:left;
-	margin-left:42px;
 	margin-top:8px;
 }
 
 #loginFormEmailInput {
 	float:right;
-	margin-right:40px;
 }
 
 #loginFormPasswordInput {
 	float:right;
-	margin-right:40px;
 }
 
 #loginButton {
-	margin-left:158px;
+	float:right;
 }
 
 #noValuesError {
@@ -113,5 +108,3 @@
 	font-size:95%;
 	padding:30px;
 }
-
-

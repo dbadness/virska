@@ -91,7 +91,7 @@
 		public function p_delete_message() {
 			
 			# Delete this message forever (also delete it fo students)
-			$where_condition = "WHERE prof_id = '".$_POST['prof_id']."' AND message = '".$_POST['message']."'";
+			$where_condition = "WHERE prof_id = '".$_POST['prof_id']."' AND created = '".$_POST['created']."'";
 			DB::instance(DB_NAME)->delete('messages', $where_condition);
 			
 			Router::redirect("/professor/messages");

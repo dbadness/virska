@@ -16,7 +16,7 @@
 					<form method="post" action="/professor/p_delete_message">
 						<div class="deleteMessage">
 							<input id="prof_id" name="prof_id" type="hidden" value="<?=$message['prof_id']?>">
-							<input id="message" name="message" type="hidden" value="<?=$message['message']?>">
+							<input id="created" name="created" type="hidden" value="<?=$message['created']?>">
 							<input class="delete" type="submit" value="Delete Message">
 						</div>
 					</form>

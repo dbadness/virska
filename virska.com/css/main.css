@@ -21,6 +21,20 @@ textarea {
 	font-size:110%;
 }
 
+input.textfield {
+	font-family:sans-serif;
+}
+
+.submit {
+	border:solid 2px gray;
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #F1EFFF, #D9D7E5);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1EFFF', endColorstr='#D9D7E5');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #F1EFFF,  #D9D7E5);
+}
+
 .form {
 	
 }
@@ -77,7 +91,7 @@ textarea {
 }
 
 #footerWrapper {
-	width:250px;
+	width:260px;
 	margin-left:auto;
 	margin-right:auto;
 }

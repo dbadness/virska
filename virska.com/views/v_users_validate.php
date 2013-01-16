@@ -22,7 +22,7 @@
 	<div class="errorBox" id="valuesError">
 		Either the passwords don't match or you need at least 8 characters in your password. Please try again.
 	</div>
-	<?if(isset($error)):?>
+	<?if($error):?>
 		<div class="errorBox" id="valError">
 			That validation code doesn't seem to be right. Please enter it again.
 		</div>

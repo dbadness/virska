@@ -1,4 +1,4 @@
-<?if(isset($error)):?>
+<?if(isset($error) && $error != 1):?>
 	<div id="noSchool">
 		<h3>Your school hasn't been added to the list of Virska test schools yet.</h3>If you think Virska is something that's needed at your school, let us know by tweeting at us at @virska and we'll look into it!
 	</div>
@@ -33,6 +33,11 @@
 	<div style="float:left;margin-top:11px;" class="errorBox" id="noValuesError">
 		Please make sure all boxes are filled in correctly.
 	</div>
+	<?if(isset($error) && $error == 1):?>
+		<div class="errorBox" style="display:block;padding:20px;margin-top:10px;">
+			That email already exists as a user.
+		</div>
+	<?endif;?>
 </div>
 <div id="signupCopyWrapper">
 	<div id="logos">

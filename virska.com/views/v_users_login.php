@@ -4,18 +4,18 @@
 			Email
 		</div>
 		<div id="loginFormEmailInput">
-	    	<input type='text' name='email' id='email' />
+	    	<input type='text' name='email' id='email' class="textfield">
 		</div>
 		<div style="clear:both;"></div>
 		<div id="loginFormPasswordLabel">
 			Password
 		</div>
 		<div id="loginFormPasswordInput">
-	    	<input type='password' name='password' id='password' />
+	    	<input type='password' name='password' id='password' class="textfield">
 		</div>
 		<div style="clear:both;"></div>
 		<div id="loginButton">
-	   		<input type='submit' value='Log In' />	
+	   		<input type='submit' value='Log In' class="submit">	
 		</div>
 		<div style="clear:right;"></div>
 	</form>

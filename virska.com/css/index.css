@@ -6,3 +6,49 @@
 	padding-left:20px;
 	padding-bottom:20px;
 }
+
+.homepage {
+	font-family:Times;
+}
+
+#title {
+	font-size:600%;
+	text-align:center;
+}
+
+#subtitle {
+	font-size:140%;
+}
+
+#headerCopy {
+	font-size:120%;
+	padding:30px;
+}
+
+#features {
+
+}
+
+.feature {
+	height:200px;
+	float:left;
+	width:259px;
+	border-right:solid 1px gray;
+	padding:20px;
+}
+
+.featureHeader {
+	text-align:center;
+}
+
+#assignments {
+
+}
+
+#documents {
+
+}
+
+#notes {
+	border-right:none;
+}

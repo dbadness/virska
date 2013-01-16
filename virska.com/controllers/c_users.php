@@ -27,11 +27,25 @@
 		public function p_signup() {
 			
 			# if the user's email doesn't match one of our partner's schools....
-			if(strstr($_POST['email'], '@') != '@fas.harvard.edu') { // why isn't this accepting multiple conditions?
+			
+			$schools = array ("@babson.edu", "@me.com");
+			
+			$q = "SELECT email
+			FROM users
+			WHERE email = '".$_POST['email']."'";
+			
+			# check to see if their email already exists in the DB so they can't sign up again
+			$exists = DB::instance(DB_NAME)->select_field($q);
+			
+			if(!in_array(strstr($_POST['email'], '@'), $schools)) {
 			
 				# send the user back to the signup page with the feedback that their school isn't added to virska yet
 				Router::redirect("/users/notyet");
 				return false;
+				
+			} elseif($exists) {
+				
+				Router::redirect("/users/signup_error");
 				
 			} else {
 				
@@ -75,6 +89,14 @@
 					Router::redirect("/users/p_validate_email");
 				}
 			}
+		}
+		
+		public function signup_error() {
+			
+			$this->template->content = View::instance("v_users_signup");
+			$this->template->content->error = 1;
+			echo $this->template;
+			
 		}
 		
 		public function notyet() {
@@ -143,7 +165,7 @@
 				$subject = "Welcome to Virska!";
 
 				# You can set the body as just a string of text
-				$body = "Welcome to Virska, ".$this->user->first_name.". Your validation code is ".$this->user->val_code;
+				$body = "Welcome to Virska, ".$this->user->first_name.". <br><br>You can head to <a href=\"http://test.virska.com/users/validate\">the validation page</a> with the validation code ".$this->user->val_code.".";
 
 				# OR, if your email is complex and involves HTML/CSS, you can build the body via a View just like we do in our controllers
 				# $body = View::instance('e_users_welcome');
@@ -288,7 +310,7 @@
 		public function validate_error() {
 			
 			$this->template->content = View::instance("v_users_validate");
-			$this->template->content->error = TRUE;
+			$this->template->content->error = 1;
 			$client_files = Array(
 						"/js/validate.js",
 						"/css/validate.css"

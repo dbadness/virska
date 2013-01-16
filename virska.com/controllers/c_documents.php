@@ -50,10 +50,10 @@ class documents_controller extends base_controller {
 		$sum = DB::instance(DB_NAME)->select_field($q);
 		
 		$filetypes = array("docx", # word for mac or windows 2010, 2011
-		"xslx", # excel for mac or windows 2010, 2011
+		"xlsx", # excel for mac or windows 2010, 2011
 		"pptx", #powerpoint for mac or windows 2010, 2011
 		"doc", # word for mac or windows 2004
-		"xsl", # excel for mac or windows 2004
+		"xls", # excel for mac or windows 2004
 		"ppt", # powerpoint for mac or windows 2004
 		"pages", # pages
 		"numbers", # numbers
