@@ -47,9 +47,10 @@
 		
 		public function p_message() {
 			
-			$q = "SELECT *
+			$q = "SELECT sections_followed.*, users.*
 			FROM sections_followed
-			WHERE section_id_followed = ".$_POST['section_id'];
+			JOIN users USING (user_id)
+			WHERE sections_followed.section_id_followed = ".$_POST['section_id'];
 			
 			$students = DB::instance(DB_NAME)->select_rows($q);
 			
@@ -65,6 +66,25 @@
 				
 				DB::instance(DB_NAME)->insert('messages', $_POST);
 				
+				#send the student an email if they have emails enabled
+				if($student['receive_email'] == 1) {
+				
+					# Build a multi-dimension array of recipients of this email
+					$to[] = Array("name" => $student['first_name']." ".$student['last_name'], "email" => $student['email']);
+
+					# Build a single-dimension array of who this email is coming from
+					# note it's using the constants we set in the configuration above)
+					$from = Array("name" => APP_NAME, "email" => APP_EMAIL);
+
+					# Subject
+					$subject = "Message from Professor ".$this->user->last_name;
+
+					# You can set the body as just a string of text
+					$body = "Professor ".$this->user->first_name." ".$this->user->last_name." has sent you a message:<br><br>'<i>".$_POST['message']."</i>'<br><br>Thanks,<br>The Virska Team<br><br><p style=\"font-size:80%;\">If you no longer wish to receive these emails, you can log into your <a href=\"http://test.virska.com/student/settings\">settings</a> page to disable them.</p>";
+				
+					# With everything set, send the email
+					$email = Email::send($to, $from, $subject, $body, true);
+				}	
 			}
 			
 			Router::redirect("/professor/messages");

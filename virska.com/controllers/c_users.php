@@ -54,6 +54,9 @@
 			
 				# create the validation code that'll be used to authenticate the user's school affiliation
 				$_POST['val_code'] = Utils::generate_random_string();
+				
+				# by default, they'll automatically start receiving emails from professors
+				$_POST['receive_email'] = 1;
 			
 				# create token for cookie for sessions
 				$_POST['token'] = sha1(TOKEN_SALT . $_POST['email'] . Utils::generate_random_string());
@@ -165,7 +168,7 @@
 				$subject = "Welcome to Virska!";
 
 				# You can set the body as just a string of text
-				$body = "Welcome to Virska, ".$this->user->first_name.". <br><br>You can head to <a href=\"http://test.virska.com/users/validate\">the validation page</a> with the validation code ".$this->user->val_code.".";
+				$body = "Welcome to Virska, ".$this->user->first_name.". <br><br>You can head to <a href=\"http://test.virska.com/users/validate\">the validation page</a> with the validation code '".$this->user->val_code."'.<br><br>Thanks,<br>The Virska Team";
 
 				# OR, if your email is complex and involves HTML/CSS, you can build the body via a View just like we do in our controllers
 				# $body = View::instance('e_users_welcome');
@@ -328,7 +331,6 @@
 			echo $this->template;
 		}
 		
-		
 		public function p_login() {
 			
 			# Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
@@ -417,6 +419,7 @@
 			
 			Router::redirect("/student/settings");
 		}
+
 	}
 
 ?>

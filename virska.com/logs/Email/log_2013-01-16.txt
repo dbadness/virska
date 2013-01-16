@@ -1,0 +1,56 @@
+2013-01-16 9:08:06 - INFO --> Controller/Method: users/p_validate_email 
+2013-01-16 9:08:06 - INFO --> From: Virska (no-reply@virska.com) 
+2013-01-16 9:08:06 - INFO --> To: David Baines (dave.baines@me.com),  
+2013-01-16 9:08:06 - INFO --> CC:  
+2013-01-16 9:08:06 - INFO --> BCC:  
+2013-01-16 9:08:06 - INFO --> Subject: Welcome to Virska! 
+2013-01-16 9:08:06 - INFO --> Body: Welcome to Virska, David. <br><br>You can head to  
+2013-01-16 9:42:22 - INFO --> Controller/Method: professor/p_message 
+2013-01-16 9:42:22 - INFO --> From: Virska (no-reply@virska.com) 
+2013-01-16 9:42:22 - INFO --> To: David Baines (dave.baines@me.com),  
+2013-01-16 9:42:22 - INFO --> CC:  
+2013-01-16 9:42:22 - INFO --> BCC:  
+2013-01-16 9:42:22 - INFO --> Subject: Message from Professor Baines 
+2013-01-16 9:42:22 - INFO --> Body: Professor David Baines has sent you a message:<br> 
+2013-01-16 9:42:23 - INFO --> Controller/Method: professor/p_message 
+2013-01-16 9:42:23 - INFO --> From: Virska (no-reply@virska.com) 
+2013-01-16 9:42:23 - INFO --> To: David Baines (dave.baines@me.com), John Smith (john@email.com),  
+2013-01-16 9:42:23 - INFO --> CC:  
+2013-01-16 9:42:23 - INFO --> BCC:  
+2013-01-16 9:42:23 - INFO --> Subject: Message from Professor Baines 
+2013-01-16 9:42:23 - INFO --> Body: Professor David Baines has sent you a message:<br> 
+2013-01-16 9:44:20 - INFO --> Controller/Method: professor/p_message 
+2013-01-16 9:44:20 - INFO --> From: Virska (no-reply@virska.com) 
+2013-01-16 9:44:20 - INFO --> To: David Baines (dave.baines@me.com),  
+2013-01-16 9:44:20 - INFO --> CC:  
+2013-01-16 9:44:20 - INFO --> BCC:  
+2013-01-16 9:44:20 - INFO --> Subject: Message from Professor Baines 
+2013-01-16 9:44:20 - INFO --> Body: Professor David Baines has sent you a message:<br> 
+2013-01-16 9:44:21 - INFO --> Controller/Method: professor/p_message 
+2013-01-16 9:44:21 - INFO --> From: Virska (no-reply@virska.com) 
+2013-01-16 9:44:21 - INFO --> To: David Baines (dave.baines@me.com), John Smith (john@email.com),  
+2013-01-16 9:44:21 - INFO --> CC:  
+2013-01-16 9:44:21 - INFO --> BCC:  
+2013-01-16 9:44:21 - INFO --> Subject: Message from Professor Baines 
+2013-01-16 9:44:21 - INFO --> Body: Professor David Baines has sent you a message:<br> 
+2013-01-16 9:44:56 - INFO --> Controller/Method: professor/p_message 
+2013-01-16 9:44:56 - INFO --> From: Virska (no-reply@virska.com) 
+2013-01-16 9:44:56 - INFO --> To: David Baines (dave.baines@me.com),  
+2013-01-16 9:44:56 - INFO --> CC:  
+2013-01-16 9:44:56 - INFO --> BCC:  
+2013-01-16 9:44:56 - INFO --> Subject: Message from Professor Baines 
+2013-01-16 9:44:56 - INFO --> Body: Professor David Baines has sent you a message:<br> 
+2013-01-16 9:44:57 - INFO --> Controller/Method: professor/p_message 
+2013-01-16 9:44:57 - INFO --> From: Virska (no-reply@virska.com) 
+2013-01-16 9:44:57 - INFO --> To: David Baines (dave.baines@me.com), John Smith (john@email.com),  
+2013-01-16 9:44:57 - INFO --> CC:  
+2013-01-16 9:44:57 - INFO --> BCC:  
+2013-01-16 9:44:57 - INFO --> Subject: Message from Professor Baines 
+2013-01-16 9:44:57 - INFO --> Body: Professor David Baines has sent you a message:<br> 
+2013-01-16 9:54:52 - INFO --> Controller/Method: professor/p_message 
+2013-01-16 9:54:52 - INFO --> From: Virska (no-reply@virska.com) 
+2013-01-16 9:54:52 - INFO --> To: David Baines (dave.baines@me.com),  
+2013-01-16 9:54:52 - INFO --> CC:  
+2013-01-16 9:54:52 - INFO --> BCC:  
+2013-01-16 9:54:52 - INFO --> Subject: Message from Professor Baines 
+2013-01-16 9:54:52 - INFO --> Body: Professor David Baines has sent you a message:<br> 

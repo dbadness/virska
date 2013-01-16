@@ -472,6 +472,23 @@
 			# Render template
 			echo $this->template;
 		}
+	
+		public function p_update_contact() {
+			
+			$data = Array('receive_email' => $_POST['receive_email']);
+
+			DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = '".$this->user->user_id."'");
+			
+			Router::redirect("/student/update_success");	
+		}	
+		
+		public function update_success() {
+			
+			$this->template->content = View::instance("v_student_settings");
+			$this->template->content->contact_updated = 1;
+			
+			echo $this->template;
+		}
 		
 	}
 
