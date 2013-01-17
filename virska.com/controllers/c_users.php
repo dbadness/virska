@@ -63,7 +63,7 @@
 				
 				# grab their school and put it into the DB
 				if(strstr($_POST['email'], '@') == '@fas.harvard.edu') {
-					$_POST['school'] = 'Harvard University';
+					$_POST['school'] = 'Babson College';
 				}
 			
 				#insert data into the database
