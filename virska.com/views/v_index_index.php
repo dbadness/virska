@@ -19,12 +19,24 @@
 	<div id="features">
 		<div id="assignments" class="feature">
 			<div class="featureHeader">Assignments</div>
+			<div class="spacer"></div>
+			<div class="featureCopy">
+				After you follow you're professors, you'll see all the assignments for their sections. You can even submit and get grades for your assignments. You just have to get them to sign up first...
+			</div>
 		</div>
 		<div id="documents" class="feature">
 			<div class="featureHeader">Documents</div>
+			<div class="spacer"></div>
+			<div class="featureCopy">
+				Save all your documents to Virska so you can pull them down when you need them. Work on stuff at home and just bring your computer to class. No need for backpacks or bags anymore...
+			</div>
 		</div>
 		<div id="notes" class="feature">
 			<div class="featureHeader">Notes</div>
+			<div class="spacer"></div>
+			<div class="featureCopy">
+				Take all your note on the site, too. Our editor make it easy to add pictures, links, change styles, and more. And, yes, we know folders would be awesome... we're working on it....
+			</div>
 		</div>
 		<div style="clear:both;"></div>
 	</div>

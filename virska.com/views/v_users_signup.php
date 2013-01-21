@@ -39,6 +39,7 @@
 		</div>
 	<?endif;?>
 </div>
+<!-- 
 <div id="signupCopyWrapper">
 	<div id="logos">
 	<div class="spacer"></div>
@@ -60,4 +61,4 @@
 	</div>
 	<div class="spacer"></div>
 </div>
-<div style="clear: both;"></div>
+<div style="clear: both;"></div> -->

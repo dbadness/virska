@@ -58,8 +58,11 @@
 /* sign up page CSS */
 
 #signupForm {
-	padding-top:20px;
-	float:left;
+	padding:30px;
+	border:solid 1px gray;
+	width:270px;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 #signupCopyWrapper {
