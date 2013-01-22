@@ -24,6 +24,14 @@ $(document).ready(function() {
 	      } 
 	});
 	
+	// Make sure the user knows that they're willing to delete their event
+	$('#deleteClassButton').click(function() {
+	   var answer = confirm("Are you sure you want to delete this class? All sections will also be erased from Virska permanently and this action cannot be undone.");
+	      if (!answer) {
+	         return false;
+	      } 
+	});
+	
 	$(".submissionList:odd").css("background-color", "white");
 	$(".submissionList:even").css("background-color", "#CCFFFF");
 	$(".submissionList:first").css("border-top", "solid 1px gray");
@@ -41,6 +49,7 @@ $(document).ready(function() {
 		return true;
 	}
     $("#noEventError").show();
+	$(".inputs").css("border", "red");
 	$('form').effect("shake", { times:2 }, 50);
 	return false;
     });

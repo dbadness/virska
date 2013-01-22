@@ -104,7 +104,7 @@
 		<div id="footer">
 			<div class="spacer"></div>
 			<div style="text-align:center;">
-				<a href="/">Home</a> | <a href="/index/contact">Contact</a> | <a href="/index/about">About</a> | <a href="/index/legal">Legal</a>
+				<a href="/">Home</a> | <a href="/index/contact">Contact</a> | <a href="/index/about">About</a>
 			</div>
 			<br>
 			<div id="footerWrapper">

@@ -167,14 +167,6 @@
 	
 		public function classes() {
 			
-			# If user is blank, they're not logged in, show message and don't do anything else
-			if(!$this->user) {
-				Router::redirect("/users/login");
-				# Return will force this method to exit here so the rest of 
-				# the code won't be executed and the profile view won't be displayed.
-				return false;
-			}
-			
 			# Create array to show classes that have already been created
 			$q = "SELECT *
 				FROM classes 
@@ -188,24 +180,63 @@
 				
 			$sections = DB::instance(DB_NAME)->select_rows($q);
 			
+			$q = "SELECT COUNT(class_id)
+				FROM classes
+				WHERE user_id = ".$this->user->user_id;
+				
+			$one = DB::instance(DB_NAME)->select_field($q);
+			
+			if($one == 1) {
+				$new = TRUE;
+			}
+			
 			# Set up view
 			# $this->template->content = View::instance('v_index_nav_professor');
 			$this->template->content = View::instance('v_professor_classes');
-			$this->template->title   = "Profile of ".$this->user->first_name;
+			$this->template->title   = "Classes and Sections of Professor ".$this->user->first_name." ".$this->user->last_name;
 			
-			# Pass data to view			
+			# Pass data to view	
+			if($one == 1) {
+				$new = TRUE;
+				$this->template->content->new = $new;
+			}		
 			$this->template->content->classes = $classes;
 			$this->template->content->sections = $sections;
-			
-			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
-			$client_files = Array(
-						"/css/professor.css"
-	                    );
-
-	    	$this->template->client_files = Utils::load_client_files($client_files);
 
 			# Render template
 			echo $this->template;
+		}
+		
+		public function classes_new() {
+			
+			# Create array to show classes that have already been created
+			$q = "SELECT *
+				FROM classes 
+				WHERE user_id = ".$this->user->user_id;
+				
+			$classes = DB::instance(DB_NAME)->select_rows($q);
+			
+			$new = TRUE;
+			
+			# Set up view
+			# $this->template->content = View::instance('v_index_nav_professor');
+			$this->template->content = View::instance('v_professor_classes');
+			
+			# Pass data to view			
+			$this->template->content->classes = $classes;
+			$this->template->content->new = $new;
+			$this->template->title   = "Make a new Class for Professor ".$this->user->last_name;
+
+			# Render template
+			echo $this->template;
+		}
+		
+		public function p_delete_class($class_id) {
+			
+			DB::instance(DB_NAME)->delete('classes', "WHERE class_id = ".$class_id);
+			
+			Router::redirect("/professor/classes");
+			
 		}
 		
 		public function p_add_class() {
@@ -233,7 +264,7 @@
 			#insert data into the database
 			DB::instance(DB_NAME)->insert('sections', $_POST);
 			
-			Router::redirect("/professor/classes");
+			Router::redirect("/professor/dashboard");
 		}
 		
 		public function section($section_id) {

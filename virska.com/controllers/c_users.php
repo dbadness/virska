@@ -28,7 +28,7 @@
 			
 			# if the user's email doesn't match one of our partner's schools....
 			
-			$schools = array ("@babson.edu", "@me.com");
+			$schools = array ("@babson.edu");
 			
 			$q = "SELECT email
 			FROM users
@@ -62,9 +62,7 @@
 				$_POST['token'] = sha1(TOKEN_SALT . $_POST['email'] . Utils::generate_random_string());
 				
 				# grab their school and put it into the DB
-				if(strstr($_POST['email'], '@') == '@fas.harvard.edu') {
-					$_POST['school'] = 'Babson College';
-				}
+				$_POST['school'] = 'Babson College';
 			
 				#insert data into the database
 				DB::instance(DB_NAME)->insert('users', $_POST);
@@ -104,7 +102,7 @@
 		
 		public function notyet() {
 			
-			$error = TRUE;
+			$error = 2;
 			$this->template->content = View::instance("v_users_signup");
 			$this->template->content->error = $error;
 			$this->template->title = "Users Signup";
@@ -168,7 +166,7 @@
 				$subject = "Welcome to Virska!";
 
 				# You can set the body as just a string of text
-				$body = "Welcome to Virska, ".$this->user->first_name.". <br><br>You can head to <a href=\"http://test.virska.com/users/validate\">the validation page</a> with the validation code '".$this->user->val_code."'.<br><br>Thanks,<br>The Virska Team";
+				$body = "Welcome to Virska, ".$this->user->first_name.". <br><br>You can head to <a href=\"http://www.virska.com/users/validate\">the validation page</a> with the validation code '".$this->user->val_code."'.<br><br>Thanks,<br>The Virska Team";
 
 				# OR, if your email is complex and involves HTML/CSS, you can build the body via a View just like we do in our controllers
 				# $body = View::instance('e_users_welcome');
@@ -361,7 +359,7 @@
 				setcookie("token", $token, strtotime('+2 weeks'), '/');
 				
 				# Send them to function that takes them to their dashboard
-				Router::redirect("/users/p_dashboard");
+				Router::redirect("/users/p_dashboard_login");
 			
 			}
 		}
@@ -372,11 +370,21 @@
 			echo $this->template;
 		}
 			
-		public function p_dashboard()	{
+		public function p_dashboard_signup()	{
 			
-			# Send them to their dashboard
-			Router::redirect("/".$this->user->role."/dashboard");
-							
+			if($this->user->role == 'student') {
+				# Send them to their dashboard
+				Router::redirect("/student/dashboard");
+			} elseif($this->user->role == 'professor') {
+				# set the professor up to make their first class
+				Router::redirect("/professor/classes_new");
+			}				
+		}
+		
+		public function p_dashboard_login()	{
+			
+			Router::redirect("/".$this->user->role."/dashboard");		
+					
 		}
 		
 		public function logout() {

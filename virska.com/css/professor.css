@@ -57,6 +57,43 @@
 
 /* ----- Add a class and section CSS (professor/classes) ---- */
 
+#newClass {
+	padding:40px;
+	border:solid 5px darkblue;
+	background-color:lightblue;
+}
+
+.classHeader {
+
+}
+
+.class {
+	float:left;
+	padding:10px;
+	margin-top:-7px;
+}
+
+.deleteClassCopy {
+	margin-top:3px;
+	float:right;
+}
+
+.deleteClass {
+	float:right;
+	margin-left:10px;
+}
+
+.classContent {
+	padding:10px;
+}
+
+.sectionInfo {
+	float:left;
+}
+
+.sectionView {
+	float:right;
+}
 #addClassWrapper {
 	width:650px;
 	margin-left:auto;

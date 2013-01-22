@@ -78,7 +78,7 @@ class admin_controller extends base_controller {
 		$subject = "You've been validated!";
 
 		# You can set the body as just a string of text
-		$body = "Dear ".$professor['first_name'].",<br><br>Thank you so much for your patience while we validated your identity. You can now head to our <a href='localhost/users/validate'>validation page</a> with the validation code ".$professor['val_code']." to unlock Virska.<br><br>Thanks!<br><br>The Virska Verification Team";
+		$body = "Dear ".$professor['first_name'].",<br><br>Thank you so much for your patience while we validated your identity. You can now head to our <a href='http://www.virska.com/users/validate'>validation page</a> with the validation code '".$professor['val_code']."' to unlock Virska.<br><br>Thanks!<br><br>The Virska Verification Team";
 
 		# OR, if your email is complex and involves HTML/CSS, you can build the body via a View just like we do in our controllers
 		# $body = View::instance('e_users_welcome');

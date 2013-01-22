@@ -2,7 +2,7 @@
 	<strong>My Sections</strong>
 </div>
 <div id="editClasses">
-	<a href="/professor/classes">Add Classes and Sections</a>
+	<a href="/professor/classes">Add or Delete Classes and Sections</a>
 </div>
 <div style="clear:both;"></div>
 <div id="sectionsViewWrapper">	

@@ -105,9 +105,10 @@
 	background: -webkit-linear-gradient(top, #FFEC8B, #FCDC3B); 
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEC8B', endColorstr='#FCDC3B');
 	background: -moz-linear-gradient(top,  #FFEC8B,  #FCDC3B);
-	border:solid 1px red;
+	border:solid 2px red;
 	border-radius:5px;
 	text-align:center	;
 	font-size:95%;
 	padding:30px;
+	margin-bottom:40px;
 }
