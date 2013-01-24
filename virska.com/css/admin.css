@@ -32,7 +32,12 @@
 	background: -moz-linear-gradient(top,  #F1EFFF,  #D9D7E5);
 }
 
-#dodGrowth {
+#idodGrowth {
+	width:100%;
+	height:500px;
+}
+
+#adodGrowth {
 	width:100%;
 	height:500px;
 }

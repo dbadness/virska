@@ -49,19 +49,19 @@ class admin_controller extends base_controller {
 		
 		$users = DB::instance(DB_NAME)->select_field($q);
 		
-		$total_users = $users - 1; # to account for the admin user
+		$total_users = $users - 3; # to account for the admin user and the two demo users
 		
 		$q = "SELECT count(user_id)
 		FROM users
 		WHERE role = 'student'";
 
-		$student_users = DB::instance(DB_NAME)->select_field($q);
+		$student_users = DB::instance(DB_NAME)->select_field($q) - 1;
 	
 		$q = "SELECT count(user_id)
 		FROM users
 		WHERE role = 'professor'";
 
-		$professor_users = DB::instance(DB_NAME)->select_field($q);
+		$professor_users = DB::instance(DB_NAME)->select_field($q) - 1;
 		
 		$this->template->content = View::instance("v_admin_dashboard");
 		$this->template->content->professors = $professors;
@@ -113,7 +113,7 @@ class admin_controller extends base_controller {
 		
 	}
 	
-	public function p_dod_growth() {
+	public function p_idod_growth() {
 		
 		# Build the last weeks' user counts
 		
@@ -187,6 +187,80 @@ class admin_controller extends base_controller {
 			
 		echo json_encode($data);
 	}
-	
+
+	public function p_adod_growth() {
+		
+		# Build the last weeks' user counts
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d")."'";
+
+		$today = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d", strtotime('-1 day'))."'";
+		
+		$day_1 = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d", strtotime('-2 days'))."'";
+		
+		$day_2 = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d", strtotime('-3 days'))."'";
+		
+		$day_3 = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d", strtotime('-4 days'))."'";
+		
+		$day_4 = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d", strtotime('-5 days'))."'";
+		
+		$day_5 = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d", strtotime('-6 days'))."'";
+		
+		$day_6 = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d", strtotime('-7 days'))."'";
+		
+		$day_7 = DB::instance(DB_NAME)->select_field($q);
+		
+		$data = array();
+		$data['values'] = array($today, $day_1, $day_2, $day_3, $day_4, $day_5, $day_6, $day_7);
+		$data['days'] = array(
+							date("d-M-y"),
+							date("d-M-y", strtotime('-1 day')), 
+							date("d-M-y", strtotime('-2 days')),			
+							date("d-M-y", strtotime('-3 days')),
+							date("d-M-y", strtotime('-4 days')),
+							date("d-M-y", strtotime('-5 days')),
+							date("d-M-y", strtotime('-6 days')),
+							date("d-M-y", strtotime('-7 days')));
+			
+		echo json_encode($data);
+	}
 } // end class
 ?>

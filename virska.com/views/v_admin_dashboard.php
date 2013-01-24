@@ -58,7 +58,10 @@
 </div>
 <div class="spacer"></div>
 <div id="userReports">
-	<div id="dodGrowth">
+	<div id="idodGrowth">
+	</div>
+	<div class="spacer"></div>
+	<div id="adodGrowth">
 	</div>
 	<div id="wowGrowth">
 	</div>
