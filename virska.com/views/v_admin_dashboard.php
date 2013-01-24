@@ -3,7 +3,7 @@
 </div>
 <div id="validationQueue">
 	<?if(!$professors):?>
-		<div class="ifNoVariables" id="noProfessors">
+		<div id="noProfessors">
 			There are no professors in the validation queue. Let's hit up marketing!
 		</div>
 	<?else:?>
@@ -29,6 +29,34 @@
 <div class="listHeader">
 	<strong>User Reports</strong>
 </div>
+<div id="userCount">
+	<div class="count" id="total">
+		<div class="countLabel">
+			Total Users
+		</div>
+		<div class="countContent">
+			<?=$total_users?>
+		</div>
+	</div>
+	<div class="count" id="student">
+		<div class="countLabel">
+			Student Users
+		</div>
+		<div class="countContent">
+			<?=$student_users?>
+		</div>
+	</div>
+	<div class="count" id="professor">
+		<div class="countLabel">
+			Professor Users
+		</div>
+		<div class="countContent">
+			<?=$professor_users?>
+		</div>
+	</div>
+	<div style="clear:both;"></div>
+</div>
+<div class="spacer"></div>
 <div id="userReports">
 	<div id="dodGrowth">
 	</div>

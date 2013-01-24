@@ -44,13 +44,33 @@ class admin_controller extends base_controller {
 		
 		$db_size = DB::instance(DB_NAME)->select_field($q);	
 		
+		$q = "SELECT count(user_id)
+		FROM users";
+		
+		$users = DB::instance(DB_NAME)->select_field($q);
+		
+		$total_users = $users - 1; # to account for the admin user
+		
+		$q = "SELECT count(user_id)
+		FROM users
+		WHERE role = 'student'";
+
+		$student_users = DB::instance(DB_NAME)->select_field($q);
+	
+		$q = "SELECT count(user_id)
+		FROM users
+		WHERE role = 'professor'";
+
+		$professor_users = DB::instance(DB_NAME)->select_field($q);
+		
 		$this->template->content = View::instance("v_admin_dashboard");
 		$this->template->content->professors = $professors;
 		$this->template->content->db_size = $db_size;
-		# $this->template->content->usercount = $usercount;
+		$this->template->content->total_users = $total_users;
+		$this->template->content->student_users = $student_users;
+		$this->template->content->professor_users = $professor_users;
 		$this->template->title = "Admin Dashboard";
-		
-		
+			
 		echo $this->template;
 	}
 	
