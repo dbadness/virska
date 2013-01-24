@@ -8,12 +8,23 @@ class admin_controller extends base_controller {
 		if($this->user->role != 'admin') {
 			Router::redirect("/");
 			return false;
-		}	
+		}
+		
+		$client_files = Array(
+					"/js/admin.js",
+					"/css/admin.css",
+					"/css/jquery.jqplot.min.css",
+					"/js/jquery.jqplot.js",
+					"/js/jqplot.barRenderer.min.js",
+					"/js/jqplot.canvasAxisTickRenderer.min.js",
+					"/js/jqplot.canvasTextRenderer.min.js",
+					"/js/jqplot.categoryAxisRenderer.min.js",
+					"/js/jqplot.dateAxisRenderer.min.js",
+                    );
+					
+	    $this->template->client_files = Utils::load_client_files($client_files);
 	}
-	
-	/*-------------------------------------------------------------------------------------------------
-	Access via http://yourapp.com/index/index/
-	-------------------------------------------------------------------------------------------------*/
+
 	public function index() {
 		
 		Router::redirect("/");
@@ -28,13 +39,7 @@ class admin_controller extends base_controller {
 		WHERE password = ''
 		AND role = 'professor'";
 		
-		$professors = DB::instance(DB_NAME)->select_rows($q);	
-		
-		$q = "SELECT
-		COUNT(user_id)
-		FROM users";
-		
-		$usercount = DB::instance(DB_NAME)->select_field($q);
+		$professors = DB::instance(DB_NAME)->select_rows($q);
 		
 		$q = "SELECT SUM(size)
 		FROM documents";
@@ -44,13 +49,7 @@ class admin_controller extends base_controller {
 		$this->template->content = View::instance("v_admin_dashboard");
 		$this->template->content->professors = $professors;
 		$this->template->content->db_size = $db_size;
-		$this->template->content->usercount = $usercount;
-		$client_files = Array(
-					"/js/admin.js",
-					"/css/admin.css",
-                    );
-					
-	    $this->template->client_files = Utils::load_client_files($client_files);
+		# $this->template->content->usercount = $usercount;
 		$this->template->title = "Admin Dashboard";
 		
 		
@@ -94,6 +93,81 @@ class admin_controller extends base_controller {
 		
 		Router::redirect("/admin/dashboard");
 		
+	}
+	
+	public function p_dod_growth() {
+		
+		# Build the last weeks' user counts
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created = ".strtotime('today');
+		
+		$today = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created = ".strtotime('-1 day');
+		
+		$day_1 = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created = ".strtotime('-2 days');
+		
+		$day_2 = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created = ".strtotime('-3 days');
+		
+		$day_3 = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created = ".strtotime('-4 days');
+		
+		$day_4 = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created = ".strtotime('-5 days');
+		
+		$day_5 = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created = ".strtotime('-6 days');
+		
+		$day_6 = DB::instance(DB_NAME)->select_field($q);
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created = ".strtotime('-7 days');
+		
+		$day_7 = DB::instance(DB_NAME)->select_field($q);
+		
+		$data = array();
+		$data['values'] = array($today, $day_1, $day_2, $day_3, $day_4, $day_5, $day_6, $day_7);
+		$data['days'] = array(
+							date("m/d/Y"),
+							date("m/d/Y", strtotime('-1 day')), 
+							date("m/d/Y", strtotime('-2 days')),			
+							date("m/d/Y", strtotime('-3 days')),
+							date("m/d/Y", strtotime('-4 days')),
+							date("m/d/Y", strtotime('-5 days')),
+							date("m/d/Y", strtotime('-6 days')),
+							date("m/d/Y", strtotime('-7 days')));
+			
+		echo json_encode($data);
 	}
 	
 } // end class

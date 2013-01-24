@@ -1,1 +1,1 @@
-<?=phpinfo();?>
+<?=sha1("testuser12")?>

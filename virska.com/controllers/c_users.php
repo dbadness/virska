@@ -302,7 +302,7 @@
 					setcookie("token", $token, strtotime('+2 weeks'), '/');
 				
 					# Send them to function that takes them to their dashboard
-					Router::redirect("/users/p_dashboard");
+					Router::redirect("/users/p_dashboard_signup");
 			
 				}
 			}

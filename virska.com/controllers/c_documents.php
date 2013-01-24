@@ -1,157 +1,154 @@
 <?php
 
-class documents_controller extends base_controller {
+	class documents_controller extends base_controller {
 
-	public function __construct() {
-		parent::__construct();
+		public function __construct() {
+			parent::__construct();
 		
-		$client_files = Array(
-							"/js/document.js",
-							"/css/document.css"
-							 );
+			$client_files = Array(
+								"/js/document.js",
+								"/css/document.css"
+								 );
 
-	    $this->template->client_files = Utils::load_client_files($client_files);
+		    $this->template->client_files = Utils::load_client_files($client_files);
 
-	}
+		}
 	
-	/*-------------------------------------------------------------------------------------------------
-	Access via http://yourapp.com/index/index/
-	-------------------------------------------------------------------------------------------------*/
-	public function index() {
+		public function index() {
 		
-		$q = "SELECT *
-		FROM documents
-		WHERE user_id = ".$this->user->user_id;
+			$q = "SELECT *
+			FROM documents
+			WHERE user_id = ".$this->user->user_id;
 		
-		$docs = DB::instance(DB_NAME)->select_rows($q);
+			$docs = DB::instance(DB_NAME)->select_rows($q);
 		
-		$q = "SELECT SUM(size)
-		FROM documents
-		WHERE user_id = ".$this->user->user_id;
+			$q = "SELECT SUM(size)
+			FROM documents
+			WHERE user_id = ".$this->user->user_id;
 		
-		$doc_size = DB::instance(DB_NAME)->select_field($q);
+			$doc_size = DB::instance(DB_NAME)->select_field($q);
 		
-		$this->template->content = View::instance("v_documents_index");
-		$this->template->content->docs = $docs;
-		$this->template->content->doc_size = $doc_size;
-		$this->template->title = $this->user->first_name." ".$this->user->last_name."'s Documents";
+			$this->template->content = View::instance("v_documents_index");
+			$this->template->content->docs = $docs;
+			$this->template->content->doc_size = $doc_size;
+			$this->template->title = $this->user->first_name." ".$this->user->last_name."'s Documents";
 	
-		echo $this->template;
+			echo $this->template;
 		
-	}
+		}
 	
-	public function p_upload_doc() {
+		public function p_upload_doc() {
 	
-		$q = "SELECT count(doc_name)
-		FROM documents
-		WHERE doc_name = '".$_FILES['doc']['name']."'
-		AND user_id = ".$this->user->user_id;
+			$q = "SELECT count(doc_name)
+			FROM documents
+			WHERE doc_name = '".$_FILES['doc']['name']."'
+			AND user_id = ".$this->user->user_id;
 		
-		$sum = DB::instance(DB_NAME)->select_field($q);
+			$sum = DB::instance(DB_NAME)->select_field($q);
 		
-		$filetypes = array("docx", # word for mac or windows 2010, 2011
-		"xlsx", # excel for mac or windows 2010, 2011
-		"pptx", #powerpoint for mac or windows 2010, 2011
-		"doc", # word for mac or windows 2004
-		"xls", # excel for mac or windows 2004
-		"ppt", # powerpoint for mac or windows 2004
-		"pages", # pages
-		"numbers", # numbers
-		"keynote", # keynote
-		"png", # png
-		"jpg", # jpg
-		"jpeg", #jpeg
-		"pdf"); # pdf
+			$filetypes = array("docx", # word for mac or windows 2010, 2011
+			"xlsx", # excel for mac or windows 2010, 2011
+			"pptx", #powerpoint for mac or windows 2010, 2011
+			"doc", # word for mac or windows 2004
+			"xls", # excel for mac or windows 2004
+			"ppt", # powerpoint for mac or windows 2004
+			"pages", # pages
+			"numbers", # numbers
+			"keynote", # keynote
+			"png", # png
+			"jpg", # jpg
+			"jpeg", #jpeg
+			"pdf"); # pdf
 		
-		if(!in_array(pathinfo($_FILES['doc']['name'])['extension'], $filetypes)){
+			if(!in_array(pathinfo($_FILES['doc']['name'])['extension'], $filetypes)){
 			
-			# give them a file-type error
-			$error = 1;
-			# Make sure they're not overwriting an existing document with the same name
-			Router::redirect("/documents/upload_error/".$error);
-			return false;
-		} elseif($sum == 1) {
+				# give them a file-type error
+				$error = 1;
+				# Make sure they're not overwriting an existing document with the same name
+				Router::redirect("/documents/upload_error/".$error);
+				return false;
+			} elseif($sum == 1) {
 			
-			# Make sure they're not overwriting an existing document with the same name
-			$error = 2;
-			Router::redirect("/documents/upload_error/".$error);
-			return false;
+				# Make sure they're not overwriting an existing document with the same name
+				$error = 2;
+				Router::redirect("/documents/upload_error/".$error);
+				return false;
 			
-		} else {
+			} else {
 			
-			$value = strlen(pathinfo($_FILES['doc']['name'])['extension']) + 1;
+				$value = strlen(pathinfo($_FILES['doc']['name'])['extension']) + 1;
 			
-			$new_val = 0 - $value;
+				$new_val = 0 - $value;
 			
-			# let's find out how many characters we need to chop off of the extension
-			if($_FILES['doc'])
+				# let's find out how many characters we need to chop off of the extension
+				if($_FILES['doc'])
 		
-			# If they're not, allow them to upload their document
-			# Set up the $_POST array so the user can upload their document effectively
-			$_POST['user_id'] = $this->user->user_id;
-			$_POST['created'] = Time::now(); # this returns the current time
-			$_POST['size'] = $_FILES['doc']['size'];
-			$_POST['doc_name'] = $_FILES['doc']['name'];
-			$_POST['doc_code'] = $this->user->user_id."-".$_FILES['doc']['name'];
+				# If they're not, allow them to upload their document
+				# Set up the $_POST array so the user can upload their document effectively
+				$_POST['user_id'] = $this->user->user_id;
+				$_POST['created'] = Time::now(); # this returns the current time
+				$_POST['size'] = $_FILES['doc']['size'];
+				$_POST['doc_name'] = $_FILES['doc']['name'];
+				$_POST['doc_code'] = $this->user->user_id."-".$_FILES['doc']['name'];
 
-			Upload::upload($_FILES, "/docs/", array("pdf", "doc", "xsl", "ppt", "pages", "numbers", "keynote", "jpeg", "png", "jpg", "docx", "xlsx", "pptx"), substr($_POST['doc_code'], 0, $new_val));
+				Upload::upload($_FILES, "/docs/", array("pdf", "doc", "xsl", "ppt", "pages", "numbers", "keynote", "jpeg", "png", "jpg", "docx", "xlsx", "pptx"), substr($_POST['doc_code'], 0, $new_val));
 
-			#insert data into the database
-			DB::instance(DB_NAME)->insert('documents', $_POST);
+				#insert data into the database
+				DB::instance(DB_NAME)->insert('documents', $_POST);
 
+				Router::redirect("/documents");
+			}
+		}
+	
+		public function upload_error($error) {
+		
+			$q = "SELECT *
+			FROM documents
+			WHERE user_id = ".$this->user->user_id;
+		
+			$docs = DB::instance(DB_NAME)->select_rows($q);
+		
+			$q = "SELECT SUM(size)
+			FROM documents
+			WHERE user_id = ".$this->user->user_id;
+		
+			$doc_size = DB::instance(DB_NAME)->select_field($q);
+			
+			$this->template->content = View::instance("v_documents_index");
+			$this->template->content->docs = $docs;
+			$this->template->content->doc_size = $doc_size;
+		
+			# process the appropriate error to give the user feedback
+			if($error == 1) {
+				$this->template->content->error = $error;
+			} elseif($error == 2) {
+				$this->template->content->error = $error;
+			}
+		
+			$this->template->title = $this->user->first_name." ".$this->user->last_name."'s Documents";
+	
+			echo $this->template;
+		
+		}
+	
+		public function p_delete_doc($doc_id) {
+		
+			# Delete the doc from the docs folder so our server doesn't get too big
+			$q = "SELECT doc_code
+			FROM documents
+			WHERE doc_id = ".$doc_id;
+		
+			$document = DB::instance(DB_NAME)->select_field($q);
+		
+			# unlink('/docs/'.$document); Let's figure this out
+		
+			#Delete the document for them on the site
+			DB::instance(DB_NAME)->delete('documents', "WHERE doc_id = ".$doc_id);
+
+			# Bring them to their notes page
 			Router::redirect("/documents");
+		
 		}
-	}
 	
-	public function upload_error($error) {
-		
-		$q = "SELECT *
-		FROM documents
-		WHERE user_id = ".$this->user->user_id;
-		
-		$docs = DB::instance(DB_NAME)->select_rows($q);
-		
-		$q = "SELECT SUM(size)
-		FROM documents
-		WHERE user_id = ".$this->user->user_id;
-		
-		$doc_size = DB::instance(DB_NAME)->select_field($q);
-			
-		$this->template->content = View::instance("v_documents_index");
-		$this->template->content->docs = $docs;
-		$this->template->content->doc_size = $doc_size;
-		
-		# process the appropriate error to give the user feedback
-		if($error == 1) {
-			$this->template->content->error = $error;
-		} elseif($error == 2) {
-			$this->template->content->error = $error;
-		}
-		
-		$this->template->title = $this->user->first_name." ".$this->user->last_name."'s Documents";
-	
-		echo $this->template;
-		
-	}
-	
-	public function p_delete_doc($doc_id) {
-		
-		# Delete the doc from the docs folder so our server doesn't get too big
-		$q = "SELECT doc_code
-		FROM documents
-		WHERE doc_id = ".$doc_id;
-		
-		$document = DB::instance(DB_NAME)->select_field($q);
-		
-		# unlink('/docs/'.$document); Let's figure this out
-		
-		#Delete the document for them on the site
-		DB::instance(DB_NAME)->delete('documents', "WHERE doc_id = ".$doc_id);
-
-		# Bring them to their notes page
-		Router::redirect("/documents");
-		
-	}
-	
-} // end class
+	} // end class
 ?>
