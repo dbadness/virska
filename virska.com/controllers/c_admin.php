@@ -15,11 +15,9 @@ class admin_controller extends base_controller {
 					"/css/admin.css",
 					"/css/jquery.jqplot.min.css",
 					"/js/jquery.jqplot.js",
-					"/js/jqplot.barRenderer.min.js",
-					"/js/jqplot.canvasAxisTickRenderer.min.js",
-					"/js/jqplot.canvasTextRenderer.min.js",
-					"/js/jqplot.categoryAxisRenderer.min.js",
 					"/js/jqplot.dateAxisRenderer.min.js",
+					"/js/jqplot.highlighter.min.js",
+					"/js/jqplot.cursor.min.js",
                     );
 					
 	    $this->template->client_files = Utils::load_client_files($client_files);
@@ -102,70 +100,70 @@ class admin_controller extends base_controller {
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = ".strtotime('today');
+		WHERE created = '".date("Y-M-d")."'";
 		
 		$today = DB::instance(DB_NAME)->select_field($q);
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = ".strtotime('-1 day');
+		WHERE created = '".date("Y-M-d", strtotime('-1 day'))."'";
 		
 		$day_1 = DB::instance(DB_NAME)->select_field($q);
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = ".strtotime('-2 days');
+		WHERE created = '".date("Y-M-d", strtotime('-2 days'))."'";
 		
 		$day_2 = DB::instance(DB_NAME)->select_field($q);
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = ".strtotime('-3 days');
+		WHERE created = '".date("Y-M-d", strtotime('-3 days'))."'";
 		
 		$day_3 = DB::instance(DB_NAME)->select_field($q);
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = ".strtotime('-4 days');
+		WHERE created = '".date("Y-M-d", strtotime('-4 days'))."'";
 		
 		$day_4 = DB::instance(DB_NAME)->select_field($q);
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = ".strtotime('-5 days');
+		WHERE created = '".date("Y-M-d", strtotime('-5 days'))."'";
 		
 		$day_5 = DB::instance(DB_NAME)->select_field($q);
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = ".strtotime('-6 days');
+		WHERE created = '".date("Y-M-d", strtotime('-6 days'))."'";
 		
 		$day_6 = DB::instance(DB_NAME)->select_field($q);
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = ".strtotime('-7 days');
+		WHERE created = '".date("Y-M-d", strtotime('-7 days'))."'";
 		
 		$day_7 = DB::instance(DB_NAME)->select_field($q);
 		
 		$data = array();
 		$data['values'] = array($today, $day_1, $day_2, $day_3, $day_4, $day_5, $day_6, $day_7);
 		$data['days'] = array(
-							date("m/d/Y"),
-							date("m/d/Y", strtotime('-1 day')), 
-							date("m/d/Y", strtotime('-2 days')),			
-							date("m/d/Y", strtotime('-3 days')),
-							date("m/d/Y", strtotime('-4 days')),
-							date("m/d/Y", strtotime('-5 days')),
-							date("m/d/Y", strtotime('-6 days')),
-							date("m/d/Y", strtotime('-7 days')));
+							date("d-M-y"),
+							date("d-M-y", strtotime('-1 day')), 
+							date("d-M-y", strtotime('-2 days')),			
+							date("d-M-y", strtotime('-3 days')),
+							date("d-M-y", strtotime('-4 days')),
+							date("d-M-y", strtotime('-5 days')),
+							date("d-M-y", strtotime('-6 days')),
+							date("d-M-y", strtotime('-7 days')));
 			
 		echo json_encode($data);
 	}

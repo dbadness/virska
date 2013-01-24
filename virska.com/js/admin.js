@@ -15,26 +15,29 @@ $(document).ready(function() {
 							[data.days[3], data.values[3]],
 							[data.days[2], data.values[2]],
 							[data.days[1], data.values[1]],
-							['Today', data.values[0]]];
+							[data.days[0], data.values[0]]];
 
-			var plot1 = $.jqplot('dodGrowth', [new_data], {
-			    title: 'Day over Day Growth (Last Eight Days)',
-			    series:[{renderer:$.jqplot.BarRenderer}],
-			    axesDefaults: {
-			        tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
-			        tickOptions: {
-			          angle: -30,
-			          fontSize: '10pt'
-			        }
-			    },
-			    axes: {
-			      xaxis: {
-			        renderer: $.jqplot.CategoryAxisRenderer
-			      }
-			    }
-		  	});
-		},
+		  var plot1 = $.jqplot('dodGrowth', [new_data], {
+		      title:'Day Over Day Growth',
+		      axes:{
+		        xaxis:{
+		          renderer:$.jqplot.DateAxisRenderer,
+		          tickOptions:{
+		            formatString:'%b&nbsp;%#d'
+		          } 
+		        },
+		        yaxis:{
+		        }
+		      },
+		      highlighter: {
+		        show: true,
+		        sizeAdjust: 7.5
+		      },
+		      cursor: {
+		        show: false
+		      }
+		  }); // end of plot 1
+		}, // of of success
 	});
-	
 	
 }); // end doc ready

@@ -28,7 +28,7 @@
 			
 			# if the user's email doesn't match one of our partner's schools....
 			
-			$schools = array ("@babson.edu");
+			$schools = array ("@babson.edu", "@me.com");
 			
 			$q = "SELECT email
 			FROM users
@@ -49,8 +49,7 @@
 				
 			} else {
 				
-				$_POST['created'] = Time::now(); # this returns the current time
-				$_POST['modified'] = Time::now(); # this returns the current time
+				$_POST['created'] = date("Y-M-d"); # this returns the current time
 			
 				# create the validation code that'll be used to authenticate the user's school affiliation
 				$_POST['val_code'] = Utils::generate_random_string();
