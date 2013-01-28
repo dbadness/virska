@@ -1,4 +1,8 @@
 <div id="container">
+	<div id="mainGraphic">
+		
+	</div>
+	<!-- 
 	<div id="heading">
 		<div id="title" class="homepage">
 			<strong>What's up, Babo.</strong>
@@ -40,4 +44,5 @@
 		</div>
 		<div style="clear:both;"></div>
 	</div>
+	-->
 </div>

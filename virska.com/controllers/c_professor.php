@@ -29,18 +29,23 @@
 		public function dashboard() {
 			
 			# Run our query, store the results in the variable $sections (if they're following sections...
-			$q =
-			"SELECT sections.*, classes.class_name, classes.class_code
+			$q = "SELECT sections.*, classes.class_name, classes.class_code
 			FROM sections 
 			JOIN classes USING (class_id) 
 			WHERE sections.user_id = ".$this->user->user_id;
 			
 			$sections = DB::instance(DB_NAME)->select_rows($q);
 			
+			$q = "SELECT count(event_id)
+			FROM events where user_id = ".$this->user->user_id;
+			
+			$event = DB::instance(DB_NAME)->select_field($q);
+			
 			# The user's main dashboard in Virska
 			$this->template->content = View::instance('v_professor_dashboard');
 			$this->template->title = "Dashboard for ".$this->user->first_name." ".$this->user->last_name;
 			$this->template->content->sections = $sections;
+			$this->template->content->event = $event;
 			
 			echo $this->template;
 		}
@@ -265,6 +270,15 @@
 			DB::instance(DB_NAME)->insert('sections', $_POST);
 			
 			Router::redirect("/professor/dashboard");
+		}
+		
+		public function p_delete_section($section_id) {
+			
+			DB::instance(DB_NAME)->delete('events', "WHERE section_id = ".$section_id);
+			DB::instance(DB_NAME)->delete('sections', "WHERE section_id = ".$section_id);
+			
+			Router::redirect("/professor/dashboard");
+			
 		}
 		
 		public function section($section_id) {

@@ -86,9 +86,12 @@
 				</a>
 				<a href="/">
 					<div id="logo">
-						<img src="/images/logo.png">
+						<img src="/images/logo.png" width="60">
 					</div>
 				</a>
+				<div id="virska">
+					Virska
+				</div>
 				<div style="clear:both;"></div>
 			<?endif;?>
 		</div>

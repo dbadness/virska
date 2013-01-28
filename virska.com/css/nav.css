@@ -8,13 +8,15 @@
 
 #navBar {
 	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
-   	background: -webkit-linear-gradient(top, #0066FF, #0000CC);
+   	/* background: -webkit-linear-gradient(top, #0066FF, #0000CC);
 	/* IE */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0066FF', endColorstr='#0000CC');
+	/* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0066FF', endColorstr='#0000CC');
 	/* Firefox */
-	background: -moz-linear-gradient(top,  #0066FF,  #0000CC);
+	/* background: -moz-linear-gradient(top,  #0066FF,  #0000CC); */
+	background-color:rgb(14,46,66);
 	height:100px;
-	overflow:auto;
+	width:100%;
+	
 }
 
 .navButton {
@@ -56,7 +58,18 @@
 }
 
 #logo {
-	margin-top:-80px;
+	float:right;
+	margin-top:17px;
+	margin-right:15px;
+}
+
+#virska{
+	font-family:Century Schoolbook;
+	color:white;
+	margin-top:10px;
+	margin-right:20px;
+	letter-spacing:-4px;
+	font-size:400%;
 	float:right;
 }
 #logout {

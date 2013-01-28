@@ -55,12 +55,28 @@
 	float:right;
 }
 
+#deleteSection{
+	float:right;
+	padding-left:10px;
+}
+
 /* ----- Add a class and section CSS (professor/classes) ---- */
 
 #newClass {
 	padding:40px;
 	border:solid 5px darkblue;
 	background-color:lightblue;
+}
+
+#noEvent {
+	padding:40px;
+	border:solid 5px darkblue;
+	background-color:lightblue;
+}
+
+#noSections {
+	padding:50px;
+	text-align:center;
 }
 
 .classHeader {
