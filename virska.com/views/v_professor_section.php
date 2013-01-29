@@ -50,6 +50,12 @@
 		</fieldset>
 	</form>
 </div>
+<?if(isset($upload_error)):?>
+	<div class="spacer"></div>
+	<div class="errorBox" id="attachmentUploadError">
+		You can only attach Microsoft Office files, Pages files, Numbers files, Keynote files, PDFs, PNGs, and JPGs to events.
+	</div>
+<?endif;?>
 <div class="spacer"></div>
 <div>
 	<?if(!$events):?>

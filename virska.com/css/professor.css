@@ -64,13 +64,13 @@
 
 #newClass {
 	padding:40px;
-	border:solid 5px darkblue;
+	border:solid 5px rgb(14,46,66);
 	background-color:lightblue;
 }
 
 #noEvent {
 	padding:40px;
-	border:solid 5px darkblue;
+	border:solid 5px rgb(14,46,66);
 	background-color:lightblue;
 }
 
@@ -141,6 +141,13 @@
 }
 
 /* ----- Add an assignment CSS (/professor/section/X) ---*/
+
+#attachmentUploadError {
+	font-size:100%;
+	padding:20px;
+	text-align:center;
+	display:block;
+}
 
 #newEventWrapper {
 }

@@ -46,7 +46,8 @@
 		
 			$sum = DB::instance(DB_NAME)->select_field($q);
 		
-			$filetypes = array("docx", # word for mac or windows 2010, 2011
+			$filetypes = array(
+			"docx", # word for mac or windows 2010, 2011
 			"xlsx", # excel for mac or windows 2010, 2011
 			"pptx", #powerpoint for mac or windows 2010, 2011
 			"doc", # word for mac or windows 2004
@@ -91,7 +92,7 @@
 				$_POST['doc_name'] = $_FILES['doc']['name'];
 				$_POST['doc_code'] = $this->user->user_id."-".$_FILES['doc']['name'];
 
-				Upload::upload($_FILES, "/docs/", array("pdf", "doc", "xsl", "ppt", "pages", "numbers", "keynote", "jpeg", "png", "jpg", "docx", "xlsx", "pptx"), substr($_POST['doc_code'], 0, $new_val));
+				Upload::upload($_FILES, "/docs/", $filetypes, substr($_POST['doc_code'], 0, $new_val));
 
 				#insert data into the database
 				DB::instance(DB_NAME)->insert('documents', $_POST);

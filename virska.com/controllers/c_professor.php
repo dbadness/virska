@@ -281,7 +281,7 @@
 			
 		}
 		
-		public function section($section_id) {
+		public function section($section_id, $error = NULL) {
 			
 			# Add a assignment or schedule event to the section
 			# Find the section they want to view and append the classes table so we can have as much info as possible for variables
@@ -308,6 +308,9 @@
 			# Pass data back to the view
 			$this->template->content->section = $section;
 			$this->template->content->events = $events;
+			if($error) {
+				$this->template->content->upload_error = $error;
+			}
 			$this->template->title = $section['class_name'].", Section ".$section['section_name'];
 	
 			# Render the view
@@ -316,18 +319,45 @@
 				
 		public function p_add_event() {
 			
+			$filetypes = array(
+			"docx", # word for mac or windows 2010, 2011
+			"xlsx", # excel for mac or windows 2010, 2011
+			"pptx", #powerpoint for mac or windows 2010, 2011
+			"doc", # word for mac or windows 2004
+			"xls", # excel for mac or windows 2004
+			"ppt", # powerpoint for mac or windows 2004
+			"pages", # pages
+			"numbers", # numbers
+			"keynote", # keynote
+			"png", # png
+			"jpg", # jpg
+			"jpeg", #jpeg
+			"pdf"); # pdf
+			
+			$value = strlen(pathinfo($_FILES['doc']['name'])['extension']) + 1;
+		
+			$new_val = 0 - $value;
+			
 			# Allow the professor to create an event
 			$_POST['user_id'] = $this->user->user_id;
 			$_POST['created'] = Time::now(); # this returns the current time
 			$_POST['modified'] = Time::now(); # this returns the current time
 			
-			if($_FILES['doc']['name'] != "") {
+			if(!in_array(pathinfo($_FILES['doc']['name'])['extension'], $filetypes)){
+
+				# give them a file-type error
+				$error = 1;
+				# Make sure they're not overwriting an existing document with the same name
+				Router::redirect("/professor/section/".$_POST['section_id']."/".$error);
+				return false;
+			
+			} else {
 				# Files are labeled in the convention "created-file_name" ... ie "53434554-Market Survey.doc"
 				$_POST['doc'] = $_POST['created']."-".$_FILES['doc']['name'];
 		
 				# user upload method to determine where the file is going, what the $_FILES array will accept, and what the file will be called
 				# we also have to strip off the .doc.doc problem with substr
-				Upload::upload($_FILES, "/docs/", array("pdf", "doc", "xls", "ppt"), substr($_POST['doc'], 0, -4));
+				Upload::upload($_FILES, "/docs/", $filetypes, substr($_POST['doc'], 0, $new_val));
 			}
 
 			#insert data into the database
