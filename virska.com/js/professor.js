@@ -44,14 +44,24 @@ $(document).ready(function() {
 		$('#charCount').html(count);
 	});
 	
-	$("form").submit(function() {
-	if ($(".inputs").val() != 0) {
-		return true;
-	}
-    $("#noEventError").show();
-	$(".inputs").css("border", "red");
-	$('form').effect("shake", { times:2 }, 50);
-	return false;
+	
+	// error checking regarding blank inputs on adding classes
+	$("form:first").submit(function() {
+		if (($("#class_name").val().length > 0) && ($("#class_code").val().length > 0)) {
+			return true;
+		}
+		$('form:first').effect("shake", { times:2 }, 50);
+		return false;
+    });
+
+
+	// error checking regarding blank inputs on adding sections
+	$("form:last").submit(function() {
+		if (($("#section_name").val().length > 0) && ($("#roomNumber").val().length > 0) && ($("#building").val().length > 0)) {
+			return true;
+		}
+		$('form:last').effect("shake", { times:2 }, 50);
+		return false;
     });
 
 	$(".messageContainer:last").css("border-bottom", "solid 0px gray");

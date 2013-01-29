@@ -32,7 +32,7 @@
 					in <?=$section['building']?>,&nbsp
 				</div>
 				<div id="sectionRoom" class="sectionList">
-					room <?=$section['room_number']?>,&nbsp
+					Room <?=$section['room_number']?>,&nbsp
 				</div>
 				<div id="sectionDay" class="sectionList">
 					on <?=$section['mo']?> <?=$section['tu']?> <?=$section['we']?> <?=$section['th']?> <?=$section['fr']?> <?=$section['sa']?> <?=$section['su']?>

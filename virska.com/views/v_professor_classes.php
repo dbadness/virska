@@ -52,7 +52,7 @@
 <hr>
 <div id="addClassWrapper">
 	<div id="addClass">
-		<form class="form" id="class" method="post" action="/professor/p_add_class" >
+		<form class="addClass" id="class" method="post" action="/professor/p_add_class" >
 			<label for="class_name"><strong>Class Name</strong><br><i>(ie. Introduction to Management)</i></label>
 			<input type="text" name="class_name" id="class_name" class="inputs">
 			<br>
@@ -65,7 +65,7 @@
 		</form>
 	</div>
 	<div id="addSection">
-		<form class="form" id="section" method="post" action="/professor/p_add_section" >
+		<form class="addSection" id="section" method="post" action="/professor/p_add_section" >
 			<label for="section_name">Section Name</label>
 			<input type="text" name="section_name" id="section_name" class="inputs">
 			<br>
@@ -155,13 +155,13 @@
 			<br>
 			<label for="days">Days the section meets</label>
 			<br>
-			<input type="checkbox" name="mo" value="Monday">Monday</br>
-			<input type="checkbox" name="tu" value="Tuesday">Tuesday</br>
-			<input type="checkbox" name="we" value="Wednesday">Wednesday</br>
-			<input type="checkbox" name="th" value="Thursday">Thursday</br>
-			<input type="checkbox" name="fr" value="Friday">Friday</br>
-			<input type="checkbox" name="sa" value="Saturday">Saturday</br>
-			<input type="checkbox" name="su" value="Sunday">Sunday</br>
+			<input type="checkbox" class="day" name="mo" value="Monday">Monday</br>
+			<input type="checkbox" class="day" name="tu" value="Tuesday">Tuesday</br>
+			<input type="checkbox" class="day" name="we" value="Wednesday">Wednesday</br>
+			<input type="checkbox" class="day" name="th" value="Thursday">Thursday</br>
+			<input type="checkbox" class="day" name="fr" value="Friday">Friday</br>
+			<input type="checkbox" class="day" name="sa" value="Saturday">Saturday</br>
+			<input type="checkbox" class="day" name="su" value="Sunday">Sunday</br>
 			<br>
 			<input type="submit" value="Add Section">
 		</form>
