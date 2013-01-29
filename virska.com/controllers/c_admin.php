@@ -49,26 +49,24 @@ class admin_controller extends base_controller {
 		
 		$users = DB::instance(DB_NAME)->select_field($q);
 		
-		$total_users = $users - 3; # to account for the admin user and the two demo users
-		
 		$q = "SELECT count(user_id)
 		FROM users
 		WHERE role = 'student'";
 
-		$student_users = DB::instance(DB_NAME)->select_field($q) - 1;
+		$student_users = DB::instance(DB_NAME)->select_field($q);
 	
 		$q = "SELECT count(user_id)
 		FROM users
 		WHERE role = 'professor'";
 
-		$professor_users = DB::instance(DB_NAME)->select_field($q) - 1;
+		$professor_users = DB::instance(DB_NAME)->select_field($q);
 		
 		$this->template->content = View::instance("v_admin_dashboard");
 		$this->template->content->professors = $professors;
 		$this->template->content->db_size = $db_size;
-		$this->template->content->total_users = $total_users;
-		$this->template->content->student_users = $student_users;
-		$this->template->content->professor_users = $professor_users;
+		$this->template->content->total_users = $total_users - 3; # to account for the admin and test users
+		$this->template->content->student_users = $student_users - 1;
+		$this->template->content->professor_users = $professor_users - 1;
 		$this->template->title = "Admin Dashboard";
 			
 		echo $this->template;
@@ -120,56 +118,56 @@ class admin_controller extends base_controller {
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = '".date("Y-M-d")."'";
+		WHERE created = '".date("d-M-Y")."'";
 		
 		$today = DB::instance(DB_NAME)->select_field($q);
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = '".date("Y-M-d", strtotime('-1 day'))."'";
+		WHERE created = '".date("d-M-Y", strtotime('-1 day'))."'";
 		
 		$day_1 = DB::instance(DB_NAME)->select_field($q);
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = '".date("Y-M-d", strtotime('-2 days'))."'";
+		WHERE created = '".date("d-M-Y", strtotime('-2 days'))."'";
 		
 		$day_2 = DB::instance(DB_NAME)->select_field($q);
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = '".date("Y-M-d", strtotime('-3 days'))."'";
+		WHERE created = '".date("d-M-Y", strtotime('-3 days'))."'";
 		
 		$day_3 = DB::instance(DB_NAME)->select_field($q);
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = '".date("Y-M-d", strtotime('-4 days'))."'";
+		WHERE created = '".date("d-M-Y", strtotime('-4 days'))."'";
 		
 		$day_4 = DB::instance(DB_NAME)->select_field($q);
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = '".date("Y-M-d", strtotime('-5 days'))."'";
+		WHERE created = '".date("d-M-Y", strtotime('-5 days'))."'";
 		
 		$day_5 = DB::instance(DB_NAME)->select_field($q);
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = '".date("Y-M-d", strtotime('-6 days'))."'";
+		WHERE created = '".date("d-M-Y", strtotime('-6 days'))."'";
 		
 		$day_6 = DB::instance(DB_NAME)->select_field($q);
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created = '".date("Y-M-d", strtotime('-7 days'))."'";
+		WHERE created = '".date("d-M-Y", strtotime('-7 days'))."'";
 		
 		$day_7 = DB::instance(DB_NAME)->select_field($q);
 		
@@ -190,63 +188,66 @@ class admin_controller extends base_controller {
 
 	public function p_adod_growth() {
 		
+		# what are the "extra" users that shouldn't be counted
+		$extras = 3; # admin, test users
+		
 		# Build the last weeks' user counts
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d")."'";
+		WHERE created BETWEEN '01-Jan-2013' AND '".date("d-M-Y")."'";
 
-		$today = DB::instance(DB_NAME)->select_field($q);
+		$today = DB::instance(DB_NAME)->select_field($q) - $extras;
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d", strtotime('-1 day'))."'";
+		WHERE created BETWEEN '01-Jan-2013' AND '".date("d-M-Y", strtotime('-1 day'))."'";
 		
-		$day_1 = DB::instance(DB_NAME)->select_field($q);
-		
-		$q = "SELECT
-		COUNT(user_id)
-		FROM users
-		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d", strtotime('-2 days'))."'";
-		
-		$day_2 = DB::instance(DB_NAME)->select_field($q);
+		$day_1 = DB::instance(DB_NAME)->select_field($q) - $extras;
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d", strtotime('-3 days'))."'";
+		WHERE created BETWEEN '01-Jan-2013' AND '".date("d-M-Y", strtotime('-2 days'))."'";
 		
-		$day_3 = DB::instance(DB_NAME)->select_field($q);
-		
-		$q = "SELECT
-		COUNT(user_id)
-		FROM users
-		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d", strtotime('-4 days'))."'";
-		
-		$day_4 = DB::instance(DB_NAME)->select_field($q);
+		$day_2 = DB::instance(DB_NAME)->select_field($q) - $extras;
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d", strtotime('-5 days'))."'";
+		WHERE created BETWEEN '01-Jan-2013' AND '".date("d-M-Y", strtotime('-3 days'))."'";
 		
-		$day_5 = DB::instance(DB_NAME)->select_field($q);
-		
-		$q = "SELECT
-		COUNT(user_id)
-		FROM users
-		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d", strtotime('-6 days'))."'";
-		
-		$day_6 = DB::instance(DB_NAME)->select_field($q);
+		$day_3 = DB::instance(DB_NAME)->select_field($q) - $extras;
 		
 		$q = "SELECT
 		COUNT(user_id)
 		FROM users
-		WHERE created BETWEEN '2013-Jan-01' AND '".date("Y-M-d", strtotime('-7 days'))."'";
+		WHERE created BETWEEN '01-Jan-2013' AND '".date("d-M-Y", strtotime('-4 days'))."'";
 		
-		$day_7 = DB::instance(DB_NAME)->select_field($q);
+		$day_4 = DB::instance(DB_NAME)->select_field($q) - $extras;
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created BETWEEN '01-Jan-2013' AND '".date("d-M-Y", strtotime('-5 days'))."'";
+		
+		$day_5 = DB::instance(DB_NAME)->select_field($q) - $extras;
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created BETWEEN '01-Jan-2013' AND '".date("d-M-Y", strtotime('-6 days'))."'";
+		
+		$day_6 = DB::instance(DB_NAME)->select_field($q) - $extras;
+		
+		$q = "SELECT
+		COUNT(user_id)
+		FROM users
+		WHERE created BETWEEN '01-Jan-2013' AND '".date("d-M-Y", strtotime('-7 days'))."'";
+		
+		$day_7 = DB::instance(DB_NAME)->select_field($q) - $extras;
 		
 		$data = array();
 		$data['values'] = array($today, $day_1, $day_2, $day_3, $day_4, $day_5, $day_6, $day_7);

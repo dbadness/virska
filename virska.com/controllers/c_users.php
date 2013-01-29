@@ -28,7 +28,7 @@
 			
 			# if the user's email doesn't match one of our partner's schools....
 			
-			$schools = array ("@babson.edu", "@me.com");
+			$schools = array ("@babson.edu");
 			
 			$q = "SELECT email
 			FROM users
@@ -49,7 +49,7 @@
 				
 			} else {
 				
-				$_POST['created'] = date("Y-M-d"); # this returns the current time
+				$_POST['created'] = date("d-M-Y"); # this returns the current time
 			
 				# create the validation code that'll be used to authenticate the user's school affiliation
 				$_POST['val_code'] = Utils::generate_random_string();
@@ -349,7 +349,7 @@
 			if(!$token) {
 
 				# Send them back to the login page with an error
-				Router::redirect("/users/login_error");
+				Router::redirect("/users/login_error/".$_POST['email']);
 
 			# But if we did, login succeeded! 
 			} else {
@@ -363,9 +363,11 @@
 			}
 		}
 		
-		public function login_error() {
+		public function login_error($email) {
 			$this->template->content = View::instance("v_users_login");
 			$this->template->content->error = TRUE;
+			$this->template->content->users_email = $email;
+			$this->template->title   = "Users Login";
 			echo $this->template;
 		}
 			

@@ -4,7 +4,7 @@
 			Email
 		</div>
 		<div id="loginFormEmailInput">
-	    	<input type='text' name='email' id='email' class="textfield">
+	    	<input type='text' name='email' id='email' class="textfield" value="<?if(isset($users_email)):?><?=$users_email?><?endif;?>">
 		</div>
 		<div style="clear:both;"></div>
 		<div id="loginFormPasswordLabel">
