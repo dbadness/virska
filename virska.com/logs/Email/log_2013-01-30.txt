@@ -1,0 +1,51 @@
+2013-01-30 15:13:00 - INFO --> Controller/Method: professor/p_message 
+2013-01-30 15:13:00 - INFO --> From: Virska (communications@virska.com) 
+2013-01-30 15:13:00 - INFO --> To: David Baines (5088017134@txt.att.net),  
+2013-01-30 15:13:00 - INFO --> CC:  
+2013-01-30 15:13:00 - INFO --> BCC:  
+2013-01-30 15:13:00 - INFO --> Subject: Message from Professor Baines 
+2013-01-30 15:13:00 - INFO --> Body: Professor David Baines has sent you a message:<br> 
+2013-01-30 15:14:36 - INFO --> Controller/Method: professor/p_message 
+2013-01-30 15:14:36 - INFO --> From: Virska (communications@virska.com) 
+2013-01-30 15:14:36 - INFO --> To: David Baines (5088017134@txt.att.net),  
+2013-01-30 15:14:36 - INFO --> CC:  
+2013-01-30 15:14:36 - INFO --> BCC:  
+2013-01-30 15:14:36 - INFO --> Subject: Message from Professor Baines 
+2013-01-30 15:14:36 - INFO --> Body: Here's a test message for texts. 
+2013-01-30 15:15:15 - INFO --> Controller/Method: professor/p_message 
+2013-01-30 15:15:15 - INFO --> From: Virska (communications@virska.com) 
+2013-01-30 15:15:15 - INFO --> To: David Baines (5088017134@txt.att.net),  
+2013-01-30 15:15:15 - INFO --> CC:  
+2013-01-30 15:15:15 - INFO --> BCC:  
+2013-01-30 15:15:15 - INFO --> Subject: Message from Professor Baines 
+2013-01-30 15:15:15 - INFO --> Body: Test Message 
+2013-01-30 15:16:46 - INFO --> Controller/Method: professor/p_message 
+2013-01-30 15:16:46 - INFO --> From: Virska (communications@virska.com) 
+2013-01-30 15:16:46 - INFO --> To: 5 (5),  
+2013-01-30 15:16:46 - INFO --> CC:  
+2013-01-30 15:16:46 - INFO --> BCC:  
+2013-01-30 15:16:46 - INFO --> Subject:  
+2013-01-30 15:16:46 - INFO --> Body: Test Message 
+2013-01-30 15:16:46 - INFO --> FAILED TO SEND EMAIL 
+2013-01-30 15:18:36 - INFO --> Controller/Method: professor/p_message 
+2013-01-30 15:18:36 - INFO --> From: Virska (communications@virska.com) 
+2013-01-30 15:18:36 - INFO --> To: David Baines (5088017134@txt.att.net),  
+2013-01-30 15:18:36 - INFO --> CC:  
+2013-01-30 15:18:36 - INFO --> BCC:  
+2013-01-30 15:18:36 - INFO --> Subject: Message from Professor Baines: Here's another test message 
+2013-01-30 15:18:36 - INFO --> Body:  
+2013-01-30 15:18:36 - INFO --> FAILED TO SEND EMAIL 
+2013-01-30 15:19:40 - INFO --> Controller/Method: professor/p_message 
+2013-01-30 15:19:40 - INFO --> From: Virska (communications@virska.com) 
+2013-01-30 15:19:40 - INFO --> To: David Baines (5088017134@txt.att.net),  
+2013-01-30 15:19:40 - INFO --> CC:  
+2013-01-30 15:19:40 - INFO --> BCC:  
+2013-01-30 15:19:40 - INFO --> Subject: Message from Professor Baines: Here's another test message. Please work? 
+2013-01-30 15:19:40 - INFO --> Body: Test Body 
+2013-01-30 15:23:39 - INFO --> Controller/Method: professor/p_message 
+2013-01-30 15:23:39 - INFO --> From: Virska (communications@virska.com) 
+2013-01-30 15:23:39 - INFO --> To: David Baines (5088017134@txt.att.net),  
+2013-01-30 15:23:39 - INFO --> CC:  
+2013-01-30 15:23:39 - INFO --> BCC:  
+2013-01-30 15:23:39 - INFO --> Subject: Message from Professor Baines 
+2013-01-30 15:23:39 - INFO --> Body: Here's a test message with some new core settings. 

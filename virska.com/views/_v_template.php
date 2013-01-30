@@ -40,6 +40,11 @@
 							Documents
 						</div>
 					</a>
+					<a href="/professor/settings">
+						<div class="navButton" id="settings">
+							Settings
+						</div>
+					</a>
 				<?elseif($user->role == 'student'):?>
 					<a href="/student/dashboard">
 						<div class="navButton" id="dashboard">

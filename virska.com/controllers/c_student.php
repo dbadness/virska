@@ -464,18 +464,38 @@
 		}
 	
 		public function settings() {
+			
+			if($this->user->carrier == "@txt.att.net") {
+				$carrier = "AT&T";
+			} elseif($this->user->carrier == "@vtext.com") {
+				$carrier = "Verizon";
+			} elseif($this->user->carrier == "@tmomail.net") {
+				$carrier = "T-Mobile";
+			} elseif($this->user->carrier == "@messaging.sprintpcs.com") {
+				$carrier = "Sprint";
+			}
 				
 			# Setup view
 			$this->template->content = View::instance('v_student_settings');
 			$this->template->title = "Profile of ".$this->user->first_name;
+			$this->template->content->carrier = $carrier;
 
 			# Render template
 			echo $this->template;
 		}
 	
 		public function p_update_contact() {
+				
+			$data = Array('email' => $_POST['email'], 'mobile' => $_POST['mobile'], 'carrier' => $_POST['carrier']);
 			
-			$data = Array('receive_email' => $_POST['receive_email']);
+			DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = '".$this->user->user_id."'");
+			
+			Router::redirect("/student/settings");
+		}
+		
+		public function p_update_prefs() {
+			
+			$data = Array('receive_email' => $_POST['receive_email'], 'receive_text' => $_POST['receive_text']);
 
 			DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = '".$this->user->user_id."'");
 			
@@ -484,8 +504,19 @@
 		
 		public function update_success() {
 			
+			if($this->user->carrier == "@txt.att.net") {
+				$carrier = "AT&T";
+			} elseif($this->user->carrier == "@vtext.com") {
+				$carrier = "Verizon";
+			} elseif($this->user->carrier == "@tmomail.net") {
+				$carrier = "T-Mobile";
+			} elseif($this->user->carrier == "@messaging.sprintpcs.com") {
+				$carrier = "Sprint";
+			}
+			
 			$this->template->content = View::instance("v_student_settings");
 			$this->template->content->contact_updated = 1;
+			$this->template->content->carrier = $carrier;
 			
 			echo $this->template;
 		}

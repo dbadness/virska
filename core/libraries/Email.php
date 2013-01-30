@@ -78,6 +78,14 @@ class Email {
 			$mail->Subject    = $subject;
 			
 			# Plain text
+				$mail->IsHTML(false);
+				$mail->Body = $body;
+				$mail->ContentType = 'text/plain';
+				$mail->AltBody = $body;
+			
+			/*
+			
+			# Plain text
 			if(!$html) {
 				$mail->IsHTML(false);
 				$mail->Body = $body;
@@ -90,6 +98,8 @@ class Email {
 				$mail->MsgHTML($body);
 				$mail->AltBody = "To view the message, please use an HTML compatible email viewer."; # Optional, comment out and test
 			}
+			
+			*/
 		
 		# Send email	
 			if(!$mail->Send()) {

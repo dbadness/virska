@@ -417,3 +417,30 @@
 #sectionSelector {
 	float:right;
 }
+
+
+/* ----------- Settings Page ------- */
+
+#emailLabel {
+	float:left;
+	margin-right:5px;
+	margin-top:5px;
+}
+
+#emailCurrent {
+	float:left;
+	margin-top:5px;
+}
+
+#emailNew {
+	float:right;
+}
+
+#newEmailInput {
+	float:left;
+	margin-top:2px;
+}
+
+#newEmailSubmit {
+	float:left;
+}

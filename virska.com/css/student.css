@@ -403,27 +403,46 @@
 
 /* -------- Settings Page CSS ------ */
 
-#emailLabel {
-	float:left;
-	margin-top:5px;
-}
-
-#emailCurrent {
+#emailOld {
 	float:left;
 	margin-left:2px;
 	margin-top:5px;
 }
 
 #emailNew {
-	width:500px;
 	float:right;
 }
 
-#newEmailInput {
+#phoneOld {
 	float:left;
 }
 
-#newEmailSubmit {
+#number {
+	float:left;
+	margin-right:20px;
+}
+
+#currentCarrier {
+	float:left;
+}
+
+#phoneNew {
+	float:right;
+}
+
+#newNumber {
+	float:right;
+}
+
+#newCarrier {
+	float:right;
+}
+
+#prefsSubmit {
+	float:right;
+}
+
+#contactSubmit {
 	float:right;
 	margin-top:3px;
 }
@@ -450,8 +469,3 @@
 	float:left;
 	margin-top:10px;
 }
-
-#contactSubmit {
-	float:right;
-}
-

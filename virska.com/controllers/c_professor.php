@@ -89,7 +89,27 @@
 				
 					# With everything set, send the email
 					$email = Email::send($to, $from, $subject, $body, true);
-				}	
+				}
+				
+				#send the student a text if they have text enabled
+				if($student['receive_text'] == 1) {
+				
+					# Build a multi-dimension array of recipients of this email
+					$to[] = Array("name" => $student['first_name']." ".$student['last_name'], "email" => $student['mobile'].$student['carrier']);
+
+					# Build a single-dimension array of who this email is coming from
+					# note it's using the constants we set in the configuration above)
+					$from = Array("name" => APP_NAME, "email" => APP_EMAIL);
+
+					# Subject
+					$subject = "Message from Professor ".$this->user->last_name;
+
+					# You can set the body as just a string of text
+					$body = $_POST['message'];
+				
+					# With everything set, send the email
+					$email = Email::send($to, $from, $subject, $body, true);
+				}
 			}
 			
 			Router::redirect("/professor/messages");
@@ -375,6 +395,15 @@
 			# Bring them to the section page that they were editing
 			Router::redirect("/professor/section/".$this_section);	
 
+		}
+	
+		public function p_update_contact() {
+				
+			$data = Array('email' => $_POST['email']);
+			
+			DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = '".$this->user->user_id."'");
+			
+			Router::redirect("/professor/settings");
 		}
 	}
 

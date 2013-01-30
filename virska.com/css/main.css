@@ -35,6 +35,17 @@ input.textfield {
 	background: -moz-linear-gradient(top,  #F1EFFF,  #D9D7E5);
 }
 
+.select select {
+	padding:10px;
+	border:solid 2px gray;
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #F1EFFF, #D9D7E5);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1EFFF', endColorstr='#D9D7E5');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #F1EFFF,  #D9D7E5);
+}
+
 .form {
 	
 }

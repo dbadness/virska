@@ -64,7 +64,7 @@ class admin_controller extends base_controller {
 		$this->template->content = View::instance("v_admin_dashboard");
 		$this->template->content->professors = $professors;
 		$this->template->content->db_size = $db_size;
-		$this->template->content->total_users = $total_users - 3; # to account for the admin and test users
+		$this->template->content->total_users = $users - 3; # to account for the admin and test users
 		$this->template->content->student_users = $student_users - 1;
 		$this->template->content->professor_users = $professor_users - 1;
 		$this->template->title = "Admin Dashboard";
