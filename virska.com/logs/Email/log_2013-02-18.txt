@@ -1,0 +1,21 @@
+2013-02-18 16:44:19 - INFO --> Controller/Method: users/p_validate_email 
+2013-02-18 16:44:19 - INFO --> From: Virska (communications@virska.com) 
+2013-02-18 16:44:19 - INFO --> To: Danielle Walters (daniellewalters@me.com),  
+2013-02-18 16:44:19 - INFO --> CC:  
+2013-02-18 16:44:19 - INFO --> BCC:  
+2013-02-18 16:44:19 - INFO --> Subject: Welcome to Virska! 
+2013-02-18 16:44:19 - INFO --> Body: Welcome to Virska, Danielle. The Virska team is re 
+2013-02-18 16:44:23 - INFO --> Controller/Method: users/p_thank_you 
+2013-02-18 16:44:23 - INFO --> From: Virska (communications@virska.com) 
+2013-02-18 16:44:23 - INFO --> To: Verification Team (verification@thinkedella.com),  
+2013-02-18 16:44:23 - INFO --> CC:  
+2013-02-18 16:44:23 - INFO --> BCC:  
+2013-02-18 16:44:23 - INFO --> Subject: A new professor wants to be validated. 
+2013-02-18 16:44:23 - INFO --> Body: Danielle Walters from Babson College wants to be v 
+2013-02-18 16:47:42 - INFO --> Controller/Method: admin/p_validate 
+2013-02-18 16:47:42 - INFO --> From: Virska (communications@virska.com) 
+2013-02-18 16:47:42 - INFO --> To: Danielle Walters (daniellewalters@me.com),  
+2013-02-18 16:47:42 - INFO --> CC:  
+2013-02-18 16:47:42 - INFO --> BCC:  
+2013-02-18 16:47:42 - INFO --> Subject: You've been validated! 
+2013-02-18 16:47:42 - INFO --> Body: Dear Danielle,<br><br>Thank you so much for your p 

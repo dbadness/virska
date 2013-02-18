@@ -1,8 +1,8 @@
 <?if($event == 0):?>
 	<div id="noEvent">
-		You have no events yet!<br><br>Now that you have sections for your students to follow and view, you need to create events for your students to interact with. An event is most typically an assignment (like "Project 1 Due" or "Read Chapters 3 and 4") but it can be anything you'd like your students to do on a date  (including submit assignments for you to grade!)
+		You have no events yet!<br><br>Now that you have sections for your students to follow and view, you need to create events for your students to interact with. An event is most typically an assignment (like "Project 1 Due" or "Read Chapters 3 and 4") but it can be anything you'd like your students to do on a specific date  (including submit assignments for you to grade!)
 		<br><br>To the right of your new section below, click on "View" and you'll be able to add events to that section.
-		<br><br>Once you've added your event, you can click on "Dashboard" on top of the screen to come back to this home page. If you ever have any questions, please reach out to us at <a href="mailto:feedback@virska.com">feedback@virska.com</a> and we'd be glad to help.
+		<br><br>Once you've added your event, you can click on "Dashboard" on top of the screen to come back to this home page. If you ever have any questions, you can click on the "<a href="/professor/help">help</a>" link on the top right of the page!
 		<br><br>Enjoy!
 	</div>
 	<div class="spacer"></div>

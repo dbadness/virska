@@ -199,30 +199,80 @@
 			echo $this->template;	
 		}
 		
-		public function p_submit($event_id, $event_desc) {
+		public function p_submit($event_id) {
 			
 			$_POST['created'] = Time::now();
 			$_POST['modified'] = Time::now();
 			$_POST['user_id'] = $this->user->user_id;
-			$_POST['doc'] = $_POST['modified']."-".$_FILES['submission']['name']; 
+			$_POST['doc'] = $_POST['modified']."-".$_FILES['doc']['name']; 
 			# in case the student modifies their submission, let's rewrite the existing file in the docs folder
 			$_POST['event_id'] = $event_id;
 			
-			Upload::upload($_FILES, "/docs/", array("pdf", "doc", "xls", "ppt"), substr($_POST['doc'], 0, -4));
+			$filetypes = array(
+				'doc',
+				'docx',
+				'ppt',
+				'pptx',
+				'xls',
+				'xlsx',
+				'pages',
+				'numbers',
+				'keynote',
+				'pdf'
+			);
+			
+			if(!in_array(pathinfo($_FILES['doc']['name'])['extension'], $filetypes)) {
+				
+				$error = 1;
+				
+				Router::redirect("/student/submission_error");
+				
+			}
+			
+			$value = strlen(pathinfo($_FILES['doc']['name'])['extension']) + 1;
+		
+			$new_val = 0 - $value;
+
+			Upload::upload($_FILES, "/docs/", $filetypes, substr($_POST['doc'], 0, $new_val));
 			
 			DB::instance(DB_NAME)->insert('submissions', $_POST);
 			
 			Router::redirect("/student/dashboard");
 		}
 		
-		public function p_resubmit ($event_id) {
+		public function p_resubmit($event_id) {
 			
 			$_POST['modified'] = Time::now();
-			$_POST['doc'] = $_POST['modified']."-".$_FILES['submission']['name'];
+			$_POST['doc'] = $_POST['modified']."-".$_FILES['doc']['name'];
 			
 			$data = Array('modified' => $_POST['modified'], 'doc' => $_POST['doc']);
 			
-			Upload::upload($_FILES, "/docs/", array("pdf", "doc", "xls", "ppt"), substr($_POST['doc'], 0, -4));
+			$filetypes = array(
+				'doc',
+				'docx',
+				'ppt',
+				'pptx',
+				'xls',
+				'xlsx',
+				'pages',
+				'numbers',
+				'keynote',
+				'pdf'
+			);
+			
+			if(!in_array(pathinfo($_FILES['doc']['name'])['extension'], $filetypes)) {
+				
+				$error = 1;
+				
+				Router::redirect("/student/submission_error");
+				
+			}
+			
+			$value = strlen(pathinfo($_FILES['doc']['name'])['extension']) + 1;
+		
+			$new_val = 0 - $value;
+
+			Upload::upload($_FILES, "/docs/", $filetypes, substr($_POST['doc'], 0, $new_val));
 			
 			DB::instance(DB_NAME)->update("submissions", $data, "WHERE event_id = '".$event_id."' AND user_id = '".$this->user->user_id."'");
 			
@@ -356,6 +406,106 @@
 			
 		}
 		
+		public function submission_error() /* If making changes to student dashbaord, please look here as well. */ { 
+			
+			# Build a query of the professors this user is following - we're only interested in their sections
+			$q = "SELECT section_id_followed 
+				FROM sections_followed
+				WHERE user_id = ".$this->user->user_id;
+
+			# Execute our query, storing the results in a variable $connections
+			$connections = DB::instance(DB_NAME)->select_rows($q);
+
+			# In order to query for the sections we need, we're going to need a string of section id's, separated by commas
+			# To create this, loop through our connections array
+			$connections_string = "";
+			foreach($connections as $connection) {
+				$connections_string .= $connection['section_id_followed'].",";
+			}
+
+			# Remove the final comma 
+			$connections_string = substr($connections_string, 0, -1);
+
+			# Run our query, store the results in the variable $sections (if they're following sections...)
+			if($connections_string) {
+				
+				$q =
+				"SELECT sections.*, classes.class_name, classes.class_code
+				FROM sections 
+				JOIN classes USING (class_id) 
+				WHERE sections.section_id IN (".$connections_string.")";
+			}
+			
+			$sections = DB::instance(DB_NAME)->select_rows($q);
+			
+			# Let's find the events that are happening today to start our page off right
+			if($connections_string) {
+				
+				$q =
+				"SELECT sections.*, events.*, classes.class_code
+				FROM sections 
+				JOIN events USING (section_id) 
+				JOIN classes USING (class_id) 
+				WHERE sections.section_id IN (".$connections_string.")
+				AND date = '".date("m/d/Y")."'";
+				# remember to surround the dates in single quotes because they're strings in mysql
+			}
+			
+			$todays_events = DB::instance(DB_NAME)->select_rows($q);
+			
+			# Run our query, store the results in the variable $sections (if they're following sections...)
+			if($connections_string) {
+				
+				$q =
+				"SELECT sections.*, events.*, classes.class_code
+				FROM sections 
+				JOIN events USING (section_id) 
+				JOIN classes USING (class_id) 
+				WHERE sections.section_id IN (".$connections_string.")
+				AND date BETWEEN '".date("m/d/y")."' AND '".date("m/d/y", strtotime('+7 days'))."'
+				ORDER BY date ASC";
+				# we can use the string to time function to return the events happening in the next week
+			}
+			
+			$weeks_events = DB::instance(DB_NAME)->select_rows($q);
+			
+			# Run our query, store the results in the variable $sections (if they're following sections...)
+			if($connections_string) {
+				
+				$q =
+				"SELECT event_id, modified
+				FROM submissions
+				WHERE section_id IN (".$connections_string.")
+				AND user_id = ".$this->user->user_id;
+			}
+			
+			$submissions = DB::instance(DB_NAME)->select_array($q, 'event_id');
+			
+			# Select all of the unread messages that belong to this student
+			$q = "SELECT *
+			FROM messages
+			WHERE user_id = ".$this->user->user_id."
+			AND unread = 1";
+			
+			$unread_messages = DB::instance(DB_NAME)->select_rows($q);
+			
+			#Here's the error to let the student know that their filetype is not supported
+			$error = 1;
+			
+			# The user's main dashboard in Virska
+			$this->template->content = View::instance('v_student_dashboard');
+			$this->template->title = "Dashboard for ".$this->user->first_name." ".$this->user->last_name;
+			$this->template->content->sections = $sections;
+			$this->template->content->todays_events = $todays_events;
+			$this->template->content->weeks_events = $weeks_events;
+			$this->template->content->submissions = $submissions;
+			$this->template->content->error = $error;
+			$this->template->content->unread_messages = $unread_messages;
+			
+			echo $this->template;
+			
+		}
+		
 		public function search() {
 			
 			$this->template->content = View::instance('v_student_search');
@@ -398,7 +548,7 @@
 			echo $this->template;
 		}	
 		
-		public function professor_list () {
+		public function professor_list() {
 			
 			# Find all of the professors in the user's school and return them as a list in alphebetical order by last name
 			$q = "SELECT *

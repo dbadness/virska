@@ -9,7 +9,9 @@
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1EFFF', endColorstr='#D9D7E5');
 	/* Firefox */
 	background: -moz-linear-gradient(top,  #F1EFFF,  #D9D7E5);
-	border:solid 1px gray;
+	border-top:solid 1px gray;
+	border-right:solid 1px gray;
+	border-left:solid 1px gray;
 }
 
 #sectionsFollowingHeader {
@@ -28,30 +30,11 @@
 
 .sectionListWrapper {
 	padding:10px;
-}
-
-.sectionList {
+	border-bottom:solid 1px gray;
 	font-size:90%;
-	margin-top:2px;
 }
 
-#sectionName {
-	float:left;	
-}
-
-#sectionTime {
-	float:left;
-}
-
-#sectionDay {
-	float:left;
-}
-
-#sectionRoom {
-	float:left;
-}
-
-#sectionBuilding {
+#sectionInfo {
 	float:left;
 }
 
@@ -74,9 +57,6 @@
 
 #assignmentViewerHeader {
 	padding:10px;
-}
-
-#dateHeader {
 }
 
 .happening {
@@ -122,7 +102,6 @@
 }
 
 #dueToday {
-	
 }
 
 .sDateLabel {
@@ -198,6 +177,19 @@
 .sSubmitButton {
 	float:right;
 	position:bottom;
+}
+
+#submissionError {
+	padding:30px;
+	text-align:center;
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #FFEC8B, #FCDC3B);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEC8B', endColorstr='#FCDC3B');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #FFEC8B,  #FCDC3B);
+	border-top:solid 1px gray;
+	
 }
 
 /* ------ Today's View Specific CSS -------- */

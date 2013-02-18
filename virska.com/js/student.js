@@ -81,6 +81,15 @@ $(document).ready(function() {
 		return false;
     });
 
+	// if the student submits a submission with no file, give them feedback
+	$(".submission").submit(function() {
+      	if ($("#file").val() != 0) {
+        	return true;
+      	}
+		$(this).effect("shake", { times:2 }, 50);
+      	return false;
+    });
+
 	$(".submissionList:odd").css("background-color", "white");
 	$(".submissionList:even").css("background-color", "#CCFFFF");
 	$(".submissionList:first").css("border-top", "solid 1px gray");

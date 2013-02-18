@@ -42,13 +42,6 @@
 	width:100px;
 }
 
-#userIdentifier {
-	color:white;
-	float:right;
-	margin-top:40px;
-	margin-right:20px;
-}
-
 #login {
 	
 }
@@ -57,13 +50,29 @@
 	
 }
 
-#logo {
+#userInfo {
 	float:right;
-	margin-top:17px;
-	margin-right:15px;
+	margin-top:40px;
 }
 
-#virska{
+#userIdentifier {
+	color:white;
+	float:right;
+	margin-right:20px;
+}
+
+#help {
+	color:white;
+	float:right;
+	margin-left:20px;
+}
+
+#logout {
+	float:right;
+	color:white;
+}
+
+#virska {
 	font-family:Century Schoolbook;
 	color:white;
 	margin-top:10px;
@@ -72,10 +81,11 @@
 	font-size:400%;
 	float:right;
 }
-#logout {
+
+#logo {
 	float:right;
-	color:white;
-	margin-top:40px;
+	margin-top:17px;
+	margin-right:15px;
 }
 
 #notes {

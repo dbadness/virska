@@ -1,9 +1,7 @@
-<?if(isset($new)):?>
 <div id="newClass">
-	Welcome to Virska, <?=$user->first_name?>!<br><br>On this page, we're going to create a class name (like "Introduction to Management" or "American History") and class code (like "MGT 101" or "HIST 203") on the left.<br><br>After that, on the right, we're then going to give that class a individual section, like "A" for example. Also tell your students when that section meets, in what room and building, and on what days.<br><br> When we're all done, students can then search for your class and section to see the "events" that you'll create. Events can be anything from assignments to projects to pizza parties - whatever you decide!
+		Welcome to Virska, <?=$user->first_name?>!<br><br>On this page, we're going to add your classes (like "Introduction to Management" or "American History") and corresponding class codes (like "MGT 101" or "HIST 203") on the left.<br><br>After that, on the right, we're then going to give that class a individual section, like "A" for example. Also tell your students when that section meets, in what room and building, and on what days.<br><br> When we're all done, students can then search for your class and section to see the "events" that you'll create. Events can be anything from assignments to projects to pizza parties - whatever you decide!
 </div>
 <div class="spacer"></div>
-<?endif;?>
 <div id="myClasses">
 	<?if($classes):?>
 		<div id="myClassesHeader">

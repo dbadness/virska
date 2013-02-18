@@ -28,7 +28,7 @@
 			
 			# if the user's email doesn't match one of our partner's schools....
 			
-			$schools = array ("@babson.edu");
+			$schools = array ("@babson.edu", "@me.com");
 			
 			$q = "SELECT email
 			FROM users
@@ -371,14 +371,14 @@
 			echo $this->template;
 		}
 			
-		public function p_dashboard_signup()	{
+		public function p_dashboard_signup() {
 			
 			if($this->user->role == 'student') {
 				# Send them to their dashboard
 				Router::redirect("/student/dashboard");
 			} elseif($this->user->role == 'professor') {
 				# set the professor up to make their first class
-				Router::redirect("/professor/classes_new");
+				Router::redirect("/professor/classes");
 			}				
 		}
 		
@@ -419,7 +419,6 @@
 			
 			echo $this->template;
 		}
-
 
 	}
 

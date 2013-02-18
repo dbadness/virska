@@ -205,52 +205,14 @@
 				
 			$sections = DB::instance(DB_NAME)->select_rows($q);
 			
-			$q = "SELECT COUNT(class_id)
-				FROM classes
-				WHERE user_id = ".$this->user->user_id;
-				
-			$one = DB::instance(DB_NAME)->select_field($q);
-			
-			if($one == 1) {
-				$new = TRUE;
-			}
-			
 			# Set up view
 			# $this->template->content = View::instance('v_index_nav_professor');
 			$this->template->content = View::instance('v_professor_classes');
 			$this->template->title   = "Classes and Sections of Professor ".$this->user->first_name." ".$this->user->last_name;
 			
-			# Pass data to view	
-			if($one == 1) {
-				$new = TRUE;
-				$this->template->content->new = $new;
-			}		
+			# Pass data to view		
 			$this->template->content->classes = $classes;
 			$this->template->content->sections = $sections;
-
-			# Render template
-			echo $this->template;
-		}
-		
-		public function classes_new() {
-			
-			# Create array to show classes that have already been created
-			$q = "SELECT *
-				FROM classes 
-				WHERE user_id = ".$this->user->user_id;
-				
-			$classes = DB::instance(DB_NAME)->select_rows($q);
-			
-			$new = TRUE;
-			
-			# Set up view
-			# $this->template->content = View::instance('v_index_nav_professor');
-			$this->template->content = View::instance('v_professor_classes');
-			
-			# Pass data to view			
-			$this->template->content->classes = $classes;
-			$this->template->content->new = $new;
-			$this->template->title   = "Make a new Class for Professor ".$this->user->last_name;
 
 			# Render template
 			echo $this->template;
@@ -339,45 +301,47 @@
 				
 		public function p_add_event() {
 			
-			$filetypes = array(
-			"docx", # word for mac or windows 2010, 2011
-			"xlsx", # excel for mac or windows 2010, 2011
-			"pptx", #powerpoint for mac or windows 2010, 2011
-			"doc", # word for mac or windows 2004
-			"xls", # excel for mac or windows 2004
-			"ppt", # powerpoint for mac or windows 2004
-			"pages", # pages
-			"numbers", # numbers
-			"keynote", # keynote
-			"png", # png
-			"jpg", # jpg
-			"jpeg", #jpeg
-			"pdf"); # pdf
-			
-			$value = strlen(pathinfo($_FILES['doc']['name'])['extension']) + 1;
-		
-			$new_val = 0 - $value;
-			
 			# Allow the professor to create an event
 			$_POST['user_id'] = $this->user->user_id;
 			$_POST['created'] = Time::now(); # this returns the current time
 			$_POST['modified'] = Time::now(); # this returns the current time
 			
-			if(!in_array(pathinfo($_FILES['doc']['name'])['extension'], $filetypes)){
-
-				# give them a file-type error
-				$error = 1;
-				# Make sure they're not overwriting an existing document with the same name
-				Router::redirect("/professor/section/".$_POST['section_id']."/".$error);
-				return false;
+			if(isset($_POST['doc'])) {
 			
-			} else {
-				# Files are labeled in the convention "created-file_name" ... ie "53434554-Market Survey.doc"
-				$_POST['doc'] = $_POST['created']."-".$_FILES['doc']['name'];
+				$filetypes = array(
+					'doc',
+					'docx',
+					'ppt',
+					'pptx',
+					'xls',
+					'xlsx',
+					'pages',
+					'numbers',
+					'keynote',
+					'pdf'
+				);
+			
+				if(!in_array(pathinfo($_FILES['doc']['name'])['extension'], $filetypes)){
+
+					# give them a file-type error
+					$error = 1;
+					# Make sure they're not overwriting an existing document with the same name
+					Router::redirect("/professor/section/".$_POST['section_id']."/".$error);
+					return false;
+			
+				} else {
+				
+					$value = strlen(pathinfo($_FILES['doc']['name'])['extension']) + 1;
+
+					$new_val = 0 - $value;
+				
+					# Files are labeled in the convention "created-file_name" ... ie "53434554-Market Survey.doc"
+					$_POST['doc'] = $_POST['created']."-".$_FILES['doc']['name'];
 		
-				# user upload method to determine where the file is going, what the $_FILES array will accept, and what the file will be called
-				# we also have to strip off the .doc.doc problem with substr
-				Upload::upload($_FILES, "/docs/", $filetypes, substr($_POST['doc'], 0, $new_val));
+					# user upload method to determine where the file is going, what the $_FILES array will accept, and what the file will be called
+					# we also have to strip off the .doc.doc problem with substr
+					Upload::upload($_FILES, "/docs/", $filetypes, substr($_POST['doc'], 0, $new_val));
+				}
 			}
 
 			#insert data into the database
@@ -405,6 +369,15 @@
 			
 			Router::redirect("/professor/settings");
 		}
+	
+		public function help() {
+			
+			$this->template->content = View::instance("v_professor_help");
+			
+			echo $this->template;
+			
+		}
+	
 	}
 
 

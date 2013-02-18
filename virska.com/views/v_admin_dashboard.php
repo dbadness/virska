@@ -13,7 +13,7 @@
 					<?=$professor['first_name']?> <?=$professor['last_name']?> from <?=$professor['school']?> 
 				</div>
 				<div id="validated">
-						<?=Time::display($professor['created'])?>
+						<?=$professor['created']?>
 					<?if($professor['validated'] == 0):?>
 						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/admin/p_validate/<?=$professor['user_id']?>">Validate?</a></li>
 					<?else:?>

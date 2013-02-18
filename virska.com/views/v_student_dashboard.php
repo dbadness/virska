@@ -18,25 +18,19 @@
 	<?else:?>
 		<?foreach($sections as $section):?>
 			<div class="sectionListWrapper">
-				<div id="sectionName" class="sectionList">
-					<?=$section['class_code']?>, <?=$section['class_name']?>, Section <?=$section['section_name']?>&nbsp
+				<div id="sectionInfo">
+						<?=$section['class_code']?>, <?=$section['class_name']?>, Section <?=$section['section_name']?>&nbsp
+						meets from <?=$section['time_start_hour']?>:<?=$section['time_start_min']?><?=$section['am_pm_start']?>
+					 	to <?=$section['time_end_hour']?>:<?=$section['time_end_min']?><?=$section['am_pm_end']?>.
+						<br>
+						<?=$section['building']?>,&nbsp
+						Room <?=$section['room_number']?>,&nbsp
+						<?=$section['mo']?> <?=$section['tu']?> <?=$section['we']?> <?=$section['th']?> <?=$section['fr']?> <?=$section['sa']?> <?=$section['su']?>
 				</div>
-				<div id="sectionTime" class="sectionList">
-					meets from <?=$section['time_start_hour']?>:<?=$section['time_start_min']?><?=$section['am_pm_start']?> to <?=$section['time_end_hour']?>:<?=$section['time_end_min']?><?=$section['am_pm_end']?>&nbsp
-				</div>
-				<div id="sectionBuilding" class="sectionList">
-					in <?=$section['building']?>,&nbsp
-				</div>
-				<div id="sectionRoom" class="sectionList">
-					room <?=$section['room_number']?>,&nbsp
-				</div>
-				<div id="sectionDay" class="sectionList">
-					on <?=$section['mo']?> <?=$section['tu']?> <?=$section['we']?> <?=$section['th']?> <?=$section['fr']?> <?=$section['sa']?> <?=$section['su']?>
-				</div>
-				<div id="unfollowButton" class="sectionList">
+				<div id="unfollowButton">
 					<a href="/student/p_unfollow/<?=$section['section_id']?>"><img src="/images/delete.png" width="20" title="Unfollow Section"></a>
 				</div>
-				<div id="gradesButton" class="sectionList">
+				<div id="gradesButton">
 					<a href="/student/grades/<?=$section['section_id']?>"><img src="/images/grades.png" width="20" title="View Grades"></a>
 				</div>
 				<div style="clear:both;"></div>
@@ -101,7 +95,7 @@
 						<?if($todays_event['submissions'] == 1):?>
 							<?if(isset($submissions[$todays_event['event_id']])):?>
 								<div class="sSubmission">
-									<form method="post" action="/student/p_resubmit/<?=$todays_event['event_id']?>" enctype="multipart/form-data">
+									<form method="post" class="submission" action="/student/p_resubmit/<?=$todays_event['event_id']?>" enctype="multipart/form-data">
 										<div class="submissionLabel">
 											Phew... Already submitted. Resubmit?
 										</div>
@@ -111,7 +105,7 @@
 											<input type="hidden" name="event_desc" value="<?=$todays_event['description']?>">
 											<input type="hidden" name="student_fname" value="<?=$user->first_name?>">
 											<input type="hidden" name="student_lname" value="<?=$user->last_name?>">
-											<input type="file" id="file" name="submission" style="width:330px;">
+											<input type="file" id="file" name="doc" style="width:330px;">
 										</div>
 										<div class="sSubmitButton">
 											<input type="submit" value="Submit">
@@ -121,7 +115,7 @@
 								</div>
 							<?else:?>
 								<div class="sSubmission">
-									<form method="post" action="/student/p_submit/<?=$todays_event['event_id']?>/<?=$todays_event['description']?>" enctype="multipart/form-data">
+									<form method="post" class="submission" action="/student/p_submit/<?=$todays_event['event_id']?>" enctype="multipart/form-data">
 										<div class="submissionLabel">
 											This event requires a submission (what a drag):
 										</div>
@@ -131,7 +125,7 @@
 											<input type="hidden" name="event_desc" value="<?=$todays_event['description']?>">
 											<input type="hidden" name="student_fname" value="<?=$user->first_name?>">
 											<input type="hidden" name="student_lname" value="<?=$user->last_name?>">
-											<input type="file" id="file" name="submission" style="width:330px;">
+											<input type="file" id="file" name="doc" style="width:330px;">
 										</div>
 										<div class="sSubmitButton">
 											<input type="submit" value="Submit">
@@ -187,7 +181,7 @@
 						<?if($weeks_event['submissions'] == 1):?>
 							<?if(isset($submissions[$weeks_event['event_id']])):?>
 								<div class="sSubmission">
-									<form method="post" action="/student/p_resubmit/<?=$weeks_event['event_id']?>/<?=$weeks_event['description']?>" enctype="multipart/form-data">
+									<form method="post" class="submission" action="/student/p_resubmit/<?=$weeks_event['event_id']?>" enctype="multipart/form-data">
 										<div class="submissionLabel">
 											Phew... Already submitted. Resubmit?
 										</div>
@@ -197,7 +191,7 @@
 											<input type="hidden" name="event_desc" value="<?=$weeks_event['description']?>">
 											<input type="hidden" name="student_fname" value="<?=$user->first_name?>">
 											<input type="hidden" name="student_lname" value="<?=$user->last_name?>">
-											<input type="file" id="file" name="submission" style="width:330px;">
+											<input type="file" id="file" name="doc" style="width:330px;">
 										</div>
 										<div class="sSubmitButton">
 											<input type="submit" value="Submit">
@@ -207,7 +201,7 @@
 								</div>
 							<?else:?>
 								<div class="sSubmission">
-									<form method="post" action="/student/p_submit/<?=$weeks_event['event_id']?>/<?=$weeks_event['description']?>" enctype="multipart/form-data">
+									<form method="post" class="submission" action="/student/p_submit/<?=$weeks_event['event_id']?>" enctype="multipart/form-data">
 										<div class="submissionLabel">
 											This event requires a submission (what a drag):
 										</div>
@@ -217,7 +211,7 @@
 											<input type="hidden" name="event_desc" value="<?=$weeks_event['description']?>">
 											<input type="hidden" name="student_fname" value="<?=$user->first_name?>">
 											<input type="hidden" name="student_lname" value="<?=$user->last_name?>">
-											<input type="file" id="file" name="submission" style="width:330px;">
+											<input type="file" id="file" name="doc" style="width:330px;">
 										</div>
 										<div class="sSubmitButton">
 											<input type="submit" value="Submit">
@@ -247,13 +241,18 @@
 			</div>
 		</div>
 	</div>
+	<?if(isset($error)):?>
+		<div id="submissionError">
+			<i>Virska can only accept Microsoft's Word, Excel, PowerPoint; Apple's Pages, Numbers, or Keynote; or PDFs for submissions. Please resubmit with an acceptable filetype.</i>
+		</div>
+	<?endif;?>
 </div>
 <div class="spacer"></div>
 <div class="listHeader" id="messageViewerHeader">
 	<strong>Messages</strong>
 </div>
 <div class="listHeader" id="readReadMessages">
-	<a href="/student/messages">View Read Messages</a>
+	<a href="/student/messages">Click to View Read Messages</a>
 </div>
 <div style="clear:both;"></div>
 <div id="messagesWrapper">

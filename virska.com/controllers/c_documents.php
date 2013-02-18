@@ -45,27 +45,24 @@
 			AND user_id = ".$this->user->user_id;
 		
 			$sum = DB::instance(DB_NAME)->select_field($q);
-		
+			
 			$filetypes = array(
-			"docx", # word for mac or windows 2010, 2011
-			"xlsx", # excel for mac or windows 2010, 2011
-			"pptx", #powerpoint for mac or windows 2010, 2011
-			"doc", # word for mac or windows 2004
-			"xls", # excel for mac or windows 2004
-			"ppt", # powerpoint for mac or windows 2004
-			"pages", # pages
-			"numbers", # numbers
-			"keynote", # keynote
-			"png", # png
-			"jpg", # jpg
-			"jpeg", #jpeg
-			"pdf"); # pdf
+				'doc',
+				'docx',
+				'ppt',
+				'pptx',
+				'xls',
+				'xlsx',
+				'pages',
+				'numbers',
+				'keynote',
+				'pdf'
+			);
 		
 			if(!in_array(pathinfo($_FILES['doc']['name'])['extension'], $filetypes)){
 			
-				# give them a file-type error
+				# give them a file-type error because that format of file is not support for upload
 				$error = 1;
-				# Make sure they're not overwriting an existing document with the same name
 				Router::redirect("/documents/upload_error/".$error);
 				return false;
 			} elseif($sum == 1) {

@@ -19,7 +19,6 @@
 	<?php echo @$client_files; ?>
 	
 </head>
-
 <body>
 	<div id="navBar">
 		<div id="headerContainer">
@@ -38,6 +37,11 @@
 					<a href="/documents">
 						<div class="navButton" id="documents">
 							Documents
+						</div>
+					</a>
+					<a href="/forums">
+						<div class="navButton" id="forums">
+							Forums
 						</div>
 					</a>
 					<a href="/professor/settings">
@@ -61,23 +65,36 @@
 							Documents
 						</div>
 					</a>
+					<a href="/forums">
+						<div class="navButton" id="forums">
+							Forums
+						</div>
+					</a>
 					<a href="/student/settings">
 						<div class="navButton" id="settings">
 							Settings
 						</div>
 					</a>
 				<?endif;?>
-					<div id="userInfo">
-						<a href="/users/logout">
-							<div id="logout">
-								Log Out
-							</div>
-						</a>
-						<div id="userIdentifier">
-							Welcome, <?=$user->first_name?>.
+				<div id="userInfo">
+					<?if($user->role == 'professor'):?>
+					<a href="/professor/help">
+						<div id="help">
+							Help
 						</div>
-						<div style="clear:both;"></div>
+					</a>
+					<?endif;?>
+					<a href="/users/logout">
+						<div id="logout">
+							Log Out
+						</div>
+					</a>
+					<div id="userIdentifier">
+						Welcome, <?=$user->first_name?>.
 					</div>
+					<div style="clear:both;"></div>
+				</div>
+				<div style="clear:both;"></div>
 			<?else:?>
 				<a href="/users/login">
 					<div class="navButton" id="login">
