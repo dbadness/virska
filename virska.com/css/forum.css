@@ -102,3 +102,23 @@
 	overflow:hidden;
 	padding:5px;
 }
+
+/* ---------- Add Thread Page -------- */
+
+#mewThreadTitleCopy {
+}
+
+#newThreadTitle {
+	width:100%;
+}
+
+#newThreadTextCopy {
+	
+}
+
+#newThreadText {
+	width:100%;
+}
+
+#postButton {
+}

@@ -5,4 +5,6 @@ $(document).ready(function() {
 	$(".listItem:first").css("border-top", "solid 1px gray");
 	$(".listItem:last").css("border-bottom", "solid 1px gray");
 	
+	$("textarea").autoGrow();
+	
 });

@@ -60,6 +60,7 @@
 			
 			# Pass our queried data to the view
 			$this->template->content->notes = $notes;
+			$this->template->title = "Notes";
 			$this->template->content->sections = $sections;
 		
 			echo $this->template;
@@ -107,6 +108,7 @@
 
 		    $this->template->client_files = Utils::load_client_files($client_files);
 			$this->template->content->sections = $sections;
+			$this->template->title = "Notes";
 		
 			echo $this->template;
 		}
@@ -138,6 +140,7 @@
 			
 			# Pass the note to the view
 			$this->template->content->note = $note;
+			$this->template->title = "Notes";
 		
 			echo $this->template;
 		}

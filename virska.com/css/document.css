@@ -1,9 +1,10 @@
 #docUpload {
+	width:400px;
+	height:100px;
 	padding:10px;
 	border-radius:3px;
 	border:solid 2px gray;
 	float:left;
-	width:400px;
 	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
    	background: -webkit-linear-gradient(top, #F1EFFF, #D9D7E5);
 	/* IE */
@@ -13,21 +14,23 @@
 }
 
 #docLimitBox {
-	text-align:center;
-	margin-top:1px;
+	width:400px;
+	height:100px;
 	padding:10px;
-	padding-top:40px;
+	text-align:center;
 	border:solid 2px gray;
 	border-radius:3px;
 	float:right;
-	width:370px;
-	height:53px;
 	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
    	background: -webkit-linear-gradient(top, #F1EFFF, #D9D7E5);
 	/* IE */
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1EFFF', endColorstr='#D9D7E5');
 	/* Firefox */
 	background: -moz-linear-gradient(top,  #F1EFFF,  #D9D7E5);	
+}
+
+#docLimit {
+	margin-top:42px;
 }
 
 #file {

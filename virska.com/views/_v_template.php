@@ -10,6 +10,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 	<script src="/js/nav.js"></script>
 	<script src="/js/main.js"></script>
+	<script src="/js/autogrow.js"></script>
 		
 	<link rel="stylesheet" type="text/css" href="/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="/css/nav.css" />

@@ -1,9 +1,9 @@
 <?if($doc_size < 104857600):?>
 	<div id="docUpload">
-		You can upload Word, Excel, PowerPoint, and PDF files to download later from any computer with internet.<br><br>
+		You can upload Word, Excel, PowerPoint, Pages, Numbers, Keynote, and PDF files to download later from any computer with internet.<br><br>
 		<form id="docUploadForm" action="/documents/p_upload_doc" method="post" enctype="multipart/form-data">
-				<input id="file" type="file" name="doc">
-				<input id="uploadButton" type="submit" value="Upload Document">
+			<input id="file" type="file" name="doc">
+			<input id="uploadButton" type="submit" value="Upload Document">
 			<div style="clear:both;"></div>
 		</form>
 	</div>
@@ -13,13 +13,15 @@
 	</div>
 <?endif;?>	
 <div id="docLimitBox">
-	<?=round(($doc_size / 1048576), 2)?> MB used, <?=100 - (round(($doc_size / 1048576), 2))?> MB remaining
+	<div id="docLimit">
+		<?=round(($doc_size / 1048576), 2)?> MB used, <?=100 - (round(($doc_size / 1048576), 2))?> MB remaining
+	</div>
 </div>					
 <div style="clear:both;"></div>
 <?if(isset($error)):?>
 	<?if($error == 1):?>
 		<div class="docError">
-			Virska only accepts Word, Excel, Powerpoint, Pages, Numbers, Keynote, PDF, PNG and JPG file formats at this time.
+			Virska only accepts Word, Excel, Powerpoint, Pages, Numbers, Keynote, and PDF file formats at this time.
 		</div>
 	<?elseif($error == 2):?>
 		<div class="docError">

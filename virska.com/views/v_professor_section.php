@@ -16,7 +16,7 @@
 				<div id="addAttachment">
 					Add an Attachment	
 				</div>
-				<div id="attachment">
+				<div id="attachment" style="display:block;">
 					<input style="width:300px;" type="file" name="doc">
 				</div>
 			</div>

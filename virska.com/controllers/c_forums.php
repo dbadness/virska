@@ -8,8 +8,7 @@
 			# If this view needs any JS or CSS files, add their paths to this array so they will get loaded in the head
 			$client_files = Array(
 						"/css/forum.css",
-						"/js/forum.js",
-						"/js/autogrow.js"
+						"/js/forum.js"
 	                    );
 
 		    $this->template->client_files = Utils::load_client_files($client_files);
