@@ -13,17 +13,11 @@ a img {
 }
 
 a:link {
-	text-decoration:none;
-}
-
-a:link {
-	color: rgb(14,46,66);
-	text-decoration:none;	
+	color:blue;
 }
 
 a:visited {
-	color: rgb(14,46,66);
-	text-decoration:none;	
+	color:blue;
 }
 
 input {

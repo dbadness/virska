@@ -19,3 +19,10 @@
 2013-02-18 16:47:42 - INFO --> BCC:  
 2013-02-18 16:47:42 - INFO --> Subject: You've been validated! 
 2013-02-18 16:47:42 - INFO --> Body: Dear Danielle,<br><br>Thank you so much for your p 
+2013-02-18 23:32:41 - INFO --> Controller/Method: users/p_validate_email 
+2013-02-18 23:32:41 - INFO --> From: Virska (communications@virska.com) 
+2013-02-18 23:32:41 - INFO --> To: John Smith (dave.0.baines@gmail.com),  
+2013-02-18 23:32:41 - INFO --> CC:  
+2013-02-18 23:32:41 - INFO --> BCC:  
+2013-02-18 23:32:41 - INFO --> Subject: Welcome to Virska! 
+2013-02-18 23:32:41 - INFO --> Body: Welcome to Virska, John. <br><br>You can head to < 

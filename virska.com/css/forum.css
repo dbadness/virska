@@ -1,0 +1,104 @@
+/* ---------- CSS for the Forums pages ------ */
+
+/* ---------- Index Page ------------- */
+#section {
+	padding:30px;
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #F1EFFF, #D9D7E5);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F1EFFF', endColorstr='#D9D7E5');
+	/* Firefox */
+	background: -moz-linear-gradient(top, #F1EFFF, #D9D7E5);
+	border:solid 3px gray;
+	text-align:center;
+}
+
+#forumLinks {
+	margin-top:20px;
+}
+
+.button {
+	padding:10px;
+	border-radius:5px;
+	border:solid 2px gray;
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+   	background: -webkit-linear-gradient(top, #DDF1FF, #86CCD6);
+	/* IE */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DDF1FF', endColorstr='#86CCD6');
+	/* Firefox */
+	background: -moz-linear-gradient(top,  #DDF1FF,  #86CCD6);
+}
+
+#add {
+	float:left;
+	margin-left:150px;
+}
+
+#view {
+	float:right;
+	margin-right:150px;
+}
+
+/* ---------- View Section's Threads Page ------ */
+
+#viewerHeader {
+	text-align:center;
+}
+
+#threadWrapper {
+	
+}
+
+#noThreads {
+	text-align:center;
+}
+
+#title {
+	float:left;
+}
+
+#topicCreated {
+	float:right;
+	margin-right:30px;
+}
+
+#commentCount {
+	float:right;
+}
+
+/* ------------ View Thread CSS -------- */
+
+#threadTitle {
+	font-size:150%;
+	width:570px;
+}
+
+.comment {
+	padding:20px;
+	border-top:solid 1px gray;
+	border-left:solid 1px gray;
+	border-right:solid 1px gray;
+}
+
+#commentBy {
+	float:left;
+}
+
+#createdOn {
+	float:right;
+}
+
+#deleteComment {
+	margin-top:20px;
+}
+
+#commentField {
+	margin-top:20px;
+}
+
+#newCommentField {
+	resize:none;
+	width:100%;
+	overflow:hidden;
+	padding:5px;
+}
