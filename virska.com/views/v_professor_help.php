@@ -49,7 +49,7 @@
 	<p>Messaging is one of the most powerful features of Virska. Right on your <a href="/professor/dashbaord">Dashboard page</a>, the bottom-most box enables you to send a message out to all of your students who follow your sections. A message can be anything you'd like - like "Project 1 grades are now posted!" or "Class on March 16th is cancelled" - and depending on the settings that the student has selected on their side of Virska, they'll receive an email, text, or both with your message. It's an immediate and comprehensive way to communicate with your students.</p>
 	<p>To send a message, select the section to which the message will be sent, and simply type up a quick message and click the "Send Message" button. You can view your sent messages by clicking on the "View Sent Messages" link on the top righthand portion of the messaging box.</p>
 </div>
-<img src="/images/messaging.png" class="shadowPicture" id="message">
+<img src="/images/messaging.png" class="shadowPicture" id="messagePic">
 <div style="clear:both;"></div>
 <div class="spacer"></div>
 <hr width="600">
