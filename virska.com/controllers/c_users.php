@@ -28,7 +28,7 @@
 			
 			# if the user's email doesn't match one of our partner's schools....
 			
-			$schools = array ("@babson.edu", "@me.com", "@gmail.com");
+			$schools = array("@babson.edu");
 			
 			$q = "SELECT email
 			FROM users

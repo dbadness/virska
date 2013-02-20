@@ -373,6 +373,7 @@
 		public function help() {
 			
 			$this->template->content = View::instance("v_professor_help");
+			$this->template->title = "The Help Page for Professors";
 			
 			echo $this->template;
 			
